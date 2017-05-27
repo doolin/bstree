@@ -250,6 +250,10 @@ class Node
     collect []
   end
 
+  def preorder_collect
+    collect_pre_order []
+  end
+
   # TODO: this should be the same with any traverse, each should
   # visit every node once.
   def size

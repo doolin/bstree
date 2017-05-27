@@ -544,62 +544,6 @@ RSpec.describe Node do
     end
   end
 
-  describe '.balanced?' do
-    let(:root) { Node.new 100 }
-    let(:left) { Node.new 50 }
-    let(:right) { Node.new 150 }
-    let(:l2) { Node.new 25 }
-    let(:l3) { Node.new 75 }
-    let(:l4) { Node.new 15 }
-
-    it 'returns true for node with 0 children' do
-      expect(root.balanced?).to be true
-    end
-
-    it 'returns true for node with 2 children' do
-      root.insert left
-      root.insert right
-      expect(root.balanced?).to be true
-    end
-
-    it 'returns true for a node with only one child' do
-      root.insert left
-      expect(root.balanced?).to be true
-    end
-
-    it 'returns true for tree with 5 nodes' do
-      root.insert left
-      root.insert right
-      root.insert l2
-      root.insert l3
-      expect(root.balanced?).to be true
-    end
-
-    it 'returns nil for tree with 6 nodes' do
-      root.insert left
-      root.insert right
-      root.insert l2
-      root.insert l3
-      root.insert Node.new 145
-      expect(root.balanced?).to be true
-    end
-
-    it 'returns false for long left subtree' do
-      root.insert left
-      root.insert right
-      root.insert l2
-      root.insert l3
-      root.insert l4
-      root.insert Node.new 5
-      expect(root.balanced?).to be false
-    end
-
-    # TODO: insert a bunch more examples here, checking node by node
-    # on an unbalanced tree. Actually, all we really need is a single
-    # tree, then each particular part of the tree can be examined for
-    # balance.
-  end
-
   describe '.bst?' do
     let(:root) { Node.new 17 }
 
