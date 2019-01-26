@@ -4,7 +4,11 @@
 
 import unittest
 import sys
-sys.path.append('../lib')
+import os
+dir = os.path.dirname(__file__)
+libpath = os.path.join(dir, '..', 'lib')
+sys.path.append(libpath)
+
 from node import *
 
 class TestNode(unittest.TestCase):
