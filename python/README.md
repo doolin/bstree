@@ -15,3 +15,5 @@ in the implementation.
 * Clean up the conditional code in the Node class, make it more
   idiomatic Python.
 * Use the python disassembler to see how it works.
+* Better unit test output with [pytest
+  clarity](https://darrenburns.net/posts/pytest-clarity-notes/).
