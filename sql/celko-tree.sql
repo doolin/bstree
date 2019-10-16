@@ -17,10 +17,23 @@ insert into personnel1 (emp, boss, salary) values
   ("eddie", "chuck", 700.00),
   ("fred", "chuck", 600.00);
 
-drop table if exists Personnel2;
-CREATE TABLE Personnel2 (
+drop table if exists personnel2;
+CREATE TABLE personnel2 (
   emp CHAR(10) NOT NULL PRIMARY KEY,
   lft INTEGER NOT NULL UNIQUE CHECK (lft > 0),
   rgt INTEGER NOT NULL UNIQUE CHECK (rgt > 1),
   CONSTRAINT order_okay CHECK (lft < rgt)
 );
+
+insert into personnel2 (emp, lft, rgt) values
+  ("albert", 1, 12),
+  ("bert", 2, 3),
+  ("chuck", 4, 11),
+  ("donna", 5, 6),
+  ("eddie", 7, 8),
+  ("fred", 9, 10);
+
+SELECT P2.*
+   FROM personnel2 AS P1, personnel2 AS P2
+    WHERE P1.lft BETWEEN P2.lft AND P2.rgt
+        AND P1.emp = :myemployee; -- e.g., "donna"
