@@ -37,3 +37,10 @@ SELECT P2.*
    FROM personnel2 AS P1, personnel2 AS P2
     WHERE P1.lft BETWEEN P2.lft AND P2.rgt
         AND P1.emp = :myemployee; -- e.g., "donna"
+
+-- apparently a type in the article, as it states to select
+-- from P2, but P1 provides the information described.
+SELECT P1.*
+   FROM personnel2 AS P1, personnel2 AS P2
+    WHERE P1.lft BETWEEN P2.lft AND P2.rgt
+        AND P2.emp = :myemployee;
