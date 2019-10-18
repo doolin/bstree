@@ -33,14 +33,21 @@ insert into personnel2 (emp, lft, rgt) values
   ("eddie", 7, 8),
   ("fred", 9, 10);
 
-SELECT P2.*
-   FROM personnel2 AS P1, personnel2 AS P2
+SELECT P2.* FROM personnel2 AS P1, personnel2 AS P2
     WHERE P1.lft BETWEEN P2.lft AND P2.rgt
-        AND P1.emp = :myemployee; -- e.g., "donna"
+    AND P1.emp = :myemployee; -- e.g., "donna"
 
 -- apparently a type in the article, as it states to select
 -- from P2, but P1 provides the information described.
-SELECT P1.*
-   FROM personnel2 AS P1, personnel2 AS P2
+SELECT P1.* FROM personnel2 AS P1, personnel2 AS P2
     WHERE P1.lft BETWEEN P2.lft AND P2.rgt
-        AND P2.emp = :myemployee;
+    AND P2.emp = :myemployee;
+
+-- SELECT P2.emp, SUM(S1.salary) FROM personnel2 AS P1, personnel2 AS P2, Salaries AS S1
+--    WHERE P1.lft BETWEEN P2.lft AND P2.rgt AND P1.emp = S1.emp GROUP BY P2.emp;
+
+-- This one works
+SELECT COUNT(P2.emp) AS indentation, P1.emp FROM personnel2 AS P1, personnel2 AS P2
+    WHERE P1.lft BETWEEN P2.lft AND P2.rgt GROUP BY P1.emp ORDER BY P1.lft;
+
+-- insertion of new rightmost
