@@ -64,3 +64,26 @@ CREATE INDEX ix_hierarchy_rgt ON t_hierarchy (rgt);
 CREATE INDEX ix_hierarchy_parent ON t_hierarchy (parent);
 
 ANALYZE t_hierarchy;
+
+SELECT SUM(LENGTH(hc.stuffing)) FROM t_hierarchy hp
+  JOIN t_hierarchy hc ON hc.l ft
+  BETWEEN hp.lft AND hp.rgt
+  WHERE hp.id = 42;
+
+WITH    RECURSIVE
+        q AS
+        (
+        SELECT  id, stuffing
+        FROM    t_hierarchy h
+        WHERE   id = 42
+        UNION ALL
+        SELECT  hc.id, hc.stuffing
+        FROM    q
+        JOIN    t_hierarchy hc
+        ON      hc.parent = q.id
+        )
+SELECT  SUM(LENGTH(stuffing)) FROM q;
+
+
+
+
