@@ -1,0 +1,39 @@
+version: v1.0
+name: Binary Search Tree
+execution_time_limit:
+  minutes: 10
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Set it all up
+    dependencies: []
+    task:
+      prologue:
+        commands:
+          - checkout
+          - cd ruby
+          - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock)
+      jobs:
+        - name: install gems
+          commands:
+            - bundle config set path 'vendor/bundle'
+            - bundle install
+      epilogue:
+        commands:
+          - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
+  - name: rspec
+    dependencies: ['Set it all up']
+    task:
+      prologue:
+        commands:
+          - checkout
+          - cd ruby
+          - cache restore
+      jobs:
+        - name: Run Rspec
+          commands:
+            - sem-version ruby 2.7.1
+            - bundle config set path 'vendor/bundle'
+            - bundle exec rspec
