@@ -23,6 +23,20 @@ blocks:
       epilogue:
         commands:
           - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
+  - name: rust
+    dependencies: []
+    task:
+      prologue:
+        commands:
+          - checkout
+          - sudo snap install rustup --classic
+          - rustup install stable # see if this can be cached
+          - rustup default stable
+          - cd rust
+      jobs:
+        - name: Rust unit test
+          commands:
+            - cargo test
   - name: rspec
     dependencies: ['Set it all up']
     task:
