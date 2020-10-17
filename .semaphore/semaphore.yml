@@ -37,3 +37,17 @@ blocks:
             - sem-version ruby 2.7.1
             - bundle config set path 'vendor/bundle'
             - bundle exec rspec
+  - name: flay
+    dependencies: ['Set it all up']
+    task:
+      prologue:
+        commands:
+          - checkout
+          - cd ruby
+          - cache restore
+      jobs:
+        - name: Run Flay
+          commands:
+            - sem-version ruby 2.7.1
+            - bundle config set path 'vendor/bundle'
+            - bundle exec flay
