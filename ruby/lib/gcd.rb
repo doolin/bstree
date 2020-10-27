@@ -3,6 +3,7 @@
 class Gcd
   def self.compute a, b
     return a if b.zero?
+
     compute(b, a.modulo(b))
   end
 

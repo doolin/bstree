@@ -70,6 +70,7 @@ class Node
 
   def predecessor node
     return nil if node == minimum # yuck
+
     get_predecessor node, self, node
   end
 
@@ -87,6 +88,7 @@ class Node
   def successor node
     # Horrible, horrible kludge
     return nil if node == maximum
+
     get_successor node, self, node
   end
 
@@ -128,16 +130,19 @@ class Node
 
   def find_with_parent key, parent
     return [self, parent] if key == @key
+
     key < @key ? left&.find_with_parent(key, self) : right&.find_with_parent(key, self)
   end
 
   def find key
     return self if key == @key
+
     key < @key ? left&.find(key) : right&.find(key)
   end
 
   def present? key
     return true if key == @key
+
     key < @key ? left&.present?(key) : right&.present?(key)
   end
 
@@ -145,6 +150,7 @@ class Node
     left_height = left&.height || 0
     right_height = right&.height || 0
     return false unless [-1, 0, 1].include?(left_height - right_height)
+
     left&.balanced?
     right&.balanced?
     true
@@ -152,6 +158,7 @@ class Node
 
   def full?
     return true if left.nil? && right.nil?
+
     left&.full? && right&.full? || false # returns nil instead of false, why?
   end
 
@@ -159,16 +166,17 @@ class Node
     minimum = -10_000 # fixme
     in_order_traverse do |node|
       return false if minimum >= node.key
+
       minimum = node.key
       true
     end
   end
 
-  # rubocop:disable Style/PredicateName
+  # rubocop:disable Naming/PredicateName
   def has_children?
     left || right ? true : false # would otherwise return the node or nil
   end
-  # rubocop:enable Style/PredicateName
+  # rubocop:enable Naming/PredicateName
 
   def visit
     @visited = true
@@ -179,12 +187,13 @@ class Node
     !visited
   end
 
-  # rubocop:disable Style/PredicateName
+  # rubocop:disable Naming/PredicateName
   def has_unvisited_children?
     return false unless has_children?
+
     left&.unvisited? || right&.unvisited? ? true : false
   end
-  # rubocop:enable Style/PredicateName
+  # rubocop:enable Naming/PredicateName
 
   # TODO: write out why I have an issue with what rubocop
   # demands here. Rubocop demands the `has` to be removed
@@ -201,11 +210,11 @@ class Node
   # does not, it's the root node, and that's a special
   # case. Conversely, if the node is not a parent, it's
   # a leaf node, another special case.
-  # rubocop:disable Style/PredicateName
+  # rubocop:disable Naming/PredicateName
   def has_parent?
     !parent.nil?
   end
-  # rubocop:enable Style/PredicateName
+  # rubocop:enable Naming/PredicateName
 
   def right_child?
     self == parent&.right
@@ -269,6 +278,7 @@ class Node
 
   def self.build_from_hash params
     return nil if params.nil?
+
     node = new(params['key'], params['uuid'])
     node.left = build_from_hash(params['left'])
     node.right = build_from_hash(params['right'])
@@ -284,7 +294,7 @@ class Node
     }
   end
 
-  def to_json
+  def to_json *_args
     require 'json'
     to_hash.to_json
   end

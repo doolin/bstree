@@ -32,6 +32,7 @@ module BinarySearchTree
 
   def successor node
     return nil if node == maximum
+
     get_successor node, self, node
   end
 
@@ -48,6 +49,7 @@ module BinarySearchTree
 
   def predecessor node
     return nil if node == minimum
+
     get_predecessor node, self, node
   end
 
@@ -79,6 +81,7 @@ module BinarySearchTree
   # see if this can be rewritten with `dig` below
   def search_with_parent key, parent
     return [self, parent] if key == @key
+
     key < @key ? left&.search_with_parent(key, self) : right&.search_with_parent(key, self)
   end
 
@@ -104,6 +107,7 @@ module BinarySearchTree
     end
 
     return self if l <= self && self <= r
+
     l < self ? left&.common_parent(l, r) : right&.common_parent(l, r)
   end
 
@@ -125,6 +129,7 @@ module BinarySearchTree
     minimum = -1000
     in_order_traverse do |node|
       return false if minimum >= node.key
+
       minimum = node.key
       true
     end

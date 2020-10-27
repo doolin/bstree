@@ -66,6 +66,7 @@ class IterativeTree < Tree
       current = stack.pop
 
       next if current&.right.nil?
+
       current = current.right
       stack.push current
       yield current

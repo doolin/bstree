@@ -10,7 +10,7 @@ class AvlNode < Node
     @weight = 0
   end
 
-  def insert node
+  def insert_nonworking node
     super
     node < self ? @weight -= 1 : @weight += 1
 
