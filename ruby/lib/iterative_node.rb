@@ -29,11 +29,13 @@ class IterativeNode < Node
 
   def predecessor node
     return node.left.maximum if node.left
+
     find_predecessor node
   end
 
   def successor node
     return node.right.minimum if node.right
+
     find_successor node
   end
 

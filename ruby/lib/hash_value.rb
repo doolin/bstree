@@ -7,7 +7,7 @@ require 'digest'
 class HashValue
   attr_accessor :hash, :data, :parent, :left, :right
 
-  def initialize(data)
+  def initialize data
     @data = data
   end
 end

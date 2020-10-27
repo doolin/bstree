@@ -10,16 +10,19 @@ class Tree
 
   def preorder_walk
     return unless root
+
     root.pre_order_traverse(&Proc.new)
   end
 
   def inorder_walk
     return unless root
+
     root.in_order_traverse(&Proc.new)
   end
 
   def postorder_walk
     return unless root
+
     root.post_order_traverse(&Proc.new)
   end
 
@@ -28,7 +31,7 @@ class Tree
     # the specs. That's bad. One should pass,
     # the other fail.
     # @root = node ? node : NODE_CLASS
-    @root = node ? node : NODE_CLASS.new
+    @root = node || NODE_CLASS.new
     @size = 1
   end
 
@@ -43,6 +46,7 @@ class Tree
 
   def invert
     return if root.nil?
+
     preorder_walk do |node|
       temp = node.right
       node.right = node.left
@@ -176,7 +180,7 @@ class Tree
     root.to_hash
   end
 
-  def to_json
+  def to_json *_args
     root.to_json
   end
 
