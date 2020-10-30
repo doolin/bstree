@@ -100,7 +100,7 @@ describe Node do
   end
 
   describe '#collect_pre_order' do
-    let(:root) { Node. new 17 }
+    let(:root) { Node.new 17 }
     subject(:tree) { root.collect_pre_order([]) }
 
     example 'from single node' do

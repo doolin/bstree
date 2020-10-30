@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../lib/hash_value.rb'
+require_relative '../lib/hash_value'
 
 describe HashValue do
   it 'instantiates' do

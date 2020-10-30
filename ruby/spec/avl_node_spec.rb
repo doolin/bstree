@@ -150,6 +150,7 @@ describe AvlNode do
       end
 
       describe 'left and right children, alternately aperiodically' do
+        it 'make rubocop happy with example'
       end
     end
   end

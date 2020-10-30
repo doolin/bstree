@@ -78,7 +78,7 @@ RSpec.shared_examples '#predecessor' do
       end
 
       it 'finds minimum as predecessor of root.left' do
-        expect(root.predecessor(n7)). to be n2
+        expect(root.predecessor(n7)).to be n2
       end
     end
 
@@ -92,7 +92,7 @@ RSpec.shared_examples '#predecessor' do
       end
 
       it 'finds maximum as predecessor of root.left' do
-        expect(root.predecessor(n43)). to be n29
+        expect(root.predecessor(n43)).to be n29
       end
     end
   end
