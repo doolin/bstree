@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../lib/hash_node.rb'
+require_relative '../lib/hash_node'
 
 describe HashNode do
   it 'instantiates' do

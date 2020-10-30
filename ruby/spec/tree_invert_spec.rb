@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../lib/tree.rb'
+require_relative '../lib/tree'
 
 RSpec.describe Tree do
   let(:node_class) { Tree::NODE_CLASS }

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../lib/tree.rb'
-require_relative '../lib/node.rb'
+require_relative '../lib/tree'
+require_relative '../lib/node'
 
 describe Tree do
   def node_pointers_nil? node
@@ -32,7 +32,7 @@ describe Tree do
     it 'transplants left child' do
       root = Node.new 17
       tree = Tree.new root
-      n5 = Node. new 5
+      n5 = Node.new 5
       n7 = Node.new 7
       tree.insert n5
       tree.insert n7
@@ -45,7 +45,7 @@ describe Tree do
     it 'transplants right child' do
       root = Node.new 17
       tree = Tree.new root
-      n23 = Node. new 23
+      n23 = Node.new 23
       n29 = Node.new 29
       tree.insert n23
       tree.insert n29

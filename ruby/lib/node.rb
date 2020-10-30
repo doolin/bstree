@@ -10,9 +10,7 @@ class NodeCsvWriter
 end
 
 class Node
-  attr_accessor :parent, :left, :right, :uuid
-  attr_accessor :key
-  attr_accessor :visited
+  attr_accessor :parent, :left, :right, :uuid, :key, :visited
 
   INCR = 1
   DECR = -1

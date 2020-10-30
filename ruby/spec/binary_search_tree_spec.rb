@@ -346,7 +346,7 @@ describe Foo do
             right: nil
           }
         }
-        expect(root.to_hash). to eq expected
+        expect(root.to_hash).to eq expected
       end
     end
   end

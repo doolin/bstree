@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-require_relative '../lib/tree.rb'
+require_relative '../lib/tree'
 
 require 'shared_examples/tree/preorder_walk'
 require 'shared_examples/tree/inorder_walk'
