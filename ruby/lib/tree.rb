@@ -39,6 +39,10 @@ class Tree
     root.nil? ? true : false
   end
 
+  def set_root_to_nil
+    @root = nil
+  end
+
   def insert node
     @root.insert node
     @size += 1
