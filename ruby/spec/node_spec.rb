@@ -793,8 +793,7 @@ describe Node do
         end
       end
 
-      describe 'left and right children, alternately aperiodically' do
-      end
+      describe 'left and right children, alternately aperiodically'
     end
   end
 end

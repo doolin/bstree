@@ -485,6 +485,8 @@ describe Foo do
   end
 
   describe 'method overriding' do
+    # TODO: Find a lint-compliant way to spec the `include`
+    # rubocop:disable Lint/ConstantDefinitionInBlock
     class Bar
       require 'securerandom'
       include BinarySearchTree
@@ -495,6 +497,7 @@ describe Foo do
         @uuid = SecureRandom.uuid
       end
     end
+    # rubocop:enable Lint/ConstantDefinitionInBlock
 
     it 'fails if comparison operator is not overriden' do
       bar = Bar.new 9
