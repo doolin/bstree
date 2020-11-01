@@ -14,7 +14,7 @@ class HashTree
     @hashes = []
   end
 
-  def insert document
+  def insert(document)
     @documents << document
   end
 

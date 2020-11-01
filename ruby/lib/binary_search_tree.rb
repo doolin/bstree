@@ -6,11 +6,11 @@ module BinarySearchTree
   INCR = 1
   DECR = -1
 
-  def < _other
+  def <(_other)
     raise NoMethodError, "'<' method must be overridden"
   end
 
-  def insert node
+  def insert(node)
     if node < self
       # TODO: is there a clean, spiffy way to set the parent node here?
       left.nil? ? self.left = node : left.insert(node)
@@ -19,7 +19,7 @@ module BinarySearchTree
     end
   end
 
-  def get_successor node, parent, successor
+  def get_successor(node, parent, successor)
     successor = parent if parent&.left == self
     return right.nil? ? successor : right.minimum if node == self
 
@@ -30,13 +30,13 @@ module BinarySearchTree
     end
   end
 
-  def successor node
+  def successor(node)
     return nil if node == maximum
 
     get_successor node, self, node
   end
 
-  def get_predecessor node, parent, predecessor
+  def get_predecessor(node, parent, predecessor)
     predecessor = parent if parent&.right == self
     return left.nil? ? predecessor : left.maximum if node == self
 
@@ -47,13 +47,13 @@ module BinarySearchTree
     end
   end
 
-  def predecessor node
+  def predecessor(node)
     return nil if node == minimum
 
     get_predecessor node, self, node
   end
 
-  def delete key, parent = nil
+  def delete(key, parent = nil)
     node_to_delete, parent = search_with_parent key, parent
     left = node_to_delete.left
     right = node_to_delete.right
@@ -70,7 +70,7 @@ module BinarySearchTree
     node_to_delete
   end
 
-  def self.max l, r
+  def self.max(l, r)
     l > r ? l : r
   end
 
@@ -79,13 +79,13 @@ module BinarySearchTree
   end
 
   # see if this can be rewritten with `dig` below
-  def search_with_parent key, parent
+  def search_with_parent(key, parent)
     return [self, parent] if key == @key
 
     key < @key ? left&.search_with_parent(key, self) : right&.search_with_parent(key, self)
   end
 
-  def collect collector
+  def collect(collector)
     in_order_traverse { |node| collector.push node.key }
     collector
   end
@@ -96,7 +96,7 @@ module BinarySearchTree
 
   # TODO: If possible, rewrite this using `dig` below. Not
   # sure it's possible.
-  def common_parent n1, n2
+  def common_parent(n1, n2)
     # Probably should enforce n1 < n2 with a swap if necessary.
     if n1 < n2
       l = n1
@@ -111,16 +111,16 @@ module BinarySearchTree
     l < self ? left&.common_parent(l, r) : right&.common_parent(l, r)
   end
 
-  def dig key, &block
+  def dig(key, &block)
     yield(self)
     key < @key ? left&.dig(key, &block) : right&.dig(key, &block)
   end
 
-  def search key
+  def search(key)
     dig(key) { |n| return n if n.key == key }
   end
 
-  def present? key
+  def present?(key)
     dig(key) { |n| return true if n.key == key }
   end
 
@@ -156,21 +156,21 @@ module BinarySearchTree
     size
   end
 
-  def in_order_traverse &block
+  def in_order_traverse(&block)
     left&.in_order_traverse(&block)
     result = yield(self)
     right&.in_order_traverse(&block)
     result
   end
 
-  def pre_order_traverse &block
+  def pre_order_traverse(&block)
     result = yield
     left&.pre_order_traverse(&block)
     right&.pre_order_traverse(&block)
     result
   end
 
-  def post_order_traverse &block
+  def post_order_traverse(&block)
     left&.post_order_traverse(&block)
     right&.post_order_traverse(&block)
     yield(self)
