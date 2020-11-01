@@ -77,7 +77,7 @@ class IterativeTree < Tree
     end
   end
 
-  def find_leaf_node current
+  def find_leaf_node(current)
     while current.has_children?
       if current.left
         current = current.left
@@ -88,7 +88,7 @@ class IterativeTree < Tree
     current
   end
 
-  def find_unvisited_leaf_node current
+  def find_unvisited_leaf_node(current)
     while current.has_unvisited_children?
       if current.left&.unvisited?
         current = current.left
@@ -101,7 +101,7 @@ class IterativeTree < Tree
 
   private
 
-  def stack_left stack = [root]
+  def stack_left(stack = [root])
     stack << stack.last.left while stack.last&.left
     stack
   end

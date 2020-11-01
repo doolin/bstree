@@ -5,12 +5,12 @@ require 'node'
 class AvlNode < Node
   attr_reader :weight
 
-  def initialize key
+  def initialize(key)
     super
     @weight = 0
   end
 
-  def insert_nonworking node
+  def insert_nonworking(node)
     super
     node < self ? @weight -= 1 : @weight += 1
 
@@ -24,15 +24,15 @@ class AvlNode < Node
     # node may have to change to ensure balance.
   end
 
-  def insert node, _parent = nil
+  def insert(node, _parent = nil)
     node < self ? insert_left(node, self) : insert_right(node, self)
   end
 
-  def insert_left node, _parent
+  def insert_left(node, _parent)
     @left.nil? ? @left = node : @left.insert(node, self)
   end
 
-  def insert_right node, _parent
+  def insert_right(node, _parent)
     @right.nil? ? @right = node : @right.insert(node, self)
   end
 
@@ -56,7 +56,7 @@ class AvlNode < Node
     size
   end
 
-  def post_order_traverse &block
+  def post_order_traverse(&block)
     left&.post_order_traverse(&block)
     right&.post_order_traverse(&block)
     yield

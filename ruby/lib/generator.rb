@@ -5,7 +5,7 @@ require_relative './node'
 
 class Generator
   class << self
-    def build nodes
+    def build(nodes)
       tree = Tree.new(Node.new(nodes.shift))
       nodes.each { |n| tree.insert(Node.new(n)) }
       tree

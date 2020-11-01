@@ -12,24 +12,24 @@ class Foo
   include BinarySearchTree
   attr_reader :key, :uuid
 
-  def initialize key
+  def initialize(key)
     @key = key
     @uuid = SecureRandom.uuid
   end
 
-  def < other
+  def <(other)
     @key < other.key
   end
 
-  def >= other
+  def >=(other)
     @key >= other.key
   end
 
-  def > other
+  def >(other)
     @key > other.key
   end
 
-  def <= other
+  def <=(other)
     @key <= other.key
   end
 end
@@ -492,7 +492,7 @@ describe Foo do
       include BinarySearchTree
       attr_reader :key, :uuid
 
-      def initialize key
+      def initialize(key)
         @key = key
         @uuid = SecureRandom.uuid
       end

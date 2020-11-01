@@ -27,7 +27,7 @@ class Tree
     root.post_order_traverse(&Proc.new)
   end
 
-  def initialize node = nil
+  def initialize(node = nil)
     # TODO: find out why both versions pass all
     # the specs. That's bad. One should pass,
     # the other fail.
@@ -44,7 +44,7 @@ class Tree
     @root = nil
   end
 
-  def insert node
+  def insert(node)
     @root.insert node
     @size += 1
   end
@@ -65,7 +65,7 @@ class Tree
   # that's all it does. Resetting child links is done in the
   # delete method.
   # rubocop:disable Naming/MethodParameterName
-  def transplant_clrs3 u, v
+  def transplant_clrs3(u, v)
     # Consider "ruby-izing the following. Rubocop doesn't like it.
     if u.parent.nil? # u is a root node
       @root = v
@@ -83,7 +83,7 @@ class Tree
   end
   # rubocop:enable Naming/MethodParameterName
 
-  def transplant node, child
+  def transplant(node, child)
     if node.parent.nil?
       @root = child
     elsif node.left_child?
@@ -99,7 +99,7 @@ class Tree
 
   # rubocop:disable Metrics/MethodLength
   # rubocop:disable Metrics/AbcSize
-  def delete_clrs3 key
+  def delete_clrs3(key)
     z = search key
     if z.left.nil?
       transplant z, z.right
@@ -127,7 +127,7 @@ class Tree
   # in some sort of container is both a crutch and a constraint.
   # The big hassle is the edge case induced by deleting the root
   # node.
-  def delete key
+  def delete(key)
     left = @root.left
     right = @root.right
     deleted_node = @root.delete key
@@ -137,7 +137,7 @@ class Tree
     deleted_node
   end
 
-  def delete_by_key key
+  def delete_by_key(key)
     delete_clrs3 key
   end
 
@@ -145,7 +145,7 @@ class Tree
     root&.list_keys || []
   end
 
-  def collect _collector
+  def collect(_collector)
     # TODO: file the following for rubocop
     # root&.collect || []
     root&.collect([]) || []
@@ -157,7 +157,7 @@ class Tree
     collector
   end
 
-  def search key
+  def search(key)
     @root.find key
   end
 
@@ -173,11 +173,11 @@ class Tree
     root.bst?
   end
 
-  def successor node
+  def successor(node)
     root.successor node
   end
 
-  def predecessor node
+  def predecessor(node)
     root.predecessor node
   end
 
@@ -193,29 +193,29 @@ class Tree
     root.to_hash
   end
 
-  def to_json *_args
+  def to_json(*_args)
     root.to_json
   end
 
-  def to_json_file filename
+  def to_json_file(filename)
     File.open(filename, 'w') do |file|
       file.write root.to_json
     end
   end
 
-  def self.from_json_file filename
+  def self.from_json_file(filename)
     require 'json'
     file = File.read(filename)
     hash = JSON.parse(file)
     from_hash(hash)
   end
 
-  def self.from_hash hash
+  def self.from_hash(hash)
     # Tree.new(Node.build_from_hash(hash))
     Tree.new(NODE_CLASS.build_from_hash(hash))
   end
 
-  def get_next_row current_row
+  def get_next_row(current_row)
     next_row = []
     current_row.each do |node|
       next_row << node.left

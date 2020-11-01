@@ -4,7 +4,7 @@ require 'securerandom'
 require 'csv'
 
 class NodeCsvWriter
-  def initialize node
+  def initialize(node)
     [node.key, node.left.uuid, node.right.uuid]
   end
 end
@@ -15,29 +15,29 @@ class Node
   INCR = 1
   DECR = -1
 
-  def initialize key = nil, uuid = nil
+  def initialize(key = nil, uuid = nil)
     @key = key
     @visited = false
     @uuid = uuid || SecureRandom.uuid
   end
 
-  def < other
+  def <(other)
     @key < other.key
   end
 
-  def >= other
+  def >=(other)
     @key >= other.key
   end
 
-  def > other
+  def >(other)
     @key > other.key
   end
 
-  def insert node
+  def insert(node)
     node < self ? insert_left(node) : insert_right(node)
   end
 
-  def insert_left node
+  def insert_left(node)
     if @left.nil?
       node.parent = self
       @left = node
@@ -46,7 +46,7 @@ class Node
     end
   end
 
-  def insert_right node
+  def insert_right(node)
     if @right.nil?
       node.parent = self
       @right = node
@@ -55,7 +55,7 @@ class Node
     end
   end
 
-  def get_predecessor node, parent, predecessor
+  def get_predecessor(node, parent, predecessor)
     predecessor = parent if right_child?
     return left.nil? ? predecessor : left.maximum if node == self
 
@@ -66,13 +66,13 @@ class Node
     end
   end
 
-  def predecessor node
+  def predecessor(node)
     return nil if node == minimum # yuck
 
     get_predecessor node, self, node
   end
 
-  def get_successor node, parent, successor
+  def get_successor(node, parent, successor)
     successor = parent if left_child?
     return right.nil? ? successor : right.minimum if node == self
 
@@ -83,7 +83,7 @@ class Node
     end
   end
 
-  def successor node
+  def successor(node)
     # Horrible, horrible kludge
     return nil if node == maximum
 
@@ -94,7 +94,7 @@ class Node
     @visited
   end
 
-  def self.max l, r
+  def self.max(l, r)
     l > r ? l : r
   end
 
@@ -108,7 +108,7 @@ class Node
   # TODO: this method could almost surely be refactored into
   # something smaller and more literate.
   # rubocop:disable Metrics/MethodLength
-  def delete key, parent = nil
+  def delete(key, parent = nil)
     node_to_delete, parent = find_with_parent key, parent
     left = node_to_delete.left
     right = node_to_delete.right
@@ -126,19 +126,19 @@ class Node
   end
   # rubocop:enable Metrics/MethodLength
 
-  def find_with_parent key, parent
+  def find_with_parent(key, parent)
     return [self, parent] if key == @key
 
     key < @key ? left&.find_with_parent(key, self) : right&.find_with_parent(key, self)
   end
 
-  def find key
+  def find(key)
     return self if key == @key
 
     key < @key ? left&.find(key) : right&.find(key)
   end
 
-  def present? key
+  def present?(key)
     return true if key == @key
 
     key < @key ? left&.present?(key) : right&.present?(key)
@@ -230,15 +230,15 @@ class Node
     left&.minimum || self
   end
 
-  def collect_pre_order collector
+  def collect_pre_order(collector)
     pre_order_traverse { |node| collector << node.key }
   end
 
-  def collect collector
+  def collect(collector)
     in_order_traverse { |node| collector << node.key }
   end
 
-  def collect_post_order collector
+  def collect_post_order(collector)
     post_order_traverse { |node| collector << node.key }
   end
 
@@ -254,27 +254,27 @@ class Node
     size
   end
 
-  def in_order_traverse &block
+  def in_order_traverse(&block)
     left&.in_order_traverse(&block)
     result = yield(self)
     right&.in_order_traverse(&block)
     result
   end
 
-  def post_order_traverse &block
+  def post_order_traverse(&block)
     left&.post_order_traverse(&block)
     right&.post_order_traverse(&block)
     yield(self)
   end
 
-  def pre_order_traverse &block
+  def pre_order_traverse(&block)
     result = yield(self)
     left&.pre_order_traverse(&block)
     right&.pre_order_traverse(&block)
     result
   end
 
-  def self.build_from_hash params
+  def self.build_from_hash(params)
     return nil if params.nil?
 
     node = new(params['key'], params['uuid'])
@@ -292,7 +292,7 @@ class Node
     }
   end
 
-  def to_json *_args
+  def to_json(*_args)
     require 'json'
     to_hash.to_json
   end

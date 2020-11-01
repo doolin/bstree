@@ -3,7 +3,7 @@
 require 'node'
 
 class IterativeNode < Node
-  def insert node
+  def insert(node)
     current = self
 
     loop do
@@ -27,13 +27,13 @@ class IterativeNode < Node
     min
   end
 
-  def predecessor node
+  def predecessor(node)
     return node.left.maximum if node.left
 
     find_predecessor node
   end
 
-  def successor node
+  def successor(node)
     return node.right.minimum if node.right
 
     find_successor node
@@ -41,12 +41,12 @@ class IterativeNode < Node
 
   private
 
-  def insert_left current, node
+  def insert_left(current, node)
     node.parent = current
     current.left = node
   end
 
-  def insert_right current, node
+  def insert_right(current, node)
     node.parent = current
     current.right = node
   end
@@ -57,7 +57,7 @@ class IterativeNode < Node
   # pointers until the node is left child of the parent.
   # This is worth revisiting, there is a cleaner function here
   # somewhere, and I'd like to extract it.
-  def find_successor node
+  def find_successor(node)
     y = node.parent
     while !y.nil? && node.right_child?
       node = y
@@ -66,7 +66,7 @@ class IterativeNode < Node
     y
   end
 
-  def find_predecessor node
+  def find_predecessor(node)
     y = node.parent
     while !y.nil? && node == y.left
       node = y
