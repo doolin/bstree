@@ -3,6 +3,7 @@
 require_relative './node'
 require 'pry'
 
+# rubocop:disable Metrics/ClassLength
 class Tree
   attr_reader :root, :size
 
@@ -63,7 +64,8 @@ class Tree
   # This function would be better named `reset_parent` because
   # that's all it does. Resetting child links is done in the
   # delete method.
-  def transplant u, v
+  # rubocop:disable Naming/MethodParameterName
+  def transplant_clrs3 u, v
     # Consider "ruby-izing the following. Rubocop doesn't like it.
     if u.parent.nil? # u is a root node
       @root = v
@@ -79,6 +81,7 @@ class Tree
     # end
     v
   end
+  # rubocop:enable Naming/MethodParameterName
 
   def transplant node, child
     if node.parent.nil?
@@ -94,6 +97,8 @@ class Tree
     # child
   end
 
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   def delete_clrs3 key
     z = search key
     if z.left.nil?
@@ -115,6 +120,8 @@ class Tree
     z.left = z.right = z.parent = nil
     z
   end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
 
   # This is kind of nasty. It turns out that rooting a tree
   # in some sort of container is both a crutch and a constraint.
@@ -139,7 +146,9 @@ class Tree
   end
 
   def collect _collector
-    root&.collect [] || []
+    # TODO: file the following for rubocop
+    # root&.collect || []
+    root&.collect([]) || []
   end
 
   def preorder_keys
@@ -224,3 +233,4 @@ class Tree
     rows.flatten.map(&:key)
   end
 end
+# rubocop:enable Metrics/ClassLength
