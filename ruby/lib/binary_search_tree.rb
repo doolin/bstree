@@ -70,9 +70,11 @@ module BinarySearchTree
     node_to_delete
   end
 
+  # rubocop:disable Naming/MethodParameterName
   def self.max(l, r)
     l > r ? l : r
   end
+  # rubocop:enable Naming/MethodParameterName
 
   def height
     BinarySearchTree.max(left&.height || -1, right&.height || -1) + 1
@@ -96,6 +98,7 @@ module BinarySearchTree
 
   # TODO: If possible, rewrite this using `dig` below. Not
   # sure it's possible.
+  # rubocop:disable Naming/MethodParameterName
   def common_parent(n1, n2)
     # Probably should enforce n1 < n2 with a swap if necessary.
     if n1 < n2
@@ -105,6 +108,7 @@ module BinarySearchTree
       l = n2
       r = n1
     end
+    # rubocop:enable Naming/MethodParameterName
 
     return self if l <= self && self <= r
 

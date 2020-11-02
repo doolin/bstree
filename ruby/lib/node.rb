@@ -94,9 +94,11 @@ class Node
     @visited
   end
 
+  # rubocop:disable Naming/MethodParameterName
   def self.max(l, r)
     l > r ? l : r
   end
+  # rubocop:enable Naming/MethodParameterName
 
   def height
     # This check makes the ABC and cyclomatic complexity of this method
