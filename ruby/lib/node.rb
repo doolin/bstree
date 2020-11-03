@@ -146,6 +146,7 @@ class Node
     key < @key ? left&.present?(key) : right&.present?(key)
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
   def balanced?
     left_height = left&.height || 0
     right_height = right&.height || 0
@@ -155,6 +156,7 @@ class Node
     right&.balanced?
     true
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   def full?
     return true if left.nil? && right.nil?

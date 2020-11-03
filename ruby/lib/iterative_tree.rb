@@ -49,6 +49,10 @@ class IterativeTree < Tree
 
   # TODO: refactor this into something spiffy looking
   # like postorder_iterate.
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/PerceivedComplexity
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/MethodLength
   def preorder_iterate
     return unless root
 
@@ -76,6 +80,10 @@ class IterativeTree < Tree
       end
     end
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
+  # rubocop:enable Metrics/AbcSize
 
   def find_leaf_node(current)
     while current.has_children?
