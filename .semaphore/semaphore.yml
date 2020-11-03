@@ -65,3 +65,8 @@ blocks:
             - sem-version ruby 2.7.1
             - bundle config set path 'vendor/bundle'
             - bundle exec flay
+        - name: Lint for the win
+          commands:
+            - sem-version ruby 2.7.1
+            - bundle config set path 'vendor/bundle'
+            - bundle exec rubocop
