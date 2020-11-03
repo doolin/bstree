@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ModuleLength
 module BinarySearchTree
   attr_accessor :left, :right
 
@@ -19,6 +20,8 @@ module BinarySearchTree
     end
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
   def get_successor(node, parent, successor)
     successor = parent if parent&.left == self
     return right.nil? ? successor : right.minimum if node == self
@@ -29,6 +32,8 @@ module BinarySearchTree
       right&.get_successor node, self, successor
     end
   end
+  # rubocop:enable Metrics/PerceivedComplexity
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   def successor(node)
     return nil if node == maximum
@@ -36,6 +41,8 @@ module BinarySearchTree
     get_successor node, self, node
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
   def get_predecessor(node, parent, predecessor)
     predecessor = parent if parent&.right == self
     return left.nil? ? predecessor : left.maximum if node == self
@@ -46,6 +53,8 @@ module BinarySearchTree
       right&.get_predecessor node, self, predecessor
     end
   end
+  # rubocop:enable Metrics/PerceivedComplexity
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   def predecessor(node)
     return nil if node == minimum
@@ -53,6 +62,7 @@ module BinarySearchTree
     get_predecessor node, self, node
   end
 
+  # rubocop:disable Metrics/MethodLength
   def delete(key, parent = nil)
     node_to_delete, parent = search_with_parent key, parent
     left = node_to_delete.left
@@ -69,6 +79,7 @@ module BinarySearchTree
     node_to_delete.left = node_to_delete.right = nil
     node_to_delete
   end
+  # rubocop:enable Metrics/MethodLength
 
   # rubocop:disable Naming/MethodParameterName
   def self.max(l, r)
@@ -194,3 +205,4 @@ module BinarySearchTree
     }
   end
 end
+# rubocop:enable Metrics/ModuleLength
