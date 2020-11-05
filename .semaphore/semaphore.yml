@@ -48,10 +48,10 @@ blocks:
       jobs:
         - name: Run Rspec
           commands:
-            - sem-version ruby 2.7.1
+            - sem-version ruby 2.7.2
             - bundle config set path 'vendor/bundle'
             - bundle exec rspec
-  - name: flay
+  - name: Code quality
     dependencies: ['Set it all up']
     task:
       prologue:
@@ -62,11 +62,16 @@ blocks:
       jobs:
         - name: Run Flay
           commands:
-            - sem-version ruby 2.7.1
+            - sem-version ruby 2.7.2
             - bundle config set path 'vendor/bundle'
             - bundle exec flay
+        - name: Reek
+          commands:
+            - sem-version ruby 2.7.2
+            - bundle config set path 'vendor/bundle'
+            - bundle exec reek
         - name: Lint for the win
           commands:
-            - sem-version ruby 2.7.1
+            - sem-version ruby 2.7.2
             - bundle config set path 'vendor/bundle'
             - bundle exec rubocop
