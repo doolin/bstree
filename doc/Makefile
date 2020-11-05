@@ -3,7 +3,8 @@
 
 # LATEX=pdflatex
 LATEX=xelatex
-CP_TARGET=$(HOME)/Documents/personal/goodreader\ docs/doolin
+# CP_TARGET=$(HOME)/Documents/personal/goodreader\ docs/doolin
+CP_TARGET=/tmp
 
 TEXINPUTS := ${TEXINPUTS}:`pwd`/..
 #test:
@@ -13,7 +14,7 @@ TEXFILES = $(wildcard ../*.tex)
 
 ZIPS = bst.zip
 
-PDFS = bst.pdf examples.pdf hash_tree.pdf sedgewick.pdf tikz.pdf
+PDFS = bst.pdf examples.pdf hash_tree.pdf sedgewick.pdf tikz.pdf clrs.pdf
 
 pdfs: $(PDFS)
 

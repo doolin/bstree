@@ -45,6 +45,7 @@ directories:
 
 # Directories and files below will not be scanned at all
 exclude_paths:
+  - vendor/
   - spec/
   - lib/tree.rb
   - lib/iterative_tree.rb
@@ -60,4 +61,3 @@ exclude_paths:
   - lib/stern_brocot.rb
   - lib/threaded_node.rb
   - lib/avl_tree.rb
-  - vendor/

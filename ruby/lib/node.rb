@@ -140,6 +140,29 @@ class Node
     key < @key ? left&.find(key) : right&.find(key)
   end
 
+  # Can this be done with a predefined function such as
+  # pre_order_traversal? No. It needs a general finder
+  # traversal, which will be similar to the insertion
+  # traversal.
+  def find_path(key, collector)
+    collector << @key
+    # We don't actually care about the returned node, but if we
+    # want to generalize `find` this method needs to work if the
+    # node is returned.
+    return self if key == @key
+
+    key < @key ? left&.find_path(key, collector) : right&.find_path(key, collector)
+  end
+
+  def path_to_node(key, collector)
+    find_path(key, collector)
+    collector
+  end
+
+  def path_to_root(key, collector)
+    path_to_node(key, collector).reverse
+  end
+
   def present?(key)
     return true if key == @key
 

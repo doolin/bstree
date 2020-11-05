@@ -108,18 +108,18 @@ be written iteratively as well, which is a good exercise for the future.
 
 ### Persistence, serialization, etc.
 
-|               | json       | relational | yaml | ==  | === | destroy    | common parent | degrees of separation |
-| ------------- | ---------- | ---------- | ---- | --- | --- | ---------- | ------------- | --------------------- |
-| Ruby          | 2016-07-23 |            |      |     |     |            | 2016-08-04    |                       |
-| Ruby (module) |            |            |      |     |     | 2016-08-20 |               |                       |
-| Python        |            |            |      |     |     |            |               |                       |
-| Java          |            |            |      |     |     |            |               |                       |
-| C++           |            |            |      |     |     |            |               |                       |
-| C             |            |            |      |     |     | 2016-08-13 |               |                       |
-| Lua           |            |            |      |     |     |            |               |                       |
-| Javascript    |            |            |      |     |     |            |               |                       |
-| SQL           |            | N/A        |      |     |     |            |               |                       |
-| Rust          |            |            |      |     |     |            |               |                       |
+|               | json       | relational | yaml | ==  | === | destroy    | common parent | degrees of separation | path to node | least common ancestor |
+| ------------- | ---------- | ---------- | ---- | --- | --- | ---------- | ------------- | --------------------- | ------------ | --------------------- |
+| Ruby          | 2016-07-23 |            |      |     |     |            | 2016-08-04    |                       |              |                       |
+| Ruby (module) |            |            |      |     |     | 2016-08-20 |               |                       |              |                       |
+| Python        |            |            |      |     |     |            |               |                       |              |                       |
+| Java          |            |            |      |     |     |            |               |                       |              |                       |
+| C++           |            |            |      |     |     |            |               |                       |              |                       |
+| C             |            |            |      |     |     | 2016-08-13 |               |                       |              |                       |
+| Lua           |            |            |      |     |     |            |               |                       |              |                       |
+| Javascript    |            |            |      |     |     |            |               |                       |              |                       |
+| SQL           |            | N/A        |      |     |     |            |               |                       |              |                       |
+| Rust          |            |            |      |     |     |            |               |                       |              |                       |
 
 Note: `destroy` for C and C++ means the tree and all the nodes are
 shredded and free'd. (TODO) For the scripting languages and Java, `destroy`

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-
 require 'shared_examples/insert'
 require 'shared_examples/maximum'
 require 'shared_examples/minimum'
