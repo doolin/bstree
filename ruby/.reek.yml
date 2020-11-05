@@ -57,4 +57,5 @@ exclude_paths:
   - lib/gcd.rb
   - lib/binary_search_tree.rb
   - lib/avl_node.rb
+  - lib/stern_brocot.rb
   - vendor/
