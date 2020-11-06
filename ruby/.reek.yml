@@ -58,4 +58,6 @@ exclude_paths:
   - lib/binary_search_tree.rb
   - lib/avl_node.rb
   - lib/stern_brocot.rb
+  - lib/threaded_node.rb
+  - lib/avl_tree.rb
   - vendor/

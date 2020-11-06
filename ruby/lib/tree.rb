@@ -44,6 +44,9 @@ class Tree
     @root = nil
   end
 
+  # TODO: insert tests, shared examples for tree
+  # AvlTree needs to call super, then call rebalance.
+  # The rebalancing cannot be done via the node insert.
   def insert(node)
     @root.insert node
     @size += 1
@@ -211,7 +214,6 @@ class Tree
   end
 
   def self.from_hash(hash)
-    # Tree.new(Node.build_from_hash(hash))
     Tree.new(NODE_CLASS.build_from_hash(hash))
   end
 

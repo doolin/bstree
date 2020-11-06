@@ -21,13 +21,15 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*'
 
-ClassLength:
+Metrics/ClassLength:
   Max: 100
   Exclude:
     - lib/node.rb
 
 Layout/LineLength:
   Max: 96
+  Exclude:
+    - 'spec/**/*'
 
 Style/MethodDefParentheses:
   EnforcedStyle: require_parentheses
