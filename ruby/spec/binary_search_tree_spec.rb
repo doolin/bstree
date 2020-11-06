@@ -2,8 +2,6 @@
 
 require_relative './spec_helper'
 
-require_relative '../lib/binary_search_tree'
-
 require 'shared_examples/successor'
 require 'shared_examples/predecessor'
 
@@ -34,7 +32,7 @@ class Foo
   end
 end
 
-describe Foo do
+RSpec.describe Foo do
   it_finds '#successor'
   it_finds '#predecessor'
 
