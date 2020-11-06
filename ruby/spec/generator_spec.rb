@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-require_relative './spec_helper'
-require_relative '../lib/generator'
-
-describe Generator do
+# TODO: these are documented somewhere, figure out where
+# the docs are located.
+RSpec.describe Generator do
   it 'builds tree1' do
     tree1 = Generator.tree1
     expect(tree1.size).to eq 1

@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../lib/tree'
-require_relative '../lib/node'
-
-describe Tree do
+RSpec.describe Tree do
   def node_pointers_nil?(node)
     node.left.nil? && node.right.nil? && node.parent.nil?
   end
