@@ -538,7 +538,7 @@ RSpec.describe Node do
       expect(root.present?(2)).to eq true
       expect(root.present?(3)).to eq true
       expect(root.present?(9)).to eq true
-      expect(root.present?(8)).to eq nil
+      expect(root.present?(8)).to eq false
     end
   end
 
