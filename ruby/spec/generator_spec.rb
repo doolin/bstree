@@ -82,4 +82,39 @@ RSpec.describe Generator do
     expect(tree.full?).to be false # nil
     # expect(tree.pathological??).to be true
   end
+
+  it 'builds tree213' do
+    tree = Generator.tree213
+    expect(tree.size).to eq 3
+    expect(tree.bst?).to be true
+    expect(tree.full?).to be true
+  end
+
+  it 'builds tree123' do
+    tree = Generator.tree123
+    expect(tree.size).to eq 3
+    expect(tree.bst?).to be true
+    expect(tree.full?).to be false
+  end
+
+  it 'builds tree132' do
+    tree = Generator.tree132
+    expect(tree.size).to eq 3
+    expect(tree.bst?).to be true
+    expect(tree.full?).to be false
+  end
+
+  it 'builds tree321' do
+    tree = Generator.tree321
+    expect(tree.size).to eq 3
+    expect(tree.bst?).to be true
+    expect(tree.full?).to be false
+  end
+
+  it 'builds tree312' do
+    tree = Generator.tree312
+    expect(tree.size).to eq 3
+    expect(tree.bst?).to be true
+    expect(tree.full?).to be false
+  end
 end

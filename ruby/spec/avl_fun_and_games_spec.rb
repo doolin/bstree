@@ -2,7 +2,7 @@
 
 require_relative '../lib/avl_tree'
 
-describe AvlTree do
+RSpec.describe AvlTree do
   let(:n1) { AvlNode.new 1 }
   let(:n2) { AvlNode.new 2 }
   let(:n3) { AvlNode.new 3 }
