@@ -14,7 +14,7 @@ TEXFILES = $(wildcard ../*.tex)
 
 ZIPS = bst.zip
 
-PDFS = bst.pdf examples.pdf hash_tree.pdf sedgewick.pdf tikz.pdf clrs.pdf
+PDFS = bst.pdf examples.pdf hash_tree.pdf sedgewick.pdf tikz.pdf
 
 pdfs: $(PDFS)
 
@@ -48,7 +48,7 @@ zips: $(ZIPS)
 
 clean:
 	rm -f  *.dvi *.toc *.bbl *.log *.aux *.blg *~ sblock.75.ps\
-               *.lof *.fff *.lot *.out *.zip *.pdf *.bak
+               *.lof *.fff *.lot *.out *.zip *.pdf *.bak __latexindent_temp.tex
 
 spotless: clean
 #	cd figs; $(MAKE) spotless
