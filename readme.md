@@ -110,7 +110,7 @@ be written iteratively as well, which is a good exercise for the future.
 
 |               | json       | relational | yaml | ==  | === | destroy    | common parent | degrees of separation | path to node | least common ancestor |
 | ------------- | ---------- | ---------- | ---- | --- | --- | ---------- | ------------- | --------------------- | ------------ | --------------------- |
-| Ruby          | 2016-07-23 |            |      |     |     |            | 2016-08-04    |                       |              |                       |
+| Ruby          | 2016-07-23 |            |      |     |     |            | 2016-08-04    |                       | 2020-11-08   |                       |
 | Ruby (module) |            |            |      |     |     | 2016-08-20 |               |                       |              |                       |
 | Python        |            |            |      |     |     |            |               |                       |              |                       |
 | Java          |            |            |      |     |     |            |               |                       |              |                       |

@@ -55,6 +55,9 @@ class Node
     end
   end
 
+  # TODO: see if this can be handled with find and a block,
+  # implement the block first.
+  # https://doolin.atlassian.net/browse/BST-35
   def get_predecessor(node, parent, predecessor)
     predecessor = parent if right_child?
     return left.nil? ? predecessor : left.maximum if node == self
@@ -72,6 +75,7 @@ class Node
     get_predecessor node, self, node
   end
 
+  # https://doolin.atlassian.net/browse/BST-35
   def get_successor(node, parent, successor)
     successor = parent if left_child?
     return right.nil? ? successor : right.minimum if node == self
@@ -128,34 +132,29 @@ class Node
   end
   # rubocop:enable Metrics/MethodLength
 
+  # TODO: refactor to use a block, then with find.
+  # https://doolin.atlassian.net/browse/BST-36
   def find_with_parent(key, parent)
     return [self, parent] if key == @key
 
     key < @key ? left&.find_with_parent(key, self) : right&.find_with_parent(key, self)
   end
 
-  def find(key)
-    return self if key == @key
+  # rubocop:disable Metrics/CyclomaticComplexity
+  def find(key, &block)
+    yield(self) if block_given?
 
-    key < @key ? left&.find(key) : right&.find(key)
-  end
-
-  # Can this be done with a predefined function such as
-  # pre_order_traversal? No. It needs a general finder
-  # traversal, which will be similar to the insertion
-  # traversal.
-  def find_path(key, collector)
-    collector << @key
-    # We don't actually care about the returned node, but if we
+    # We may not actually care about the returned node, but if we
     # want to generalize `find` this method needs to work if the
     # node is returned.
     return self if key == @key
 
-    key < @key ? left&.find_path(key, collector) : right&.find_path(key, collector)
+    key < @key ? left&.find(key, &block) : right&.find(key, &block)
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   def path_to_node(key, collector)
-    find_path(key, collector)
+    find(key) { |node| collector << node.key }
     collector
   end
 
@@ -164,9 +163,7 @@ class Node
   end
 
   def present?(key)
-    return true if key == @key
-
-    key < @key ? left&.present?(key) : right&.present?(key)
+    find(key) ? true : false
   end
 
   # rubocop:disable Metrics/CyclomaticComplexity

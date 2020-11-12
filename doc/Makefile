@@ -48,7 +48,8 @@ zips: $(ZIPS)
 
 clean:
 	rm -f  *.dvi *.toc *.bbl *.log *.aux *.blg *~ sblock.75.ps\
-               *.lof *.fff *.lot *.out *.zip *.pdf *.bak __latexindent_temp.tex
+         *.lof *.fff *.lot *.out *.zip *.pdf *.bak *.gz\
+         __latexindent_temp.tex *.fdb_latexmk *.fls
 
 spotless: clean
 #	cd figs; $(MAKE) spotless
