@@ -1,7 +1,7 @@
 __latexindent_temp.tex
-clrs.fdb_latexmk
-clrs.fls
-clrs.synctex.gz
+*.fdb_latexmk
+*.fls
+*.synctex.gz
 *.out
 *.pdf
 *.aux
