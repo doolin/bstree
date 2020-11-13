@@ -24,31 +24,31 @@ class Generator
     end
 
     def tree4
-      Generator.build [11, 7, 5]
+      Generator.build [11, 7, 13, 3]
     end
 
     def tree5
-      Generator.build [5, 7, 11]
+      Generator.build [11, 7, 13, 3, 19]
     end
 
     def tree6
-      Generator.build [11, 5, 3, 7, 13]
+      Generator.build [11, 7, 13, 3, 19, 29]
     end
 
     def tree7
-      Generator.build [5, 3, 11, 7, 13]
+      Generator.build [11, 7, 13, 3, 19, 29, 5]
     end
 
     def tree8
-      Generator.build [11, 5, 3, 7, 17, 13, 19]
+      Generator.build [11, 7, 13, 3, 19, 29, 5, 2]
     end
 
     def tree9
-      Generator.build [19, 23, 13, 17, 11, 5, 7]
+      Generator.build [11, 7, 13, 3, 19, 29, 5, 2, 17]
     end
 
     def tree10
-      Generator.build [11, 5, 3, 19, 17, 29, 23, 41, 37, 53]
+      Generator.build [11, 7, 13, 3, 19, 29, 5, 2, 17, 23]
     end
 
     # These could go into yaml files in spec/fixtures, or even in a

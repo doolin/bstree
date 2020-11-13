@@ -42,7 +42,7 @@ RSpec.describe Node do
     it 'use the generator' do
       tree = Generator.tree10
       path = tree.root.path_to_root(23, [])
-      expect(path).to eq [23, 29, 19, 11]
+      expect(path).to eq [23, 29, 19, 13, 11]
     end
 
     context 'the size 3 trees' do
@@ -129,7 +129,7 @@ RSpec.describe Node do
     it 'use the generator' do
       tree = Generator.tree10
       path = tree.root.path_to_node(23, [])
-      expect(path).to eq [11, 19, 29, 23]
+      expect(path).to eq [11, 13, 19, 29, 23]
     end
 
     context 'the size 3 trees' do

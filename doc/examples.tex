@@ -63,7 +63,230 @@ call delete after the node is orphaned.
 
 \appendix
 
-The 5 $123$ trees.
+
+\section{The Generator trees}
+
+\subsection{Tree 1}
+
+\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+  \node [circle,draw] (z){$11$}
+    %child {node [circle,draw] (a) {$1$}};
+\end{tikzpicture}
+
+\subsection{Tree 2}
+
+\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+  \node [circle,draw] (z){$11$}
+    child {node [circle,draw] (a) {$7$}}
+    child {node (ca) {}};
+\end{tikzpicture}
+
+\subsection{Tree 3}
+
+\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+  \node [circle,draw] (z){$11$}
+    child {node [circle,draw] (a) {$7$}}
+    child {node [circle,draw] (ca) {$13$}};
+\end{tikzpicture}
+
+\subsection{Tree 4}
+
+\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+  \node [circle,draw] (z){$11$}
+    child {node [circle,draw] (a) {$7$}
+      child {node [circle,draw] (j) {$3$}}
+      child {node (ca) {}}
+    }
+    child {node [circle,draw] (ca) {$13$}};
+\end{tikzpicture}
+
+\subsection{Tree 5}
+
+\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+  \node [circle,draw] (z){$11$}
+    child {
+      node [circle,draw] (a) {$7$}
+        child {node [circle,draw] (j) {$3$}}
+        child {node (ca) {}}
+      }
+    child {
+      node [circle,draw] (ca) {$13$}
+        child {node (a) {}}
+        child {node [circle,draw] (j) {$19$}}
+    };
+\end{tikzpicture}
+
+
+\subsection{Tree 6}
+
+\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+  \node [circle,draw] (z){$11$}
+    child {
+      node [circle,draw] (a) {$7$}
+        child {node [circle,draw] (j) {$3$}}
+        child {node (ca) {}}
+      }
+    child {
+      node [circle,draw] (ca) {$13$}
+        child {node (a) {}}
+        child {
+          node [circle,draw] (j) {$19$}
+          child {node (d) {}}
+          child {
+            node [circle,draw] (b) {$29$}
+          }
+        }
+    }
+;
+\end{tikzpicture}
+
+\subsection{Tree 7}
+
+\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+  \node [circle,draw] (z){$11$}
+    child {
+      node [circle,draw] (a) {$7$}
+        child {
+          node [circle,draw] (j) {$3$}
+            child {
+              node (g) {}
+            }
+            child {
+              node [circle,draw] (u) {$5$}
+            }
+        }
+        child {
+          node (ca) {}
+        }
+      }
+    child {
+      node [circle,draw] (ca) {$13$}
+        child {node (a) {}}
+        child {
+          node [circle,draw] (j) {$19$}
+          child {node (d) {}}
+          child {
+            node [circle,draw] (b) {$29$}
+          }
+        }
+    }
+;
+\end{tikzpicture}
+
+
+\subsection{Tree 8}
+
+\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+  \node [circle,draw] (z){$11$}
+    child {
+      node [circle,draw] (a) {$7$}
+        child {
+          node [circle,draw] (j) {$3$}
+            child {
+              node [circle,draw] (g) {$2$}
+            }
+            child {
+              node [circle,draw] (u) {$5$}
+            }
+        }
+        child {
+          node (ca) {}
+        }
+      }
+    child {
+      node [circle,draw] (ca) {$13$}
+        child {node (a) {}}
+        child {
+          node [circle,draw] (j) {$19$}
+          child {node (d) {}}
+          child {
+            node [circle,draw] (b) {$29$}
+          }
+        }
+    }
+;
+\end{tikzpicture}
+
+
+\subsection{Tree 9}
+
+\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+  \node [circle,draw] (z){$11$}
+    child {
+      node [circle,draw] (a) {$7$}
+        child {
+          node [circle,draw] (j) {$3$}
+            child {
+              node [circle,draw] (g) {$2$}
+            }
+            child {
+              node [circle,draw] (u) {$5$}
+            }
+        }
+        child {
+          node (ca) {}
+        }
+      }
+    child {
+      node [circle,draw] (ca) {$13$}
+        child {node (a) {}}
+        child {
+          node [circle,draw] (j) {$19$}
+          child {
+            node [circle,draw] (d) {$17$}
+          }
+          child {
+            node [circle,draw] (b) {$29$}
+          }
+        }
+    }
+;
+\end{tikzpicture}
+
+\subsection{Tree 10}
+
+\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+  \node [circle,draw] (z){$11$}
+    child {
+      node [circle,draw] (a) {$7$}
+        child {
+          node [circle,draw] (j) {$3$}
+            child {
+              node [circle,draw] (g) {$2$}
+            }
+            child {
+              node [circle,draw] (u) {$5$}
+            }
+        }
+        child {
+          node (ca) {}
+        }
+      }
+    child {
+      node [circle,draw] (ca) {$13$}
+        child {node (a) {}}
+        child {
+          node [circle,draw] (j) {$19$}
+            child {
+              node [circle,draw] (d) {$17$}
+            }
+            child {
+              node [circle,draw] (b) {$29$}
+                child {
+                  node [circle,draw] (e) {$23$}
+                }
+                child {
+                  node (f) {}
+                }
+            }
+        }
+    }
+;
+\end{tikzpicture}
+
+
+
+\section{The 5 $123$ trees}
 
 \begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
   \node [circle,draw] (z){$2$}
