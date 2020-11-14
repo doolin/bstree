@@ -201,6 +201,13 @@ class Node
     end
   end
 
+  def least_common_ancestor(key1, key2)
+    p1 = path_to_node(key1, [])
+    p2 = path_to_node(key2, [])
+    (p1 & p2).last
+  end
+  alias lca least_common_ancestor
+
   # rubocop:disable Naming/PredicateName
   def has_children?
     left || right ? true : false # would otherwise return the node or nil

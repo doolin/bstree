@@ -235,7 +235,7 @@ end
 
 \section{Building a binary search tree}
 
-\subsection{Collisions or duplicate values}O
+\subsection{Collisions or duplicate values}
 
 
 None the preceding references explicitly discuss collisions.
@@ -285,10 +285,23 @@ We have the following cases:
 
 At least two algorithms may be employed to determine LCA. The first algorithm makes
 two passes through $T$ to find a path from the root to the node. The second makes a
-single pass through $T$, once down each branch.
+single pass through $T$, once down each branch. For the first algorithm, implementing
+a path to node method is not difficult as it uses the same mechanics as the find method.
 
-For the first algorithm, implementing a path to node method is not difficult as
-it uses the same mechanics as the find method.
+\lstset{language={Ruby}}
+\begin{lstlisting}[frame=single,title=Two pass algorithm for LCA.]
+def least_common_ancestor(key1, key2)
+  (path(key1, []) & path(key2, [])).last
+end
+
+def path_to_node(key, collector)
+  node = find(key) { |n| collector << n.key }
+  raise KeyNotFoundError if node.nil?
+
+  collector
+end
+\end{lstlisting}
+
 
 \subsubsection{Error conditions}
 
