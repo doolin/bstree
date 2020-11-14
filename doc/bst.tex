@@ -12,8 +12,8 @@
 \maketitle
 
 \abstract{A few notes on binary search trees and their implementations
-in various programming languages. While theory is not neglected, implementation
-details are preeminent.}
+in various programming languages. Theory and implementation details are
+given equal treatment.}
 
 \tableofcontents
 
@@ -257,6 +257,44 @@ call delete after the node is orphaned.
 Abstract data structures such as binary search trees support a standard
 set of operations including insertion, deletion, search, etc. A closer look
 at each of these operations follows.
+
+\subsection{Least common ancestor}
+
+The \textit{least common ancestor} (LCA) of two nodes $v$ and $w$ in a tree $T$ is the
+lowest or deepest node which has $v$ and $w$ as descendants of itself, and where
+each node is defined as a descendant of itself. The LCA is the shared ancestor located
+farthest from the root of the tree $T$. Consider the following 3 node binary search tree.
+
+\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+  \node [circle,draw] (z){$2$}
+    child {node [circle,draw] (a) {$1$}}
+    child {node [circle,draw] (j) {$3$}
+  };
+\end{tikzpicture}
+
+We have the following cases:
+
+\begin{enumerate}
+  \item 1 is the LCA of 1.
+  \item 2 is the LCA of 2.
+  \item 3 is the LCA of 3.
+  \item 2 is the LCA of 1 and 3.
+  \item 2 is the LCA of 2 and 3.
+  \item 2 is the LCA of 1 and 2.
+\end{enumerate}
+
+At least two algorithms may be employed to determine LCA. The first algorithm makes
+two passes through $T$ to find a path from the root to the node. The second makes a
+single pass through $T$, once down each branch.
+
+For the first algorithm, implementing a path to node method is not difficult as
+it uses the same mechanics as the find method.
+
+\subsubsection{Error conditions}
+
+The LCA algorithms fails if either node is not present in $T$. Handling this
+condition is implementation dependent.
+
 
 \subsection{Depth-first traverse}
 

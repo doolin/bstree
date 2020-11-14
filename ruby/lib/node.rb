@@ -10,6 +10,9 @@ class NodeCsvWriter
 end
 
 class Node
+  class KeyNotFoundError < ::StandardError
+  end
+
   attr_accessor :parent, :left, :right, :uuid, :key, :visited
 
   INCR = 1
@@ -146,7 +149,9 @@ class Node
 
     # We may not actually care about the returned node, but if we
     # want to generalize `find` this method needs to work if the
-    # node is returned.
+    # node is returned. Also, if there is no node with the associated
+    # key, the `find` will return nil, which can be raised as a
+    # KeyNotFoundError
     return self if key == @key
 
     key < @key ? left&.find(key, &block) : right&.find(key, &block)
@@ -154,7 +159,9 @@ class Node
   # rubocop:enable Metrics/CyclomaticComplexity
 
   def path_to_node(key, collector)
-    find(key) { |node| collector << node.key }
+    node = find(key) { |n| collector << n.key }
+    raise KeyNotFoundError if node.nil?
+
     collector
   end
 

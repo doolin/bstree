@@ -20,6 +20,7 @@ pdfs: $(PDFS)
 
 zips: $(ZIPS)
 
+bst: bst.pdf
 
 # PREAMBLE = ../preamble.tex
 
