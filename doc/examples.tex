@@ -69,22 +69,32 @@ call delete after the node is orphaned.
 \subsection{Tree 1}
 
 \begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
-  \node [circle,draw] (z){$11$}
-    %child {node [circle,draw] (a) {$1$}};
+  \node [circle,draw] (z) {$11$}
+    child {
+      node (a) {}
+    }
+    child {
+      node (ca) {}
+    };
 \end{tikzpicture}
+
 
 \subsection{Tree 2}
 
 \begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
-  \node [circle,draw] (z){$11$}
-    child {node [circle,draw] (a) {$7$}}
-    child {node (ca) {}};
+  \node [circle,draw] (z) {$11$}
+    child {
+      node [circle,draw] (a) {$7$}
+    }
+    child {
+      node (ca) {}
+    };
 \end{tikzpicture}
 
 \subsection{Tree 3}
 
 \begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
-  \node [circle,draw] (z){$11$}
+  \node [circle,draw] (z) {$11$}
     child {node [circle,draw] (a) {$7$}}
     child {node [circle,draw] (ca) {$13$}};
 \end{tikzpicture}
@@ -136,8 +146,7 @@ call delete after the node is orphaned.
             node [circle,draw] (b) {$29$}
           }
         }
-    }
-;
+    };
 \end{tikzpicture}
 
 \subsection{Tree 7}
@@ -169,8 +178,7 @@ call delete after the node is orphaned.
             node [circle,draw] (b) {$29$}
           }
         }
-    }
-;
+    };
 \end{tikzpicture}
 
 
