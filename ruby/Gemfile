@@ -13,3 +13,5 @@ gem 'pry-nav'
 gem 'reek'
 gem 'rubocop'
 gem 'rubocop-rspec'
+
+gem 'sentry-raven', '~> 3.1'
