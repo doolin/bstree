@@ -257,7 +257,7 @@ RSpec.describe Tree do
       end
     end
 
-    describe '.to_json' do
+    describe '#to_json' do
       it 'creates json representation of tree' do
         root = Node.new(8)
         allow(root).to receive(:uuid).and_return('uuid')
@@ -267,7 +267,7 @@ RSpec.describe Tree do
       end
     end
 
-    describe '.to_json_file' do
+    describe '#to_json_file' do
       it 'writes json to a file' do
         require 'open3'
         filename = 'tree_with_nodes.json'
@@ -286,6 +286,57 @@ RSpec.describe Tree do
 
         saved_tree = Tree.from_json_file '/tmp/tree.json'
         expect(saved_tree.root.uuid).to eq tree.root.uuid
+      end
+    end
+
+    context 'yaml' do
+      describe '.to_yml' do
+        it 'returns yaml representation of tree' do
+          allow_any_instance_of(Node).to receive(:uuid).and_return('uuid')
+          tree = Generator.tree3
+          expected = <<~TREE
+            ---
+            key: 11
+            uuid: uuid
+            left:
+              key: 7
+              uuid: uuid
+              left:
+              right:
+            right:
+              key: 13
+              uuid: uuid
+              left:
+              right:
+          TREE
+
+          expect(tree.to_yml).to eq expected
+        end
+      end
+
+      describe '.to_yaml_file' do
+        it 'writes file identical to existing fixture' do
+          allow_any_instance_of(Node).to receive(:uuid).and_return('uuid')
+          tree = Generator.tree3
+          require 'open3'
+          filename = 'tree3.yml'
+          tree.to_yaml_file "/tmp/#{filename}"
+          diff = "diff /tmp/#{filename} ../fixtures/#{filename}"
+          output, _status = Open3.capture2e(diff)
+
+          expect(output.empty?).to be true
+        end
+      end
+
+      describe '#from_yaml_file' do
+        it 'successfully round trips a tree through yaml persistence' do
+          tree = Generator.tree3
+          filename = '/tmp/tree.yml'
+          tree.to_yaml_file(filename)
+          saved = Tree.from_yaml_file(filename)
+
+          expect(saved.root.uuid).to eq tree.root.uuid
+        end
       end
     end
 

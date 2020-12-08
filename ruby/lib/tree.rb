@@ -196,6 +196,22 @@ class Tree
     root.to_hash
   end
 
+  def to_yml
+    require 'yaml'
+    to_hash.to_yaml
+  end
+
+  def to_yaml_file(filename)
+    File.open(filename, 'w') { |file| file.write(to_yml) }
+  end
+
+  # TODO: BST-44 finish up here
+  def self.from_yaml_file(filename)
+    require 'yaml'
+    hashed = YAML.safe_load(File.read(filename))
+    from_hash(hashed)
+  end
+
   def to_json(*_args)
     root.to_json
   end
