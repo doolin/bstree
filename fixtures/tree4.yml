@@ -1,0 +1,17 @@
+---
+key: 11
+uuid: uuid
+left:
+  key: 7
+  uuid: uuid
+  left:
+    key: 3
+    uuid: uuid
+    left:
+    right:
+  right:
+right:
+  key: 13
+  uuid: uuid
+  left:
+  right:
