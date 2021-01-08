@@ -68,7 +68,9 @@ call delete after the node is orphaned.
 
 \subsection{Tree 1}
 
-\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+%% Note the scale=0.5, which does exactly what is needed, reducing the
+%% linear scale for all parts of the diagram, resulting in 1/4 the area.
+\begin{tikzpicture}[scale=0.5,level/.style={sibling distance=50mm/#1}]
   \node [circle,draw] (z) {$11$}
     child {
       node (a) {}
@@ -81,7 +83,7 @@ call delete after the node is orphaned.
 
 \subsection{Tree 2}
 
-\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+\begin{tikzpicture}[scale=0.5,level/.style={sibling distance=50mm/#1}]
   \node [circle,draw] (z) {$11$}
     child {
       node [circle,draw] (a) {$7$}
@@ -93,7 +95,7 @@ call delete after the node is orphaned.
 
 \subsection{Tree 3}
 
-\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+\begin{tikzpicture}[scale=0.5,level/.style={sibling distance=50mm/#1}]
   \node [circle,draw] (z) {$11$}
     child {node [circle,draw] (a) {$7$}}
     child {node [circle,draw] (ca) {$13$}};
@@ -101,7 +103,7 @@ call delete after the node is orphaned.
 
 \subsection{Tree 4}
 
-\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+\begin{tikzpicture}[scale=0.5,level/.style={sibling distance=50mm/#1}]
   \node [circle,draw] (z){$11$}
     child {node [circle,draw] (a) {$7$}
       child {node [circle,draw] (j) {$3$}}
@@ -112,7 +114,7 @@ call delete after the node is orphaned.
 
 \subsection{Tree 5}
 
-\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+\begin{tikzpicture}[scale=0.5,level/.style={sibling distance=50mm/#1}]
   \node [circle,draw] (z){$11$}
     child {
       node [circle,draw] (a) {$7$}
@@ -129,7 +131,7 @@ call delete after the node is orphaned.
 
 \subsection{Tree 6}
 
-\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+\begin{tikzpicture}[scale=0.5,level/.style={sibling distance=50mm/#1}]
   \node [circle,draw] (z){$11$}
     child {
       node [circle,draw] (a) {$7$}
@@ -151,7 +153,7 @@ call delete after the node is orphaned.
 
 \subsection{Tree 7}
 
-\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+\begin{tikzpicture}[scale=0.5,level/.style={sibling distance=50mm/#1}]
   \node [circle,draw] (z){$11$}
     child {
       node [circle,draw] (a) {$7$}
@@ -184,7 +186,7 @@ call delete after the node is orphaned.
 
 \subsection{Tree 8}
 
-\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+\begin{tikzpicture}[scale=0.5,level/.style={sibling distance=50mm/#1}]
   \node [circle,draw] (z){$11$}
     child {
       node [circle,draw] (a) {$7$}
@@ -218,7 +220,7 @@ call delete after the node is orphaned.
 
 \subsection{Tree 9}
 
-\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+\begin{tikzpicture}[scale=0.5,level/.style={sibling distance=50mm/#1}]
   \node [circle,draw] (z){$11$}
     child {
       node [circle,draw] (a) {$7$}
@@ -253,7 +255,7 @@ call delete after the node is orphaned.
 
 \subsection{Tree 10}
 
-\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+\begin{tikzpicture}[scale=0.5,level/.style={sibling distance=50mm/#1}]
   \node [circle,draw] (z){$11$}
     child {
       node [circle,draw] (a) {$7$}
@@ -296,14 +298,14 @@ call delete after the node is orphaned.
 
 \section{The 5 $123$ trees}
 
-\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+\begin{tikzpicture}[scale=0.5,level/.style={sibling distance=50mm/#1}]
   \node [circle,draw] (z){$2$}
     child {node [circle,draw] (a) {$1$}}
     child {node [circle,draw] (j) {$3$}
   };
 \end{tikzpicture}
 
-\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+\begin{tikzpicture}[scale=0.5,level/.style={sibling distance=50mm/#1}]
   \node [circle,draw] (z){$1$}
   child {node (ca) {}}
   child {node [circle,draw] (a) {$2$}
@@ -312,7 +314,7 @@ call delete after the node is orphaned.
   };
 \end{tikzpicture}
 
-\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+\begin{tikzpicture}[scale=0.5,level/.style={sibling distance=50mm/#1}]
   \node [circle,draw] (z){$1$}
   child {
     node (ca) {}
@@ -324,7 +326,7 @@ call delete after the node is orphaned.
   };
 \end{tikzpicture}
 
-\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+\begin{tikzpicture}[scale=0.5,level/.style={sibling distance=50mm/#1}]
   \node [circle,draw] (z){$3$}
   child {
     node [circle,draw] (a) {$2$}
@@ -337,7 +339,7 @@ call delete after the node is orphaned.
 \end{tikzpicture}
 
 
-\begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+\begin{tikzpicture}[scale=0.5,level/.style={sibling distance=50mm/#1}]
   \node [circle,draw] (z){$3$}
   child {
     node [circle,draw] (a) {$1$}
@@ -359,7 +361,7 @@ call delete after the node is orphaned.
 A binary search tree using first 10 primes for keys:
 
 %\ovalbox{%
-  \begin{tikzpicture}[level/.style={sibling distance=50mm/#1}]
+  \begin{tikzpicture}[scale=0.5,level/.style={sibling distance=50mm/#1}]
   \node [circle,draw] (z){$17$}
     child {node [circle,draw] (a) {$5$}
       child {node [circle,draw] (b) {$3$}
