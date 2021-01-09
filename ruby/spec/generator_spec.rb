@@ -8,7 +8,7 @@ RSpec.describe Generator do
     expect(tree.height).to eq 0
     expect(tree.bst?).to be true
     expect(tree.full?).to be true
-    expect(tree.root.balanced?).to be true
+    expect(tree.balanced?).to be true
     # expect(tree1.pathological??).to be false
   end
 
@@ -18,7 +18,7 @@ RSpec.describe Generator do
     expect(tree.height).to eq 1
     expect(tree.bst?).to be true
     expect(tree.full?).to be false
-    # expect(tree.root.balanced?).to be true
+    expect(tree.balanced?).to be true
     # expect(tree.pathological??).to be false
   end
 
@@ -28,7 +28,7 @@ RSpec.describe Generator do
     expect(tree.height).to eq 1
     expect(tree.bst?).to be true
     expect(tree.full?).to be true
-    # expect(tree.root.balanced?).to be true
+    expect(tree.balanced?).to be true
     # expect(tree.pathological??).to be false
   end
 
@@ -38,7 +38,7 @@ RSpec.describe Generator do
     expect(tree.height).to eq 2
     expect(tree.bst?).to be true
     expect(tree.full?).to be false
-    # expect(tree.root.balanced?).to be true
+    expect(tree.balanced?).to be true
     # expect(tree.pathological??).to be true
   end
 
@@ -48,7 +48,7 @@ RSpec.describe Generator do
     expect(tree.height).to eq 2
     expect(tree.bst?).to be true
     expect(tree.full?).to be false
-    # expect(tree.root.balanced?).to be true
+    expect(tree.balanced?).to be true
     # expect(tree.pathological??).to be true
   end
 
@@ -58,7 +58,7 @@ RSpec.describe Generator do
     expect(tree.height).to eq 3
     expect(tree.bst?).to be true
     expect(tree.full?).to be false
-    # expect(tree.root.balanced?).to be true
+    expect(tree.balanced?).to be false
     # expect(tree.pathological??).to be true
   end
 
@@ -68,7 +68,7 @@ RSpec.describe Generator do
     expect(tree.height).to eq 3
     expect(tree.bst?).to be true
     expect(tree.full?).to be false
-    # expect(tree.root.balanced?).to be true
+    expect(tree.balanced?).to be false
     # expect(tree.pathological??).to be true
   end
 
@@ -78,7 +78,7 @@ RSpec.describe Generator do
     expect(tree.height).to eq 3
     expect(tree.bst?).to be true
     expect(tree.full?).to be false
-    # expect(tree.root.balanced?).to be true
+    expect(tree.balanced?).to be false
     # expect(tree.pathological??).to be true
   end
 
@@ -88,7 +88,7 @@ RSpec.describe Generator do
     expect(tree.height).to eq 3
     expect(tree.bst?).to be true
     expect(tree.full?).to be false
-    # expect(tree.root.balanced?).to be true
+    expect(tree.balanced?).to be false
     # expect(tree.pathological??).to be true
   end
 
@@ -98,52 +98,54 @@ RSpec.describe Generator do
     expect(tree.height).to eq 4
     expect(tree.bst?).to be true
     expect(tree.full?).to be false # nil
-    # expect(tree.root.balanced?).to be true
+    expect(tree.balanced?).to be false
     # expect(tree.pathological??).to be true
   end
 
-  it 'builds tree213' do
-    tree = Generator.tree213
-    expect(tree.size).to eq 3
-    expect(tree.height).to eq 1
-    expect(tree.bst?).to be true
-    expect(tree.full?).to be true
-    # expect(tree.root.balanced?).to be true
-  end
+  context 'trees of size 3' do
+    it 'builds tree213' do
+      tree = Generator.tree213
+      expect(tree.size).to eq 3
+      expect(tree.height).to eq 1
+      expect(tree.bst?).to be true
+      expect(tree.full?).to be true
+      expect(tree.balanced?).to be true
+    end
 
-  it 'builds tree123' do
-    tree = Generator.tree123
-    expect(tree.size).to eq 3
-    expect(tree.height).to eq 2
-    expect(tree.bst?).to be true
-    expect(tree.full?).to be false
-    # expect(tree.root.balanced?).to be true
-  end
+    it 'builds tree123' do
+      tree = Generator.tree123
+      expect(tree.size).to eq 3
+      expect(tree.height).to eq 2
+      expect(tree.bst?).to be true
+      expect(tree.full?).to be false
+      expect(tree.balanced?).to be false
+    end
 
-  it 'builds tree132' do
-    tree = Generator.tree132
-    expect(tree.size).to eq 3
-    expect(tree.height).to eq 2
-    expect(tree.bst?).to be true
-    expect(tree.full?).to be false
-    # expect(tree.root.balanced?).to be true
-  end
+    it 'builds tree132' do
+      tree = Generator.tree132
+      expect(tree.size).to eq 3
+      expect(tree.height).to eq 2
+      expect(tree.bst?).to be true
+      expect(tree.full?).to be false
+      expect(tree.balanced?).to be false
+    end
 
-  it 'builds tree321' do
-    tree = Generator.tree321
-    expect(tree.size).to eq 3
-    expect(tree.height).to eq 2
-    expect(tree.bst?).to be true
-    expect(tree.full?).to be false
-    # expect(tree.root.balanced?).to be true
-  end
+    it 'builds tree321' do
+      tree = Generator.tree321
+      expect(tree.size).to eq 3
+      expect(tree.height).to eq 2
+      expect(tree.bst?).to be true
+      expect(tree.full?).to be false
+      expect(tree.balanced?).to be false
+    end
 
-  it 'builds tree312' do
-    tree = Generator.tree312
-    expect(tree.size).to eq 3
-    expect(tree.height).to eq 2
-    expect(tree.bst?).to be true
-    expect(tree.full?).to be false
-    # expect(tree.root.balanced?).to be true
+    it 'builds tree312' do
+      tree = Generator.tree312
+      expect(tree.size).to eq 3
+      expect(tree.height).to eq 2
+      expect(tree.bst?).to be true
+      expect(tree.full?).to be false
+      expect(tree.balanced?).to be false
+    end
   end
 end
