@@ -563,6 +563,51 @@ RSpec.describe Node do
     end
   end
 
+  describe '.balanced?' do
+    let(:root) { Node.new 17 }
+
+    context 'balanced when' do
+      it 'single node' do
+        expect(described_class.balanced?(root)).to be 1
+      end
+
+      it 'single left child' do
+        root.insert Node.new 11
+        expect(described_class.balanced?(root)).to be 2
+      end
+
+      it 'single right child' do
+        root.insert Node.new 23
+        expect(described_class.balanced?(root)).to be 2
+      end
+
+      it 'left and right child' do
+        root.insert Node.new 23
+        root.insert Node.new 11
+        expect(described_class.balanced?(root)).to be 2
+      end
+
+      it 'Tree4' do
+        expect(described_class.balanced?(root)).to be 1
+      end
+    end
+
+    context 'unbalanced when' do
+      it 'two right nodes' do
+        root.insert Node.new 23
+        root.insert Node.new 29
+        expect(root.size).to be 3
+        expect(described_class.balanced?(root)).to be(-1)
+      end
+
+      it 'two left nodes' do
+        root.insert Node.new 11
+        root.insert Node.new 7
+        expect(described_class.balanced?(root)).to be(-1)
+      end
+    end
+  end
+
   describe '.full?' do
     let(:root) { Node.new 100 }
     let(:left) { Node.new 50 }

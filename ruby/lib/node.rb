@@ -36,6 +36,7 @@ class Node
     @key > other.key
   end
 
+  # add a callback (monad?) for duplicate key handling
   def insert(node)
     node < self ? insert_left(node) : insert_right(node)
   end
@@ -107,7 +108,18 @@ class Node
   end
   # rubocop:enable Naming/MethodParameterName
 
+  # Definition. The size of a tree is its number of nodes. The depth of a node in a tree
+  # is the number of links on the path from it to the root. The height of a tree is the
+  # maximum depth among its nodes. p. 226 Sedgewick and Wayne 4th edition.
+  #
+  # Notably, this article on geeksforgeeks is wrong:
+  # https://www.geeksforgeeks.org/count-balanced-binary-trees-height-h/
+  # defining the height at the number of links + 1, that is, they are
+  # off by 1. This does not give me assurance for the gfg site.
   def height
+    # use for demonstrating complexity, etc.
+    yield(self) if block_given?
+
     # This check makes the ABC and cyclomatic complexity of this method
     # too high. May need to disable for just this method
     # raise if left && left == self || right && right == self # stack overflow
@@ -173,17 +185,33 @@ class Node
     find(key) ? true : false
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
-  def balanced?
-    left_height = left&.height || 0
-    right_height = right&.height || 0
-    return false unless [-1, 0, 1].include?(left_height - right_height)
+  # This seems to be the standard O(n) algorithm which I've found
+  # on the web. It's gross as written, implying a predicate, but
+  # actually computing something like a height (see comment at end
+  # of method). Rendering this into something which is semantically
+  # meaningful requires splitting out the recursion and "height"
+  # computation, and wrapping that result in a predicate. The whole
+  # thing just feel gross.
+  #
+  # TODO: change the method name here to `height_balance`, and call
+  # from the `balanced?` method.
+  def self.balanced?(root)
+    return 0 if root.nil?
 
-    left&.balanced?
-    right&.balanced?
-    true
+    left_height = balanced?(root.left)
+    return - 1 if left_height == -1
+
+    right_height = balanced?(root.right)
+    return -1 if right_height == -1
+
+    return -1 if (left_height - right_height).abs > 1
+
+    # If it is balanced then return the height
+    # But this isn't the actual height, it seems to be the height - 1 when
+    # compared to a direct call to height. Also, comparing the height of the
+    # trees used for testing, this is also off by 1.
+    [left_height, right_height].max + 1
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
 
   def full?
     return true if left.nil? && right.nil?
@@ -303,6 +331,7 @@ class Node
     result
   end
 
+  # Can be used to free memory, and to make a copy of the tree.
   def post_order_traverse(&block)
     left&.post_order_traverse(&block)
     right&.post_order_traverse(&block)

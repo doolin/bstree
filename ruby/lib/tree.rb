@@ -176,6 +176,12 @@ class Tree
     root.bst?
   end
 
+  def balanced?
+    result = Node.balanced?(root)
+    puts result
+    result != -1
+  end
+
   def successor(node)
     root.successor node
   end
