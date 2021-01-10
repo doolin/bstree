@@ -29,49 +29,49 @@ describe('Tree', function() {
       t.insert(n29);
 
       deleted = t.delete_node(11);
-      assert.equal(deleted, n11);
-      assert.equal(t.size(), 9);
-      assert.equal(n11.is_unlinked(), true);
-      assert.equal(n7.right, n13);
-      assert.equal(n13.parent, n7);
+      assert.strictEqual(deleted, n11);
+      assert.strictEqual(t.size(), 9);
+      assert.strictEqual(n11.is_unlinked(), true);
+      assert.strictEqual(n7.right, n13);
+      assert.strictEqual(n13.parent, n7);
 
       deleted = t.delete_node(3);
-      assert.equal(deleted, n3);
-      assert.equal(t.size(), 8);
-      assert.equal(n5.left, n2);
-      assert.equal(n2.parent, n5);
+      assert.strictEqual(deleted, n3);
+      assert.strictEqual(t.size(), 8);
+      assert.strictEqual(n5.left, n2);
+      assert.strictEqual(n2.parent, n5);
 
       // two children, right child is successor
       deleted = t.delete_node(5);
-      assert.equal(deleted, n5);
-      assert.equal(t.size(), 7);
-      assert.equal(t.root.left, n7);
-      assert.equal(n7.parent, t.root);
-      assert.equal(n7.left, n2);
-      assert.equal(n2.parent, n7);
+      assert.strictEqual(deleted, n5);
+      assert.strictEqual(t.size(), 7);
+      assert.strictEqual(t.root.left, n7);
+      assert.strictEqual(n7.parent, t.root);
+      assert.strictEqual(n7.left, n2);
+      assert.strictEqual(n2.parent, n7);
 
       // two children, right child it not successor
       deleted = t.delete_node(17);
-      assert.equal(deleted, root);
-      assert.equal(t.root, n19);
-      assert.equal(t.size(), 6);
-      assert.equal(n19.right, n23);
-      assert.equal(n23.parent, n19);
-      assert.equal(n19.left, n7);
-      assert.equal(n7.parent, n19);
+      assert.strictEqual(deleted, root);
+      assert.strictEqual(t.root, n19);
+      assert.strictEqual(t.size(), 6);
+      assert.strictEqual(n19.right, n23);
+      assert.strictEqual(n23.parent, n19);
+      assert.strictEqual(n19.left, n7);
+      assert.strictEqual(n7.parent, n19);
 
       t.delete_node(2);
       t.delete_node(13);
       t.delete_node(7);
       t.delete_node(23);
       t.delete_node(19);
-      assert.equal(t.root, n29);
-      assert.equal(t.size(), 1);
-      assert.equal(n29.is_unlinked(), true);
+      assert.strictEqual(t.root, n29);
+      assert.strictEqual(t.size(), 1);
+      assert.strictEqual(n29.is_unlinked(), true);
 
       t.delete_node(29);
-      assert.equal(t.size(), 0);
-      assert.equal(t.is_empty(), true);
+      assert.strictEqual(t.size(), 0);
+      assert.strictEqual(t.is_empty(), true);
     });
   });
 });

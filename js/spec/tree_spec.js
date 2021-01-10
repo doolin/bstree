@@ -6,7 +6,7 @@ describe('Tree', function() {
   describe('instantiation', function() {
     it('creates a Tree', function() {
       const t = new tree();
-      assert.equal(t.root, null);
+      assert.strictEqual(t.root, null);
     });
   });
 
@@ -27,8 +27,8 @@ describe('Tree', function() {
       t.insert(n5);
 
       t.transplant(root, n5);
-      assert.equal(t.root, n5);
-      assert.equal(n5.parent, null);
+      assert.strictEqual(t.root, n5);
+      assert.strictEqual(n5.parent, null);
     });
 
     it('replaces left child with grandchild', function() {
@@ -41,8 +41,8 @@ describe('Tree', function() {
       t.insert(n7);
 
       t.transplant(n5, n7);
-      assert.equal(t.root.left, n7);
-      assert.equal(n7.parent, t.root);
+      assert.strictEqual(t.root.left, n7);
+      assert.strictEqual(n7.parent, t.root);
     });
 
      it('replaces root with right child', function() {
@@ -53,8 +53,8 @@ describe('Tree', function() {
       t.insert(n23);
 
       t.transplant(root, n23);
-      assert.equal(t.root, n23);
-      assert.equal(n23.parent, null);
+      assert.strictEqual(t.root, n23);
+      assert.strictEqual(n23.parent, null);
     });
 
      it('replaces right child with grnadchild', function() {
@@ -67,8 +67,8 @@ describe('Tree', function() {
       t.insert(n29);
 
       t.transplant(n23, n29);
-      assert.equal(t.root.right, n29);
-      assert.equal(n29.parent, t.root);
+      assert.strictEqual(t.root.right, n29);
+      assert.strictEqual(n29.parent, t.root);
     });
   });
 
@@ -77,7 +77,7 @@ describe('Tree', function() {
       const t = new tree();
       const root = new node(13);
       t.insert(root);
-      assert.equal(t.root, root);
+      assert.strictEqual(t.root, root);
     });
 
     it('insert left and right nodes', function() {
@@ -88,39 +88,39 @@ describe('Tree', function() {
       const n19 = new node(19);
       t.insert(n5);
       t.insert(n19);
-      assert.equal(t.root.left, n5);
-      assert.equal(t.root.right, n19);
+      assert.strictEqual(t.root.left, n5);
+      assert.strictEqual(t.root.right, n19);
     });
   });
 
   describe('search and is_present', function() {
     it('finds an empty tree with no nodes', function() {
       const t = new tree();
-      assert.equal(false, t.search(13));
+      assert.strictEqual(false, t.search(13));
     });
 
     const t = new tree();
     root = new node(13);
     t.insert(root);
     it('finds a single node', function() {
-      assert.equal(root, t.search(13));
-      assert.equal(true, t.is_present(13));
-      assert.equal(false, t.is_present(5));
-      assert.equal(false, t.is_present(-500.55));
+      assert.strictEqual(root, t.search(13));
+      assert.strictEqual(true, t.is_present(13));
+      assert.strictEqual(false, t.is_present(5));
+      assert.strictEqual(false, t.is_present(-500.55));
     });
 
     it('finds node to the left', function() {
       const n5 = new node(5);
       t.insert(n5);
-      assert.equal(n5, t.search(5));
-      assert.equal(true, t.is_present(5));
+      assert.strictEqual(n5, t.search(5));
+      assert.strictEqual(true, t.is_present(5));
     });
 
     it('finds node to the right', function() {
       const n19 = new node(19);
       t.insert(n19);
-      assert.equal(n19, t.search(19));
-      assert.equal(true, t.is_present(19));
+      assert.strictEqual(n19, t.search(19));
+      assert.strictEqual(true, t.is_present(19));
     });
 
     it('finds nodes in the tree', function() {
@@ -138,11 +138,11 @@ describe('Tree', function() {
       t.insert(n3);
       t.insert(n2);
       t.insert(n29);
-      assert.equal(n17, t.search(17));
-      assert.equal(true, t.is_present(17));
-      assert.equal(n2, t.search(2));
-      assert.equal(true, t.is_present(2));
-      assert.equal(false, t.is_present(0.000002));
+      assert.strictEqual(n17, t.search(17));
+      assert.strictEqual(true, t.is_present(17));
+      assert.strictEqual(n2, t.search(2));
+      assert.strictEqual(true, t.is_present(2));
+      assert.strictEqual(false, t.is_present(0.000002));
     });
   });
 
@@ -152,7 +152,7 @@ describe('Tree', function() {
       const expected = [];
       const actual = [];
       t.collect(actual);
-      assert.deepEqual(expected, actual);
+      assert.deepStrictEqual(expected, actual);
     });
 
     it('collects key for root node in single node tree', function() {
@@ -162,7 +162,7 @@ describe('Tree', function() {
       const expected = [13];
       const actual = [];
       t.collect(actual);
-      assert.deepEqual(expected, actual);
+      assert.deepStrictEqual(expected, actual);
     });
 
     it('collects values from a simple 3 node tree', function() {
@@ -176,29 +176,29 @@ describe('Tree', function() {
       const expected = [5, 13, 17];
       const actual = [];
       t.collect(actual);
-      assert.deepEqual(expected, actual);
+      assert.deepStrictEqual(expected, actual);
     });
   });
 
   describe('list_keys', function() {
     it('finds no keys for empty tree', function() {
       const t = new tree();
-      assert.deepEqual([], t.list_keys());
+      assert.deepStrictEqual([], t.list_keys());
     });
   });
 
   describe('maximum and minimum', function() {
     it('empty tree has null maximum', function() {
       const t = new tree();
-      assert.equal(t.maximum(), null);
+      assert.strictEqual(t.maximum(), null);
     });
 
     it('root node is both maximum and minimum', function() {
       const t = new tree();
       const root = new node(13);
       t.insert(root);
-      assert.equal(t.maximum(), root);
-      assert.equal(t.minimum(), root);
+      assert.strictEqual(t.maximum(), root);
+      assert.strictEqual(t.minimum(), root);
     });
 
     it('root maximum with left child minimum', function() {
@@ -207,8 +207,8 @@ describe('Tree', function() {
       const n5 = new node(5);
       t.insert(root);
       t.insert(n5);
-      assert.equal(t.maximum(), root);
-      assert.equal(t.minimum(), n5);
+      assert.strictEqual(t.maximum(), root);
+      assert.strictEqual(t.minimum(), n5);
     });
 
     it('root node minimum with right child maximum', function() {
@@ -217,8 +217,8 @@ describe('Tree', function() {
       const n19 = new node(19);
       t.insert(root);
       t.insert(n19);
-      assert.equal(root.maximum(), n19);
-      assert.equal(root.minimum(), root);
+      assert.strictEqual(root.maximum(), n19);
+      assert.strictEqual(root.minimum(), root);
     });
 
     it('maximum and minimum for first 10 primes', function() {
@@ -243,22 +243,22 @@ describe('Tree', function() {
       t.insert(n3);
       t.insert(n2);
       t.insert(n29);
-      assert.equal(t.maximum(), n29);
-      assert.equal(t.minimum(), n2);
+      assert.strictEqual(t.maximum(), n29);
+      assert.strictEqual(t.minimum(), n2);
     });
   });
 
   describe('is_empty', function() {
     it('insert root node into empty tree', function() {
       const t = new tree();
-      assert.equal(t.is_empty(), true);
+      assert.strictEqual(t.is_empty(), true);
     });
 
     it('insert root node into empty tree', function() {
       const t = new tree();
       const root = new node(13);
       t.insert(root);
-      assert.equal(t.is_empty(), false);
+      assert.strictEqual(t.is_empty(), false);
     });
   });
 
@@ -267,7 +267,7 @@ describe('Tree', function() {
       const t = new tree();
       const root = new node(11);
       t.insert(root);
-      assert.equal(t.height(), 0);
+      assert.strictEqual(t.height(), 0);
     });
   });
 
@@ -276,7 +276,7 @@ describe('Tree', function() {
       const t = new tree();
       const root = new node(17);
       t.insert(root);
-      assert.equal(t.successor(root), root);
+      assert.strictEqual(t.successor(root), root);
     });
   });
 
@@ -285,7 +285,7 @@ describe('Tree', function() {
       const t = new tree();
       const root = new node(17);
       t.insert(root);
-      assert.equal(t.predecessor(root), root);
+      assert.strictEqual(t.predecessor(root), root);
     });
   });
 
@@ -300,23 +300,23 @@ describe('Tree', function() {
     it('determines a single node is a BST', function() {
       const t = new tree();
       const root = new node(17);
-      assert.equal(t.is_bst(), true);
+      assert.strictEqual(t.is_bst(), true);
       t.insert(root);
-      assert.equal(t.is_bst(), true);
+      assert.strictEqual(t.is_bst(), true);
     });
   });
 
   describe('size', function() {
     it('size 0 for empty tree', function() {
       const t = new tree();
-      assert.equal(t.size(), 0);
+      assert.strictEqual(t.size(), 0);
     });
 
     it('size 1 for tree with only root node', function() {
       const t = new tree();
       const root = new node(13);
       t.insert(root);
-      assert.equal(t.size(), 1);
+      assert.strictEqual(t.size(), 1);
     });
 
     it('size 10 for first 10 primes', function() {
@@ -341,7 +341,7 @@ describe('Tree', function() {
       t.insert(n3);
       t.insert(n2);
       t.insert(n29);
-      assert.equal(t.size(), 10);
+      assert.strictEqual(t.size(), 10);
     });
   });
 });
