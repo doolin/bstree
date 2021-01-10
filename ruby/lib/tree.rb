@@ -177,9 +177,7 @@ class Tree
   end
 
   def balanced?
-    result = Node.balanced?(root)
-    puts result
-    result != -1
+    Node.balanced?(root) != -1
   end
 
   def successor(node)

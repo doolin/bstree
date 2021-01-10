@@ -13,8 +13,8 @@ The goal is twofold:
 In the unlikely chance you have stumbled into this repo, please note
 that all the code, exercises, problems and the like could be wrong.
 _None of this material is vetted_. I find (and correct) mistakes and
-falsehoods regularly. If you use it for homework or interview
-questions, you are quite likely to be wrong as well.
+falsehoods regularly. Some of it may be just wrong. If you use it for
+homework or interview questions, you are quite likely to be wrong as well.
 
 ## TODO
 
@@ -93,18 +93,18 @@ be written iteratively as well, which is a good exercise for the future.
 
 ### Tree properties
 
-|               | full?      | perfect? | complete? | balanced? | bst?       | size       | successor  | predecessor |
-| ------------- | ---------- | -------- | --------- | --------- | ---------- | ---------- | ---------- | ----------- |
-| Ruby          | 2016-07-17 |          |           |           | 2016-09-25 | Done       | 2016-08-29 | 2016-09-12  |
-| Ruby (module) |            |          |           |           | 2016-09-24 | 2016-07-23 | 2016-09-02 | 2016-09-13  |
-| Python        |            |          |           |           | 2016-09-30 | 2016-08-10 | 2016-09-03 | 2016-09-14  |
-| Java          |            |          |           |           | 2016-10-01 | 2016-08-25 | 2016-09-03 | 2016-09-21  |
-| C++           |            |          |           |           | 2016-10-01 | 2016-08-27 | 2016-09-03 | 2016-09-20  |
-| C             |            |          |           |           | 2016-10-01 | 2016-08-13 | 2016-09-04 | 2016-09-22  |
-| Lua           |            |          |           |           | 2016-10-01 | 2016-08-27 | 2016-09-04 | 2016-09-23  |
-| Javascript    |            |          |           |           | 2016-10-01 | 2016-08-26 | 2016-09-04 | 2016-09-24  |
-| SQL           |            |          |           |           |            | 2016-08-27 |            |             |
-| Rust          |            |          |           |           |            |            |            |             |
+|               | full?      | perfect? | complete? | balanced?  | bst?       | size       | successor  | predecessor |
+| ------------- | ---------- | -------- | --------- | ---------- | ---------- | ---------- | ---------- | ----------- |
+| Ruby          | 2016-07-17 |          |           | 2021-01-10 | 2016-09-25 | Done       | 2016-08-29 | 2016-09-12  |
+| Ruby (module) |            |          |           |            | 2016-09-24 | 2016-07-23 | 2016-09-02 | 2016-09-13  |
+| Python        |            |          |           |            | 2016-09-30 | 2016-08-10 | 2016-09-03 | 2016-09-14  |
+| Java          |            |          |           |            | 2016-10-01 | 2016-08-25 | 2016-09-03 | 2016-09-21  |
+| C++           |            |          |           |            | 2016-10-01 | 2016-08-27 | 2016-09-03 | 2016-09-20  |
+| C             |            |          |           |            | 2016-10-01 | 2016-08-13 | 2016-09-04 | 2016-09-22  |
+| Lua           |            |          |           |            | 2016-10-01 | 2016-08-27 | 2016-09-04 | 2016-09-23  |
+| Javascript    |            |          |           | 2021-01-12 | 2016-10-01 | 2016-08-26 | 2016-09-04 | 2016-09-24  |
+| SQL           |            |          |           |            |            | 2016-08-27 |            |             |
+| Rust          |            |          |           |            |            |            |            |             |
 
 ### Persistence, serialization, etc.
 

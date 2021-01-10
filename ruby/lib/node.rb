@@ -199,7 +199,7 @@ class Node
     return 0 if root.nil?
 
     left_height = balanced?(root.left)
-    return - 1 if left_height == -1
+    return -1 if left_height == -1
 
     right_height = balanced?(root.right)
     return -1 if right_height == -1
