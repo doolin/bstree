@@ -7,5 +7,12 @@
     "test": "mocha spec"
   },
   "author": "dave doolin",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.17.0",
+    "eslint-config-google": "^0.14.0"
+  },
+  "dependencies": {
+    "mocha": "^8.2.1"
+  }
 }
