@@ -1,41 +1,41 @@
-var node = require('../lib/node.js').Node;
-var assert = require('assert');
+const node = require('../lib/node.js').Node;
+const assert = require('assert');
 
 describe('Node', function() {
   describe('instantiation', function() {
 
     it('creates a Node', function() {
-      var root = new node(13);
+      const root = new node(13);
       assert.equal(13, root.key);
     });
   });
 
   describe('insertion', function() {
     it('inserts a left node', function() {
-      var root = new node(13);
-      var n5 = new node(6);
+      const root = new node(13);
+      const n5 = new node(6);
       root.insert(n5);
       assert.equal(root.left, n5);
     });
 
     it('inserts a right node', function() {
-      var root = new node(13);
-      var n19 = new node(19);
+      const root = new node(13);
+      const n19 = new node(19);
       root.insert(n19);
       assert.equal(root.right, n19);
     });
 
     it('insert first 10 primes', function() {
-      var root = new node(13);
-      var n7 = new node(7);
-      var n5 = new node(5);
-      var n3 = new node(3);
-      var n2 = new node(2);
-      var n11 = new node(11);
-      var n17 = new node(17);
-      var n19 = new node(19);
-      var n23 = new node(23);
-      var n29 = new node(29);
+      const root = new node(13);
+      const n7 = new node(7);
+      const n5 = new node(5);
+      const n3 = new node(3);
+      const n2 = new node(2);
+      const n11 = new node(11);
+      const n17 = new node(17);
+      const n19 = new node(19);
+      const n23 = new node(23);
+      const n29 = new node(29);
       root.insert(n5);
       root.insert(n19);
       root.insert(n17);
@@ -55,21 +55,21 @@ describe('Node', function() {
   });
 
   describe('search and is_present', function() {
-    var root = new node(13);
+    const root = new node(13);
     it('finds a single node', function() {
       assert.equal(root, root.search(13));
       assert.equal(true, root.is_present(13));
       assert.equal(false, root.is_present(-500.55));
     });
 
-    var n5 = new node(5);
+    const n5 = new node(5);
     root.insert(n5);
     it('finds node to the left', function() {
       assert.equal(n5, root.search(5));
       assert.equal(true, root.is_present(5));
     });
 
-    var n19 = new node(19);
+    const n19 = new node(19);
     root.insert(n19);
     it('finds node to the right', function() {
       assert.equal(n19, root.search(19));
@@ -77,13 +77,13 @@ describe('Node', function() {
     });
 
     it('finds nodes in the tree', function() {
-      var n7 = new node(7);
-      var n3 = new node(3);
-      var n2 = new node(2);
-      var n11 = new node(11);
-      var n17 = new node(17);
-      var n23 = new node(23);
-      var n29 = new node(29);
+      const n7 = new node(7);
+      const n3 = new node(3);
+      const n2 = new node(2);
+      const n11 = new node(11);
+      const n17 = new node(17);
+      const n23 = new node(23);
+      const n29 = new node(29);
       root.insert(n17);
       root.insert(n23);
       root.insert(n11);
@@ -101,44 +101,44 @@ describe('Node', function() {
 
   describe('collect', function() {
     it('collects a single node', function() {
-      var root = new node(13);
-      var actual = [];
-      var expected = [13];
+      const root = new node(13);
+      const actual = [];
+      const expected = [13];
       root.collect(actual);
       assert.deepEqual(expected, actual);
     });
 
     it('collects a left node', function() {
-      var root = new node(13);
-      var n5 = new node(6);
+      const root = new node(13);
+      const n5 = new node(6);
       root.insert(n5);
-      var actual = [];
-      var expected = [6, 13];
+      const actual = [];
+      const expected = [6, 13];
       root.collect(actual);
       assert.deepEqual(expected, actual);
     });
 
     it('collects a right node', function() {
-      var root = new node(13);
-      var n19 = new node(19);
+      const root = new node(13);
+      const n19 = new node(19);
       root.insert(n19);
-      var expected = [13, 19];
-      var actual = [];
+      const expected = [13, 19];
+      const actual = [];
       root.collect(actual);
       assert.deepEqual(expected, actual);
     });
 
     it('collects first 10 primes', function() {
-      var root = new node(13);
-      var n7 = new node(7);
-      var n5 = new node(5);
-      var n3 = new node(3);
-      var n2 = new node(2);
-      var n11 = new node(11);
-      var n17 = new node(17);
-      var n19 = new node(19);
-      var n23 = new node(23);
-      var n29 = new node(29);
+      const root = new node(13);
+      const n7 = new node(7);
+      const n5 = new node(5);
+      const n3 = new node(3);
+      const n2 = new node(2);
+      const n11 = new node(11);
+      const n17 = new node(17);
+      const n19 = new node(19);
+      const n23 = new node(23);
+      const n29 = new node(29);
       root.insert(n5);
       root.insert(n19);
       root.insert(n17);
@@ -148,8 +148,8 @@ describe('Node', function() {
       root.insert(n3);
       root.insert(n2);
       root.insert(n29);
-      var expected = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29];
-      var actual = [];
+      const expected = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29];
+      const actual = [];
       root.collect(actual);
       assert.deepEqual(expected, actual);
     });
@@ -157,8 +157,8 @@ describe('Node', function() {
 
   describe('list_keys', function() {
     it('wraps the collect function for convenience', function() {
-      var root = new node(17);
-      var expected = [17];
+      const root = new node(17);
+      const expected = [17];
       assert.deepEqual(expected, root.list_keys());
     });
   });
@@ -166,38 +166,38 @@ describe('Node', function() {
 
   describe('maximum and minimum', function() {
     it('root node is both maximum and minimum', function() {
-      var root = new node(13);
+      const root = new node(13);
       assert.equal(root.maximum(), root);
       assert.equal(root.minimum(), root);
     });
 
     it('root maximum with left child minimum', function() {
-      var root = new node(13);
-      var n5 = new node(5);
+      const root = new node(13);
+      const n5 = new node(5);
       root.insert(n5);
       assert.equal(root.maximum(), root);
       assert.equal(root.minimum(), n5);
     });
 
     it('root node minimum with right child maximum', function() {
-      var root = new node(13);
-      var n19 = new node(19);
+      const root = new node(13);
+      const n19 = new node(19);
       root.insert(n19);
       assert.equal(root.maximum(), n19);
       assert.equal(root.minimum(), root);
     });
 
     it('maximum and minimum for first 10 primes', function() {
-      var root = new node(13);
-      var n7 = new node(7);
-      var n5 = new node(5);
-      var n3 = new node(3);
-      var n2 = new node(2);
-      var n11 = new node(11);
-      var n17 = new node(17);
-      var n19 = new node(19);
-      var n23 = new node(23);
-      var n29 = new node(29);
+      const root = new node(13);
+      const n7 = new node(7);
+      const n5 = new node(5);
+      const n3 = new node(3);
+      const n2 = new node(2);
+      const n11 = new node(11);
+      const n17 = new node(17);
+      const n19 = new node(19);
+      const n23 = new node(23);
+      const n29 = new node(29);
       root.insert(n5);
       root.insert(n19);
       root.insert(n17);
@@ -214,13 +214,13 @@ describe('Node', function() {
 
   describe('is_leaf', function() {
     xit('leaf node has no children', function() {
-      var root = new node(13);
+      const root = new node(13);
       assert.equal(root.is_leaf, true);
     });
 
     xit('insert child node onto leaf', function() {
-      var root = new node(13);
-      var n11 = new node(11);
+      const root = new node(13);
+      const n11 = new node(11);
       root.insert(n11);
       assert.equal(root.is_leaf, false);
     });
@@ -228,18 +228,18 @@ describe('Node', function() {
 
   describe('is_bst', function() {
     it('determines single node is BST', function() {
-      var root = new node(17);
+      const root = new node(17);
       assert.equal(root.is_bst(), true);
     });
 
     it('BST subtree does not imply whole tree is BST', function() {
-      var root = new node(17);
-      var n5 = new node(5);
-      var n23 = new node(23);
+      const root = new node(17);
+      const n5 = new node(5);
+      const n23 = new node(23);
       root.insert(n5);
       root.insert(n23);
       assert.equal(root.is_bst(), true);
-      var n14 = new node(14);
+      const n14 = new node(14);
       n23.insert(n14);
       assert.equal(n23.is_bst(), true);
       assert.equal(root.is_bst(), false);
@@ -248,17 +248,17 @@ describe('Node', function() {
 
   describe('successor and predecessor', function() {
     it('finds successors to nodes in a tree', function() {
-      var root = new node(17);
+      const root = new node(17);
       assert.equal(root.successor(root), root);
       assert.equal(root.predecessor(root), root);
 
-      var n23 = new node(23);
+      const n23 = new node(23);
       root.insert(n23);
       assert.equal(root.successor(root), n23);
       assert.equal(root.predecessor(n23), root);
 
-      var n19 = new node(19);
-      var n29 = new node(29);
+      const n19 = new node(19);
+      const n29 = new node(29);
       root.insert(n19);
       root.insert(n29);
       assert.equal(root.successor(root), n19);
@@ -275,9 +275,9 @@ describe('Node', function() {
 
       assert.equal(n19.successor(n19), n19);
 
-      var n2 = new node(2);
-      var n3 = new node(3);
-      var n5 = new node(5);
+      const n2 = new node(2);
+      const n3 = new node(3);
+      const n5 = new node(5);
       root.insert(n5);
       root.insert(n3);
       root.insert(n2);
@@ -290,9 +290,9 @@ describe('Node', function() {
       assert.equal(root.successor(n5), root);
       assert.equal(root.predecessor(root), n5);
 
-      var n7 = new node(7);
-      var n11 = new node(11);
-      var n13 = new node(13);
+      const n7 = new node(7);
+      const n11 = new node(11);
+      const n13 = new node(13);
       root.insert(n7);
       root.insert(n11);
       root.insert(n13);
@@ -315,48 +315,48 @@ describe('Node', function() {
 
   describe('height', function() {
     it('height of single node tree is 0', function() {
-      var root = new node(11);
+      const root = new node(11);
       assert.equal(root.height(), 0);
     });
 
     it('height of two node tree is 1', function() {
-      var root = new node(11);
-      var n17 = new node(17);
+      const root = new node(11);
+      const n17 = new node(17);
       root.insert(n17);
       assert.equal(root.height(), 1);
     });
 
     it('height of balanced three node tree is 1', function() {
-      var root = new node(11);
-      var n17 = new node(17);
-      var n5 = new node(5);
+      const root = new node(11);
+      const n17 = new node(17);
+      const n5 = new node(5);
       root.insert(n17);
       root.insert(n5);
       assert.equal(root.height(), 1);
     });
 
     it('height of tree with 4 or more nodes is at least 2', function() {
-      var root = new node(11);
-      var n17 = new node(17);
-      var n19 = new node(19);
-      var n5 = new node(5);
+      const root = new node(11);
+      const n17 = new node(17);
+      const n19 = new node(19);
+      const n5 = new node(5);
       root.insert(n17);
       root.insert(n19);
       root.insert(n5);
       assert.equal(root.height(), 2);
     });
 
-    it('various assertions on heights of tree of first 10 primes', function() {
-      var root = new node(13);
-      var n7 = new node(7);
-      var n5 = new node(5);
-      var n3 = new node(3);
-      var n2 = new node(2);
-      var n11 = new node(11);
-      var n17 = new node(17);
-      var n19 = new node(19);
-      var n23 = new node(23);
-      var n29 = new node(29);
+    it('constious assertions on heights of tree of first 10 primes', function() {
+      const root = new node(13);
+      const n7 = new node(7);
+      const n5 = new node(5);
+      const n3 = new node(3);
+      const n2 = new node(2);
+      const n11 = new node(11);
+      const n17 = new node(17);
+      const n19 = new node(19);
+      const n23 = new node(23);
+      const n29 = new node(29);
       root.insert(n5);
       root.insert(n19);
       root.insert(n17);
@@ -380,28 +380,28 @@ describe('Node', function() {
 
   describe('size', function() {
     it('size 1 for single node tree', function() {
-      var root = new node(13);
+      const root = new node(13);
       assert.equal(root.size(), 1);
     });
 
     it('size 2 for node with 1 child', function() {
-      var root = new node(13);
-      var n5 = new node(n5);
+      const root = new node(13);
+      const n5 = new node(5);
       root.insert(n5);
       assert.equal(root.size(), 2);
     });
 
     it('size 10 for first 10 primes', function() {
-      var root = new node(13);
-      var n7 = new node(7);
-      var n5 = new node(5);
-      var n3 = new node(3);
-      var n2 = new node(2);
-      var n11 = new node(11);
-      var n17 = new node(17);
-      var n19 = new node(19);
-      var n23 = new node(23);
-      var n29 = new node(29);
+      const root = new node(13);
+      const n7 = new node(7);
+      const n5 = new node(5);
+      const n3 = new node(3);
+      const n2 = new node(2);
+      const n11 = new node(11);
+      const n17 = new node(17);
+      const n19 = new node(19);
+      const n23 = new node(23);
+      const n29 = new node(29);
       root.insert(n5);
       root.insert(n19);
       root.insert(n17);
@@ -417,14 +417,14 @@ describe('Node', function() {
 
   describe('unlink and is_unlinked', function() {
     it('new nodes are unlinked', function() {
-      var n = new node(17);
+      const n = new node(17);
       assert.equal(n.is_unlinked(), true);
     });
 
     it('unlink a small tree', function() {
-      var root = new node(17);
-      var n5 = new node(5);
-      var n23 = new node(23);
+      const root = new node(17);
+      const n5 = new node(5);
+      const n23 = new node(23);
 
       root.insert(n5);
       root.insert(n23);
