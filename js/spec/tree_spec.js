@@ -45,7 +45,7 @@ describe('Tree', function() {
       assert.strictEqual(n7.parent, t.root);
     });
 
-     it('replaces root with right child', function() {
+    it('replaces root with right child', function() {
       const t = new tree();
       const root = new node(17);
       const n23 = new node(23);
@@ -57,7 +57,7 @@ describe('Tree', function() {
       assert.strictEqual(n23.parent, null);
     });
 
-     it('replaces right child with grnadchild', function() {
+    it('replaces right child with grnadchild', function() {
       const t = new tree();
       const root = new node(17);
       const n23 = new node(23);
@@ -303,6 +303,55 @@ describe('Tree', function() {
       assert.strictEqual(t.is_bst(), true);
       t.insert(root);
       assert.strictEqual(t.is_bst(), true);
+    });
+  });
+
+  describe('isBalanced', function() {
+    describe('balanced', () => {
+      it('null root is balanced', function() {
+        const ttt = new tree();
+        assert.strictEqual(ttt.isBalanced(), true);
+      });
+
+      it('single node tree is balanced', function() {
+        const tty = new tree();
+        const foo = new node(44);
+        tty.insert(foo);
+        assert.strictEqual(tty.isBalanced(), true);
+      });
+    });
+
+    describe('ubbalanced', () => {
+      it('three node tree is unbalanced', function() {
+        const ttx = new tree();
+        const root = new node(17);
+        const n7 = new node(7);
+        const n5 = new node(5);
+        ttx.insert(root);
+        ttx.insert(n7);
+        ttx.insert(n5);
+        assert.strictEqual(ttx.isBalanced(), false);
+      });
+
+      it('left weighted full tree is unbalanced', () => {
+        const t = new tree();
+        const r = new node(17);
+        const n19 = new node(19);
+        const n16 = new node(16);
+        const n15 = new node(15);
+        const n14 = new node(14);
+        const n13 = new node(13);
+        const n12 = new node(12);
+
+        t.insert(r);
+        t.insert(n19);
+        t.insert(n15);
+        t.insert(n13);
+        t.insert(n12);
+        t.insert(n16);
+        t.insert(n14);
+        assert.strictEqual(t.isBalanced(), false);
+      });
     });
   });
 

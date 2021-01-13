@@ -605,6 +605,16 @@ RSpec.describe Node do
         root.insert Node.new 7
         expect(described_class.balanced?(root)).to be(-1)
       end
+
+      it 'full tree left weighted' do
+        root.insert Node.new 19
+        root.insert Node.new 15
+        root.insert Node.new 13
+        root.insert Node.new 12
+        root.insert Node.new 16
+        root.insert Node.new 14
+        expect(described_class.balanced?(root)).to be(-1)
+      end
     end
   end
 
