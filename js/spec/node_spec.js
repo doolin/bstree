@@ -440,4 +440,75 @@ describe('Node', function() {
       assert.strictEqual(n23.is_unlinked(), true);
     });
   });
+
+  describe('invert', () => {
+    it('inverts a single node', () => {
+      const root = new node(17);
+      root.invert();
+      assert.strictEqual(root.left, null);
+      assert.strictEqual(root.right, null);
+    });
+
+    it('inverts root with left node', () => {
+      let root = new node(17);
+      const n5 = new node(5);
+      root.insert(n5);
+      root.invert();
+
+      assert.strictEqual(root.left, null);
+      assert.strictEqual(root.right, n5);
+    });
+
+    it('inverts root with right node', () => {
+      let root = new node(17);
+      const n23 = new node(23);
+      root.insert(n23);
+      root.invert();
+
+      assert.strictEqual(root.left, n23);
+      assert.strictEqual(root.right, null);
+    });
+
+    it('inverts root with left and right nodes', () => {
+      let root = new node(17);
+      const n5 = new node(5);
+      const n23 = new node(23);
+      root.insert(n5);
+      root.insert(n23);
+      root.invert();
+
+      assert.strictEqual(root.left, n23);
+      assert.strictEqual(root.right, n5);
+    });
+
+    it('inverts full tree of depth two', () => {
+      let root = new node(17);
+      // left branch
+      const n11 = new node(11);
+      const n5 = new node(5);
+      const n13 = new node(13);
+      root.insert(n11);
+      root.insert(n13);
+      root.insert(n5);
+
+      // right branch
+      const n23 = new node(23);
+      const n17 = new node(17);
+      const n29 = new node(29);
+      root.insert(n23);
+      root.insert(n29);
+      root.insert(n17);
+
+      root.invert();
+
+      assert.strictEqual(root.left, n23);
+      assert.strictEqual(root.right, n11);
+
+      assert.strictEqual(n11.left, n13);
+      assert.strictEqual(n11.right, n5);
+
+      assert.strictEqual(n23.left, n29);
+      assert.strictEqual(n23.right, n17);
+    });
+  });
 });

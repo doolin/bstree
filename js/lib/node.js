@@ -103,7 +103,7 @@ Node.prototype.post_order_traverse = function(callback) {
   if (this.right !== null) {
     this.right.post_order_traverse(callback);
   }
-  callback();
+  callback(this);
 };
 
 Node.prototype.size = function() {
@@ -112,6 +112,22 @@ Node.prototype.size = function() {
     size++;
   });
   return size;
+};
+
+Node.prototype.invert = function() {
+  // console.log(`this.left: ${this.left}, this.right: ${this.right}`);
+
+  this.post_order_traverse(function(node) {
+    // console.log(`before swap node.key: ${node.key}`);
+    // console.log(`before swap node.left: ${node.left}`);
+    // console.log(`before swap node.right: ${node.right}`);
+
+    let swap = node.left;
+    node.left = node.right;
+    // console.log(`node.left after swap: ${node.left}`);
+    node.right = swap;
+    // console.log(`node.right after swap: ${node.right}`);
+  });
 };
 
 Node.prototype.successor = function(node) {
