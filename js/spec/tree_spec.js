@@ -100,7 +100,7 @@ describe('Tree', function() {
     });
 
     const t = new tree();
-    root = new node(13);
+    const root = new node(13);
     t.insert(root);
     it('finds a single node', function() {
       assert.strictEqual(root, t.search(13));
