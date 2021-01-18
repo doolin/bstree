@@ -1,9 +1,17 @@
 const node = require('../lib/node.js').Node;
 const assert = require('assert');
 
+describe('load yaml from fixtures', () => {
+  it('reads a fixture and writes to console', () => {
+    root = new node(17);
+    let filenode = root.from_yaml('tree7.yml');
+
+    assert.strictEqual(filenode.size(), 7);
+  });
+});
+
 describe('Node', function() {
   describe('instantiation', function() {
-
     it('creates a Node', function() {
       const root = new node(13);
       assert.strictEqual(13, root.key);

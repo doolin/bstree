@@ -267,5 +267,25 @@ Node.prototype.is_unlinked = function() {
   return this.left === null && this.right === null && this.parent === null;
 };
 
-// exports.Node = new Node();
+Node.prototype.from_yaml = function(filename) {
+  const fs = require('fs');
+  const yaml = require('js-yaml');
+
+  let fileContents = fs.readFileSync(`../fixtures/${filename}`, 'utf8');
+  let data = yaml.safeLoad(fileContents);
+
+  const create_tree = function(data) {
+    if (data === null) {
+      return null;
+    }
+
+    let node = new Node(data.key);
+    node.left = create_tree(data.left);
+    node.right = create_tree(data.right);
+    return node;
+  };
+
+  return create_tree(data);
+};
+
 exports.Node = Node;
