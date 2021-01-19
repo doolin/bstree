@@ -4,9 +4,72 @@ const assert = require('assert');
 describe('load yaml from fixtures', () => {
   it('reads a fixture and writes to console', () => {
     root = new node(17);
+    let filenode = root.from_yaml('tree1.yml');
+
+    assert.strictEqual(filenode.size(), 1);
+  });
+
+  it('reads a fixture and writes to console', () => {
+    root = new node(17);
+    let filenode = root.from_yaml('tree2.yml');
+
+    assert.strictEqual(filenode.size(), 2);
+  });
+
+  it('reads a fixture and writes to console', () => {
+    root = new node(17);
+    let filenode = root.from_yaml('tree3.yml');
+
+    assert.strictEqual(filenode.size(), 3);
+  });
+
+  it('reads a fixture and writes to console', () => {
+    root = new node(17);
+    let filenode = root.from_yaml('tree4.yml');
+
+    assert.strictEqual(filenode.size(), 4);
+  });
+
+  it('reads a fixture and writes to console', () => {
+    root = new node(17);
+    let filenode = root.from_yaml('tree5.yml');
+
+    assert.strictEqual(filenode.size(), 5);
+  });
+
+  it('reads a fixture and writes to console', () => {
+    root = new node(17);
+    let filenode = root.from_yaml('tree6.yml');
+
+    assert.strictEqual(filenode.size(), 6);
+  });
+
+  it('reads a fixture and writes to console', () => {
+    root = new node(17);
     let filenode = root.from_yaml('tree7.yml');
 
     assert.strictEqual(filenode.size(), 7);
+  });
+
+  it('reads a fixture and writes to console', () => {
+    root = new node(17);
+    let filenode = root.from_yaml('tree8.yml');
+
+    assert.strictEqual(filenode.size(), 8);
+  });
+
+  it('reads a fixture and writes to console', () => {
+    root = new node(17);
+    let filenode = root.from_yaml('tree9.yml');
+
+    assert.strictEqual(filenode.size(), 9);
+  });
+
+  it('reads a fixture and writes to console', () => {
+    root = new node(17);
+    let filenode = root.from_yaml('tree10.yml');
+
+    assert.strictEqual(filenode.size(), 10);
   });
 });
 
