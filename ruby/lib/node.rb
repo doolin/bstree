@@ -309,11 +309,11 @@ class Node
   end
 
   def list_keys
-    collect []
+    collect([])
   end
 
   def preorder_collect
-    collect_pre_order []
+    collect_pre_order([])
   end
 
   # TODO: this should be the same with any traverse, each should
