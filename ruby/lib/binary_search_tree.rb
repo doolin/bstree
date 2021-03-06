@@ -104,7 +104,7 @@ module BinarySearchTree
   end
 
   def list_keys
-    collect []
+    collect([])
   end
 
   # TODO: If possible, rewrite this using `dig` below. Not
