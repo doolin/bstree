@@ -37,7 +37,7 @@ class Tree
   end
 
   def empty?
-    root.nil? ? true : false
+    root.nil?
   end
 
   def set_root_to_nil
