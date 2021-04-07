@@ -2,6 +2,6 @@
 
 require 'raven'
 
-Raven.configure do |config|
+Sentry.configure do |config|
   config.dsn = ENV['BST_SENTRY']
 end
