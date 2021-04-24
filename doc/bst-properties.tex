@@ -1,0 +1,121 @@
+\section{Properties of BST}
+
+Properties of the data structure include:
+
+\begin{enumerate}
+  \item the keys are required to posess a \textit{total order}; every key must
+        be comperable to every other key.
+\end{enumerate}
+
+Properties include:
+
+\begin{itemize}
+  \item height
+  \item depth
+  \item maximum key
+  \item minimum key
+  \item size
+  \item diameter
+  \item class (full, perfect, complete, balanced, etc.)
+\end{itemize}
+
+Node properties include:
+
+\begin{itemize}
+  \item visited and unvisited
+  \item has unvisited children
+\end{itemize}
+
+\subsection{Structural uniqueness of binary search tree}
+
+Hypothesis: each different preorder traverse of a binary search
+tree corresponds to a unique binary search tree. In other words,
+every structurally unique binary search
+tree has a unique preorder traverse.
+
+I think this is true.
+
+If it is true, it provides an easy to compare binary
+search trees, just compare the result of an inorder
+traverse, or define a function which compare nodes in
+parallel during an inorder traverse of each.
+
+Keys are assumed to be unique.
+
+\subsection{Height}
+
+\subsection{Depth}
+
+\subsection{Size}
+
+\subsection{Diameter}
+
+\subsection{Class}
+
+Binary search trees may be classified according to the
+arrangement of the leaves and internal nodes.
+Binary search tree classifications include
+full, perfect, complete, balanced, unbalanced, and degenerate.
+
+First, how these classifications are defined in the literature is
+worth some discussion, as different authors define trees in slightly
+different ways. For example, Aho and Ullman define full and complete
+trees as the same~\cite[p. 257]{aho:av:1992}, whereas Cormen
+et al.~\cite[p. 1178]{cormen:th2009} distinguish between full and
+complete binary trees.
+
+The definitions which follow will be used consistently through this
+work. The reader is free, of course, to take issue and use definitions
+more to his or her preference.
+
+\begin{itemize}
+  \item Full: A rooted tree is called an m-ary tree if every internal
+    vertex has no more than m children. The tree is called a full m-ary
+    tree if every internal vertex has exactly m children. An m-ary tree
+    with m = 2 is called a binary tree.~\cite[p. 748]{rosen} Also see
+    Cormen et al.~\cite[p. 1178]{cormen:th2009}.
+
+  \item Complete: A binary tree is complete when each child of the root node,
+    left and right, is a complete subtree (Aho and Ullman). Cormen et al.\
+    define complete as all leaves having the same depth with all nodes having
+    having degree 2, that is, 2 children. This is equivalent to saying all
+    internal nodes are full~\cite[p. 1179]{cormen:th2009}).
+\end{itemize}
+
+\subsection{Maximum and minimum keys}
+
+\setcounter{sno}{0}
+
+\sno Maximum and minimum elements of binary search trees are probably the easiest
+algorithms to both understand and implement. \sno The maximum is the right-most
+node, the minimum the left-most, finding either means traversing the tree
+to the appropriate leaf, and returning that node which has no children.
+
+\sno The maximum function written in Ruby is particularly elegant,
+we take advantage of Ruby's safe navigation operator {\tt \&}:
+
+\lstset{language={Ruby}}
+\begin{lstlisting}[frame=none]
+def maximum
+  right&.maximum || self
+end
+\end{lstlisting}
+
+
+\section{Building a binary search tree}
+
+\subsection{Collisions or duplicate values}
+
+
+None the preceding references explicitly discuss collisions.
+
+\begin{itemize}
+\item The duplicate key can be added to the tree, either silently or with a warning.
+\item The duplicate key is not added to the tree, either silently or with a warning.
+
+\item In Ruby, does replacing a node in a tree leak memory, or will the deleted node
+get garbage collected? How about Python?
+
+\item How to delete in c/c++ such that memory isn't leaked? This should be easier,
+call delete after the node is orphaned.
+\end{itemize}
