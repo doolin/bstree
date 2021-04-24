@@ -20,6 +20,9 @@ defmodule Bst.Mixfile do
 
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:credo, "~>0.7", only: [:test, :dev]}]
+    [
+      {:credo, "~>0.7", only: [:test, :dev]},
+      {:yaml_elixir, "~> 2.7.0"},
+    ]
   end
 end

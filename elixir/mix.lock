@@ -1,2 +1,6 @@
-%{"bunt": {:hex, :bunt, "0.2.0", "951c6e801e8b1d2cbe58ebbd3e616a869061ddadcc4863d0a2182541acae9a38", [:mix], [], "hexpm"},
-  "credo": {:hex, :credo, "0.7.3", "9827ab04002186af1aec014a811839a06f72aaae6cd5eed3919b248c8767dbf3", [:mix], [{:bunt, "~> 0.2.0", [hex: :bunt, repo: "hexpm", optional: false]}], "hexpm"}}
+%{
+  "bunt": {:hex, :bunt, "0.2.0", "951c6e801e8b1d2cbe58ebbd3e616a869061ddadcc4863d0a2182541acae9a38", [:mix], [], "hexpm", "7af5c7e09fe1d40f76c8e4f9dd2be7cebd83909f31fee7cd0e9eadc567da8353"},
+  "credo": {:hex, :credo, "0.7.3", "9827ab04002186af1aec014a811839a06f72aaae6cd5eed3919b248c8767dbf3", [:mix], [{:bunt, "~> 0.2.0", [hex: :bunt, repo: "hexpm", optional: false]}], "hexpm", "c13121d559cb2c19251c48fca3d409285e3fc0aa2d97edb40682753b3503bd5d"},
+  "yamerl": {:hex, :yamerl, "0.8.1", "07da13ffa1d8e13948943789665c62ccd679dfa7b324a4a2ed3149df17f453a4", [:rebar3], [], "hexpm", "96cb30f9d64344fed0ef8a92e9f16f207de6c04dfff4f366752ca79f5bceb23f"},
+  "yaml_elixir": {:hex, :yaml_elixir, "2.7.0", "6f731d622a3b28769e26e634f82aa171d1d01cae0e8820ce9e93e559c83c23c8", [:mix], [{:yamerl, "~> 0.8", [hex: :yamerl, repo: "hexpm", optional: false]}], "hexpm", "f2eb39e0fb23625777f74e0c821f42f033dc4eaa5402c34beaa665944d85f3ea"},
+}
