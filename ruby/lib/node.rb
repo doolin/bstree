@@ -36,7 +36,15 @@ class Node
     @key > other.key
   end
 
-  # add a callback (monad?) for duplicate key handling
+  # For insertion, we specifically use an instantiated node,
+  # then look for the correct place to place the node in the
+  # tree. Another way to do it would be to instantiate the node
+  # at the point where the key should be inserted. The problem
+  # with that is it makes it difficult to associate a value with
+  # the key. Instantiating the node with its key, and potentially
+  # a value is easier before executing insertion.
+  #
+  # TODO: add a callback (monad?) for duplicate key handling
   def insert(node)
     node < self ? insert_left(node) : insert_right(node)
   end
@@ -147,6 +155,15 @@ class Node
   end
   # rubocop:enable Metrics/MethodLength
 
+  # a classic operation for interviews
+  def invert
+    post_order_traverse do |node|
+      tmp = node.right
+      node.right = node.left
+      node.left = tmp
+    end
+  end
+
   # TODO: refactor to use a block, then with find.
   # https://doolin.atlassian.net/browse/BST-36
   def find_with_parent(key, parent)
@@ -180,6 +197,9 @@ class Node
   def path_to_root(key, collector)
     path_to_node(key, collector).reverse
   end
+
+  # PROPERTIES below here
+  # TODO: rearrange the class into an operations section and a properties section
 
   def present?(key)
     find(key) ? true : false
