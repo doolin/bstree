@@ -3,12 +3,17 @@
 An exercise to learn more about Lua programming with my current
 favorite data structure.
 
-## TODO
+## Running the tests
 
-* (DONE) Use Tree as a container, with a separate Node element.
-* (DONE) Add
-* (DONE) Find
-* (DONE) Collect
+The code is executed via the tests, which are run with Luarocks
+`busted` tool. On MacOs, install Luarocks with homebrew:
 
-* Reduce the size of the test suite to some analytically determined
-  necessary and sufficiant size.
+- `brew install luarocks`
+
+Then install and run busted:
+
+- `luarocks install busted`
+- `busted`
+
+The size of the test suite could probably be reduced
+to some analytically determined necessary and sufficiant size.
