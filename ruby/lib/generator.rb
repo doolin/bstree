@@ -5,9 +5,12 @@ require_relative './node'
 
 class Generator
   class << self
-    def build(nodes, uuid)
-      tree = Tree.new(Node.new(nodes.shift, uuid))
-      nodes.each { |n| tree.insert(Node.new(n, uuid)) }
+    # The `build` method is used for creating various predefined trees
+    # useful for testing, a sort of fixture generator.
+    # The method assumes there is no value associated with any key.
+    def build(keys, uuid)
+      tree = Tree.new(Node.new(keys.shift, uuid))
+      keys.each { |key| tree.insert(Node.new(key, uuid)) }
       tree
     end
 
