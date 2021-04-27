@@ -160,6 +160,12 @@ class Tree
     collector
   end
 
+  def postorder_keys
+    collector = []
+    postorder_walk { |node| collector << node.key }
+    collector
+  end
+
   def search(key)
     @root.find key
   end
