@@ -1,0 +1,166 @@
+\section{AVL tree}
+
+AVL trees are a type of binary search tree which maintains height balance
+on insert operations by \textit{retracing} the insertion path of the node,
+and performing \textit{node rotation} at every node in the retrace path
+which became unbalanced on the insert. AVL trees are not that technically
+difficult to implement, but there are a few tedious details requiring
+precise attention. Some factors to consider:
+
+\begin{enumerate}
+  \item Where the retracing is implemented depends on how the tree and
+    node data structures are implemented. Because the root node may change
+    as a result of rotation, the Tree data structure will have to have a way
+    of ensuring the current root is valid.
+  \item Retracing can be done from the tree, or as part of the node capability.
+  \item Rotations ultimately decompose into two cases. The first case is moving
+    a left (right) child into its parent's position, the other case is swapping a right (left)
+    child for its parent, where both cases require ensuring all relevant pointers
+    are updated accordingly.
+\end{enumerate}
+
+We'll work our way backwards through the above list, starting with a detailed
+discussion of rotation, which is the fun part everyone wants to do anyway.
+
+\subsection{Rotation}
+
+There are plenty of references, web sites, Youtube videos and whatnot
+where AVL rotation is explained in detail. None of them are wrong, but
+most go into extraneous detail far too quickly, presenting situations
+which will be hard to visualize during implementation, and possibly
+difficult to construct for testing. It turns out, as claimed above,
+that rotations are fundamentally about parent/child repositioning
+while ensuring all the relevant pointers are updated accordingly.
+
+Ironically, it's easier to motivate rotations using 3 nodes instead
+of two nodes. The idea is putting a binary search tree back into
+balance, and by definition, and AVL tree of size 2 is balanced.
+So we need 3 nodes to see what the problem is, and how to solve it.
+
+Three nodes results in 5 different binary search trees. We may discard
+the balanced tree from our conversation immediately, leaving the other
+4 trees out of balance, by definition. Of these 4 trees, we can use
+symmetry to dispose of all the remaining trees with nodes right (or left)
+leaving two cases to consider. While both cases are ``skew'' trees
+(all the nodes have one and only one child), it's useful to note
+that Case 1 has left children only, and Case 2 has a left child then
+a right child. (Conversely, right children only, and right then
+left child). We'll call Case 1 a \textit{left chain} and Case 2 a
+\textit{left knee}.
+
+FIGURES HERE.
+
+\subsubsection{Left chain}
+
+Suppose in the left chain we have a root keyed 17, and child left
+7, then 2. For balance, we want the new root to be 7, with right 17
+and left 2.
+
+It's helpful here to distinguish between the root of the tree, and a
+some local \textit{rotation root}. In this base case, the tree root
+and the rotation root are the same node. In the general case, the
+tree root and rotation root will be different, and we're going to
+lean on our rapidly developing data structures intuition to keep the
+context straight.
+
+Continuing, the node keyed 17 is chosen as the \textit{rotation root}.
+The node 7 we'll call the \textit{pivot}. Implementing this rotation
+to balance the tree requires:
+
+\begin{enumerate}
+  \item Save the parent pointer of the rotation root (nil in this case).
+  \item Move the node 17 to 7's right child, updating 17's parent pointer.
+  \item Set 7's parent pointer to the saved value.
+\end{enumerate}
+
+\subsubsection{Left knee}
+
+In the left knee, let's have our root 17, with left 7, and 7's right
+child 11. In this case, we want 11 to be the root, with 7 as left
+child and 17 as right child. Simply moving 7 into the tree root
+position won't work, it will violate the binary search tree definition.
+And besides, we can't put 17 on 7's right, 11 is already there.
+Instead, what we do first is rotate to make a chain, then rotate
+our new chain into balance.
+
+And it turns out making a chain from knee is easy: choose the middle
+node as the rotation root, the right child as the pivot, and rotate
+counterclockwise. Now the tree looks like $7 \leftarrow 11\leftarrow 17$, and we
+already know how to balance a left chain.
+
+Above, we threw away the right side of the tree by invoking symmetry.
+By invoking symmetry again, we get the right side of the tree back,
+swapping `left' for `right' and `right' for `left.'
+
+
+\paragraph{Why the base cases are important}
+Invoking the property of the AVL tree, inserting a node triggers retracing,
+which may result in rotations to rebalance.  Given random keys, it's
+at least average behavior (I claim!) that an AVL tree is going to rebalance after
+inserting the third node. The chain and knee situations above must be handled
+correctly to proceed with general implementation of AVL tree.
+
+
+\subsection{Rotation beyond the base cases}
+
+The above is all well and good for trees of size 3, which is to say, useless.
+Child nodes are subtrees with possibly very large subtrees of their own,
+and inserting a node which travels all the way to a leaf at the bottom
+of the tree might trigger rotational adjustment all the way back to the
+root of tree. This is less of a problem than it would seem: the base
+case implementation requires one additional concept, that of a
+\textit{swing node} which changes its parent pointer from the pivot to
+the pivot's previous child position on the rotation root. While that
+seems complicated, and may not be exactly trivial, it's a relatively
+straightforward extension of the base case rotation.
+
+That is to say, our new friends chain and knee still control the structure
+of the rotation.
+
+
+\subsection{Retracing}
+
+Retracing is the operation of iterating from the inserted
+node up the tree, possibly (always?) to root, checking
+the balance at each node and rebalancing if necessary.
+Rebalancing is simply applying the correct rotations,
+either the simple right or left, or the double rotations
+as the case may be.
+
+Retracing has three challenges:
+
+\begin{enumerate}
+  \item Determining or maintaining balance factor at each parent,
+  \item distinguishing between ``chain'' and ``knee'' rotations, and
+  \item Ensuring the relationship between the rotation root, the pivot
+    and the rotation root's parent is correct.
+\end{enumerate}
+
+If the weight or ``balance factor'' is maintained at each node, it must be
+adjusted during the rebalancing process. If balance factor isn't maintained at
+each node, the height of each subtree at each node will be required, which is
+expensive.
+
+Some rotations will move the rotation root to a child position, which
+requires resetting its parent to the pivot, and ensuring that the
+pivot and the rotation root's previous parent are linked.
+
+\paragraph{Chain versus knee rotations}
+
+\subsection{Implementation design}
+
+Assuming we want to maintain an accurate node pointer for the root of the tree,
+at the highest level, retracing needs to be controlled by the same data
+structure in charge of the root node. In a node/tree situation, retracing
+belongs to the tree. Since retracing is performed bottom up from the
+inserted node, the tree data structure needs to keep a reference to
+the inserted node, which requires insertion to be controlled by the
+tree as well.
+
+One critical part for correctly implementing an AVL tree's knowledge of
+it's height balance at every node. For example, the reference implementation
+displayed on Wikipedia manages height balance by adjusting the
+\textit{balance factor} on every rotation, and during retracing. That is,
+balance factors are adjusted in two places. The reader is excused if
+he or she finds splitting the work confusing, it is confusing. If possible,
+balance factors should be updated in one place.
