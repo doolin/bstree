@@ -10,6 +10,7 @@ RSpec.describe Generator do
     expect(tree.full?).to be true
     expect(tree.balanced?).to be true
     expect(tree.postorder_keys).to eq [11]
+    expect(tree.preorder_keys).to eq [11]
     # expect(tree1.pathological??).to be false
   end
 
@@ -21,6 +22,7 @@ RSpec.describe Generator do
     expect(tree.full?).to be false
     expect(tree.balanced?).to be true
     expect(tree.postorder_keys).to eq [7, 11]
+    expect(tree.preorder_keys).to eq [11, 7]
     # expect(tree.pathological??).to be false
   end
 
@@ -32,6 +34,7 @@ RSpec.describe Generator do
     expect(tree.full?).to be true
     expect(tree.balanced?).to be true
     expect(tree.postorder_keys).to eq [7, 13, 11]
+    expect(tree.preorder_keys).to eq [11, 7, 13]
     # expect(tree.pathological??).to be false
   end
 
@@ -43,6 +46,7 @@ RSpec.describe Generator do
     expect(tree.full?).to be false
     expect(tree.balanced?).to be true
     expect(tree.postorder_keys).to eq [3, 7, 13, 11]
+    expect(tree.preorder_keys).to eq [11, 7, 3, 13]
     # expect(tree.pathological??).to be true
   end
 
@@ -54,6 +58,7 @@ RSpec.describe Generator do
     expect(tree.full?).to be false
     expect(tree.balanced?).to be true
     expect(tree.postorder_keys).to eq [3, 7, 19, 13, 11]
+    expect(tree.preorder_keys).to eq [11, 7, 3, 13, 19]
     # expect(tree.pathological??).to be true
   end
 
@@ -65,6 +70,7 @@ RSpec.describe Generator do
     expect(tree.full?).to be false
     expect(tree.balanced?).to be false
     expect(tree.postorder_keys).to eq [3, 7, 29, 19, 13, 11]
+    expect(tree.preorder_keys).to eq [11, 7, 3, 13, 19, 29]
     # expect(tree.pathological??).to be true
   end
 
@@ -76,6 +82,7 @@ RSpec.describe Generator do
     expect(tree.full?).to be false
     expect(tree.balanced?).to be false
     expect(tree.postorder_keys).to eq [5, 3, 7, 29, 19, 13, 11]
+    expect(tree.preorder_keys).to eq [11, 7, 3, 5, 13, 19, 29]
     # expect(tree.pathological??).to be true
   end
 
@@ -87,6 +94,7 @@ RSpec.describe Generator do
     expect(tree.full?).to be false
     expect(tree.balanced?).to be false
     expect(tree.postorder_keys).to eq [2, 5, 3, 7, 29, 19, 13, 11]
+    expect(tree.preorder_keys).to eq [11, 7, 3, 2, 5, 13, 19, 29]
     # expect(tree.pathological??).to be true
   end
 
@@ -98,6 +106,7 @@ RSpec.describe Generator do
     expect(tree.full?).to be false
     expect(tree.balanced?).to be false
     expect(tree.postorder_keys).to eq [2, 5, 3, 7, 17, 29, 19, 13, 11]
+    expect(tree.preorder_keys).to eq [11, 7, 3, 2, 5, 13, 19, 17, 29]
     # expect(tree.pathological??).to be true
   end
 
@@ -109,6 +118,7 @@ RSpec.describe Generator do
     expect(tree.full?).to be false # nil
     expect(tree.balanced?).to be false
     expect(tree.postorder_keys).to eq [2, 5, 3, 7, 17, 23, 29, 19, 13, 11]
+    expect(tree.preorder_keys).to eq [11, 7, 3, 2, 5, 13, 19, 17, 29, 23]
     # expect(tree.pathological??).to be true
   end
 
