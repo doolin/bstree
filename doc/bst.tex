@@ -55,23 +55,7 @@ p. 259]{aho:av:1992}).
 \input{containerizing}
 \input{avl-tree}
 \input{red-black-tree}
-
-\section{Persistence}
-
-Here are some ways to store the structure in text format:
-
-\begin{enumerate}
-\item Write to nested json. This requires writing out from the top
-down. Should be able to do this by converting to hash, then
-writing to json. Reading in is the reverse. How to convert a
-hash to a binary tree? Maybe this is where to use combinator.
-
-\item CSV: does this require top down, or can it be done by traversing?
-Does it require a parent pointer?
-
-\item Yaml: how are references handled?
-\end{enumerate}
-
+\input{persistence}
 
 \section{Summary}
 
