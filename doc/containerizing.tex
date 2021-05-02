@@ -1,0 +1,68 @@
+\section{Containerizing}
+
+\subsection{Tree/Node interaction}
+
+Trees are abstract data types. This makes trees easy to reason about.
+Implementing a tree requires dealing with a number of subtle issues.
+Since Trees are usually described in terms of the Nodes comprising
+the Tree, some thought about differentiating Trees and Nodes is in order.
+
+\subsubsection{Implicit structure}
+
+Given some class, record, structure or whatever language feature which contains
+data and supports function invocation, adding left and right pointers,
+appropriate comparators, and insert and find methods suffices to provide
+dictionary capability to the given language feature. However, trees require a
+root, and managing this root increases the complexity whatever application
+system requires the data sorted into the tree. Provision needs to be made for
+the root changing, or even being deleted.
+
+\subsubsection{Tree container}
+
+Another way to implement trees is to create a tree container which implements
+insert, search, etc. The implementation provided by the tree container could
+implement the functionality itself, or call an implementation provided by
+the node element.
+
+\subsubsection{The BST Node}
+
+By definition, each node in a binary search tree contains a left child and
+a right child, either or both of which may be nil.
+
+Some operations on binary search trees, such as {\tt delete}, require
+the node's parent as well as its children. The parent to any node can also
+be stored as a reference or pointer, or the parent can be determined at
+runtime.
+
+Storing parent pointers is easy. When inserting a node as a child, set that
+node's parent pointer to the inserting node.
+
+Determining parent pointers at runtime is not conceptually much more difficult:
+keep track of the parent at each node by passing the current node to the
+recursive calls. Two disadvantages of this include longer argument lists
+for recursive calls, and either returning both node and parent when necessary.
+For languages which do not allow multiple return values, one of the arguments
+will have to capture the state change for access by the calling method.
+In theory, this is straightforward. From an engineering standpoint, requiring
+both a return value and an argument state change violates the principle of
+least astonishment.
+
+Passing both node and parent back through the argument list is a pretty good
+case for adding the parent node directly to the Node data structure.
+
+
+\subsection{C++ templating}
+
+\subsection{C struct inclusion}
+
+\paragraph{private headers}
+
+\subsection{Ruby module inclusion}
+
+It's not difficult to encode binary search tree capability into a Ruby module.
+The module provides all the necessary instance binary search tree methods, and
+raises errors when necessary overriding has not been implemented in the
+including class.
+
+The usual caveats about instance variables referenced in modules applies,
+particularly that the including class must define the key for the tree.
