@@ -147,6 +147,110 @@ class TestTree(unittest.TestCase):
         assert tree.successor(root) == root
         assert tree.predecessor(root) == root
 
+    # TODO:
+    #   1. Move all this to its own file.
+    #   2. Parameterize the tests into smaller units
+    def test_from_yaml(self):
+        tree = Tree.from_yaml("../fixtures/tree1.yml")
+        assert tree.size() == 1
+        assert tree.height() == 0
+        assert tree.is_bst() == True
+        # assert tree.is_full() == True # BST-168
+        # assert tree.is_balanced() == True # BST-169
+        # assert tree.post_order_keys() == [11] # BST-170
+        # assert tree.pre_order_keys() == [11] # BST-171
+        # assert tree.is_degenerate() == False # BST-172
+
+        tree = Tree.from_yaml("../fixtures/tree2.yml")
+        assert tree.size() == 2
+        assert tree.height() == 1
+        assert tree.is_bst() == True
+        # assert tree.is_full() == False
+        # assert tree.is_balanced() == True
+        # assert tree.post_order_keys() == [7, 11]
+        # assert tree.pre_order_keys() == [11, 7]
+        # assert tree.is_degenerate() == False
+
+        tree = Tree.from_yaml("../fixtures/tree3.yml")
+        assert tree.size() == 3
+        assert tree.height() == 1
+        assert tree.is_bst() == True
+        # assert tree.is_full() == True
+        # assert tree.is_balanced() == True
+        # assert tree.post_order_keys() == [7, 13, 11]
+        # assert tree.pre_order_keys() == [11, 7, 13]
+        # assert tree.is_degenerate() == False
+
+        tree = Tree.from_yaml("../fixtures/tree4.yml")
+        assert tree.size() == 4
+        assert tree.height() == 2
+        assert tree.is_bst() == True
+        # assert tree.is_full() == False
+        # assert tree.is_balanced() == True
+        # assert tree.post_order_keys() == [3, 7, 13, 11]
+        # assert tree.pre_order_keys() == [11, 7, 3, 13]
+        # assert tree.is_degenerate() == False
+
+        tree = Tree.from_yaml("../fixtures/tree5.yml")
+        assert tree.size() == 5
+        assert tree.height() == 2
+        assert tree.is_bst() == True
+        # assert tree.is_full() == False
+        # assert tree.is_balanced() == True
+        # assert tree.post_order_keys() == [3, 7, 19, 13, 11]
+        # assert tree.pre_order_keys() == [11, 7, 3, 13, 19]
+        # assert tree.is_degenerate() == True
+
+        tree = Tree.from_yaml("../fixtures/tree6.yml")
+        assert tree.size() == 6
+        assert tree.height() == 3
+        assert tree.is_bst() == True
+        # assert tree.is_full() == False
+        # assert tree.is_balanced() == False
+        # assert tree.post_order_keys() == [3, 7, 29, 19, 13, 11]
+        # assert tree.pre_order_keys() == [11, 7, 3, 13, 19, 29]
+        # assert tree.is_degenerate() == True
+
+        tree = Tree.from_yaml("../fixtures/tree7.yml")
+        assert tree.size() == 7
+        assert tree.height() == 3
+        assert tree.is_bst() == True
+        # assert tree.is_full() == False
+        # assert tree.is_balanced() == False
+        # assert tree.post_order_keys() == [5, 3, 7, 29, 19, 13, 11]
+        # assert tree.pre_order_keys() == [11, 7, 3, 5, 13, 19, 29]
+        # assert tree.is_degenerate() == True
+
+        tree = Tree.from_yaml("../fixtures/tree8.yml")
+        assert tree.size() == 8
+        assert tree.height() == 3
+        assert tree.is_bst() == True
+        # assert tree.is_full() == False
+        # assert tree.is_balanced() == False
+        # assert tree.post_order_keys() == [2, 5, 3, 7, 29, 19, 13, 11]
+        # assert tree.pre_order_keys() == [11, 7, 3, 2, 5, 13, 19, 29]
+        # assert tree.is_degenerate() == True
+
+        tree = Tree.from_yaml("../fixtures/tree9.yml")
+        assert tree.size() == 9
+        assert tree.height() == 3
+        assert tree.is_bst() == True
+        # assert tree.is_full() == False
+        # assert tree.is_balanced() == False
+        # assert tree.post_order_keys() == [2, 5, 3, 7, 17, 29, 19, 13, 11]
+        # assert tree.pre_order_keys() == [11, 7, 3, 2, 5, 13, 19, 17, 29]
+        # assert tree.is_degenerate() == True
+
+        tree = Tree.from_yaml("../fixtures/tree10.yml")
+        assert tree.size() == 10
+        assert tree.height() == 4
+        assert tree.is_bst() == True
+        # assert tree.is_full() == False
+        # assert tree.is_balanced() == False
+        # assert tree.post_order_keys() == [2, 5, 3, 7, 17, 23, 29, 19, 13, 11]
+        # assert tree.pre_order_keys() == [11, 7, 3, 2, 5, 13, 19, 17, 29, 23]
+        # assert tree.is_degenerate() == True
+
     def tearDown(self):
         # dummy
         self.testing = False
