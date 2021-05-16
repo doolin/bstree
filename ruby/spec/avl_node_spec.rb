@@ -15,27 +15,38 @@ RSpec.describe AvlNode do
   let(:n19) { described_class.new 19 }
   let(:n29) { described_class.new 29 }
 
-  xcontext 'rotate' do
+  context 'rotate' do
     let(:root) { described_class.new 17 }
     let(:n11) { described_class.new 11 }
     let(:n19) { described_class.new 19 }
     let(:n23) { described_class.new 23 }
 
     describe '#rotate_left' do
-      context 'right chain' do
-        it "moves the root node to left child\nrotates counterclockwise with 3 nodes right chain" do
+      context 'right chain with 3 nodes' do
+        before do
           root.insert n19
           root.insert n23
           root.rotate_left
+        end
 
+        it 'remains the same size' do
+          expect(n19.size).to eq 3
+        end
+
+        it 'has the correct pre-ordering' do
           expected = [19, 17, 23]
           actual = n19.preorder_collect
           expect(actual).to eq expected
-          expect(n19.size).to eq 3
+        end
 
+        it 'moves the root node to left child' do
           expect(n19.left).to eq root
-          expect(n19.right).to eq n23
           expect(root.parent).to eq n19
+        end
+
+        it 'keeps the right node in place' do
+          expect(n19.right).to eq n23
+          # binding.pry
           expect(n23.parent).to eq n19
         end
       end
@@ -55,7 +66,7 @@ RSpec.describe AvlNode do
       end
 
       context 'right knee' do
-        it 'does a double' do
+        xit 'does a double' do
           root.insert n29
           root.insert n23
           n29.rotate_right
@@ -78,19 +89,29 @@ RSpec.describe AvlNode do
     end
 
     describe '#rotate_right' do
-      context 'left chain' do
-        it 'moves the root node to right child' do
+      context 'left chain with 3 nodes' do
+        before do
           root.insert n7
           root.insert n5
           root.rotate_right
+        end
 
+        it 'remains the same size' do
+          expect(n7.size).to eq 3
+        end
+
+        it 'has the correct pre-ordering' do
           expected = [7, 5, 17]
           actual = n7.preorder_collect
           expect(actual).to eq expected
-          expect(n7.size).to eq 3
+        end
 
+        it 'moves the root node to right child' do
           expect(n7.left).to eq n5
           expect(n7.right).to eq root
+        end
+
+        it 'keeps the left node in place' do
           expect(n5.parent).to eq n7
           expect(root.parent).to eq n7
         end
@@ -154,7 +175,7 @@ RSpec.describe AvlNode do
 
     describe '#rotate_right_left' do
       context 'right knee' do
-        it 'moves root node to left child' do
+        xit 'moves root node to left child' do
           root.insert n29
           root.insert n23
           root.rotate_right_left

@@ -38,6 +38,7 @@ class AvlNode < Node
 
   # def rotate_cw
   def rotate_right
+    # if parent is nil, then the parent needs to be the right node.
     parent = self.parent
 
     pivot = left
@@ -47,11 +48,12 @@ class AvlNode < Node
     pivot.right = self
     pivot.parent = parent
     parent&.right = pivot
+    pivot.left&.parent = pivot
     self.parent = pivot
   end
 
   def rotate_left
-    # binding.pry
+    # if parent is nil, then the parent needs to be the right node.
     parent = self.parent
 
     pivot = right
@@ -60,12 +62,9 @@ class AvlNode < Node
     swinger&.parent = right # <- this thing might crash
     pivot.left = self
     pivot.parent = parent
-    # What we can do here is check to see whether right
-    # or left child of parent.
-    # parent&.left = pivot
     parent&.right = pivot
+    pivot.right&.parent = pivot
     self.parent = pivot
-    pivot
   end
 
   def rotate_left_right
