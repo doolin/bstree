@@ -24,18 +24,6 @@ class AvlNode < Node
     # node may have to change to ensure balance.
   end
 
-  def insert(node, _parent = nil)
-    node < self ? insert_left(node, self) : insert_right(node, self)
-  end
-
-  def insert_left(node, _parent)
-    @left.nil? ? @left = node : @left.insert(node, self)
-  end
-
-  def insert_right(node, _parent)
-    @right.nil? ? @right = node : @right.insert(node, self)
-  end
-
   # def rotate_cw
   def rotate_right
     # if parent is nil, then the parent needs to be the right node.
@@ -62,7 +50,7 @@ class AvlNode < Node
     swinger&.parent = right # <- this thing might crash
     pivot.left = self
     pivot.parent = parent
-    parent&.right = pivot
+    parent&.left = pivot
     pivot.right&.parent = pivot
     self.parent = pivot
   end

@@ -66,7 +66,7 @@ RSpec.describe AvlNode do
       end
 
       context 'right knee' do
-        xit 'does a double' do
+        it 'does a double' do
           root.insert n29
           root.insert n23
           n29.rotate_right
@@ -136,28 +136,40 @@ RSpec.describe AvlNode do
       end
 
       context 'left knee' do
-        xit 'moves the root node to right child' do
+        before do
           root.insert n7
           root.insert n11
           n7.rotate_left
-          expect(n11.left).to eq n7
-          expect(root.left).to eq n11
+        end
 
+        it 'remains the same size' do
+          expect(root.size).to eq 3
+        end
+
+        it 'the "foot" (key=11) node has root parent after rotation' do
+          expect(root.left).to eq n11
+          expect(n11.parent).to eq root
+        end
+
+        it 'foot node left is knee node (key=7)' do
+          expect(n11.left).to eq n7
+          expect(n7.parent).to eq n11
+        end
+
+        it 'rotates the root node (key=17) to right child' do
           root.rotate_right
+          expect(n11.size).to eq 3
+
           actual = n11.preorder_collect
           expected = [11, 7, 17]
           expect(actual).to eq expected
-          expect(n7.parent).to eq n11
-          expect(n11.left).to eq n7
-          expect(root.parent).to eq n11
-          expect(n11.right).to eq root
         end
       end
     end
 
     describe '#rotate_left_right' do
       context 'left knee' do
-        xit 'moves the root node to right child' do
+        it 'moves the root node to right child' do
           root.insert n7
           root.insert n11
           root.rotate_left_right
@@ -175,7 +187,7 @@ RSpec.describe AvlNode do
 
     describe '#rotate_right_left' do
       context 'right knee' do
-        xit 'moves root node to left child' do
+        it 'moves root node to left child' do
           root.insert n29
           root.insert n23
           root.rotate_right_left
