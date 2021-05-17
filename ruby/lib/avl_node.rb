@@ -24,15 +24,13 @@ class AvlNode < Node
     # node may have to change to ensure balance.
   end
 
-  # def rotate_cw
   def rotate_right
-    # if parent is nil, then the parent needs to be the right node.
     parent = self.parent
 
     pivot = left
     swinger = pivot.right
     self.left = swinger
-    swinger&.parent = left # <- this thing might crash
+    swinger&.parent = left
     pivot.right = self
     pivot.parent = parent
     parent&.right = pivot
@@ -41,13 +39,12 @@ class AvlNode < Node
   end
 
   def rotate_left
-    # if parent is nil, then the parent needs to be the right node.
     parent = self.parent
 
     pivot = right
     swinger = pivot.left
     self.right = swinger
-    swinger&.parent = right # <- this thing might crash
+    swinger&.parent = right
     pivot.left = self
     pivot.parent = parent
     parent&.left = pivot
