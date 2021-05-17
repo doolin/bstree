@@ -160,6 +160,12 @@ class Tree
     collector
   end
 
+  def preorder_balance_factors
+    collector = []
+    preorder_walk { |node| collector << node.send(:balance_factor) }
+    collector
+  end
+
   def postorder_keys
     collector = []
     postorder_walk { |node| collector << node.key }
