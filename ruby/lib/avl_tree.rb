@@ -23,26 +23,26 @@ class AvlTree < Tree
       node.balance_factor += 1
     end
     pivot = rotation_root.rotate_left
-    # ^^^^ This is correct for the rotations on a right chain.
     rotation_root.balance_factor -= 1
     pivot.balance_factor -= 1
     @root = pivot if @root == rotation_root
     pivot.parent
   end
-  # rubocop:enable  Metrics/MethodLength
 
-  def rotate_right(node, parent)
+  def rotate_right(node, rotation_root)
     if node.balance_factor.positive?
       node.rotate_left
       node.balance_factor -= 1
-      node = parent.left
+      node = rotation_root.left
       node.balance_factor -= 1
     end
-    parent.rotate_right
-    parent.balance_factor += 1
-    @root = node if @root == parent
-    node
+    pivot = rotation_root.rotate_right
+    rotation_root.balance_factor += 1
+    pivot.balance_factor += 1
+    @root = pivot if @root == rotation_root
+    pivot.parent
   end
+  # rubocop:enable  Metrics/MethodLength
 
   def balance_right(node)
     parent = node.parent
@@ -67,7 +67,7 @@ class AvlTree < Tree
   end
 
   def retrace(node)
-    # binding.pry if node.key == 6
+    # binding.pry # if node.key == 6
     parent = node.parent
     until parent.nil?
       # we need get the current node here, because the node which

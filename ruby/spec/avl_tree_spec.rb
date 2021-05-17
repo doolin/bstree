@@ -70,57 +70,116 @@ RSpec.describe AvlTree do
   describe '#retrace' do
     let(:root) { AvlNode.new 17 }
 
-    context 'left' do
-      it 'finds left child' do
-        tree = AvlTree.new root
+    context 'left child' do
+      let(:tree) { AvlTree.new root }
+
+      it 'root node has balance factor 0' do
         expect(tree.root.balance_factor).to eq 0
-        tree.root.left = n7
-        n7.parent = tree.root
-        tree.retrace(n7)
-        expect(tree.root.balance_factor).to eq(-1)
       end
 
-      xit 'finds left left child' do
-        tree = AvlTree.new root
-        expect(tree.root.balance_factor).to eq 0
-        tree.root.left = n7
-        n7.parent = tree.root
-        tree.retrace(n7)
-        expect(tree.root.balance_factor).to eq(-1)
-        n7.left = n2
-        n2.parent = n7
-        tree.retrace(n2)
+      #         17             7
+      #        /      =>     /   \
+      #       7             2    17
+      #      /
+      #     2
+      context 'with left child' do
+        before do
+          tree.root.left = n7
+          n7.parent = tree.root
+          tree.retrace(n7)
+        end
 
-        expect(tree.root).to eq n7
-        expect(root.parent).to eq n7
-        expect(n7.right).to eq root
-        expect(tree.root.left).to eq n2
-        expect(n2.parent).to eq tree.root
+        it 'finds left child balance factor' do
+          expect(tree.root.balance_factor).to eq(-1)
+        end
 
-        expect(tree.root.balance_factor).to eq(0)
-        expect(n7.balance_factor).to eq 0
-        expect(root.balance_factor).to eq 0
+        context 'structure and balance after second left insertion' do
+          before do
+            n7.left = n2
+            n2.parent = n7
+            tree.retrace(n2)
+          end
+
+          it 'correctly lists preorder keys' do
+            expect(tree.preorder_keys).to eq [7, 2, 17]
+          end
+
+          it 'correctly structures parent-child links' do
+            expect(tree.root).to eq n7
+            expect(tree.root.parent).to be nil
+
+            expect(root.parent).to eq n7
+            expect(n7.right).to eq root
+
+            expect(tree.root.left).to eq n2
+            expect(n2.parent).to eq tree.root
+          end
+
+          it 'sets tree root balance factor to 0' do
+            expect(tree.root.balance_factor).to eq(0)
+          end
+
+          it 'sets left child balance factor to 0' do
+            expect(tree.root.left.balance_factor).to eq 0
+          end
+
+          it 'sets right node balance factor to 0' do
+            expect(tree.root.right.balance_factor).to eq 0
+          end
+        end
       end
 
-      xit 'rotates on left right child' do
-        tree = AvlTree.new root
-        tree.root.left = n2
-        n2.parent = tree.root
-        tree.retrace(n2)
-        expect(tree.root.balance_factor).to eq(-1)
-        n2.right = n7
-        n7.parent = n2
-        tree.retrace(n7)
+      #         17             7
+      #        /      =>     /   \
+      #       2             2    17
+      #        \
+      #         7
+      context 'with right child' do
+        before do
+          tree.root.left = n2
+          n2.parent = tree.root
+          tree.retrace(n2)
+        end
 
-        expect(tree.root).to eq n7
-        expect(tree.root.right).to eq root
-        expect(root.parent).to eq n7
-        expect(tree.root.left).to eq n2
-        expect(n2.parent).to eq tree.root
+        it 'finds left child balance factor' do
+          expect(tree.root.balance_factor).to eq(-1)
+        end
 
-        expect(tree.root.balance_factor).to eq 0
-        expect(root.balance_factor).to eq 0
-        expect(n2.balance_factor).to eq 0
+        it 'correct preorders keys' do
+          expect(tree.preorder_keys).to eq [17, 2]
+        end
+
+        context 'structure and balance after second left insertion' do
+          before do
+            n2.right = n7
+            n7.parent = n2
+            tree.retrace(n7)
+          end
+
+          it 'correctly lists preorder keys' do
+            expect(tree.preorder_keys).to eq [7, 2, 17]
+          end
+
+          it 'correctly structures parent-child links' do
+            expect(tree.root).to eq n7
+            expect(tree.root.right).to eq root
+            expect(root.parent).to eq n7
+            expect(tree.root.left).to eq n2
+            expect(n2.parent).to eq tree.root
+          end
+
+          it 'sets tree root balance factor to 0' do
+            expect(tree.root.balance_factor).to eq(0)
+          end
+
+          it 'sets left child balance factor to 0' do
+            expect(tree.root.left.balance_factor).to eq 0
+          end
+
+          it 'sets right node balance factor to 0' do
+            expect(tree.root.right.balance_factor).to eq 0
+          end
+        end
       end
     end
 
@@ -184,7 +243,7 @@ RSpec.describe AvlTree do
   # Yes, these tests are fragile, they're supposed to break if the logic
   # in the called methods is tampered with. When the called methods need
   # to change, it's perfectly fine to simply delete these tests.
-  xcontext 'helper method testing to guard against regression' do
+  context 'helper method testing to guard against regression' do
     describe '#balance' do
       it 'balances right' do
         tree = AvlTree.new root
