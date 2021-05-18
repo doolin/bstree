@@ -29,18 +29,25 @@ RSpec.describe AvlTree do
     example '1' do
       tree = build_tree(1)
       expect(tree.preorder_keys).to eq [1]
+      expect(tree.preorder_balance_factors).to eq [0]
+      expect(tree.bst?).to be true
+      expect(tree.balanced?).to be true
     end
 
     example '2' do
       tree = build_tree(2)
+      expect(tree.preorder_balance_factors).to eq [1, 0]
       expect(tree.root.balance_factor).to eq 1
       expect(tree.root.right.balance_factor).to eq 0
       expect(tree.preorder_keys).to eq [1, 2]
+      expect(tree.bst?).to be true
+      expect(tree.balanced?).to be true
     end
 
     example '3' do
       tree = build_tree(3)
 
+      expect(tree.preorder_balance_factors).to eq [0, 0, 0]
       expect(tree.root.balance_factor).to eq 0
       expect(tree.root.left.balance_factor).to eq 0
       expect(tree.root.right.balance_factor).to eq 0
@@ -50,37 +57,32 @@ RSpec.describe AvlTree do
       expect(tree.root.right.key).to eq 3
 
       expect(tree.preorder_keys).to eq [2, 1, 3]
-    end
-  end
 
-  context 'counting up' do
-    it 'keys 1-4 are balanced correctly' do
-      tree = AvlTree.new n1
-      tree.insert n2
-      tree.insert n3
-      tree.insert n4
-      # TODO: write a preorder traverse which collects balance_factor from each node.
+      expect(tree.bst?).to be true
+      expect(tree.balanced?).to be true
+    end
+
+    example '4' do
+      tree = build_tree(4)
+      expect(tree.preorder_keys).to eq [2, 1, 3, 4]
+
+      expect(tree.preorder_balance_factors).to eq [1, 0, 1, 0]
       expect(tree.root.balance_factor).to eq 1
+      expect(tree.root.left.balance_factor).to eq 0
       expect(tree.root.right.balance_factor).to eq 1
       expect(tree.root.right.right.balance_factor).to eq 0
-      expect(n3.balance_factor).to eq 1
 
-      expect(tree.root.left.balance_factor).to eq 0
+      expect(tree.root.key).to be 2
+      expect(tree.root.left.key).to be 1
+      expect(tree.root.right.key).to be 3
+      expect(tree.root.right.right.key).to be 4
 
-      expect(tree.root.left).to eq n1
-      expect(tree.root.right).to eq n3
-      expect(n3.right).to eq n4
-      expect(tree.preorder_keys).to eq [2, 1, 3, 4]
+      expect(tree.bst?).to be true
+      expect(tree.balanced?).to be true
     end
 
-    xit 'inserting key 5' do
-      tree = AvlTree.new n1
-      tree.insert n2
-      tree.insert n3
-      tree.insert n4
-      expect(tree.preorder_keys).to eq [2, 1, 3, 4]
-
-      tree.insert n5
+    xexample '5' do
+      tree = build_tree(5)
       expect(tree.root).to eq n2
 
       # TODO: this is where I go next, from a balanced 2, 1, 3, 4 tree
@@ -94,6 +96,8 @@ RSpec.describe AvlTree do
       # Also, I should manually write out the the current result before
       # attempting to fix it.
       expect(tree.preorder_keys).to eq [2, 1, 4, 3, 5]
+      expect(tree.bst?).to be true
+      expect(tree.balanced?).to be true
       # expect(tree.root.balance_factor).to eq 1
       # expect(tree.root.left).to eq n1
       # expect(tree.root.right).to eq n4
@@ -102,8 +106,10 @@ RSpec.describe AvlTree do
       # expect(n4.right).to eq n5
       # expect(n4.left).to eq n3
     end
+  end
 
-    xit 'counting past 5' do
+  xcontext 'counting up' do
+    xexample '6' do
       # tree.insert n6
       # expected = [4, 2, 1, 3, 5, 6]
       # expect(tree.preorder_keys).to eq expected
@@ -115,7 +121,9 @@ RSpec.describe AvlTree do
       # expect(n4.balance_factor).to eq 0 # root!
       # expect(n5.balance_factor).to eq 1
       # expect(n6.balance_factor).to eq 0
+    end
 
+    xit '7 and more' do
       # "perfect" tree
       # tree.insert n7
       # expect(tree.height).to eq 2

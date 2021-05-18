@@ -16,6 +16,7 @@ class AvlTree < Tree
 
   # rubocop:disable  Metrics/MethodLength
   def rotate_left(node, rotation_root)
+    # puts "rotate_left balance_factor: #{node.balance_factor}"
     if node.balance_factor.negative?
       node.rotate_right
       node.balance_factor += 1
@@ -30,6 +31,7 @@ class AvlTree < Tree
   end
 
   def rotate_right(node, rotation_root)
+    # puts "rotate_right balance_factor: #{node.balance_factor}"
     if node.balance_factor.positive?
       node.rotate_left
       node.balance_factor -= 1

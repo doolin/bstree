@@ -8,7 +8,7 @@ RSpec.describe AvlTree do
   let(:n7) { AvlNode.new 7 }
   let(:n2) { AvlNode.new 2 }
 
-  describe 'balance_left' do
+  describe '#balance_left' do
     it 'sets root balance to -1 when single left child' do
       tree = described_class.new root
       root.left = n7
@@ -113,6 +113,11 @@ RSpec.describe AvlTree do
 
             expect(tree.root.left).to eq n2
             expect(n2.parent).to eq tree.root
+          end
+
+          it 'sets balance factors' do
+            expected = [0, 0, 0]
+            expect(tree.preorder_balance_factors).to eq expected
           end
 
           it 'sets tree root balance factor to 0' do
