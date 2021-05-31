@@ -337,6 +337,142 @@ RSpec.describe Tree do
 
           expect(saved.root.uuid).to eq tree.root.uuid
         end
+
+        context 'builds and verifies properties of yaml' do
+          let(:yaml_dir) { '../fixtures' }
+
+          it 'tree1' do
+            tree = Tree.from_yaml_file("#{yaml_dir}/tree1.yml")
+            expect(tree.size).to eq 1
+            expect(tree.height).to eq 0
+            expect(tree.bst?).to be true
+            expect(tree.full?).to be true
+            expect(tree.balanced?).to be true
+            expect(tree.postorder_keys).to eq [11]
+            expect(tree.preorder_keys).to eq [11]
+            # expect(tree1.pathological??).to be false
+          end
+
+          it 'tree2' do
+            tree = Tree.from_yaml_file("#{yaml_dir}/tree2.yml")
+            # TODO: BST-162 resolve the Tree.size conundrum. Tree.size is an attribute
+            # incremented on insertion, but the yaml reading defers insertion to Node,
+            # hence the Tree.size attribute is never incremented.
+            # expect(tree.size).to eq 2
+            expect(tree.root.size).to eq 2
+            expect(tree.height).to eq 1
+            expect(tree.bst?).to be true
+            expect(tree.full?).to be false
+            expect(tree.balanced?).to be true
+            expect(tree.postorder_keys).to eq [7, 11]
+            expect(tree.preorder_keys).to eq [11, 7]
+            # expect(tree.pathological??).to be false
+          end
+
+          it 'tree3' do
+            tree = Tree.from_yaml_file("#{yaml_dir}/tree3.yml")
+            # expect(tree.size).to eq 3
+            expect(tree.root.size).to eq 3
+            expect(tree.height).to eq 1
+            expect(tree.bst?).to be true
+            expect(tree.full?).to be true
+            expect(tree.balanced?).to be true
+            expect(tree.postorder_keys).to eq [7, 13, 11]
+            expect(tree.preorder_keys).to eq [11, 7, 13]
+            # expect(tree.pathological??).to be false
+          end
+
+          it 'tree4' do
+            tree = Tree.from_yaml_file("#{yaml_dir}/tree4.yml")
+            # expect(tree.size).to eq 4
+            expect(tree.root.size).to eq 4
+            expect(tree.height).to eq 2
+            expect(tree.bst?).to be true
+            expect(tree.full?).to be false
+            expect(tree.balanced?).to be true
+            expect(tree.postorder_keys).to eq [3, 7, 13, 11]
+            expect(tree.preorder_keys).to eq [11, 7, 3, 13]
+            # expect(tree.pathological??).to be true
+          end
+
+          it 'tree5' do
+            tree = Tree.from_yaml_file("#{yaml_dir}/tree5.yml")
+            # expect(tree.size).to eq 5
+            expect(tree.root.size).to eq 5
+            expect(tree.height).to eq 2
+            expect(tree.bst?).to be true
+            expect(tree.full?).to be false
+            expect(tree.balanced?).to be true
+            expect(tree.postorder_keys).to eq [3, 7, 19, 13, 11]
+            expect(tree.preorder_keys).to eq [11, 7, 3, 13, 19]
+            # expect(tree.pathological??).to be true
+          end
+
+          it 'tree6' do
+            tree = Tree.from_yaml_file("#{yaml_dir}/tree6.yml")
+            # expect(tree.size).to eq 6
+            expect(tree.root.size).to eq 6
+            expect(tree.height).to eq 3
+            expect(tree.bst?).to be true
+            expect(tree.full?).to be false
+            expect(tree.balanced?).to be false
+            expect(tree.postorder_keys).to eq [3, 7, 29, 19, 13, 11]
+            expect(tree.preorder_keys).to eq [11, 7, 3, 13, 19, 29]
+            # expect(tree.pathological??).to be true
+          end
+
+          it 'tree7' do
+            tree = Tree.from_yaml_file("#{yaml_dir}/tree7.yml")
+            # expect(tree.size).to eq 7
+            expect(tree.root.size).to eq 7
+            expect(tree.height).to eq 3
+            expect(tree.bst?).to be true
+            expect(tree.full?).to be false
+            expect(tree.balanced?).to be false
+            expect(tree.postorder_keys).to eq [5, 3, 7, 29, 19, 13, 11]
+            expect(tree.preorder_keys).to eq [11, 7, 3, 5, 13, 19, 29]
+            # expect(tree.pathological??).to be true
+          end
+
+          it 'tree8' do
+            tree = Tree.from_yaml_file("#{yaml_dir}/tree8.yml")
+            # expect(tree.size).to eq 8
+            expect(tree.root.size).to eq 8
+            expect(tree.height).to eq 3
+            expect(tree.bst?).to be true
+            expect(tree.full?).to be false
+            expect(tree.balanced?).to be false
+            expect(tree.postorder_keys).to eq [2, 5, 3, 7, 29, 19, 13, 11]
+            expect(tree.preorder_keys).to eq [11, 7, 3, 2, 5, 13, 19, 29]
+            # expect(tree.pathological??).to be true
+          end
+
+          it 'tree9' do
+            tree = Tree.from_yaml_file("#{yaml_dir}/tree9.yml")
+            # expect(tree.size).to eq 9
+            expect(tree.root.size).to eq 9
+            expect(tree.height).to eq 3
+            expect(tree.bst?).to be true
+            expect(tree.full?).to be false
+            expect(tree.balanced?).to be false
+            expect(tree.postorder_keys).to eq [2, 5, 3, 7, 17, 29, 19, 13, 11]
+            expect(tree.preorder_keys).to eq [11, 7, 3, 2, 5, 13, 19, 17, 29]
+            # expect(tree.pathological??).to be true
+          end
+
+          it 'tree10' do
+            tree = Tree.from_yaml_file("#{yaml_dir}/tree10.yml")
+            # expect(tree.size).to eq 10
+            expect(tree.root.size).to eq 10
+            expect(tree.height).to eq 4
+            expect(tree.bst?).to be true
+            expect(tree.full?).to be false # nil
+            expect(tree.balanced?).to be false
+            expect(tree.postorder_keys).to eq [2, 5, 3, 7, 17, 23, 29, 19, 13, 11]
+            expect(tree.preorder_keys).to eq [11, 7, 3, 2, 5, 13, 19, 17, 29, 23]
+            # expect(tree.pathological??).to be true
+          end
+        end
       end
     end
 

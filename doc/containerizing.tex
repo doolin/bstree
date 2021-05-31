@@ -7,7 +7,45 @@ Implementing a tree requires dealing with a number of subtle issues.
 Since Trees are usually described in terms of the Nodes comprising
 the Tree, some thought about differentiating Trees and Nodes is in order.
 
-\subsubsection{Implicit structure}
+\subsection{Example: size of tree}
+
+The size of a tree is the count of the nodes comprising the tree. There are at least
+two ways to determine tree:
+
+\begin{enumerate}
+  \item increment and decrement the size of the tree on every insert and delete,
+  respectively. Given a Node class and a Tree class, this attribute would reside
+  in the Tree class. This method has the benefit of an attribute lookup whenever
+  the size is desired. Node insertion will also have to be controlled by the Tree
+  class in order to keep accurate count.
+  \item traverse the tree whenever the size of the tree is desired, counting nodes.
+  This traverse could be controlled from either the Tree or the Node. The code here is
+  O(n), with O(log n) stack depth.
+\end{enumerate}
+
+Which to choose depends on the problem being solved. For example, if the rank of
+subtrees is desired, it's probably easier to compute this by traversing nodes.
+
+For the current implementation (as of when this was written), the problem is that
+Tree.size is a counter which is incremented on node insertion, and decremented on
+node deletion.
+
+But Node.size counts the number of nodes by traversing the tree.
+
+The problem arises when Tree defers insertion to Node, for example,
+reading from a configuration file such as json or yaml.
+
+Possible approaches for resolving include:
+
+\begin{enumerate}
+  \item Duplicate the recursive code in Node.
+  \item Add an attribute in Node which tracks size (rank?) of subtree at every insertion or deletion, or
+  \item Defer all Tree.size computation to Node and traverse every time. That is, remove the size attr from Tree.
+\end{enumerate}
+
+What would be interesting is finding a way to readably demonstrate each of these in the same code base.
+
+\subsection{Implicit structure}
 
 Given some class, record, structure or whatever language feature which contains
 data and supports function invocation, adding left and right pointers,
