@@ -221,7 +221,6 @@ class Tree
     File.open(filename, 'w') { |file| file.write(to_yml) }
   end
 
-  # TODO: BST-44 finish up here
   def self.from_yaml_file(filename)
     require 'yaml'
     hashed = YAML.safe_load(File.read(filename))
