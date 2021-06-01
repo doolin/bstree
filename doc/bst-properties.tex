@@ -4,8 +4,24 @@ Properties of the data structure include:
 
 \begin{enumerate}
   \item the keys are required to posess a \textit{total order}; every key must
-        be comperable to every other key.
+        be comparable to every other key.
 \end{enumerate}
+
+The keys in a BST are generally assumed to be unique, hence little guidance on
+implementation which may require handling keys which are not unique. Unique keys
+can be handled in two ways:
+
+\begin{enumerate}
+  \item reject the node with the duplicate key with error (or whatever);
+  \item replace the existing node with new node.
+\end{enumerate}
+
+For an implementation where nodes are externally created, then inserted,
+the second case might allow for updating the value associated with the existing
+node with the value of the incoming node containing the duplicate key.
+
+Non-unique keys would need to be managed with some sort of data structure at
+each node. Could be interesting to implement.
 
 Properties include:
 
