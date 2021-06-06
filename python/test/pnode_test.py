@@ -4,11 +4,12 @@
 
 import unittest
 import sys
-sys.path.append('../lib')
+
+sys.path.append("../lib")
 from pnode import *
 
-class TestPNode(unittest.TestCase):
 
+class TestPNode(unittest.TestCase):
     def setUp(self):
         self.testing = True
 
@@ -18,5 +19,6 @@ class TestPNode(unittest.TestCase):
         assert node.right is None
         assert node.parent is None
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

@@ -5,14 +5,15 @@
 import unittest
 import sys
 import os
+
 dir = os.path.dirname(__file__)
-libpath = os.path.join(dir, '..', 'lib')
+libpath = os.path.join(dir, "..", "lib")
 sys.path.append(libpath)
 
 from node import *
 
-class TestNode(unittest.TestCase):
 
+class TestNode(unittest.TestCase):
     def setUp(self):
         # dummy
         self.testing = True
@@ -52,7 +53,6 @@ class TestNode(unittest.TestCase):
     def list_keys(self):
         root = Node(17)
         assert root.list_keys() == [17]
-
 
     def test_insert(self):
         node = Node(15)
@@ -241,5 +241,6 @@ class TestNode(unittest.TestCase):
     def tearDown(self):
         self.testing = False
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
