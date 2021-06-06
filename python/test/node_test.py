@@ -238,6 +238,58 @@ class TestNode(unittest.TestCase):
         assert root.predecessor(n3) == n2
         assert n2.predecessor(n2) == n2
 
+    # pipenv run pytest test/node_test.py -k test_from_dict -vvrP
+    def test_from_dict(self):
+        tree = None
+        result = Node.from_dict(tree)
+        assert result is None
+
+        tree = {}
+        result = Node.from_dict(tree)
+        assert result is None
+
+        tree = {"key": 11, "uuid": "uuid", "left": None, "right": None}
+        result = Node.from_dict(tree)
+        assert result.key == 11
+
+        tree = {
+            "key": 11,
+            "uuid": "uuid",
+            "left": {"key": 7, "left": None, "right": None, "uuid": "uuid"},
+            "right": None,
+        }
+        result = Node.from_dict(tree)
+        assert result.key == 11
+        assert result.left.key == 7
+
+        tree = {
+            "key": 11,
+            "uuid": "uuid",
+            "left": {"key": 7, "left": None, "right": None, "uuid": "uuid"},
+            "right": {"key": 13, "left": None, "right": None, "uuid": "uuid"},
+        }
+        result = Node.from_dict(tree)
+        assert result.key == 11
+        assert result.left.key == 7
+        assert result.right.key == 13
+
+        tree = {
+            "key": 11,
+            "uuid": "uuid",
+            "left": {
+                "key": 7,
+                "left": {"key": 3, "left": None, "right": None, "uuid": "uuid"},
+                "right": None,
+                "uuid": "uuid",
+            },
+            "right": {"key": 13, "left": None, "right": None, "uuid": "uuid"},
+        }
+        result = Node.from_dict(tree)
+        assert result.key == 11
+        assert result.left.key == 7
+        assert result.left.left.key == 3
+        assert result.right.key == 13
+
     def tearDown(self):
         self.testing = False
 

@@ -1,3 +1,7 @@
+import pdb
+from typing import Type
+
+
 class Node(object):
     def __init__(self, key):
         self.key = key
@@ -225,3 +229,46 @@ class Node(object):
             return self
         else:
             return self.left.minimum()
+
+    @classmethod
+    def from_dict(cls, tree_dict) -> Type["Node"]:
+        """
+        Build a (sub)tree recursively from a dict.
+
+        The recursion proceeds in pre-order traverse, as each
+        node will have a key, but may not have any children. This
+        function will filter out unecessary keys in the dict.
+
+        Note: there are no checks for dict correctness, the binary
+        search tree structure is assumed to be correct within the dict.
+
+        TODO:
+            1. Ensure type hinting for the return value is correct.
+            2. Add type hinting to the tree_dict argument.
+            3. Improve the structure of the testing.
+            4. Consider moving this to its own file or function.
+
+        Parameters:
+            cls: per @classmethod convention
+            tree_dict: a correctly structured binary search tree
+
+        Returns:
+            Node: at the conclusion of the recursion, the returned node
+            will represent the root of the tree as defined by the dict
+            which was passed as an argument.
+        """
+        if tree_dict is None:
+            return None
+
+        if not tree_dict:
+            return None
+
+        node = Node(tree_dict["key"])
+
+        if tree_dict["left"] is not None:
+            node.left = cls.from_dict(tree_dict["left"])
+
+        if tree_dict["right"] is not None:
+            node.right = cls.from_dict(tree_dict["right"])
+
+        return node
