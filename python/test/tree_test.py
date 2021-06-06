@@ -2,12 +2,13 @@
 
 import unittest
 import sys
-sys.path.append('../lib')
+
+sys.path.append("../lib")
 from tree import *
 from node import *
 
-class TestTree(unittest.TestCase):
 
+class TestTree(unittest.TestCase):
     def setUp(self):
         self.testing = True
 
@@ -150,5 +151,6 @@ class TestTree(unittest.TestCase):
         # dummy
         self.testing = False
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()

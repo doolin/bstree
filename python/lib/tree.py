@@ -1,8 +1,8 @@
 import json
 from node import *
 
-class Tree(object):
 
+class Tree(object):
     def __init__(self, node):
         self.root = node
 
@@ -82,7 +82,6 @@ class Tree(object):
             y.left = z.left
             y.left.parent = y
 
-
     # Refactored and renamed from CLR. The CLR code is a little
     # difficult to follow as it has a lot of conditional statements
     # and single letter temporary nodes (x, y, z).
@@ -122,7 +121,6 @@ class Tree(object):
             self.root = x
 
         return node_to_delete
-
 
     # algorithm originally taken from CLR p. 253
     # parent pointers are part of CLR's definition of

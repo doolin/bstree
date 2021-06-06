@@ -6,12 +6,13 @@ import pdb
 
 import unittest
 import sys
+
 sys.path.append("../lib")
 from tree import *
 from node import *
 
-class TestTreeDelete(unittest.TestCase):
 
+class TestTreeDelete(unittest.TestCase):
     def setUp(self):
         self.testing = True
 
@@ -141,7 +142,6 @@ class TestTreeDelete(unittest.TestCase):
         assert tree.is_bst() is True
         assert tree.list_keys() == [5, 17]
 
-
     def test_delete_minimum(self):
         root = Node(17)
         tree = Tree(root)
@@ -249,7 +249,6 @@ class TestTreeDelete(unittest.TestCase):
         assert tree.size() == 9
         assert tree.is_bst() is True
         assert tree.list_keys() == [2, 3, 5, 7, 11, 13, 17, 19, 29]
-
 
     def test_delete_left_internal(self):
         root = Node(17)
@@ -359,5 +358,5 @@ class TestTreeDelete(unittest.TestCase):
         self.testing = False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

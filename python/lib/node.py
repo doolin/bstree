@@ -96,7 +96,6 @@ class Node(object):
             if self.right is not None:
                 return self.right.search_with_parent(key, self)
 
-
     def is_present(self, key):
         if self.key == key:
             return True
@@ -118,6 +117,7 @@ class Node(object):
                 gs = self.right.compute_size()
                 size = gs(size)
             return size
+
         return get_size
 
     def size(self):
@@ -141,7 +141,6 @@ class Node(object):
         else:
             if self.right is not None:
                 return self.right.get_successor(node, self, successor)
-
 
     def successor(self, node):
         return self.get_successor(node, self, node)
@@ -200,7 +199,7 @@ class Node(object):
             x = y.right
 
         if x is not None:
-            x.p = y.p # p is link to parent node
+            x.p = y.p  # p is link to parent node
 
         if y.p is None:
             T.root = x
