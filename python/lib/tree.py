@@ -1,5 +1,8 @@
 import json
+import pdb
 from node import *
+import yaml
+from yaml.loader import SafeLoader
 
 
 class Tree(object):
@@ -157,3 +160,11 @@ class Tree(object):
     def to_json(self):
         return True
         # print json.dumps(['foo', {'bar': ('baz', None, 1.0, 2)}])
+
+    @classmethod
+    def from_yaml(self, filename) -> dict:
+        # pdb.set_trace()
+        with open(filename) as f:
+            data = yaml.load(f, Loader=SafeLoader)
+            # print(data)
+            return Tree(Node.from_dict(data))
