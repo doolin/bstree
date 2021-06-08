@@ -7,7 +7,27 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Set it all up
+  - name: Set up Python
+    dependencies: []
+    task:
+      env_vars:
+        - name: PIPENV_VENV_IN_PROJECT
+          value: 'true'
+      prologue:
+        commands:
+          - checkout
+          - cd python
+          - sudo pip3 install pipenv
+      jobs:
+        - name: python set up
+          commands:
+            - cache restore pipenv-$SEMAPHORE_GIT_BRANCH-$(checksum Pipfile.lock),pipenv-$SEMAPHORE_GIT_BRANCH,pipenv-master
+            # --deploy also checks python version requirements
+            - pipenv install --dev --deploy
+      epilogue:
+        commands:
+          - cache store pipenv-$SEMAPHORE_GIT_BRANCH-$(checksum Pipfile.lock) .venv
+  - name: Set up Ruby
     dependencies: []
     task:
       prologue:
@@ -38,7 +58,7 @@ blocks:
           commands:
             - cargo test
   - name: rspec
-    dependencies: ['Set it all up']
+    dependencies: ['Set up Ruby']
     task:
       prologue:
         commands:
@@ -51,8 +71,8 @@ blocks:
             - sem-version ruby 2.7.2
             - bundle config set path 'vendor/bundle'
             - bundle exec rspec
-  - name: Code quality
-    dependencies: ['Set it all up']
+  - name: Ruby code quality
+    dependencies: ['Set up Ruby']
     task:
       prologue:
         commands:
@@ -75,3 +95,20 @@ blocks:
             - sem-version ruby 2.7.2
             - bundle config set path 'vendor/bundle'
             - bundle exec rubocop
+  - name: pytest
+    dependencies: ['Set up Python']
+    task:
+      env_vars:
+        - name: PIPENV_VENV_IN_PROJECT
+          value: 'true'
+      prologue:
+        commands:
+          - sudo pip3 install pipenv
+          - checkout
+          - cd python
+          - cache restore pipenv-$SEMAPHORE_GIT_BRANCH-$(checksum Pipfile.lock),pipenv-$SEMAPHORE_GIT_BRANCH,pipenv-master
+      jobs:
+        - name: Run pytest
+          commands:
+            - pipenv install --dev --deploy
+            - pipenv run pytest
