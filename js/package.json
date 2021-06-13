@@ -14,6 +14,6 @@
   },
   "dependencies": {
     "js-yaml": "^3.14.1",
-    "mocha": "^8.2.1"
+    "mocha": "^9.0.0"
   }
 }
