@@ -7,7 +7,7 @@ var node1 = require('./node.js').Node;
 
 let from_yaml = (filename) => {
   let fileContents = fs.readFileSync(`../fixtures/${filename}`, 'utf8');
-  let data = yaml.safeLoad(fileContents);
+  let data = yaml.load(fileContents);
 
   const create_tree = function(data) {
     if (data === null) {
