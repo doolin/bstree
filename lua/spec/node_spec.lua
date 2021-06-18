@@ -13,6 +13,71 @@ describe("instantiating nodes", function()
   end)
 end)
 
+describe("#build_from_table", function()
+  local one = {
+    key = 1,
+    left = nil,
+    right = nil
+  }
+
+  it("builds single node from a table", function()
+    tree = build_from_table(one)
+    assert.are.same(tree, one)
+  end)
+
+  it("builds 213 tree from a table", function()
+    local three = {
+      key = 3,
+      left = nil,
+      right = nil
+    }
+    local table = {
+      key = 2,
+      left = one,
+      right = three
+    }
+    local tree = build_from_table(table)
+
+    assert.are.same(tree.key, 2)
+    assert.are.same(tree.left.key, 1)
+    assert.are.same(tree.right.key, 3)
+  end)
+
+  it("builds 5 node tress", function()
+    local table = {
+      key = 11,
+      left = {
+        key = 7,
+        left = {
+          key = 3,
+          left = nil,
+          right = nil
+        },
+        right = nil
+      },
+      right = {
+        key = 13,
+        left = nil,
+        right = {
+          key = 19,
+          left = one,
+          right = three
+        }
+      }
+    }
+    local tree = build_from_table(table)
+
+    assert.are.same(tree.key, 11)
+    assert.are.same(tree.left.key, 7)
+    assert.are.same(tree.right.key, 13)
+    assert.are.same(tree.left.left.key, 3)
+    assert.are.same(tree.left.right, nil)
+    assert.are.same(tree.right.left, nil)
+    assert.are.same(tree.right.right.key, 19)
+  end)
+end)
+
+
 describe("insert nodes", function()
   it("inserts a single node", function()
     root = node:new(11)

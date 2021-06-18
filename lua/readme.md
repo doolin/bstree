@@ -28,5 +28,10 @@ The code is executed via the tests, which are run with Luarocks
 There may be other dependencies, install as needed from `busted` errors.
 Luarocks installs to the system by default, it doesn't maintain a local lock file.
 
+For more fun, [invoke an output handler](http://olivinelabs.com/busted/#output-handlers) from
+[any of the provided handlers](https://github.com/Olivine-Labs/busted/tree/master/busted/outputHandlers):
+
+- `busted -o TAP`
+
 The size of the test suite could probably be reduced
 to some analytically determined necessary and sufficiant size.

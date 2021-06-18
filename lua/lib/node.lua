@@ -190,7 +190,21 @@ function Node:is_unlinked()
   return self.left == nil and self.right == nil and self.parent == nil
 end
 
-function Node:tprint (tbl, indent)
+function build_from_table(tbl)
+  local tree = Node:new(tbl.key)
+
+  if (tbl.left ~= nil) then
+    tree.left = build_from_table(tbl.left)
+  end
+
+  if (tbl.right ~= nil) then
+    tree.right = build_from_table(tbl.right)
+  end
+
+  return tree
+end
+
+function tprint (tbl, indent)
   if not indent then indent = 0 end
 
   for k, v in pairs(tbl) do
@@ -198,7 +212,7 @@ function Node:tprint (tbl, indent)
 
     if type(v) == "table" and k ~= "parent" then
       print(formatting)
-      tbl:tprint(v, indent+1)
+      tprint(v, indent+1)
     elseif type(v) == 'boolean' then
       print(formatting .. tostring(v))
     else
