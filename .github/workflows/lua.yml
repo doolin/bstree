@@ -1,0 +1,21 @@
+name: Lua CI
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: leafo/gh-actions-lua@v8.0.0
+      - uses: leafo/gh-actions-luarocks@v4.0.0
+      - name: setup
+        working-directory: ./lua
+        run: |
+          sudo apt-get install libyaml-dev
+          luarocks install busted
+          luarocks install lyaml
+      - name: test
+        working-directory: ./lua
+        run: |
+          busted -o utfTerminal
