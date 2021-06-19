@@ -206,11 +206,11 @@ function build_from_table(tbl)
   -- element. In other words, lyaml seems to parse "left:\n" as `left = { nil }`
   -- It may or may not be worth catching this further upstream, but that
   -- may be more work than it's worth.
-  if (tbl.left ~= nil and tbl.left['left'] ~= nil) then
+  if (tbl.left ~= nil and tbl.left['key'] ~= nil) then
     node.left = build_from_table(tbl.left)
   end
 
-  if (tbl.right ~= nil and tbl.right['right'] ~= nil) then
+  if (tbl.right ~= nil and tbl.right['key'] ~= nil) then
     node.right = build_from_table(tbl.right)
   end
 

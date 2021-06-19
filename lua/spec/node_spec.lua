@@ -25,7 +25,7 @@ describe("#build_from_table", function()
     assert.are.same(tree, one)
   end)
 
-  it("builds 213 tree from a table", function()
+  it("builds #213 tree from a table", function()
     local three = {
       key = 3,
       left = nil,
