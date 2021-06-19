@@ -2,6 +2,7 @@
 -- Its primary function is to manage the root node.
 
 local print = print
+local lyaml = require "lyaml"
 
 local Tree = {}
 
@@ -121,6 +122,15 @@ end
 function Tree:minimum()
   if self.root == nil then return nil end
   return self.root:minimum()
+end
+
+function build_from_yaml(filename)
+  local f = io.open(filename, "r")
+  local lines = f:read("*all")
+  f:close()
+  local t = lyaml.load(lines)
+
+  return Tree:new(build_from_table(t))
 end
 
 return Tree

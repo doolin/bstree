@@ -122,8 +122,13 @@ function Node:collect(collector)
 end
 
 function Node:post_order_traverse(callback)
-  if self.left then self.left:post_order_traverse(callback) end
-  if self.right then self.right:post_order_traverse(callback) end
+  if (self.left ~= nil) then
+    self.left:post_order_traverse(callback)
+  end
+
+  if (self.right ~= nil) then
+    self.right:post_order_traverse(callback)
+  end
   callback()
 end
 
@@ -160,7 +165,9 @@ end
 
 function Node:size()
   size = 0
-  self:post_order_traverse(function () size = size + 1 end)
+  self:post_order_traverse(function ()
+    size = size + 1
+  end)
   return size
 end
 
@@ -191,17 +198,23 @@ function Node:is_unlinked()
 end
 
 function build_from_table(tbl)
-  local tree = Node:new(tbl.key)
+  local node = Node:new(tbl.key)
 
-  if (tbl.left ~= nil) then
-    tree.left = build_from_table(tbl.left)
+  -- The lyaml library which builds tables from yaml files apparently
+  -- creates a table with a nil element if the element is present in the
+  -- yaml file even if there is no explicit value associated with the
+  -- element. In other words, lyaml seems to parse "left:\n" as `left = { nil }`
+  -- It may or may not be worth catching this further upstream, but that
+  -- may be more work than it's worth.
+  if (tbl.left ~= nil and tbl.left['left'] ~= nil) then
+    node.left = build_from_table(tbl.left)
   end
 
-  if (tbl.right ~= nil) then
-    tree.right = build_from_table(tbl.right)
+  if (tbl.right ~= nil and tbl.right['right'] ~= nil) then
+    node.right = build_from_table(tbl.right)
   end
 
-  return tree
+  return node
 end
 
 function tprint (tbl, indent)
@@ -209,6 +222,7 @@ function tprint (tbl, indent)
 
   for k, v in pairs(tbl) do
     formatting = string.rep("  ", indent) .. k .. ": "
+    -- print("k: " .. k .. ", v: " .. v)
 
     if type(v) == "table" and k ~= "parent" then
       print(formatting)
