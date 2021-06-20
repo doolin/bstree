@@ -4,7 +4,8 @@
   "description": "binary search tree in javascript with node",
   "main": "index.js",
   "scripts": {
-    "test": "mocha spec"
+    "test": "mocha spec",
+    "lint": "npx eslint lib/*.js"
   },
   "author": "dave doolin",
   "license": "ISC",
