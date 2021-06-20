@@ -132,9 +132,11 @@ Tree.prototype.size = function() {
 };
 
 Tree.prototype.isBalanced = function() {
-  if (this.root === null) { return true; }
+  if (this.root === null) {
+    return true;
+  }
 
   return this.root.isBalanced() !== -1;
-}
+};
 
 exports.Tree = Tree;

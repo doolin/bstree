@@ -122,7 +122,7 @@ Node.prototype.invert = function() {
     // console.log(`before swap node.left: ${node.left}`);
     // console.log(`before swap node.right: ${node.right}`);
 
-    let swap = node.left;
+    const swap = node.left;
     node.left = node.right;
     // console.log(`node.left after swap: ${node.left}`);
     node.right = swap;
