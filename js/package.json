@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha spec",
-    "lint": "npx eslint lib/*.js"
+    "lint": "npx eslint lib/*.js spec/*.js"
   },
   "author": "dave doolin",
   "license": "ISC",

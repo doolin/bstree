@@ -271,10 +271,10 @@ Node.prototype.is_unlinked = function() {
 // before loading the yaml file. That initial node is otherwise
 // useless. Leaving it in for now until I better understand
 // prototype behavior.
-Node.prototype.from_yaml = function(filename) {
-  const from_yaml = require('../lib/from_yaml');
+Node.prototype.fromYaml = function(filename) {
+  const fromYaml = require('../lib/from_yaml');
 
-  return from_yaml(filename);
+  return fromYaml(filename);
 };
 
 exports.Node = Node;
