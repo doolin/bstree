@@ -1,22 +1,22 @@
-const tree = require('../lib/tree.js').Tree;
-const node = require('../lib/node.js').Node;
+const Tree = require('../lib/tree.js').Tree;
+const Node = require('../lib/node.js').Node;
 const assert = require('assert');
 
 describe('Tree', function() {
   describe('delete_node', function() {
     it('replaces root with null', function() {
-      const root = new node(17);
-      const n2 = new node(2);
-      const n3 = new node(3);
-      const n5 = new node(5);
-      const n7 = new node(7);
-      const n11 = new node(11);
-      const n13 = new node(13);
-      const n19 = new node(19);
-      const n23 = new node(23);
-      const n29 = new node(29);
+      const root = new Node(17);
+      const n2 = new Node(2);
+      const n3 = new Node(3);
+      const n5 = new Node(5);
+      const n7 = new Node(7);
+      const n11 = new Node(11);
+      const n13 = new Node(13);
+      const n19 = new Node(19);
+      const n23 = new Node(23);
+      const n29 = new Node(29);
 
-      const t = new tree();
+      const t = new Tree();
       t.insert(root);
       t.insert(n5);
       t.insert(n3);
