@@ -29,6 +29,11 @@ jobs:
         run: |
           npm install
           npm audit
+      - name: lint
+        working-directory: ./js
+        run: |
+          npm install
+          npm run lint
       - name: test
         working-directory: ./js
         run: |
