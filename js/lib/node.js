@@ -211,7 +211,8 @@ Node.prototype.height = function() {
   return getHeight(this, height);
 };
 
-Node.prototype.is_bst = function() {
+Node.prototype.isBst = function() {
+  // TODO extract this into its own method BST-193
   const inOrderTraverse = function(n, callback) {
     if (n.left !== null) {
       inOrderTraverse(n.left, callback);
