@@ -296,13 +296,13 @@ describe('Tree', function() {
     });
   });
 
-  describe('is_bst', function() {
+  describe('isBst', function() {
     it('determines a single Node is a BST', function() {
       const t = new Tree();
       const root = new Node(17);
-      assert.strictEqual(t.is_bst(), true);
+      assert.strictEqual(t.isBst(), true);
       t.insert(root);
-      assert.strictEqual(t.is_bst(), true);
+      assert.strictEqual(t.isBst(), true);
     });
   });
 

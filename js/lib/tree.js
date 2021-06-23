@@ -106,11 +106,11 @@ Tree.prototype.predecessor = function(node) {
   return this.root.predecessor(node);
 };
 
-Tree.prototype.is_bst = function() {
+Tree.prototype.isBst = function() {
   if (this.root === null) {
     return true;
   }
-  return this.root.is_bst();
+  return this.root.isBst();
 };
 
 Tree.prototype.is_empty = function() {

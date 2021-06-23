@@ -297,10 +297,10 @@ describe('Node', function() {
     });
   });
 
-  describe('is_bst', function() {
+  describe('isBst', function() {
     it('determines single node is BST', function() {
       const root = new Node(17);
-      assert.strictEqual(root.is_bst(), true);
+      assert.strictEqual(root.isBst(), true);
     });
 
     it('BST subtree does not imply whole tree is BST', function() {
@@ -309,11 +309,11 @@ describe('Node', function() {
       const n23 = new Node(23);
       root.insert(n5);
       root.insert(n23);
-      assert.strictEqual(root.is_bst(), true);
+      assert.strictEqual(root.isBst(), true);
       const n14 = new Node(14);
       n23.insert(n14);
-      assert.strictEqual(n23.is_bst(), true);
-      assert.strictEqual(root.is_bst(), false);
+      assert.strictEqual(n23.isBst(), true);
+      assert.strictEqual(root.isBst(), false);
     });
   });
 
