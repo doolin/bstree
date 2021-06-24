@@ -1,39 +1,39 @@
-const Tree = function() {
+const Tree = function () {
   this.root = null;
 };
 
-Tree.prototype.log = function(msg) {
+Tree.prototype.log = function (msg) {
   console.log(msg);
 };
 
-Tree.prototype.insert = function(n) {
-  this.root === null ? this.root = n : this.root.insert(n);
+Tree.prototype.insert = function (n) {
+  this.root === null ? (this.root = n) : this.root.insert(n);
 };
 
-Tree.prototype.is_empty = function() {
+Tree.prototype.is_empty = function () {
   return this.root === null;
 };
 
-Tree.prototype.collect = function(collector) {
+Tree.prototype.collect = function (collector) {
   if (this.root === null) {
     return;
   }
   this.root.collect(collector);
 };
 
-Tree.prototype.list_keys = function() {
+Tree.prototype.list_keys = function () {
   if (this.root === null) return [];
   return this.root.list_keys();
 };
 
-Tree.prototype.search = function(key) {
+Tree.prototype.search = function (key) {
   if (this.root === null) {
     return false;
   }
   return this.root.search(key);
 };
 
-Tree.prototype.transplant = function(u, v) {
+Tree.prototype.transplant = function (u, v) {
   if (u === this.root) {
     this.root = v;
   } else if (u.parent.left === u) {
@@ -47,7 +47,7 @@ Tree.prototype.transplant = function(u, v) {
   }
 };
 
-Tree.prototype.delete_node = function(key) {
+Tree.prototype.delete_node = function (key) {
   z = this.search(key);
   // TODO: catch key not found
 
@@ -71,67 +71,67 @@ Tree.prototype.delete_node = function(key) {
   return z;
 };
 
-Tree.prototype.is_present = function(key) {
+Tree.prototype.is_present = function (key) {
   if (this.root === null) {
     return false;
   }
   return this.root.is_present(key);
 };
 
-Tree.prototype.maximum = function() {
+Tree.prototype.maximum = function () {
   if (this.root === null) {
     return null;
   }
   return this.root.maximum();
 };
 
-Tree.prototype.minimum = function() {
+Tree.prototype.minimum = function () {
   if (this.root === null) {
     return null;
   }
   return this.root.minimum();
 };
 
-Tree.prototype.successor = function(node) {
+Tree.prototype.successor = function (node) {
   if (this.root === null) {
     return null;
   }
   return this.root.successor(node);
 };
 
-Tree.prototype.predecessor = function(node) {
+Tree.prototype.predecessor = function (node) {
   if (this.root === null) {
     return null;
   }
   return this.root.predecessor(node);
 };
 
-Tree.prototype.isBst = function() {
+Tree.prototype.isBst = function () {
   if (this.root === null) {
     return true;
   }
   return this.root.isBst();
 };
 
-Tree.prototype.is_empty = function() {
-  return (this.root === null);
+Tree.prototype.is_empty = function () {
+  return this.root === null;
 };
 
-Tree.prototype.height = function() {
+Tree.prototype.height = function () {
   if (this.root === null) {
     return 0;
   }
   return this.root.height();
 };
 
-Tree.prototype.size = function() {
+Tree.prototype.size = function () {
   if (this.root === null) {
     return 0;
   }
   return this.root.size();
 };
 
-Tree.prototype.isBalanced = function() {
+Tree.prototype.isBalanced = function () {
   if (this.root === null) {
     return true;
   }
