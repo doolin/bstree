@@ -1,102 +1,102 @@
-const Node = require('../lib/node.js').Node;
-const assert = require('assert');
+const Node = require("../lib/node.js").Node;
+const assert = require("assert");
 
-describe('load yaml from fixtures', () => {
-  it('reads a fixture and writes to console', () => {
+describe("load yaml from fixtures", () => {
+  it("reads a fixture and writes to console", () => {
     root = new Node(17);
-    const filenode = root.fromYaml('tree1.yml');
+    const filenode = root.fromYaml("tree1.yml");
 
     assert.strictEqual(filenode.size(), 1);
   });
 
-  it('reads a fixture and writes to console', () => {
+  it("reads a fixture and writes to console", () => {
     root = new Node(17);
-    const filenode = root.fromYaml('tree2.yml');
+    const filenode = root.fromYaml("tree2.yml");
 
     assert.strictEqual(filenode.size(), 2);
   });
 
-  it('reads a fixture and writes to console', () => {
+  it("reads a fixture and writes to console", () => {
     root = new Node(17);
-    const filenode = root.fromYaml('tree3.yml');
+    const filenode = root.fromYaml("tree3.yml");
 
     assert.strictEqual(filenode.size(), 3);
   });
 
-  it('reads a fixture and writes to console', () => {
+  it("reads a fixture and writes to console", () => {
     root = new Node(17);
-    const filenode = root.fromYaml('tree4.yml');
+    const filenode = root.fromYaml("tree4.yml");
 
     assert.strictEqual(filenode.size(), 4);
   });
 
-  it('reads a fixture and writes to console', () => {
+  it("reads a fixture and writes to console", () => {
     root = new Node(17);
-    const filenode = root.fromYaml('tree5.yml');
+    const filenode = root.fromYaml("tree5.yml");
 
     assert.strictEqual(filenode.size(), 5);
   });
 
-  it('reads a fixture and writes to console', () => {
+  it("reads a fixture and writes to console", () => {
     root = new Node(17);
-    const filenode = root.fromYaml('tree6.yml');
+    const filenode = root.fromYaml("tree6.yml");
 
     assert.strictEqual(filenode.size(), 6);
   });
 
-  it('reads a fixture and writes to console', () => {
+  it("reads a fixture and writes to console", () => {
     root = new Node(17);
-    const filenode = root.fromYaml('tree7.yml');
+    const filenode = root.fromYaml("tree7.yml");
 
     assert.strictEqual(filenode.size(), 7);
   });
 
-  it('reads a fixture and writes to console', () => {
+  it("reads a fixture and writes to console", () => {
     root = new Node(17);
-    const filenode = root.fromYaml('tree8.yml');
+    const filenode = root.fromYaml("tree8.yml");
 
     assert.strictEqual(filenode.size(), 8);
   });
 
-  it('reads a fixture and writes to console', () => {
+  it("reads a fixture and writes to console", () => {
     root = new Node(17);
-    const filenode = root.fromYaml('tree9.yml');
+    const filenode = root.fromYaml("tree9.yml");
 
     assert.strictEqual(filenode.size(), 9);
   });
 
-  it('reads a fixture and writes to console', () => {
+  it("reads a fixture and writes to console", () => {
     root = new Node(17);
-    const filenode = root.fromYaml('tree10.yml');
+    const filenode = root.fromYaml("tree10.yml");
 
     assert.strictEqual(filenode.size(), 10);
   });
 });
 
-describe('Node', function() {
-  describe('instantiation', function() {
-    it('creates a Node', function() {
+describe("Node", function () {
+  describe("instantiation", function () {
+    it("creates a Node", function () {
       const root = new Node(13);
       assert.strictEqual(13, root.key);
     });
   });
 
-  describe('insertion', function() {
-    it('inserts a left node', function() {
+  describe("insertion", function () {
+    it("inserts a left node", function () {
       const root = new Node(13);
       const n5 = new Node(6);
       root.insert(n5);
       assert.strictEqual(root.left, n5);
     });
 
-    it('inserts a right node', function() {
+    it("inserts a right node", function () {
       const root = new Node(13);
       const n19 = new Node(19);
       root.insert(n19);
       assert.strictEqual(root.right, n19);
     });
 
-    it('insert first 10 primes', function() {
+    it("insert first 10 primes", function () {
       const root = new Node(13);
       const n7 = new Node(7);
       const n5 = new Node(5);
@@ -125,9 +125,9 @@ describe('Node', function() {
     });
   });
 
-  describe('search and is_present', function() {
+  describe("search and is_present", function () {
     const root = new Node(13);
-    it('finds a single node', function() {
+    it("finds a single node", function () {
       assert.strictEqual(root, root.search(13));
       assert.strictEqual(true, root.is_present(13));
       assert.strictEqual(false, root.is_present(-500.55));
@@ -135,19 +135,19 @@ describe('Node', function() {
 
     const n5 = new Node(5);
     root.insert(n5);
-    it('finds node to the left', function() {
+    it("finds node to the left", function () {
       assert.strictEqual(n5, root.search(5));
       assert.strictEqual(true, root.is_present(5));
     });
 
     const n19 = new Node(19);
     root.insert(n19);
-    it('finds node to the right', function() {
+    it("finds node to the right", function () {
       assert.strictEqual(n19, root.search(19));
       assert.strictEqual(true, root.is_present(19));
     });
 
-    it('finds nodes in the tree', function() {
+    it("finds nodes in the tree", function () {
       const n7 = new Node(7);
       const n3 = new Node(3);
       const n2 = new Node(2);
@@ -170,8 +170,8 @@ describe('Node', function() {
     });
   });
 
-  describe('collect', function() {
-    it('collects a single node', function() {
+  describe("collect", function () {
+    it("collects a single node", function () {
       const root = new Node(13);
       const actual = [];
       const expected = [13];
@@ -179,7 +179,7 @@ describe('Node', function() {
       assert.deepStrictEqual(expected, actual);
     });
 
-    it('collects a left node', function() {
+    it("collects a left node", function () {
       const root = new Node(13);
       const n5 = new Node(6);
       root.insert(n5);
@@ -189,7 +189,7 @@ describe('Node', function() {
       assert.deepStrictEqual(expected, actual);
     });
 
-    it('collects a right node', function() {
+    it("collects a right node", function () {
       const root = new Node(13);
       const n19 = new Node(19);
       root.insert(n19);
@@ -199,7 +199,7 @@ describe('Node', function() {
       assert.deepStrictEqual(expected, actual);
     });
 
-    it('collects first 10 primes', function() {
+    it("collects first 10 primes", function () {
       const root = new Node(13);
       const n7 = new Node(7);
       const n5 = new Node(5);
@@ -226,23 +226,22 @@ describe('Node', function() {
     });
   });
 
-  describe('list_keys', function() {
-    it('wraps the collect function for convenience', function() {
+  describe("list_keys", function () {
+    it("wraps the collect function for convenience", function () {
       const root = new Node(17);
       const expected = [17];
       assert.deepStrictEqual(expected, root.list_keys());
     });
   });
 
-
-  describe('maximum and minimum', function() {
-    it('root node is both maximum and minimum', function() {
+  describe("maximum and minimum", function () {
+    it("root node is both maximum and minimum", function () {
       const root = new Node(13);
       assert.strictEqual(root.maximum(), root);
       assert.strictEqual(root.minimum(), root);
     });
 
-    it('root maximum with left child minimum', function() {
+    it("root maximum with left child minimum", function () {
       const root = new Node(13);
       const n5 = new Node(5);
       root.insert(n5);
@@ -250,7 +249,7 @@ describe('Node', function() {
       assert.strictEqual(root.minimum(), n5);
     });
 
-    it('root node minimum with right child maximum', function() {
+    it("root node minimum with right child maximum", function () {
       const root = new Node(13);
       const n19 = new Node(19);
       root.insert(n19);
@@ -258,7 +257,7 @@ describe('Node', function() {
       assert.strictEqual(root.minimum(), root);
     });
 
-    it('maximum and minimum for first 10 primes', function() {
+    it("maximum and minimum for first 10 primes", function () {
       const root = new Node(13);
       const n7 = new Node(7);
       const n5 = new Node(5);
@@ -283,13 +282,13 @@ describe('Node', function() {
     });
   });
 
-  describe('is_leaf', function() {
-    xit('leaf node has no children', function() {
+  describe("is_leaf", function () {
+    xit("leaf node has no children", function () {
       const root = new Node(13);
       assert.strictEqual(root.is_leaf, true);
     });
 
-    xit('insert child node onto leaf', function() {
+    xit("insert child node onto leaf", function () {
       const root = new Node(13);
       const n11 = new Node(11);
       root.insert(n11);
@@ -297,13 +296,13 @@ describe('Node', function() {
     });
   });
 
-  describe('isBst', function() {
-    it('determines single node is BST', function() {
+  describe("isBst", function () {
+    it("determines single node is BST", function () {
       const root = new Node(17);
       assert.strictEqual(root.isBst(), true);
     });
 
-    it('BST subtree does not imply whole tree is BST', function() {
+    it("BST subtree does not imply whole tree is BST", function () {
       const root = new Node(17);
       const n5 = new Node(5);
       const n23 = new Node(23);
@@ -317,8 +316,8 @@ describe('Node', function() {
     });
   });
 
-  describe('successor and predecessor', function() {
-    it('finds successors to nodes in a tree', function() {
+  describe("successor and predecessor", function () {
+    it("finds successors to nodes in a tree", function () {
       const root = new Node(17);
       assert.strictEqual(root.successor(root), root);
       assert.strictEqual(root.predecessor(root), root);
@@ -384,20 +383,20 @@ describe('Node', function() {
     });
   });
 
-  describe('height', function() {
-    it('height of single node tree is 0', function() {
+  describe("height", function () {
+    it("height of single node tree is 0", function () {
       const root = new Node(11);
       assert.strictEqual(root.height(), 0);
     });
 
-    it('height of two node tree is 1', function() {
+    it("height of two node tree is 1", function () {
       const root = new Node(11);
       const n17 = new Node(17);
       root.insert(n17);
       assert.strictEqual(root.height(), 1);
     });
 
-    it('height of balanced three node tree is 1', function() {
+    it("height of balanced three node tree is 1", function () {
       const root = new Node(11);
       const n17 = new Node(17);
       const n5 = new Node(5);
@@ -406,7 +405,7 @@ describe('Node', function() {
       assert.strictEqual(root.height(), 1);
     });
 
-    it('height of tree with 4 or more nodes is at least 2', function() {
+    it("height of tree with 4 or more nodes is at least 2", function () {
       const root = new Node(11);
       const n17 = new Node(17);
       const n19 = new Node(19);
@@ -417,7 +416,7 @@ describe('Node', function() {
       assert.strictEqual(root.height(), 2);
     });
 
-    it('heights of tree of first 10 primes', function() {
+    it("heights of tree of first 10 primes", function () {
       const root = new Node(13);
       const n7 = new Node(7);
       const n5 = new Node(5);
@@ -449,20 +448,20 @@ describe('Node', function() {
     });
   });
 
-  describe('size', function() {
-    it('size 1 for single node tree', function() {
+  describe("size", function () {
+    it("size 1 for single node tree", function () {
       const root = new Node(13);
       assert.strictEqual(root.size(), 1);
     });
 
-    it('size 2 for node with 1 child', function() {
+    it("size 2 for node with 1 child", function () {
       const root = new Node(13);
       const n5 = new Node(5);
       root.insert(n5);
       assert.strictEqual(root.size(), 2);
     });
 
-    it('size 10 for first 10 primes', function() {
+    it("size 10 for first 10 primes", function () {
       const root = new Node(13);
       const n7 = new Node(7);
       const n5 = new Node(5);
@@ -486,13 +485,13 @@ describe('Node', function() {
     });
   });
 
-  describe('unlink and is_unlinked', function() {
-    it('new nodes are unlinked', function() {
+  describe("unlink and is_unlinked", function () {
+    it("new nodes are unlinked", function () {
       const n = new Node(17);
       assert.strictEqual(n.is_unlinked(), true);
     });
 
-    it('unlink a small tree', function() {
+    it("unlink a small tree", function () {
       const root = new Node(17);
       const n5 = new Node(5);
       const n23 = new Node(23);
@@ -512,15 +511,15 @@ describe('Node', function() {
     });
   });
 
-  describe('invert', () => {
-    it('inverts a single node', () => {
+  describe("invert", () => {
+    it("inverts a single node", () => {
       const root = new Node(17);
       root.invert();
       assert.strictEqual(root.left, null);
       assert.strictEqual(root.right, null);
     });
 
-    it('inverts root with left node', () => {
+    it("inverts root with left node", () => {
       const root = new Node(17);
       const n5 = new Node(5);
       root.insert(n5);
@@ -530,7 +529,7 @@ describe('Node', function() {
       assert.strictEqual(root.right, n5);
     });
 
-    it('inverts root with right node', () => {
+    it("inverts root with right node", () => {
       const root = new Node(17);
       const n23 = new Node(23);
       root.insert(n23);
@@ -540,7 +539,7 @@ describe('Node', function() {
       assert.strictEqual(root.right, null);
     });
 
-    it('inverts root with left and right nodes', () => {
+    it("inverts root with left and right nodes", () => {
       const root = new Node(17);
       const n5 = new Node(5);
       const n23 = new Node(23);
@@ -552,7 +551,7 @@ describe('Node', function() {
       assert.strictEqual(root.right, n5);
     });
 
-    it('inverts full tree of depth two', () => {
+    it("inverts full tree of depth two", () => {
       const root = new Node(17);
       // left branch
       const n11 = new Node(11);

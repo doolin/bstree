@@ -5,13 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha spec",
-    "lint": "npx eslint lib/*.js spec/*.js"
+    "lint": "npx eslint lib/*.js spec/*.js",
+    "prettier": "npx prettier --check ."
   },
   "author": "dave doolin",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^7.29.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "2.3.1"
   },
   "dependencies": {
     "js-yaml": "^4.1.0",

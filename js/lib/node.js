@@ -1,18 +1,18 @@
-const Node = function(k) {
+const Node = function (k) {
   this.key = k;
   this.left = null;
   this.right = null;
   this.parent = null;
 };
 
-Node.prototype.log = function(msg) {
+Node.prototype.log = function (msg) {
   console.log(msg);
 };
 
 // Node.prototype.init = function(k) {
 // };
 
-Node.prototype.insert = function(n) {
+Node.prototype.insert = function (n) {
   if (n.key < this.key) {
     if (this.left === null) {
       n.parent = this;
@@ -30,21 +30,21 @@ Node.prototype.insert = function(n) {
   }
 };
 
-Node.prototype.maximum = function() {
+Node.prototype.maximum = function () {
   if (this.right !== null) {
     return this.right.maximum();
   }
   return this;
 };
 
-Node.prototype.minimum = function() {
+Node.prototype.minimum = function () {
   if (this.left !== null) {
     return this.left.minimum();
   }
   return this;
 };
 
-Node.prototype.search = function(key) {
+Node.prototype.search = function (key) {
   if (key === this.key) {
     return this;
   }
@@ -60,7 +60,7 @@ Node.prototype.search = function(key) {
   }
 };
 
-Node.prototype.is_present = function(key) {
+Node.prototype.is_present = function (key) {
   if (key === this.key) {
     return true;
   }
@@ -80,7 +80,7 @@ Node.prototype.is_present = function(key) {
 /* TODO: define an in-order traversal function which
  * takes a closure.
  */
-Node.prototype.collect = function(collector) {
+Node.prototype.collect = function (collector) {
   if (this.left !== null) {
     this.left.collect(collector);
   }
@@ -90,13 +90,13 @@ Node.prototype.collect = function(collector) {
   }
 };
 
-Node.prototype.list_keys = function() {
+Node.prototype.list_keys = function () {
   collector = [];
   this.collect(collector);
   return collector;
 };
 
-Node.prototype.post_order_traverse = function(callback) {
+Node.prototype.post_order_traverse = function (callback) {
   if (this.left !== null) {
     this.left.post_order_traverse(callback);
   }
@@ -106,18 +106,18 @@ Node.prototype.post_order_traverse = function(callback) {
   callback(this);
 };
 
-Node.prototype.size = function() {
+Node.prototype.size = function () {
   let size = 0;
-  this.post_order_traverse(function() {
+  this.post_order_traverse(function () {
     size++;
   });
   return size;
 };
 
-Node.prototype.invert = function() {
+Node.prototype.invert = function () {
   // console.log(`this.left: ${this.left}, this.right: ${this.right}`);
 
-  this.post_order_traverse(function(node) {
+  this.post_order_traverse(function (node) {
     // console.log(`before swap node.key: ${node.key}`);
     // console.log(`before swap node.left: ${node.left}`);
     // console.log(`before swap node.right: ${node.right}`);
@@ -130,8 +130,8 @@ Node.prototype.invert = function() {
   });
 };
 
-Node.prototype.successor = function(node) {
-  const getSuccessor = function(self, node, parent, successor) {
+Node.prototype.successor = function (node) {
+  const getSuccessor = function (self, node, parent, successor) {
     if (parent.left !== null && parent.left === self) successor = parent;
 
     if (node === self) {
@@ -156,8 +156,8 @@ Node.prototype.successor = function(node) {
   return getSuccessor(this, node, this, node);
 };
 
-Node.prototype.predecessor = function(node) {
-  const getPredecessor = function(self, node, parent, predecessor) {
+Node.prototype.predecessor = function (node) {
+  const getPredecessor = function (self, node, parent, predecessor) {
     if (parent.right !== null && parent.right === self) {
       predecessor = parent;
     }
@@ -184,10 +184,10 @@ Node.prototype.predecessor = function(node) {
   return getPredecessor(this, node, this, node);
 };
 
-Node.prototype.height = function() {
+Node.prototype.height = function () {
   const height = 0;
 
-  const getHeight = function(n, height) {
+  const getHeight = function (n, height) {
     current = height;
     current++;
     // console.log(current)
@@ -211,9 +211,9 @@ Node.prototype.height = function() {
   return getHeight(this, height);
 };
 
-Node.prototype.isBst = function() {
+Node.prototype.isBst = function () {
   // TODO extract this into its own method BST-193
-  const inOrderTraverse = function(n, callback) {
+  const inOrderTraverse = function (n, callback) {
     if (n.left !== null) {
       inOrderTraverse(n.left, callback);
     }
@@ -225,7 +225,7 @@ Node.prototype.isBst = function() {
 
   let result = true;
   let minimum = -10000;
-  inOrderTraverse(this, function(node) {
+  inOrderTraverse(this, function (node) {
     if (minimum >= node.key) {
       result = false;
     }
@@ -234,8 +234,8 @@ Node.prototype.isBst = function() {
   return result;
 };
 
-Node.prototype.isBalanced = function() {
-  const checkHeight = function(node) {
+Node.prototype.isBalanced = function () {
+  const checkHeight = function (node) {
     if (node === null) {
       return 0;
     }
@@ -260,11 +260,11 @@ Node.prototype.isBalanced = function() {
   return checkHeight(this);
 };
 
-Node.prototype.unlink = function() {
+Node.prototype.unlink = function () {
   this.left = this.right = this.parent = null;
 };
 
-Node.prototype.is_unlinked = function() {
+Node.prototype.is_unlinked = function () {
   return this.left === null && this.right === null && this.parent === null;
 };
 
@@ -272,8 +272,8 @@ Node.prototype.is_unlinked = function() {
 // before loading the yaml file. That initial node is otherwise
 // useless. Leaving it in for now until I better understand
 // prototype behavior.
-Node.prototype.fromYaml = function(filename) {
-  const fromYaml = require('../lib/from_yaml');
+Node.prototype.fromYaml = function (filename) {
+  const fromYaml = require("../lib/from_yaml");
 
   return fromYaml(filename);
 };

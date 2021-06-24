@@ -1,15 +1,15 @@
-const fs = require('fs');
-const yaml = require('js-yaml');
+const fs = require("fs");
+const yaml = require("js-yaml");
 
 // TODO: read up on shadowing for why this cannot be
 // name `node` in the context of using it below.
-const Node = require('./node.js').Node;
+const Node = require("./node.js").Node;
 
 const fromYaml = (filename) => {
-  const fileContents = fs.readFileSync(`../fixtures/${filename}`, 'utf8');
+  const fileContents = fs.readFileSync(`../fixtures/${filename}`, "utf8");
   const data = yaml.load(fileContents);
 
-  const createTree = function(data) {
+  const createTree = function (data) {
     if (data === null) {
       return null;
     }
