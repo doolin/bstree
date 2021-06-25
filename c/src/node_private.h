@@ -5,6 +5,7 @@
 
 struct _node {
   int key;
+  char uuid[100];
   Node * left;
   Node * right;
   Node * parent;

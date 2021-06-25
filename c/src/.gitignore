@@ -1,8 +1,9 @@
-Makefile
 *.a
+Makefile
 gmon.out
 *.o
 .deps
 *~
 yaml
 getsome
+yaml
