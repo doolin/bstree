@@ -71,11 +71,11 @@ Tree.prototype.delete_node = function (key) {
   return z;
 };
 
-Tree.prototype.is_present = function (key) {
+Tree.prototype.isPresent = function (key) {
   if (this.root === null) {
     return false;
   }
-  return this.root.is_present(key);
+  return this.root.isPresent(key);
 };
 
 Tree.prototype.maximum = function () {
