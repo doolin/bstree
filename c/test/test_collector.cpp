@@ -30,22 +30,22 @@ public:
     Collector * c3 = collector_new(2);
 
     spec.it("empty collections with same size are equal", DO_SPEC_HANDLE {
-        return(collector_equals(c1, c2) == 1);
+      return(collector_equals(c1, c2) == 1);
     });
 
     spec.it("collection with single value is not equal to empty collection", DO_SPEC_HANDLE {
-        collector_add(c1, 1);
-        return(collector_equals(c1, c2) == 0);
+      collector_add(c1, 1);
+      return(collector_equals(c1, c2) == 0);
     });
 
     spec.it("collections with same single value each are equal", DO_SPEC_HANDLE {
-        collector_add(c2, 1);
-        return(collector_equals(c1, c2) == 1);
+      collector_add(c2, 1);
+      return(collector_equals(c1, c2) == 1);
     });
 
     spec.it("differently sized collections are not equal", DO_SPEC_HANDLE {
-        collector_add(c3, 1);
-        return(collector_equals(c1, c3) == 0);
+      collector_add(c3, 1);
+      return(collector_equals(c1, c3) == 0);
     });
 
     collector_destroy(c1);

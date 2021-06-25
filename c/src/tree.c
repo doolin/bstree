@@ -90,7 +90,9 @@ tree_list_keys(Tree * t, void * userdata) {
 
 void
 tree_collect(Tree * t, void * collector) {
-  if (t->root == NULL) { return; }
+  if (t->root == NULL) {
+    return;
+  }
   node_collect(t->root, collector);
 }
 
@@ -104,7 +106,9 @@ tree_inorder_iter(Tree * t, void * collector) {
   int index = 0;
   Node * current;
 
-  if (t->root == NULL) { return; }
+  if (t->root == NULL) {
+    return;
+  }
 
   current = t->root;
   stack[0] = current;

@@ -6,8 +6,12 @@
 
 int
 collector_equals(Collector * c1, Collector * c2) {
-  if (c1->size != c2->size) { return 0; }
-  if (c1->current_position != c2->current_position) { return 0; }
+  if (c1->size != c2->size) {
+    return 0;
+  }
+  if (c1->current_position != c2->current_position) {
+    return 0;
+  }
 
   for (int i = 0; i<c1->current_position; i++) {
     if (c1->values[i] != c2->values[i]) {
