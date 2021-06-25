@@ -125,26 +125,26 @@ describe("Node", function () {
     });
   });
 
-  describe("search and is_present", function () {
+  describe("search and isPresent", function () {
     const root = new Node(13);
     it("finds a single node", function () {
       assert.strictEqual(root, root.search(13));
-      assert.strictEqual(true, root.is_present(13));
-      assert.strictEqual(false, root.is_present(-500.55));
+      assert.strictEqual(true, root.isPresent(13));
+      assert.strictEqual(false, root.isPresent(-500.55));
     });
 
     const n5 = new Node(5);
     root.insert(n5);
     it("finds node to the left", function () {
       assert.strictEqual(n5, root.search(5));
-      assert.strictEqual(true, root.is_present(5));
+      assert.strictEqual(true, root.isPresent(5));
     });
 
     const n19 = new Node(19);
     root.insert(n19);
     it("finds node to the right", function () {
       assert.strictEqual(n19, root.search(19));
-      assert.strictEqual(true, root.is_present(19));
+      assert.strictEqual(true, root.isPresent(19));
     });
 
     it("finds nodes in the tree", function () {
@@ -163,10 +163,10 @@ describe("Node", function () {
       root.insert(n2);
       root.insert(n29);
       assert.strictEqual(n17, root.search(17));
-      assert.strictEqual(true, root.is_present(17));
+      assert.strictEqual(true, root.isPresent(17));
       assert.strictEqual(n2, root.search(2));
-      assert.strictEqual(true, root.is_present(2));
-      assert.strictEqual(false, root.is_present(0.000002));
+      assert.strictEqual(true, root.isPresent(2));
+      assert.strictEqual(false, root.isPresent(0.000002));
     });
   });
 

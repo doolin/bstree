@@ -60,18 +60,18 @@ Node.prototype.search = function (key) {
   }
 };
 
-Node.prototype.is_present = function (key) {
+Node.prototype.isPresent = function (key) {
   if (key === this.key) {
     return true;
   }
 
   if (key < this.key) {
     if (this.left !== null) {
-      return this.left.is_present(key);
+      return this.left.isPresent(key);
     }
   } else {
     if (this.right !== null) {
-      return this.right.is_present(key);
+      return this.right.isPresent(key);
     }
   }
   return false;
