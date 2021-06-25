@@ -1,0 +1,3 @@
+# astyle --options=.astylerc <filename>
+style=attach
+indent=spaces=2

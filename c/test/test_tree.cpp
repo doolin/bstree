@@ -13,10 +13,10 @@ using std::string;
 
 class TreeTest : public CppUnit::TestCase {
 
-int
-node_stripped(Node * n) {
-  return n->parent == NULL && n->left == NULL && n->right == NULL ? 1 : 0;
-}
+  int
+  node_stripped(Node * n) {
+    return n->parent == NULL && n->left == NULL && n->right == NULL ? 1 : 0;
+  }
 
 public:
   TreeTest( std::string name ) : CppUnit::TestCase( name ) {}
@@ -254,13 +254,13 @@ public:
     Tree * tree = tree_new();
 
     spec.it("empty tree has height 0", [&]() {
-        return tree_height(tree) == 0;
+      return tree_height(tree) == 0;
     });
 
     Node * root = node_new(13);
     tree_insert(tree, root);
     spec.it("tree with only root node has height 0", [&]() {
-        return tree_height(tree) == 0;
+      return tree_height(tree) == 0;
     });
 
     tree_delete(tree);
@@ -325,7 +325,7 @@ public:
     tree_insert(t, root);
 
     spec.it("root of tree with single node is own successor", DO_SPEC_HANDLE {
-        return tree_successor(t, root) == root;
+      return tree_successor(t, root) == root;
     });
     tree_delete(t);
   }
@@ -338,7 +338,7 @@ public:
     tree_insert(t, root);
 
     spec.it("root of tree with single node is own predecessor", DO_SPEC_HANDLE {
-        return tree_predecessor(t, root) == root;
+      return tree_predecessor(t, root) == root;
     });
     tree_delete(t);
   }
@@ -354,7 +354,7 @@ public:
     tree_insert(t, root);
 
     spec.it("tree with single node is bst", DO_SPEC_HANDLE {
-        return tree_is_bst(t) == 1;
+      return tree_is_bst(t) == 1;
     });
     tree_delete(t);
   }
@@ -493,8 +493,8 @@ public:
     spec.it("unlink tree with left and right children", DO_SPEC_HANDLE {
       tree_unlink(tree);
       return node_is_unlinked(root)
-          && node_is_unlinked(n5)
-          && node_is_unlinked(n23);
+      && node_is_unlinked(n5)
+      && node_is_unlinked(n23);
     });
 
     node_delete(root);
@@ -511,8 +511,8 @@ public:
 
     Spec spec;
     spec.it("transplant root with nil", DO_SPEC_HANDLE {
-        tree_transplant(tree, root, NULL);
-        return tree_is_empty(tree) == TRUE;
+      tree_transplant(tree, root, NULL);
+      return tree_is_empty(tree) == TRUE;
     });
 
     node_delete(root);
@@ -635,10 +635,10 @@ public:
       size = tree_size(t);
       is_present = tree_is_present(t, 2);
       return deleted == n2
-          && size == 9
-          && is_present == 0
-          && node_stripped(deleted) == 1
-          && n3->left == NULL;
+      && size == 9
+      && is_present == 0
+      && node_stripped(deleted) == 1
+      && n3->left == NULL;
     });
 
     spec.it("case 1b: node has no left child, right child is not NULL", DO_SPEC_HANDLE {
@@ -647,10 +647,10 @@ public:
       is_present = tree_is_present(t, 11);
       // std::cout << "size: " << size << std::endl;
       return deleted == n11
-          && size == 8
-          && is_present == 0
-          && node_stripped(deleted) == 1
-          && n7->right == n13;
+      && size == 8
+      && is_present == 0
+      && node_stripped(deleted) == 1
+      && n7->right == n13;
     });
 
     tree_insert(t, n2);
@@ -660,11 +660,11 @@ public:
       size = tree_size(t);
       is_present = tree_is_present(t, 3);
       return deleted == n3
-          && size == 8
-          && is_present == 0
-          && node_stripped(deleted) == 1
-          && n2->parent == n5
-          && n5->left == n2;
+      && size == 8
+      && is_present == 0
+      && node_stripped(deleted) == 1
+      && n2->parent == n5
+      && n5->left == n2;
     });
 
     spec.it("root node with left and right children", DO_SPEC_HANDLE {
@@ -672,15 +672,15 @@ public:
       size = tree_size(t);
       is_present = tree_is_present(t, 17);
       return deleted == root
-          && size == 7
-          && is_present == 0
-          && t->root == n19
-          && node_stripped(deleted) == 1
-          && t->root->left == n5
-          && n5->parent == t->root
-          && t->root->right == n23
-          && n23->parent == t->root
-          && n23->left == NULL;
+      && size == 7
+      && is_present == 0
+      && t->root == n19
+      && node_stripped(deleted) == 1
+      && t->root->left == n5
+      && n5->parent == t->root
+      && t->root->right == n23
+      && n23->parent == t->root
+      && n23->left == NULL;
     });
 
     spec.it("left child with both right and left children", DO_SPEC_HANDLE {
@@ -688,13 +688,13 @@ public:
       size = tree_size(t);
       is_present = tree_is_present(t, 5);
       return deleted == n5
-          && size == 6
-          && is_present == 0
-          && node_stripped(deleted) == 1
-          && t->root->left == n7
-          && n7->parent == t->root
-          && n7->left == n2
-          && n2->parent == n7;
+      && size == 6
+      && is_present == 0
+      && node_stripped(deleted) == 1
+      && t->root->left == n7
+      && n7->parent == t->root
+      && n7->left == n2
+      && n2->parent == n7;
     });
 
     spec.it("left child with both right and left children (case 2)", DO_SPEC_HANDLE {
@@ -702,14 +702,14 @@ public:
       size = tree_size(t);
       is_present = tree_is_present(t, 7);
       return deleted == n7
-          && size == 5
-          && is_present == 0
-          && node_stripped(deleted) == 1
-          && t->root->left == n13
-          && n13->parent == t->root
-          && n13->right == NULL
-          && n13->left == n2
-          && n2->parent == n13;
+      && size == 5
+      && is_present == 0
+      && node_stripped(deleted) == 1
+      && t->root->left == n13
+      && n13->parent == t->root
+      && n13->right == NULL
+      && n13->left == n2
+      && n2->parent == n13;
     });
 
     spec.it("left child from root, in line", DO_SPEC_HANDLE {
@@ -717,11 +717,11 @@ public:
       size = tree_size(t);
       is_present = tree_is_present(t, 13);
       return deleted == n13
-          && size == 4
-          && is_present == 0
-          && node_stripped(deleted) == 1
-          && t->root->left == n2
-          && n2->parent == t->root;
+      && size == 4
+      && is_present == 0
+      && node_stripped(deleted) == 1
+      && t->root->left == n2
+      && n2->parent == t->root;
     });
 
     spec.it("delete several nodes in a row", DO_SPEC_HANDLE {
@@ -731,24 +731,24 @@ public:
       is_present = tree_is_present(t, 23);
       size = tree_size(t);
       return deleted == n23
-          && size == 1
-          && is_present == 0
-          && tree_is_present(t, 19) == 0
-          && tree_is_present(t, 2) == 0
-          && node_stripped(deleted) == 1
-          && node_stripped(n19) == 1
-          && node_stripped(n2) == 1
-          && node_stripped(n29) == 1
-          && t->root == n29;
+      && size == 1
+      && is_present == 0
+      && tree_is_present(t, 19) == 0
+      && tree_is_present(t, 2) == 0
+      && node_stripped(deleted) == 1
+      && node_stripped(n19) == 1
+      && node_stripped(n2) == 1
+      && node_stripped(n29) == 1
+      && t->root == n29;
     });
 
 
     spec.it("delete root from single node tree", DO_SPEC_HANDLE {
       return tree_delete_node(t, 29) == n29
-          && tree_is_present(t, 29) == 0
-          && node_stripped(n29) == 1
-          && tree_size(t) == 0
-          && t->root == NULL;
+      && tree_is_present(t, 29) == 0
+      && node_stripped(n29) == 1
+      && tree_size(t) == 0
+      && t->root == NULL;
     });
 
 

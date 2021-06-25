@@ -13,16 +13,28 @@ void
 post_order_traverse(Node * n, Callback callback, void * userdata) {
   // consider if (n == NULL) return;
 
-  if (n->left  != NULL) { post_order_traverse(n->left, callback, userdata); }
-  if (n->right != NULL) { post_order_traverse(n->right, callback, userdata); }
-  if (callback != NULL) { callback(n, userdata); }
+  if (n->left  != NULL) {
+    post_order_traverse(n->left, callback, userdata);
+  }
+  if (n->right != NULL) {
+    post_order_traverse(n->right, callback, userdata);
+  }
+  if (callback != NULL) {
+    callback(n, userdata);
+  }
 }
 
 void
 in_order_traverse(Node * n, Callback callback, void * userdata) {
-  if (n->left  != NULL) { in_order_traverse(n->left, callback, userdata); }
-  if (callback != NULL) { callback(n, userdata); }
-  if (n->right != NULL) { in_order_traverse(n->right, callback, userdata); }
+  if (n->left  != NULL) {
+    in_order_traverse(n->left, callback, userdata);
+  }
+  if (callback != NULL) {
+    callback(n, userdata);
+  }
+  if (n->right != NULL) {
+    in_order_traverse(n->right, callback, userdata);
+  }
 }
 
 
@@ -149,8 +161,12 @@ node_is_present(Node * n, int key) {
 int
 get_height(Node * n, int height, int max) {
   int current = ++height;
-  if (n->left != NULL) { max = get_height(n->left, current, max); }
-  if (n->right != NULL) { max = get_height(n->right, current, max); }
+  if (n->left != NULL) {
+    max = get_height(n->left, current, max);
+  }
+  if (n->right != NULL) {
+    max = get_height(n->right, current, max);
+  }
   current--;
   return current > max ? current : max;
 }
@@ -191,7 +207,9 @@ node_successor(Node * this, Node * node) {
 
 Node *
 get_predecessor(Node * this, Node * node, Node * parent, Node * predecessor) {
-  if (parent->right == this) { predecessor = parent; }
+  if (parent->right == this) {
+    predecessor = parent;
+  }
 
   if (this == node) {
     if (this->left != NULL) {
@@ -225,13 +243,17 @@ node_delete(Node * n) {
 
 Node *
 node_maximum(Node * n) {
-  if (n->right == NULL) { return n; }
+  if (n->right == NULL) {
+    return n;
+  }
   return node_maximum(n->right);
 }
 
 Node *
 node_minimum(Node * n) {
-  if (n->left == NULL) { return n; }
+  if (n->left == NULL) {
+    return n;
+  }
   return node_minimum(n->left);
 }
 
@@ -274,7 +296,9 @@ node_unlink(Node * n) {
 void
 check_minimum(Node * n, void * userdata) {
   bst_data * data = (bst_data *)userdata;
-  if (data->minimum >= n->key) { data->result = 0; }
+  if (data->minimum >= n->key) {
+    data->result = 0;
+  }
   data->minimum = n->key;
 }
 

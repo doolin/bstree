@@ -94,8 +94,8 @@ public:
     node_insert(root, n17);
     collector_add(expected, 17);
     spec.it("array with root and right leaf", DO_SPEC_HANDLE {
-        node_collect(root, (void *) actual);
-        return collector_equals(expected, actual) == 1;
+      node_collect(root, (void *) actual);
+      return collector_equals(expected, actual) == 1;
     });
     collector_reset(actual);
 
@@ -106,8 +106,8 @@ public:
     collector_add(expected, 13);
     collector_add(expected, 17);
     spec.it("array with left and right leaves", DO_SPEC_HANDLE {
-        node_collect(root, actual);
-        return collector_equals(expected, actual) == 1;
+      node_collect(root, actual);
+      return collector_equals(expected, actual) == 1;
     });
     collector_reset(actual);
 
@@ -161,8 +161,8 @@ public:
     Node * n17 = node_new(17);
     node_insert(root, n17);
     spec.it("finds a right leaf", DO_SPEC_HANDLE {
-        Node * actual = node_search(root, 17);
-        return actual == n17;
+      Node * actual = node_search(root, 17);
+      return actual == n17;
     });
     spec.it("right leaf is present", DO_SPEC_HANDLE {
       return node_is_present(root, 17) == 1;
@@ -244,30 +244,30 @@ public:
     node_insert(root, n2);
 
     spec.it("successors up from the minimum", DO_SPEC_HANDLE {
-        return node_successor(root, n2) == n3
-            && node_successor(root, n3) == n5
-            && node_successor(root, n5) == n7;
+      return node_successor(root, n2) == n3
+      && node_successor(root, n3) == n5
+      && node_successor(root, n5) == n7;
     });
 
     spec .it("predecessors down left side", DO_SPEC_HANDLE {
-        return node_predecessor(root, n3) == n2
-            && node_predecessor(root, n5) == n3
-            && node_predecessor(root, n7) == n5;
+      return node_predecessor(root, n3) == n2
+      && node_predecessor(root, n5) == n3
+      && node_predecessor(root, n7) == n5;
     });
 
     node_insert(root, n11);
     node_insert(root, n13);
 
     spec.it("successors left into pathological right subtree", DO_SPEC_HANDLE {
-        return node_successor(root, n7) == n11
-            && node_successor(root, n11) == n13
-            && node_successor(root, n13) == root;
+      return node_successor(root, n7) == n11
+      && node_successor(root, n11) == n13
+      && node_successor(root, n13) == root;
     });
 
     spec.it("predecessors left into pathological right subtree", DO_SPEC_HANDLE {
-        return node_predecessor(root, n11) == n7
-            && node_predecessor(root, n13) == n11
-            && node_predecessor(root, root) == n13;
+      return node_predecessor(root, n11) == n7
+      && node_predecessor(root, n13) == n11
+      && node_predecessor(root, root) == n13;
     });
 
     node_insert(root, n23);
@@ -275,17 +275,17 @@ public:
     node_insert(root, n29);
 
     spec.it("right side successors", DO_SPEC_HANDLE {
-        return node_successor(root, n23) == n29
-            && node_successor(root, n19) == n23
-            && node_successor(root, n29) == n29
-            && node_successor(n23, n19)  == n23;
+      return node_successor(root, n23) == n29
+      && node_successor(root, n19) == n23
+      && node_successor(root, n29) == n29
+      && node_successor(n23, n19)  == n23;
     });
 
     spec.it("right side predecessors", DO_SPEC_HANDLE {
-        return node_predecessor(root, n29) == n23
-            && node_predecessor(root, n23) == n19
-            && node_predecessor(root, n29) == n23
-            && node_predecessor(n23, n23)  == n19;
+      return node_predecessor(root, n29) == n23
+      && node_predecessor(root, n23) == n19
+      && node_predecessor(root, n29) == n23
+      && node_predecessor(n23, n23)  == n19;
     });
 
     node_destroy(root);
@@ -372,7 +372,7 @@ public:
     Node * root = node_new(17);
 
     spec.it("single node tree is bst", [&]() {
-        return node_is_bst(root) == 1;
+      return node_is_bst(root) == 1;
     });
 
     Node * n5 = node_new(5);
@@ -381,14 +381,14 @@ public:
     node_insert(root, n23);
 
     spec.it("three node tree is bst", [&]() {
-        return node_is_bst(root) == 1;
+      return node_is_bst(root) == 1;
     });
 
     Node * n14 = node_new(14);
     node_insert(n23, n14);
     spec.it("out of order subtree is not bst from root", [&]() {
-        return node_is_bst(n23) == 1
-            && node_is_bst(root) == 0;
+      return node_is_bst(n23) == 1
+             && node_is_bst(root) == 0;
     });
 
     node_destroy(root);
@@ -400,7 +400,7 @@ public:
     Node * root = node_new(13);
 
     spec.it("height for single root node is 0", [&]() {
-        return (node_height(root) == 0);
+      return (node_height(root) == 0);
     });
 
     Node * n2 = node_new(2);
@@ -425,31 +425,31 @@ public:
     node_insert(root, n29);
 
     spec.it("height of tree for first 10 primes", [&]() {
-        return (node_height(root) == 3);
+      return (node_height(root) == 3);
     });
 
     spec.it("height of leaf node which is also max is 0", [&]() {
-        return (node_height(n29) == 0);
+      return (node_height(n29) == 0);
     });
 
     spec.it("height of leaf node which is also min is 0", [&]() {
-        return (node_height(n2) == 0);
+      return (node_height(n2) == 0);
     });
 
     spec.it("left child of root has height 2", [&]() {
-        return (node_height(n5) == 2);
+      return (node_height(n5) == 2);
     });
 
     spec.it("right child of root has height 2", [&]() {
-        return (node_height(n19) == 2);
+      return (node_height(n19) == 2);
     });
 
     spec.it("n3 has one child hence height 1", [&]() {
-        return node_height(n3) == 1;
+      return node_height(n3) == 1;
     });
 
     spec.it("n23 has one child hence height 1", [&]() {
-        return node_height(n23) == 1;
+      return node_height(n23) == 1;
     });
 
     node_destroy(root);
@@ -558,8 +558,8 @@ public:
     spec.it("unlinks root node with left and right children", DO_SPEC_HANDLE {
       node_unlink(root);
       return node_is_unlinked(root)
-          && node_is_unlinked(n5)
-          && node_is_unlinked(n23);
+      && node_is_unlinked(n5)
+      && node_is_unlinked(n23);
     });
 
     node_destroy(root);

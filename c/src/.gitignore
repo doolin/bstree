@@ -4,4 +4,5 @@ gmon.out
 *.o
 .deps
 *~
+yaml
 getsome
