@@ -264,7 +264,7 @@ Node.prototype.unlink = function () {
   this.left = this.right = this.parent = null;
 };
 
-Node.prototype.is_unlinked = function () {
+Node.prototype.isUnlinked = function () {
   return this.left === null && this.right === null && this.parent === null;
 };
 
