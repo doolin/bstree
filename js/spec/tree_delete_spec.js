@@ -31,7 +31,7 @@ describe("Tree", function () {
       deleted = t.delete_node(11);
       assert.strictEqual(deleted, n11);
       assert.strictEqual(t.size(), 9);
-      assert.strictEqual(n11.is_unlinked(), true);
+      assert.strictEqual(n11.isUnlinked(), true);
       assert.strictEqual(n7.right, n13);
       assert.strictEqual(n13.parent, n7);
 
@@ -67,7 +67,7 @@ describe("Tree", function () {
       t.delete_node(19);
       assert.strictEqual(t.root, n29);
       assert.strictEqual(t.size(), 1);
-      assert.strictEqual(n29.is_unlinked(), true);
+      assert.strictEqual(n29.isUnlinked(), true);
 
       t.delete_node(29);
       assert.strictEqual(t.size(), 0);

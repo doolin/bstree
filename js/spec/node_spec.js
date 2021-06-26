@@ -485,10 +485,10 @@ describe("Node", function () {
     });
   });
 
-  describe("unlink and is_unlinked", function () {
+  describe("unlink and isUnlinked", function () {
     it("new nodes are unlinked", function () {
       const n = new Node(17);
-      assert.strictEqual(n.is_unlinked(), true);
+      assert.strictEqual(n.isUnlinked(), true);
     });
 
     it("unlink a small tree", function () {
@@ -498,16 +498,16 @@ describe("Node", function () {
 
       root.insert(n5);
       root.insert(n23);
-      assert.strictEqual(root.is_unlinked(), false);
-      assert.strictEqual(n5.is_unlinked(), false);
-      assert.strictEqual(n23.is_unlinked(), false);
+      assert.strictEqual(root.isUnlinked(), false);
+      assert.strictEqual(n5.isUnlinked(), false);
+      assert.strictEqual(n23.isUnlinked(), false);
 
       root.unlink();
       n5.unlink();
       n23.unlink();
-      assert.strictEqual(root.is_unlinked(), true);
-      assert.strictEqual(n5.is_unlinked(), true);
-      assert.strictEqual(n23.is_unlinked(), true);
+      assert.strictEqual(root.isUnlinked(), true);
+      assert.strictEqual(n5.isUnlinked(), true);
+      assert.strictEqual(n23.isUnlinked(), true);
     });
   });
 
