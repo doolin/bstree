@@ -21,6 +21,13 @@ Tree.prototype.collect = function (collector) {
   this.root.collect(collector);
 };
 
+Tree.prototype.postOrderTraverse = function (collector) {
+  if (this.root === null) {
+    return;
+  }
+  this.root.postOrderTraverse(collector);
+};
+
 Tree.prototype.list_keys = function () {
   if (this.root === null) return [];
   return this.root.list_keys();

@@ -17,6 +17,7 @@ describe("Tree", function () {
       t.insert(root);
       t.transplant(root, null);
       assert(t.is_empty());
+      // assert.strictEqual(t.postOrderTraverse, [17]);
     });
 
     it("replaces root with left child", function () {
