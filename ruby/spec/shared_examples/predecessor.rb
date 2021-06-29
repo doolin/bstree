@@ -56,9 +56,6 @@ RSpec.shared_examples '#predecessor' do
           expect(subject).to eq n7
         end
 
-        # This might seem painfully obvious, and perhaps it is,
-        # but perhaps hindsight allows such mastery of the
-        # obvious.
         it 'finds predecessor has no right child' do
           expect(subject.right).to be nil
         end
