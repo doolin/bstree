@@ -16,7 +16,7 @@ describe("Tree", function () {
       const root = new Node(17);
       t.insert(root);
       t.transplant(root, null);
-      assert(t.is_empty());
+      assert(t.isEmpty());
       // assert.strictEqual(t.postOrderTraverse, [17]);
     });
 
@@ -249,17 +249,17 @@ describe("Tree", function () {
     });
   });
 
-  describe("is_empty", function () {
+  describe("isEmpty", function () {
     it("insert root Node into empty tree", function () {
       const t = new Tree();
-      assert.strictEqual(t.is_empty(), true);
+      assert.strictEqual(t.isEmpty(), true);
     });
 
     it("insert root Node into empty tree", function () {
       const t = new Tree();
       const root = new Node(13);
       t.insert(root);
-      assert.strictEqual(t.is_empty(), false);
+      assert.strictEqual(t.isEmpty(), false);
     });
   });
 
@@ -290,10 +290,10 @@ describe("Tree", function () {
     });
   });
 
-  describe("is_empty", function () {
+  describe("isEmpty", function () {
     it("tree with no root is empty", function () {
       const t = new Tree();
-      assert(t.is_empty());
+      assert(t.isEmpty());
     });
   });
 
