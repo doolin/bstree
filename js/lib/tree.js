@@ -10,7 +10,7 @@ Tree.prototype.insert = function (n) {
   this.root === null ? (this.root = n) : this.root.insert(n);
 };
 
-Tree.prototype.is_empty = function () {
+Tree.prototype.isEmpty = function () {
   return this.root === null;
 };
 
@@ -118,10 +118,6 @@ Tree.prototype.isBst = function () {
     return true;
   }
   return this.root.isBst();
-};
-
-Tree.prototype.is_empty = function () {
-  return this.root === null;
 };
 
 Tree.prototype.height = function () {

@@ -71,7 +71,7 @@ describe("Tree", function () {
 
       t.delete_node(29);
       assert.strictEqual(t.size(), 0);
-      assert.strictEqual(t.is_empty(), true);
+      assert.strictEqual(t.isEmpty(), true);
     });
   });
 });
