@@ -106,6 +106,16 @@ Node.prototype.postOrderTraverse = function (callback) {
   callback(this);
 };
 
+Node.prototype.postOrderKeys = function () {
+  const collector = [];
+
+  this.postOrderTraverse(function (node) {
+    collector.push(node.key);
+  });
+
+  return collector;
+};
+
 Node.prototype.size = function () {
   let size = 0;
   this.postOrderTraverse(function () {

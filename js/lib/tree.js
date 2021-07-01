@@ -28,6 +28,14 @@ Tree.prototype.postOrderTraverse = function (collector) {
   this.root.postOrderTraverse(collector);
 };
 
+Tree.prototype.postOrderKeys = function () {
+  if (this.root === null) {
+    return;
+  }
+
+  return this.root.postOrderKeys();
+};
+
 Tree.prototype.list_keys = function () {
   if (this.root === null) return [];
   return this.root.list_keys();
