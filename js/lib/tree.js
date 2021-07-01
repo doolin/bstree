@@ -21,11 +21,11 @@ Tree.prototype.collect = function (collector) {
   this.root.collect(collector);
 };
 
-Tree.prototype.postOrderTraverse = function (collector) {
+Tree.prototype.preOrderKeys = function () {
   if (this.root === null) {
     return;
   }
-  this.root.postOrderTraverse(collector);
+  return this.root.preOrderKeys();
 };
 
 Tree.prototype.postOrderKeys = function () {

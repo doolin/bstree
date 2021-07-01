@@ -12,7 +12,7 @@ describe("load tree from yaml fixture", () => {
     // assert.strictEqual(filenode.isFull(), true)
     assert.strictEqual(filenode.isBalanced(), true);
     assert.deepStrictEqual(filenode.postOrderKeys(), [11]);
-    // assert.deepStrictEqual(filenode.preOrderKeys(), [11])
+    assert.deepStrictEqual(filenode.preOrderKeys(), [11]);
     // expect(tree1.isPathogical).to be false
   });
 
@@ -25,7 +25,7 @@ describe("load tree from yaml fixture", () => {
     // assert.strictEqual(filenode.isFull(), false)
     assert.strictEqual(filenode.isBalanced(), true);
     assert.deepStrictEqual(filenode.postOrderKeys(), [7, 11]);
-    // assert.deepStrictEqual(filenode.preOrderKeys(), [11, 7])
+    assert.deepStrictEqual(filenode.preOrderKeys(), [11, 7]);
     // expect(tree1.isPathogical).to be false
   });
 
@@ -38,7 +38,7 @@ describe("load tree from yaml fixture", () => {
     // assert.strictEqual(filenode.isFull(), true)
     assert.strictEqual(filenode.isBalanced(), true);
     assert.deepStrictEqual(filenode.postOrderKeys(), [7, 13, 11]);
-    // assert.deepStrictEqual(filenode.preOrderKeys(), [11, 7, 13])
+    assert.deepStrictEqual(filenode.preOrderKeys(), [11, 7, 13]);
     // expect(tree1.isPathogical).to be false
   });
 
@@ -51,7 +51,7 @@ describe("load tree from yaml fixture", () => {
     // assert.strictEqual(filenode.isFull(), false)
     assert.strictEqual(filenode.isBalanced(), true);
     assert.deepStrictEqual(filenode.postOrderKeys(), [3, 7, 13, 11]);
-    // assert.deepStrictEqual(filenode.preOrderKeys(), [11, 7, 3, 13])
+    assert.deepStrictEqual(filenode.preOrderKeys(), [11, 7, 3, 13]);
     // expect(tree1.isPathogical).to be false
   });
 
@@ -64,7 +64,7 @@ describe("load tree from yaml fixture", () => {
     // assert.strictEqual(filenode.isFull(), false)
     assert.strictEqual(filenode.isBalanced(), true);
     assert.deepStrictEqual(filenode.postOrderKeys(), [3, 7, 19, 13, 11]);
-    // assert.deepStrictEqual(filenode.preOrderKeys(), [11, 7, 3, 13, 19])
+    assert.deepStrictEqual(filenode.preOrderKeys(), [11, 7, 3, 13, 19]);
     // expect(tree1.isPathogical).to be false
   });
 
@@ -77,7 +77,7 @@ describe("load tree from yaml fixture", () => {
     // assert.strictEqual(filenode.isFull(), false)
     assert.strictEqual(filenode.isBalanced(), false);
     assert.deepStrictEqual(filenode.postOrderKeys(), [3, 7, 29, 19, 13, 11]);
-    // assert.deepStrictEqual(filenode.preOrderKeys(), [11, 7, 3, 13, 19, 29])
+    assert.deepStrictEqual(filenode.preOrderKeys(), [11, 7, 3, 13, 19, 29]);
     // expect(tree1.isPathogical).to be false
   });
 
@@ -90,7 +90,7 @@ describe("load tree from yaml fixture", () => {
     // assert.strictEqual(filenode.isFull(), false)
     assert.strictEqual(filenode.isBalanced(), false);
     assert.deepStrictEqual(filenode.postOrderKeys(), [5, 3, 7, 29, 19, 13, 11]);
-    // assert.deepStrictEqual(filenode.preOrderKeys(), [11, 7, 3, 5, 13, 19, 29])
+    assert.deepStrictEqual(filenode.preOrderKeys(), [11, 7, 3, 5, 13, 19, 29]);
     // expect(tree1.isPathogical).to be false
   });
 
@@ -106,7 +106,10 @@ describe("load tree from yaml fixture", () => {
       filenode.postOrderKeys(),
       [2, 5, 3, 7, 29, 19, 13, 11]
     );
-    // assert.deepStrictEqual(filenode.preOrderKeys(), [11, 7, 3, 2, 5, 13, 19, 29])
+    assert.deepStrictEqual(
+      filenode.preOrderKeys(),
+      [11, 7, 3, 2, 5, 13, 19, 29]
+    );
     // expect(tree1.isPathogical).to be false
   });
 
@@ -122,7 +125,10 @@ describe("load tree from yaml fixture", () => {
       filenode.postOrderKeys(),
       [2, 5, 3, 7, 17, 29, 19, 13, 11]
     );
-    // assert.deepStrictEqual(filenode.preOrderKeys(), [11, 7, 3, 2, 5, 13, 19, 17, 29])
+    assert.deepStrictEqual(
+      filenode.preOrderKeys(),
+      [11, 7, 3, 2, 5, 13, 19, 17, 29]
+    );
     // expect(tree1.isPathogical).to be false
   });
 
@@ -138,7 +144,10 @@ describe("load tree from yaml fixture", () => {
       filenode.postOrderKeys(),
       [2, 5, 3, 7, 17, 23, 29, 19, 13, 11]
     );
-    // assert.deepStrictEqual(filenode.preOrderKeys(), [11, 7, 3, 2, 5, 13, 19, 17, 29, 23])
+    assert.deepStrictEqual(
+      filenode.preOrderKeys(),
+      [11, 7, 3, 2, 5, 13, 19, 17, 29, 23]
+    );
     // expect(tree1.isPathogical).to be false
   });
 });

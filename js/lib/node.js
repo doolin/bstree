@@ -106,10 +106,32 @@ Node.prototype.postOrderTraverse = function (callback) {
   callback(this);
 };
 
+Node.prototype.preOrderTraverse = function (callback) {
+  callback(this);
+
+  if (this.left !== null) {
+    this.left.preOrderTraverse(callback);
+  }
+
+  if (this.right !== null) {
+    this.right.preOrderTraverse(callback);
+  }
+};
+
 Node.prototype.postOrderKeys = function () {
   const collector = [];
 
   this.postOrderTraverse(function (node) {
+    collector.push(node.key);
+  });
+
+  return collector;
+};
+
+Node.prototype.preOrderKeys = function () {
+  const collector = [];
+
+  this.preOrderTraverse(function (node) {
     collector.push(node.key);
   });
 
