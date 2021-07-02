@@ -80,19 +80,25 @@ Node.prototype.isPresent = function (key) {
 /* TODO: define an in-order traversal function which
  * takes a closure.
  */
-Node.prototype.collect = function (collector) {
+Node.prototype.inOrderTraverse = function (callback) {
   if (this.left !== null) {
-    this.left.collect(collector);
+    this.left.inOrderTraverse(callback);
   }
-  collector.push(this.key);
+
+  callback(this);
+
   if (this.right !== null) {
-    this.right.collect(collector);
+    this.right.inOrderTraverse(callback);
   }
 };
 
-Node.prototype.list_keys = function () {
-  collector = [];
-  this.collect(collector);
+Node.prototype.inOrderKeys = function () {
+  const collector = [];
+
+  this.inOrderTraverse(function (node) {
+    collector.push(node.key);
+  });
+
   return collector;
 };
 

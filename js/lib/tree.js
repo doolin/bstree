@@ -14,11 +14,12 @@ Tree.prototype.isEmpty = function () {
   return this.root === null;
 };
 
-Tree.prototype.collect = function (collector) {
+Tree.prototype.inOrderKeys = function () {
   if (this.root === null) {
     return;
   }
-  this.root.collect(collector);
+
+  return this.root.inOrderKeys();
 };
 
 Tree.prototype.preOrderKeys = function () {
@@ -34,11 +35,6 @@ Tree.prototype.postOrderKeys = function () {
   }
 
   return this.root.postOrderKeys();
-};
-
-Tree.prototype.list_keys = function () {
-  if (this.root === null) return [];
-  return this.root.list_keys();
 };
 
 Tree.prototype.search = function (key) {
