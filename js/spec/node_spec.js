@@ -170,36 +170,33 @@ describe("Node", function () {
     });
   });
 
-  describe("collect", function () {
-    it("collects a single node", function () {
+  describe("inOrderKeys", function () {
+    it("inOrderKeys for a single node", function () {
       const root = new Node(13);
-      const actual = [];
       const expected = [13];
-      root.collect(actual);
+      const actual = root.inOrderKeys();
       assert.deepStrictEqual(expected, actual);
     });
 
-    it("collects a left node", function () {
+    it("inOrderKeys for a left node", function () {
       const root = new Node(13);
       const n5 = new Node(6);
       root.insert(n5);
-      const actual = [];
       const expected = [6, 13];
-      root.collect(actual);
+      const actual = root.inOrderKeys();
       assert.deepStrictEqual(expected, actual);
     });
 
-    it("collects a right node", function () {
+    it("inOrderKeys for a right node", function () {
       const root = new Node(13);
       const n19 = new Node(19);
       root.insert(n19);
       const expected = [13, 19];
-      const actual = [];
-      root.collect(actual);
+      const actual = root.inOrderKeys();
       assert.deepStrictEqual(expected, actual);
     });
 
-    it("collects first 10 primes", function () {
+    it("inOrderKeys for the first 10 primes", function () {
       const root = new Node(13);
       const n7 = new Node(7);
       const n5 = new Node(5);
@@ -220,17 +217,16 @@ describe("Node", function () {
       root.insert(n2);
       root.insert(n29);
       const expected = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29];
-      const actual = [];
-      root.collect(actual);
+      const actual = root.inOrderKeys();
       assert.deepStrictEqual(expected, actual);
     });
   });
 
-  describe("list_keys", function () {
-    it("wraps the collect function for convenience", function () {
+  describe("inOrderKeys", function () {
+    it("wraps the inOrderTraverse function for convenience", function () {
       const root = new Node(17);
       const expected = [17];
-      assert.deepStrictEqual(expected, root.list_keys());
+      assert.deepStrictEqual(expected, root.inOrderKeys());
     });
   });
 

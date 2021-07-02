@@ -147,26 +147,25 @@ describe("Tree", function () {
     });
   });
 
-  describe("collect", function () {
-    it("collect empty array from empty tree", function () {
+  describe("inOrderKeys", function () {
+    it("for empty array from empty tree", function () {
       const t = new Tree();
       const expected = [];
       const actual = [];
-      t.collect(actual);
+      t.inOrderKeys(actual);
       assert.deepStrictEqual(expected, actual);
     });
 
-    it("collects key for root Node in single Node tree", function () {
+    it("for root Node in single Node tree", function () {
       const t = new Tree();
       const root = new Node(13);
       t.insert(root);
       const expected = [13];
-      const actual = [];
-      t.collect(actual);
+      const actual = t.inOrderKeys();
       assert.deepStrictEqual(expected, actual);
     });
 
-    it("collects values from a simple 3 Node tree", function () {
+    it("for a simple 3 Node tree", function () {
       const t = new Tree();
       const root = new Node(13);
       const n5 = new Node(5);
@@ -175,16 +174,8 @@ describe("Tree", function () {
       t.insert(n5);
       t.insert(n17);
       const expected = [5, 13, 17];
-      const actual = [];
-      t.collect(actual);
+      const actual = t.inOrderKeys();
       assert.deepStrictEqual(expected, actual);
-    });
-  });
-
-  describe("list_keys", function () {
-    it("finds no keys for empty tree", function () {
-      const t = new Tree();
-      assert.deepStrictEqual([], t.list_keys());
     });
   });
 
