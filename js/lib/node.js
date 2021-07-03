@@ -235,6 +235,7 @@ Node.prototype.height = function () {
 
     if (n.left !== null) {
       max = getHeight(n.left, current);
+      console.log("max: " + max)
     }
     if (n.right !== null) {
       max = getHeight(n.right, current);
