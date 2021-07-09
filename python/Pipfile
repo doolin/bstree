@@ -10,6 +10,7 @@ pytest = "*"
 pyyaml = "*"
 pipenv-shebang = "*"
 black = "*"
+pip = "==21.1.3"
 
 [requires]
 python_version = "3.9"

@@ -55,6 +55,15 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 
+## Updating packages
+
+The tooling for selectively updating seems a bit unintuitive, but here's one way to do it:
+
+- Find the outdated packages with `pipenv run pip list -o`
+- Update the desired package with `pipenv install --keep-outdated '<name==version>'`
+
+It's probably a good idea to check the state of `Pipfile` and `Pipfile.lock` with `git diff` to ensure everything worked out as desired.
+
 ## Running tests
 
 - ` pipenv run pytest`
