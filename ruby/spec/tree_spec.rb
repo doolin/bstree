@@ -54,6 +54,7 @@ RSpec.describe Tree do
       tree = Tree.new
       tree.set_root_to_nil
       expect(tree.empty?).to be true
+      expect(tree.inorder_walk).to be nil
     end
   end
 
