@@ -18,6 +18,8 @@ RSpec.describe Tree do
 
     example 'empty tree' do
       tree.delete_by_key root.key
+      tree.invert
+      expect(tree.empty?).to be true
       expect(tree.preorder_keys).to eq []
     end
 
