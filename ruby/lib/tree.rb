@@ -63,29 +63,11 @@ class Tree
   end
 
   # From CLRS (3rd Edition) p. 296, "transplant" a node's
-  # location in the tree. The idea is to replace u with v.
+  # location in the tree. The idea is to replace the deleted node u
+  # with its child v, where u and v are the CLRS variable names.
   # This function would be better named `reset_parent` because
   # that's all it does. Resetting child links is done in the
   # delete method.
-  # rubocop:disable Naming/MethodParameterName
-  def transplant_clrs3(u, v)
-    # Consider "ruby-izing the following. Rubocop doesn't like it.
-    if u.parent.nil? # u is a root node
-      @root = v
-    elsif u == u.parent.left # u is a left child of its parent
-      u.parent.left = v
-    else # u is a right child of its parent
-      u.parent.right = v
-    end
-
-    # if !v.nil?
-    v&.parent = u.parent
-    # v.parent = u.parent unless v.nil?
-    # end
-    v
-  end
-  # rubocop:enable Naming/MethodParameterName
-
   def transplant(node, child)
     if node.parent.nil?
       @root = child
@@ -100,6 +82,7 @@ class Tree
     # child
   end
 
+  # The variable naming in this method follows CLRS.
   # rubocop:disable Metrics/MethodLength
   # rubocop:disable Metrics/AbcSize
   def delete_clrs3(key)
