@@ -19,14 +19,6 @@ class Foo
     @key < other.key
   end
 
-  def >=(other)
-    @key >= other.key
-  end
-
-  def >(other)
-    @key > other.key
-  end
-
   def <=(other)
     @key <= other.key
   end
