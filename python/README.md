@@ -68,6 +68,10 @@ It's probably a good idea to check the state of `Pipfile` and `Pipfile.lock` wit
 
 - ` pipenv run pytest`
 
+## Code coverage
+
+- `pipenv run coverage html`
+
 ## To do
 
 - Clean up the conditional code in the Node class, make it more
