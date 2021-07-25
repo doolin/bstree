@@ -155,6 +155,12 @@ class Tree
     collector
   end
 
+  def inorder_keys
+    collector = []
+    inorder_walk { |node| collector << node.key }
+    collector
+  end
+
   def search(key)
     @root.find key
   end
