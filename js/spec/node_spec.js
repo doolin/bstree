@@ -401,7 +401,7 @@ describe("Node", function () {
       assert.strictEqual(root.height(), 1);
     });
 
-    it("height of tree with 4 or more nodes is at least 2", function () {
+    it("height of right oriented tree with 4 or more nodes is at least 2", function () {
       const root = new Node(11);
       const n17 = new Node(17);
       const n19 = new Node(19);
@@ -412,7 +412,18 @@ describe("Node", function () {
       assert.strictEqual(root.height(), 2);
     });
 
-    it("heights of tree of first 10 primes", function () {
+    it("height of left oriented tree with 4 or more nodes is at least 2", function () {
+      const root = new Node(11);
+      const n7 = new Node(7);
+      const n3 = new Node(3);
+      const n13 = new Node(13);
+      root.insert(n7);
+      root.insert(n3);
+      root.insert(n13);
+      assert.strictEqual(root.height(), 2);
+    });
+
+    it("height of tree of first 10 primes", function () {
       const root = new Node(13);
       const n7 = new Node(7);
       const n5 = new Node(5);

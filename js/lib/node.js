@@ -223,30 +223,24 @@ Node.prototype.predecessor = function (node) {
 };
 
 Node.prototype.height = function () {
-  const height = 0;
-
   const getHeight = function (n, height) {
-    current = height;
-    current++;
-    // console.log(current)
     let max = 0;
-    // if (n.left !== null) { max = n.left.getHeight(current); }
-    // if (n.right !== null) { max = n.right.getHeight(current); }
+    let lmax = 0;
+    let rmax = 0;
 
     if (n.left !== null) {
-      max = getHeight(n.left, current);
+      lmax = getHeight(n.left, height + 1);
     }
     if (n.right !== null) {
-      max = getHeight(n.right, current);
+      rmax = getHeight(n.right, height + 1);
     }
 
-    current--;
-    // console.log(current)
-    max = current > max ? current : max;
-    return max;
+    max = lmax > rmax ? lmax : rmax;
+
+    return height > max ? height : max;
   };
 
-  return getHeight(this, height);
+  return getHeight(this, 0);
 };
 
 Node.prototype.isBst = function () {

@@ -46,7 +46,7 @@ describe("load tree from yaml fixture", () => {
     const filenode = fromYaml("tree4.yml");
 
     assert.strictEqual(filenode.size(), 4);
-    // assert.strictEqual(filenode.height(), 2)
+    assert.strictEqual(filenode.height(), 2);
     assert.strictEqual(filenode.isBst(), true);
     // assert.strictEqual(filenode.isFull(), false)
     assert.strictEqual(filenode.isBalanced(), true);
