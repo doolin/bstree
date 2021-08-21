@@ -490,5 +490,33 @@ A binary search tree using first 10 primes for keys:
 \path (r) -- (c) node [midway] {$\cdots$};
 \end{tikzpicture}}
 
+\vspace{1in}
+\hrule
+
+\section{Binary Tree template}
+
+
+\begin{tikzpicture}[scale=1.0,level/.style={sibling distance=50mm/#1}]
+  \node [circle,draw] (z){$16$}
+    child {node [circle,draw] (a) {$\phantom{0}8$}
+      child {node [circle,draw] (b) {$04$}
+        child {node [circle, draw] (c) {$02$}}
+        child {node [circle, draw] (d) {$06$}}
+      }
+      child {node [circle,draw] (g) {$12$}
+        child {node [circle, draw] (ga) {$10$}}
+        child {node [circle,draw] (gb) {$14$}
+          child {node [circle,draw] (gd) {$13$}}
+          child {node [circle,draw] (gc) {$15$}}
+        }
+      }
+    }
+    child {node [circle,draw] (j) {$24$}
+      child {node [circle,draw] (k) {$20$}}
+    child {node [circle,draw] (l) {$28$}}
+  };
+\end{tikzpicture}
+
+
 
 \end{document}
