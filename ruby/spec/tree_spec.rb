@@ -474,6 +474,48 @@ RSpec.describe Tree do
             # expect(tree.pathological??).to be true
           end
         end
+
+        context 'full trees from yaml' do
+          let(:yaml_dir) { '../fixtures/full' }
+
+          it 'tree1' do
+            tree = Tree.from_yaml_file("#{yaml_dir}/tree1.yml")
+            expect(tree.size).to eq 1
+            expect(tree.height).to eq 0
+            expect(tree.bst?).to be true
+            expect(tree.full?).to be true
+            expect(tree.balanced?).to be true
+            expect(tree.postorder_keys).to eq [2]
+            expect(tree.preorder_keys).to eq [2]
+            # expect(tree1.pathological??).to be false
+          end
+
+          it 'tree3' do
+            tree = Tree.from_yaml_file("#{yaml_dir}/tree3.yml")
+            expect(tree.root.size).to eq 3
+            expect(tree.height).to eq 1
+            expect(tree.bst?).to be true
+            expect(tree.full?).to be true
+            expect(tree.balanced?).to be true
+            expect(tree.postorder_keys).to eq [1, 3, 2]
+            expect(tree.preorder_keys).to eq [2, 1, 3]
+            expect(tree.inorder_keys).to eq [1, 2, 3]
+            # expect(tree1.pathological??).to be false
+          end
+
+          it 'tree5' do
+            tree = Tree.from_yaml_file("#{yaml_dir}/tree5.yml")
+            expect(tree.root.size).to eq 5
+            expect(tree.height).to eq 2
+            expect(tree.bst?).to be true
+            expect(tree.full?).to be true
+            expect(tree.balanced?).to be true
+            expect(tree.postorder_keys).to eq [4, 10, 14, 12, 8]
+            expect(tree.preorder_keys).to eq [8, 4, 12, 10, 14]
+            expect(tree.inorder_keys).to eq [4, 8, 10, 12, 14]
+            # expect(tree1.pathological??).to be false
+          end
+        end
       end
     end
 

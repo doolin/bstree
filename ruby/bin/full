@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require_relative '../lib/generator'
+
+tree = Generator.build([2], 'uuid')
+tree.to_yaml_file('../fixtures/full/tree1.yml')
+
+tree = Generator.build([2, 1, 3], 'uuid')
+tree.to_yaml_file('../fixtures/full/tree3.yml')
+
+tree = Generator.build([8, 4, 12, 10, 14], 'uuid')
+tree.to_yaml_file('../fixtures/full/tree5_right.yml')
+
+tree = Generator.build([8, 4, 2, 6, 12], 'uuid')
+tree.to_yaml_file('../fixtures/full/tree5_left.yml')
+
+tree = Generator.build([8, 4, 12, 10, 14, 9, 11], 'uuid')
+tree.to_yaml_file('../fixtures/full/tree7.yml')
+
+tree = Generator.build([8, 4, 2, 6, 12, 10, 14, 9, 11], 'uuid')
+tree.to_yaml_file('../fixtures/full/tree9.yml')
