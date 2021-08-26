@@ -6,8 +6,6 @@ require 'shared_examples/minimum'
 require 'shared_examples/successor'
 require 'shared_examples/predecessor'
 
-require 'pry'
-
 RSpec.describe Node do
   it_inserts_like 'insertion'
   it_finds_extremes '#maximum'
