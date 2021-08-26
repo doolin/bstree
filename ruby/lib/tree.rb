@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require_relative './node'
-require 'pry'
-
 # rubocop:disable Metrics/ClassLength
 class Tree
   attr_reader :root, :size
