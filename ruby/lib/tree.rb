@@ -6,22 +6,22 @@ class Tree
 
   NODE_CLASS = Node
 
-  def preorder_walk
+  def preorder_walk(&block)
     return unless root
 
-    root.pre_order_traverse(&Proc.new)
+    root.pre_order_traverse(&block)
   end
 
-  def inorder_walk
+  def inorder_walk(&block)
     return unless root
 
-    root.in_order_traverse(&Proc.new)
+    root.in_order_traverse(&block)
   end
 
-  def postorder_walk
+  def postorder_walk(&block)
     return unless root
 
-    root.post_order_traverse(&Proc.new)
+    root.post_order_traverse(&block)
   end
 
   def initialize(node = nil)

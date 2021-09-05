@@ -6,16 +6,16 @@ require 'iterative_node'
 class IterativeTree < Tree
   NODE_CLASS = IterativeNode
 
-  def preorder_walk
-    preorder_iterate(&Proc.new)
+  def preorder_walk(&block)
+    preorder_iterate(&block)
   end
 
-  def inorder_walk
-    inorder_iterate(&Proc.new)
+  def inorder_walk(&block)
+    inorder_iterate(&block)
   end
 
-  def postorder_walk
-    postorder_iterate(&Proc.new)
+  def postorder_walk(&block)
+    postorder_iterate(&block)
   end
 
   # TODO: implement inorder_iterate without a stack,
