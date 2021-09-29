@@ -20,6 +20,7 @@ AC_PROG_CC
 # FIXME: Replace `main' with a function in `-lboost_unit_test_framework':
 AC_CHECK_LIB([boost_unit_test_framework], [main])
 
+AC_CHECK_LIB([yaml], [main])
 
 # FIXME: Replace `main' with a function in `-lcppunit':
 AC_CHECK_LIB([cppunit], [main])

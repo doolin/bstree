@@ -9,8 +9,8 @@
 
 #include "colortest.h"
 
-#define DESCCOLOR COLOR45
-#define PASSCOLOR COLOR119
+#define DESCCOLOR COLOR25
+#define PASSCOLOR COLOR36
 #define FAILCOLOR COLOR124
 #define PENDINGCOLOR COLOR166
 
