@@ -2,6 +2,8 @@ collector
 initial
 node
 tree
+yaml
+*.orig
 *.o
 *.gch
 *~

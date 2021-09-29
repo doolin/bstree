@@ -1,6 +1,8 @@
 #ifndef INVENTIUM_COLORTEST_H
 #define INVENTIUM_COLORTEST_H
 
+// xterm colors: https://jonasjacek.github.io/colors/
+
 #define  COLOR16 "\33[38;5;16m"
 #define  COLOR17 "\33[38;5;17m"
 #define  COLOR18 "\33[38;5;18m"

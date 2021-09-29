@@ -374,6 +374,7 @@ class Node
     node
   end
 
+  # This is implicitely pre-order traverse.
   def to_hash
     {
       'key' => key,
