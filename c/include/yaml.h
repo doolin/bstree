@@ -10,6 +10,8 @@ extern "C" {
 // TODO: return Tree
 Node * load_tree(FILE * yaml_file);
 
+Node * from_yaml(char * filename);
+
 #ifdef __cplusplus
 }
 #endif

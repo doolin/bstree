@@ -37,7 +37,6 @@ in_order_traverse(Node * n, Callback callback, void * userdata) {
   }
 }
 
-
 Node *
 node_new(int key) {
   Node * n = calloc(1, sizeof(Node));
@@ -77,7 +76,6 @@ int
 node_key(Node * n) {
   return n->key;
 }
-
 
 Node *
 node_left(Node * n) {
