@@ -11,6 +11,8 @@ typedef struct _tree Tree;
 
 Tree * tree_new          (void);
 
+Tree * tree_from_yaml    (const char * filename);
+
 void   tree_delete       (Tree * t);
 
 Node * tree_delete_node  (Tree * t,

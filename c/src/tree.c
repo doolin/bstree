@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #include <tree.h>
+#include <is_yaml.h>
 #include <collector.h>
 #include "tree_private.h"
 #include "node_private.h" // needed for delete implementation, bummer
@@ -194,4 +195,11 @@ int
 tree_size(Tree * t) {
   if (t->root == NULL) return 0;
   return node_size(t->root);
+}
+
+Tree *
+tree_from_yaml(char * filename) {
+  Tree * tree = tree_new();
+  tree->root = from_yaml_file(filename);
+  return tree;
 }
