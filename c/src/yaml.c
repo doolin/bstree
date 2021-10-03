@@ -190,6 +190,14 @@ Node * load_tree(FILE * yaml_file) {
   return root_node;
 }
 
+Node *
+from_yaml_file(const char * filename) {
+  FILE * yaml_file = fopen(filename, "r");
+  Node * node = load_tree(yaml_file);
+  fclose(yaml_file);
+  return node;
+}
+
 #ifdef STANDALONE
 Node * display_yaml(void) {
   FILE *yaml_file = fopen("../../fixtures/tree10.yml", "r");

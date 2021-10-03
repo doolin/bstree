@@ -5,7 +5,7 @@
 
 #include <node.h>
 #include <collector.h>
-#include <yaml.h>
+#include <is_yaml.h>
 #include "../src/node_private.h"
 
 using std::string;
@@ -16,8 +16,7 @@ class YamlTest : public CppUnit::TestCase {
   YamlTest( std::string name ) : CppUnit::TestCase( name ) {}
 
   void test_load_tree() {
-    describe_test(INDENT0, "Dummy yaml test");
-    
+    describe_test(INDENT0, "From test_load_tree in YamlTest");
     Spec spec;
 
     spec.it("loads a single node BST", DO_SPEC_HANDLE {
@@ -64,8 +63,8 @@ class YamlTest : public CppUnit::TestCase {
       fclose(yaml_file);
       return (
         node_key(node) == 11 &&
-        node_key(node->left) == 7 && 
-        node_size(node) == 4 && 
+        node_key(node->left) == 7 &&
+        node_size(node) == 4 &&
         node_height(node) == 2 &&
         node_is_bst(node) == true
       );

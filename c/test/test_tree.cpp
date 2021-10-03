@@ -765,6 +765,36 @@ public:
     tree_delete(t);
   }
 
+  void test_tree_from_yaml(void) {
+    describe_test(INDENT0, "From test_tree_from_yaml in TreeTest");
+    Spec spec;
+    Tree * tree;
+
+    tree = tree_from_yaml("../../fixtures/tree1.yml");
+    spec.it("load single node tree", DO_SPEC_HANDLE {
+      Node * node = tree->root;
+      return (
+        node_key(node) == 11 &&
+        node_size(node) == 1 &&
+        node_height(node) == 0 &&
+        node_is_bst(node) == true
+        );
+    });
+    tree_delete(tree);
+
+    tree = tree_from_yaml("../../fixtures/tree10.yml");
+    spec.it("load ten node tree", DO_SPEC_HANDLE {
+      Node * node = tree->root;
+      return (
+        node_key(node) == 11 &&
+        node_size(node) == 10 &&
+        node_height(node) == 4 &&
+        node_is_bst(node) == true
+        );
+    });
+    tree_delete(tree);
+  }
+
   void run_tests(void) {
     test_tree_new_and_delete();
     test_tree_insert();
@@ -783,6 +813,7 @@ public:
     test_tree_transplant();
     test_tree_list_keys();
     test_tree_delete_node();
+    test_tree_from_yaml();
   }
 };
 
