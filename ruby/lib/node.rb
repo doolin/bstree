@@ -236,7 +236,7 @@ class Node
   def full?
     return true if left.nil? && right.nil?
 
-    left&.full? && right&.full? || false # returns nil instead of false, why?
+    (left&.full? && right&.full?) || false # returns nil instead of false, why?
   end
 
   def bst?
