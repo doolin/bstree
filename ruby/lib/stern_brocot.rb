@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SternBrocot
-  MAX = 2**(1.size * 8 - 2) - 1
+  MAX = (2**((1.size * 8) - 2)) - 1
   TOL = 0.001
 
   # rubocop:disable  Metrics/AbcSize
