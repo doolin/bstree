@@ -13,6 +13,51 @@ RSpec.describe Node do
   it_finds '#successor'
   it_finds '#predecessor'
 
+  describe '#depth' do
+    context '0' do
+      it 'is a single node' do
+        node = Node.new 17
+        expect(node.depth).to be 0
+      end
+    end
+
+    context '1' do
+      it 'left child' do
+        node = Node.new 17
+        n5 = Node.new 5
+        node.insert n5
+        expect(n5.depth).to be 1
+      end
+
+      it 'right child' do
+        node = Node.new 17
+        n23 = Node.new 23
+        node.insert n23
+        expect(n23.depth).to be 1
+      end
+    end
+
+    context '2' do
+      it 'left child' do
+        node = Node.new 17
+        n5 = Node.new 5
+        n2 = Node.new 2
+        node.insert n5
+        node.insert n2
+        expect(n2.depth).to be 2
+      end
+
+      it 'right child' do
+        node = Node.new 17
+        n23 = Node.new 23
+        node.insert n23
+        n29 = Node.new 29
+        node.insert n29
+        expect(n29.depth).to be 2
+      end
+    end
+  end
+
   describe '#list_keys' do
     example 'from single node' do
       node = Node.new 17
