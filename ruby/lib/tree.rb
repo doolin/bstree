@@ -162,6 +162,9 @@ class Tree
     @root.find key
   end
 
+  # From MIT Opencourseware, https://www.youtube.com/watch?v=76dhtgZt38A&list=PLUl4u3cNGP63EdVPNLG3ToM6LaEUuStEY&index=10,
+  # the height of a tree is the height of the root. Note: depth of tree is not defined,
+  # only depth of nodes.
   def height
     root.nil? ? 0 : root.height
   end

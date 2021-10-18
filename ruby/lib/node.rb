@@ -120,6 +120,11 @@ class Node
   # is the number of links on the path from it to the root. The height of a tree is the
   # maximum depth among its nodes. p. 226 Sedgewick and Wayne 4th edition.
   #
+  # From MIT Opencourseware: https://www.youtube.com/watch?v=76dhtgZt38A&list=PLUl4u3cNGP63EdVPNLG3ToM6LaEUuStEY&index=10
+  # the _height_ of a node is the number of edges in the longest downward path from the node.
+  # This is the same as the maximum depth of children in the nodes subtree. Notably, all leaves
+  # have height 0.
+  #
   # Notably, this article on geeksforgeeks is wrong:
   # https://www.geeksforgeeks.org/count-balanced-binary-trees-height-h/
   # defining the height at the number of links + 1, that is, they are
@@ -132,6 +137,21 @@ class Node
     # too high. May need to disable for just this method
     # raise if left && left == self || right && right == self # stack overflow
     self.class.max(left&.height || -1, right&.height || -1) + 1
+  end
+
+  # https://www.youtube.co/watch?v=76dhtgZt38A&list=PLUl4u3cNGP63EdVPNLG3ToM6LaEUuStEY&index=10
+  # Depth from Eric Demaine, MIT Opencourseware, is the number of edges from the node up
+  # to the root. Depth measures from the root down. Note that the depth of tree is not defined,
+  # only depth of node is defined.
+  def depth
+    depth = 0
+    parent = self.parent
+
+    while parent
+      depth += 1
+      parent = parent.parent
+    end
+    depth
   end
 
   # TODO: this method could almost surely be refactored into
