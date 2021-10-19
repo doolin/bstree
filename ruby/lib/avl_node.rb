@@ -3,11 +3,20 @@
 require 'node'
 
 class AvlNode < Node
-  attr_accessor :balance_factor
+  attr_writer :balance_factor
 
   def initialize(key)
     super
     @balance_factor = 0
+  end
+
+  def insert(node)
+    super
+    balance
+  end
+
+  def balance
+    @balance_factor = weight
   end
 
   def insert_nonworking(node)
@@ -71,6 +80,10 @@ class AvlNode < Node
   end
 
   def weight
+    right_height - left_height
+  end
+
+  def balance_factor
     right_height - left_height
   end
 

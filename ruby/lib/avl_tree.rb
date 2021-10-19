@@ -46,6 +46,7 @@ class AvlTree < Tree
   end
   # rubocop:enable  Metrics/MethodLength
 
+  # TODO: try to get rid of this method
   def balance_right(node)
     parent = node.parent
     return rotate_left(node, parent) if parent.balance_factor.positive?
@@ -54,6 +55,7 @@ class AvlTree < Tree
     node.parent
   end
 
+  # TODO: try to get rid of this method
   def balance_left(node)
     parent = node.parent
     return rotate_right(node, parent) if parent.balance_factor.negative?
@@ -62,10 +64,12 @@ class AvlTree < Tree
     node.parent
   end
 
+  # TODO: try to get rid of this method
   def balance(node)
     node.right_child? ? balance_right(node) : balance_left(node)
   end
 
+  # TODO: try to get rid of this method
   def retrace(node)
     parent = node.parent
     until parent.nil?

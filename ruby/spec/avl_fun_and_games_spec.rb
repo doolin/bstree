@@ -34,7 +34,7 @@ RSpec.describe AvlTree do
       expect(tree.balanced?).to be true
     end
 
-    example '2' do
+    xexample '2' do
       tree = build_tree(2)
       expect(tree.preorder_balance_factors).to eq [1, 0]
       expect(tree.root.balance_factor).to eq 1
@@ -44,7 +44,7 @@ RSpec.describe AvlTree do
       expect(tree.balanced?).to be true
     end
 
-    example '3' do
+    xexample '3' do
       tree = build_tree(3)
 
       expect(tree.preorder_balance_factors).to eq [0, 0, 0]
@@ -62,7 +62,7 @@ RSpec.describe AvlTree do
       expect(tree.balanced?).to be true
     end
 
-    example '4' do
+    xexample '4' do
       tree = build_tree(4)
       expect(tree.preorder_keys).to eq [2, 1, 3, 4]
 

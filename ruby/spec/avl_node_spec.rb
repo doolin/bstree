@@ -11,9 +11,36 @@ RSpec.describe AvlNode do
   let(:n2) { described_class.new 2 }
   let(:n5) { described_class.new 5 }
   let(:n7) { described_class.new 7 }
+  let(:n11) { described_class.new 11 }
   let(:n13) { described_class.new 13 }
   let(:n19) { described_class.new 19 }
+  let(:n23) { described_class.new 23 }
   let(:n29) { described_class.new 29 }
+
+  describe '#insert' do
+    context 'left heavy tree' do
+      it 'computes balance factor after inserting' do
+        expect(root.balance_factor).to be 0
+        root.insert n7
+        expect(root.balance_factor).to be(-1)
+        root.insert n13
+        expect(root.balance_factor).to be(-2)
+        root.insert n11
+        expect(root.balance_factor).to be(-3)
+      end
+    end
+
+    context 'right heavy tree' do
+      it 'computes balance factor after inserting' do
+        root.insert n29
+        expect(root.balance_factor).to be 1
+        root.insert n19
+        expect(root.balance_factor).to be 2
+        root.insert n23
+        expect(root.balance_factor).to be 3
+      end
+    end
+  end
 
   context 'rotate' do
     let(:root) { described_class.new 17 }
