@@ -42,6 +42,36 @@ RSpec.describe AvlNode do
     end
   end
 
+  describe '#balance' do
+    context 'left heavy' do
+      it 'calls right_rot' do
+        root.insert n5
+        expect(root).to receive(:right_rot)
+        root.insert n2
+      end
+
+      it 'calls d_rot_right' do
+        root.insert n5
+        expect(root).to receive(:d_rot_right)
+        root.insert n7
+      end
+    end
+
+    context 'right heavy' do
+      it 'calls left_rot' do
+        root.insert n19
+        expect(root).to receive(:left_rot)
+        root.insert n29
+      end
+
+      it 'calls d_rot_left' do
+        root.insert n29
+        expect(root).to receive(:d_rot_left)
+        root.insert n23
+      end
+    end
+  end
+
   context 'rotate' do
     let(:root) { described_class.new 17 }
     let(:n11) { described_class.new 11 }
