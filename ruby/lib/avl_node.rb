@@ -15,23 +15,33 @@ class AvlNode < Node
     balance
   end
 
+  # rubocop:disable  Metrics/MethodLength
   def balance
     @balance_factor = weight
-  end
 
-  def insert_nonworking(node)
-    super
-    node < self ? @weight -= 1 : @weight += 1
-
-    # puts weight
-    # if weight >= 2
-    #   rotate_cw
-    # end
-    # super will just insert node.
-    # check the current weights here.
-    # the hard thing is understanding that the root
-    # node may have to change to ensure balance.
+    if @balance_factor < -1
+      if left.balance_factor == 1
+        d_rot_right
+      else
+        right_rot
+      end
+    elsif @balance_factor > 1
+      if right.balance_factor == -1
+        d_rot_left
+      else
+        left_rot
+      end
+    end
   end
+  # rubocop:enable  Metrics/MethodLength
+
+  def d_rot_right; end
+
+  def right_rot; end
+
+  def d_rot_left; end
+
+  def left_rot; end
 
   def rotate_right
     parent = self.parent
