@@ -10,13 +10,13 @@ class AvlNode < Node
     @balance_factor = 0
   end
 
-  def insert(node)
+  def insert(node, balance: true)
     super
-    balance
+    balance_node if balance
   end
 
   # rubocop:disable  Metrics/MethodLength
-  def balance
+  def balance_node
     @balance_factor = weight
 
     if @balance_factor < -1
@@ -43,33 +43,90 @@ class AvlNode < Node
 
   def left_rot; end
 
+  # I believe this and the rotate_left methods are probably correct.
+  # The challenge is that after the rotation, there may be a new subtree
+  # root, which may be the root of the entire tree as well. This case is
+  # not covered by any of the literature, and frankly is there more
+  # interesting aspect of the implementation from an engineering perspective.
+  #
+  #             17                   11
+  #           /    \               /    \
+  #         11      29    ==>     5     17
+  #       /   \                 /      /   \
+  #      5    13               2      13   29
+  #     .
+  #    2
+  #
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
   def rotate_right
-    parent = self.parent
+    parent = self.parent       # might be nil if actual root of whole tree
 
-    pivot = left
-    swinger = pivot.right
-    self.left = swinger
-    swinger&.parent = left
-    pivot.right = self
-    pivot.parent = parent
-    parent&.right = pivot
-    pivot.left&.parent = pivot
-    self.parent = pivot
+    pivot = left               # pivot is going to be the new subtree root
+    swinger = pivot.right      # this might be nil
+    self.left = swinger        # self is the old subtree root
+    swinger&.parent = self # left     # if swinger is nil, its parent is of course nil
+
+    pivot.right = self         # the right child of the new subtree root is the old subtree root
+    pivot.parent = parent      # reset the parent for the new subtree root, might be nil
+    # We need to know if the old subtree root is a left child or a right child
+    # so that if it exists, we can set the new subtree root correctly. Until it's reset, it
+    # should be pointing at the `self`, the old subtree root.
+    unless parent.nil?
+      if right_child?
+        parent.right = pivot # if there is a parent, its right child is the new subtree root
+      else
+        parent.left = pivot
+      end
+    end
+
+    self.parent = pivot        # the old subtree root gets the new subtree root as a parent
+
+    balance_factor             # rebalance self
+    pivot.balance_factor       # rebalance pivot
+    pivot                      # return pivot as new subtree root
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 
+  #    13                   19
+  #   /   \      ===>      /  \
+  #  11   19             13    23
+  #       /  \          /  \     \
+  #     17   23        11   17    43
+  #            .
+  #            n43
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
   def rotate_left
-    parent = self.parent
+    parent = self.parent # might be nil if actual root of whole tree
 
-    pivot = right
-    swinger = pivot.left
-    self.right = swinger
-    swinger&.parent = right
-    pivot.left = self
-    pivot.parent = parent
-    parent&.left = pivot
-    pivot.right&.parent = pivot
-    self.parent = pivot
+    pivot = right              # pivot will be new subtree root
+    swinger = pivot.left       # this might be nil
+    self.right = swinger       # self is the old subtree root
+    swinger&.parent = self     # if swinger is nil, its parent is of course nil
+
+    pivot.left = self          # the left child of the new subtree root is the old subtree root
+    pivot.parent = parent      # reset the parent for the new subtree root, might be nil
+
+    # seems to be required for "knee"
+    # parent&.left = pivot
+    unless parent.nil?
+      if right_child?
+        parent.right = pivot # if there is a parent, its right child is the new subtree root
+      else
+        parent.left = pivot
+      end
+    end
+
+    self.parent = pivot        # the old subtree root gets the new subtree root as a parent
+
+    balance_factor             # rebalance self
+    pivot.balance_factor       # rebalance pivot
+    pivot                      # return pivot as new subtree root
   end
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 
   def rotate_left_right
     left.rotate_left
@@ -94,7 +151,7 @@ class AvlNode < Node
   end
 
   def balance_factor
-    right_height - left_height
+    @balance_factor = right_height - left_height
   end
 
   def balanced?
