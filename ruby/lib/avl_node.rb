@@ -10,9 +10,9 @@ class AvlNode < Node
     @balance_factor = 0
   end
 
-  def insert(node, balance: true)
+  def insert(node)
     super
-    balance_node if balance
+    balance_node
   end
 
   # rubocop:disable  Metrics/MethodLength
@@ -22,14 +22,18 @@ class AvlNode < Node
     if @balance_factor < -1
       if left.balance_factor == 1
         d_rot_right
+        # rotate_left_right
       else
         right_rot
+        # rotate_right
       end
     elsif @balance_factor > 1
       if right.balance_factor == -1
         d_rot_left
+        # rotate_right_left
       else
         left_rot
+        # rotate_left
       end
     end
   end
@@ -59,6 +63,7 @@ class AvlNode < Node
   #
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
+  # return [AvlNode] the new subtree root
   def rotate_right
     parent = self.parent       # might be nil if actual root of whole tree
 
@@ -98,6 +103,8 @@ class AvlNode < Node
   #            n43
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
+  #
+  # return [AvlNode] the new subtree root
   def rotate_left
     parent = self.parent # might be nil if actual root of whole tree
 
@@ -128,11 +135,33 @@ class AvlNode < Node
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
 
+  # Here is the general case, which won't occur when balancing on insertion,
+  # but could occur as a result some operation such as a deletion of a child
+  # node for node 29.
+  #
+  #      17                 17                11
+  #     / \                /  \              /   \
+  #    7   29             11  29           7      17
+  #   / \      ===>      /  \      ===>   / \    /  \
+  #  5   11             7   13           5   9  13  29
+  #     / \            / \
+  #    9   13         5   9
+  #
+  # return [AvlNode] the new subtree root, left on the stack from the `rotate_right` invocation.
   def rotate_left_right
     left.rotate_left
     rotate_right
   end
 
+  #       7                   7                   13
+  #     /   \               /  \                 /   \
+  #    5    19             5   13              7     19
+  #        /  \   ===>         / \     ===>   / \    / \
+  #       13  43            11  19           5  11  17 43
+  #      /  \                  /  \
+  #     11   17               17  43
+  #
+  # return [AvlNode] the new subtree root, left on the stack from the `rotate_left` invocation.
   def rotate_right_left
     right.rotate_right
     rotate_left

@@ -7,6 +7,7 @@ SimpleCov.start do
 end
 
 require 'ap'
+require 'debug'
 
 Dir[File.join(File.dirname(__FILE__), '..', 'lib', '**.rb')].sort.each do |f|
   require f
