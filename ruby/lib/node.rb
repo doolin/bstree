@@ -45,7 +45,7 @@ class Node
   # a value is easier before executing insertion.
   #
   # TODO: add a callback (monad?) for duplicate key handling
-  def insert(node)
+  def insert(node, _options = {})
     node < self ? insert_left(node) : insert_right(node)
   end
 

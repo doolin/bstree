@@ -25,6 +25,7 @@ Metrics/ClassLength:
   Max: 100
   Exclude:
     - lib/node.rb
+    - lib/avl_node.rb
 
 Layout/LineLength:
   Max: 96
