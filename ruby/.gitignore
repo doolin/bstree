@@ -2,3 +2,5 @@
 tmp/
 .rspec_status
 coverage/
+.yardoc
+doc/

@@ -1,9 +1,19 @@
 # frozen_string_literal: true
 
+# Tree provides a container and interface for the recursive tree
+# data structure. Importantly, Tree keeps track of the current
+# root of the data structure, which can change on deletions, or
+# balancing, or possibly other operations TBD.
+#
+# Many if not most of the Tree methods are pass-through, that is,
+# the methods send a message to the corresponding method of the
+# current root.
+#
 # rubocop:disable Metrics/ClassLength
 class Tree
   attr_reader :root, :size
 
+  # Specifying NODE_CLASS allows subclassing both Tree and Node.
   NODE_CLASS = Node
 
   def preorder_walk(&block)
@@ -164,7 +174,7 @@ class Tree
 
   # From MIT Opencourseware, https://www.youtube.com/watch?v=76dhtgZt38A&list=PLUl4u3cNGP63EdVPNLG3ToM6LaEUuStEY&index=10,
   # the height of a tree is the height of the root. Note: depth of tree is not defined,
-  # only depth of nodes.
+  # only depth of nodes. See {Node#depth}
   def height
     root.nil? ? 0 : root.height
   end

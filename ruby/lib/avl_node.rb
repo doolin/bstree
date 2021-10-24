@@ -50,7 +50,7 @@ class AvlNode < Node
   # I believe this and the rotate_left methods are probably correct.
   # The challenge is that after the rotation, there may be a new subtree
   # root, which may be the root of the entire tree as well. This case is
-  # not covered by any of the literature, and frankly is there more
+  # not covered by any of the literature, and frankly is the more
   # interesting aspect of the implementation from an engineering perspective.
   #
   #             17                   11
@@ -94,6 +94,9 @@ class AvlNode < Node
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/AbcSize
 
+  # When the balance factor is greater than 1, the tree is out of
+  # balance to the right and needs to rotate left.
+  #
   #    13                   19
   #   /   \      ===>      /  \
   #  11   19             13    23
@@ -153,6 +156,10 @@ class AvlNode < Node
     rotate_right
   end
 
+  # As with `rotate_left_right`, a deletion may induce an otherwise balanced tree
+  # to become unbalanced. An overweight right hand branch with a left child requires
+  # rotating right first, then rotating left.
+  #
   #       7                   7                   13
   #     /   \               /  \                 /   \
   #    5    19             5   13              7     19
@@ -189,6 +196,8 @@ class AvlNode < Node
 
   # TODO: see if this can punt to the parent Node class.
   # Move the relevant tests to shared examples.
+  #
+  # @return [Integer] size of the tree rooted at the Node instance.
   def size
     size = 0
     post_order_traverse { size += 1 }
