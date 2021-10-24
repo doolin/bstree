@@ -16,3 +16,5 @@ gem 'rubocop-rspec'
 
 gem 'sentry-ruby'
 gem 'simplecov', require: false, group: :test
+
+gem 'yard'

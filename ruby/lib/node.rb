@@ -116,19 +116,39 @@ class Node
   end
   # rubocop:enable Naming/MethodParameterName
 
-  # Definition. The size of a tree is its number of nodes. The depth of a node in a tree
+  # Definitions: The size of a tree is its number of nodes. The depth of a node in a tree
   # is the number of links on the path from it to the root. The height of a tree is the
   # maximum depth among its nodes. p. 226 Sedgewick and Wayne 4th edition.
   #
-  # From MIT Opencourseware: https://www.youtube.com/watch?v=76dhtgZt38A&list=PLUl4u3cNGP63EdVPNLG3ToM6LaEUuStEY&index=10
-  # the _height_ of a node is the number of edges in the longest downward path from the node.
+  # From MIT Opencourseware:
+  # {https://www.youtube.com/watch?v=76dhtgZt38A&list=PLUl4u3cNGP63EdVPNLG3ToM6LaEUuStEY&index=10
+  # the _height_ of a node is the number of edges in the longest downward path from the node}.
   # This is the same as the maximum depth of children in the nodes subtree. Notably, all leaves
   # have height 0.
   #
-  # Notably, this article on geeksforgeeks is wrong:
-  # https://www.geeksforgeeks.org/count-balanced-binary-trees-height-h/
-  # defining the height at the number of links + 1, that is, they are
-  # off by 1. This does not give me assurance for the gfg site.
+  # Notably, this article on geeksforgeeks is wrong,
+  # {https://www.geeksforgeeks.org/count-balanced-binary-trees-height-h/
+  # defining the height at the number of links + 1}, that is, they are
+  # off by 1 with respect to the MIT-provided definition. This does not
+  # give me assurance for the gfg site.
+  #
+  # ==Examples
+  #
+  #  Height 0:    17
+  #
+  #  height 1:    17
+  #              /
+  #  Height 0:  5
+  #
+  #  Height 2:    17
+  #                 \
+  #  Height 1:       23
+  #                    \
+  #  Height 0:          29
+  #
+  #
+  # @return [Integer] the number of edges between the Node instance and longest path
+  #  to a child leaf node.
   def height
     # use for demonstrating complexity, etc.
     yield(self) if block_given?
@@ -139,10 +159,26 @@ class Node
     self.class.max(left&.height || -1, right&.height || -1) + 1
   end
 
-  # https://www.youtube.co/watch?v=76dhtgZt38A&list=PLUl4u3cNGP63EdVPNLG3ToM6LaEUuStEY&index=10
-  # Depth from Eric Demaine, MIT Opencourseware, is the number of edges from the node up
+  # {https://www.youtube.co/watch?v=76dhtgZt38A&list=PLUl4u3cNGP63EdVPNLG3ToM6LaEUuStEY&index=10
+  # Depth from Eric Demaine, MIT Opencourseware}, is the number of edges from the node up
   # to the root. Depth measures from the root down. Note that the depth of tree is not defined,
   # only depth of node is defined.
+  #
+  # ==Examples
+  #
+  #  Depth 0:    17
+  #
+  #  Depth 0:    17
+  #             /
+  #  Depth 1:  5
+  #
+  #  Depth 0:    17
+  #                \
+  #  Depth 1:      23
+  #                  \
+  #  Depth 2:        29
+  #
+  # @return [Integer] number of edges from node instance to root
   def depth
     depth = 0
     parent = self.parent
@@ -192,6 +228,7 @@ class Node
     key < @key ? left&.find_with_parent(key, self) : right&.find_with_parent(key, self)
   end
 
+  # @return [Node] the node containing the desired key.
   # rubocop:disable Metrics/CyclomaticComplexity
   def find(key, &block)
     yield(self) if block_given?
@@ -269,9 +306,13 @@ class Node
     end
   end
 
+  # This is a common coding challenge problem, where the
+  # implementation requires an O(n) derivation when given
+  # two arrays. Ruby has the set intersection operator built-in.
   def least_common_ancestor(key1, key2)
     p1 = path_to_node(key1, [])
     p2 = path_to_node(key2, [])
+    # TODO: dig into how Ruby set intersection works.
     (p1 & p2).last
   end
   alias lca least_common_ancestor
