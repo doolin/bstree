@@ -21,31 +21,19 @@ class AvlNode < Node
 
     if @balance_factor < -1
       if left.balance_factor == 1
-        d_rot_right
-        # rotate_left_right
+        rotate_left_right
       else
-        right_rot
-        # rotate_right
+        rotate_right
       end
     elsif @balance_factor > 1
       if right.balance_factor == -1
-        d_rot_left
-        # rotate_right_left
+        rotate_right_left
       else
-        left_rot
-        # rotate_left
+        rotate_left
       end
     end
   end
   # rubocop:enable  Metrics/MethodLength
-
-  def d_rot_right; end
-
-  def right_rot; end
-
-  def d_rot_left; end
-
-  def left_rot; end
 
   # I believe this and the rotate_left methods are probably correct.
   # The challenge is that after the rotation, there may be a new subtree
@@ -63,7 +51,7 @@ class AvlNode < Node
   #
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
-  # return [AvlNode] the new subtree root
+  # @return [AvlNode] the new subtree root
   def rotate_right
     parent = self.parent       # might be nil if actual root of whole tree
 
@@ -107,7 +95,7 @@ class AvlNode < Node
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
   #
-  # return [AvlNode] the new subtree root
+  # @return [AvlNode] the new subtree root
   def rotate_left
     parent = self.parent # might be nil if actual root of whole tree
 
@@ -150,7 +138,8 @@ class AvlNode < Node
   #     / \            / \
   #    9   13         5   9
   #
-  # return [AvlNode] the new subtree root, left on the stack from the `rotate_right` invocation.
+  # @return [AvlNode] the new subtree root, left on the stack from the
+  #  `rotate_right` invocation.
   def rotate_left_right
     left.rotate_left
     rotate_right
@@ -168,7 +157,7 @@ class AvlNode < Node
   #      /  \                  /  \
   #     11   17               17  43
   #
-  # return [AvlNode] the new subtree root, left on the stack from the `rotate_left` invocation.
+  # @return [AvlNode] the new subtree root, left on the stack from the `rotate_left` invocation.
   def rotate_right_left
     right.rotate_right
     rotate_left

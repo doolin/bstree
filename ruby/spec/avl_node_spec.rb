@@ -5,11 +5,10 @@ require 'spec_helper'
 require 'shared_examples/insert'
 
 RSpec.describe AvlNode do
-  it_inserts_like 'insertion'
-
   let(:root) { described_class.new 17 }
   let(:n1) { described_class.new 1 }
   let(:n2) { described_class.new 2 }
+  let(:n3) { described_class.new 3 }
   let(:n5) { described_class.new 5 }
   let(:n7) { described_class.new 7 }
   let(:n9) { described_class.new 9 }
@@ -19,59 +18,61 @@ RSpec.describe AvlNode do
   let(:n19) { described_class.new 19 }
   let(:n23) { described_class.new 23 }
   let(:n29) { described_class.new 29 }
+  let(:n31) { described_class.new 31 }
+  let(:n37) { described_class.new 37 }
   let(:n43) { described_class.new 43 }
 
   describe '#insert' do
     context 'left heavy tree' do
+      # Note that this produces a pathological tree.
       it 'computes balance factor after inserting' do
-        expect(root.balance_factor).to be 0
-        root.insert n7
-        expect(root.balance_factor).to be(-1)
-        root.insert n13
-        expect(root.balance_factor).to be(-2)
-        root.insert n11
-        expect(root.balance_factor).to be(-3)
+        expect(n17.balance_factor).to be 0
+        n17.insert n7
+        expect(n17.balance_factor).to be(-1)
+        n7.insert n13
+        expect(n17.balance_factor).to be(-2)
+        n13.insert n11
+        expect(n17.balance_factor).to be(-3)
       end
     end
 
     context 'right heavy tree' do
       it 'computes balance factor after inserting' do
-        root.insert n29
-        expect(root.balance_factor).to be 1
-        root.insert n19
-        expect(root.balance_factor).to be 2
-        root.insert n23
-        expect(root.balance_factor).to be 3
+        n17.insert n29
+        expect(n17.balance_factor).to be 1
+        n29.insert n19
+        expect(n17.balance_factor).to be 2
+        n19.insert n23
+        expect(n17.balance_factor).to be 3
       end
     end
   end
 
   describe '#balance' do
     context 'left heavy' do
-      it 'calls right_rot' do
-        root.insert n5
-        expect(root).to receive(:right_rot)
-        # expect(root).to receive(:rotate_right)
-        root.insert n2
+      it 'calls rotate_right' do
+        n17.insert n5
+        expect(n17).to receive(:rotate_right)
+        n17.insert n2
       end
 
-      it 'calls d_rot_right' do
+      it 'calls rotate_left_right' do
         root.insert n5
-        expect(root).to receive(:d_rot_right)
+        expect(root).to receive(:rotate_left_right)
         root.insert n7
       end
     end
 
     context 'right heavy' do
-      it 'calls left_rot' do
+      it 'calls rotate_left' do
         root.insert n19
-        expect(root).to receive(:left_rot)
+        expect(root).to receive(:rotate_left)
         root.insert n29
       end
 
-      it 'calls d_rot_left' do
+      it 'calls rotate_right_left' do
         root.insert n29
-        expect(root).to receive(:d_rot_left)
+        expect(root).to receive(:rotate_right_left)
         root.insert n23
       end
     end
@@ -86,7 +87,7 @@ RSpec.describe AvlNode do
     context 'right chain with 3 nodes' do
       before do
         n13.insert n19
-        n13.insert n23
+        n19.insert n23
         n13.rotate_left
       end
 
@@ -122,9 +123,9 @@ RSpec.describe AvlNode do
       before do
         n13.insert n11
         n13.insert n19
-        n13.insert n17
-        n13.insert n23
-        n13.insert n43
+        n19.insert n17
+        n19.insert n23
+        n19.insert n43
         n13.rotate_left
       end
 
@@ -162,7 +163,7 @@ RSpec.describe AvlNode do
     context 'check root parent reassignment for subtree' do
       before do
         n13.insert n19
-        n13.insert n23
+        n19.insert n23
       end
 
       #   1
@@ -218,7 +219,7 @@ RSpec.describe AvlNode do
     context 'left chain with 3 nodes' do
       before do
         n17.insert n7
-        n17.insert n5
+        n7.insert n5
         n17.rotate_right
       end
 
@@ -256,7 +257,7 @@ RSpec.describe AvlNode do
         n17.insert n29
         n17.insert n5
         n17.insert n13
-        n17.insert n2
+        n5.insert n2 # jank alert
         n17.rotate_right
       end
 
@@ -298,7 +299,7 @@ RSpec.describe AvlNode do
       # 3 node subtree suffices.
       before do
         n17.insert n7
-        n17.insert n5
+        n7.insert n5 # jank
       end
 
       #    1             1
@@ -363,7 +364,7 @@ RSpec.describe AvlNode do
     context 'left knee' do
       before do
         n17.insert n7
-        n17.insert n11
+        n7.insert n11
         # NOTE: n7 is the root of the left subtree
         n7.rotate_left
       end
@@ -402,7 +403,7 @@ RSpec.describe AvlNode do
     context 'for simple left knee' do
       before do
         n17.insert n7
-        n17.insert n11
+        n7.insert n11
         n17.rotate_left_right
       end
 
@@ -442,12 +443,12 @@ RSpec.describe AvlNode do
     #    9   13         5   9
     context 'left knee with left child' do
       before do
-        n17.insert n7
-        n17.insert n5
-        n17.insert n11
-        n17.insert n9
-        n17.insert n13
         n17.insert n29
+        n17.insert n7
+        n7.insert n5
+        n7.insert n11
+        n11.insert n9
+        n11.insert n13
         n17.rotate_left_right
       end
 
@@ -489,7 +490,7 @@ RSpec.describe AvlNode do
     context 'check root parent reassignment for subtree' do
       before do
         n17.insert n7
-        n17.insert n11
+        n7.insert n11
       end
 
       #     1              1
@@ -550,7 +551,7 @@ RSpec.describe AvlNode do
     context 'for simple right knee' do
       before do
         n17.insert n29
-        n17.insert n23
+        n29.insert n23
         n17.rotate_right_left
       end
 
@@ -594,10 +595,10 @@ RSpec.describe AvlNode do
       before do
         n7.insert n5
         n7.insert n19
-        n7.insert n13
-        n7.insert n11
-        n7.insert n17
-        n7.insert n43
+        n19.insert n13
+        n13.insert n11
+        n13.insert n17
+        n19.insert n43
         n7.rotate_right_left
       end
 
@@ -645,7 +646,7 @@ RSpec.describe AvlNode do
     context 'check root parent reassignment for subtree' do
       before do
         n17.insert n29
-        n17.insert n23
+        n29.insert n23
       end
 
       #    n1                n1
@@ -715,44 +716,46 @@ RSpec.describe AvlNode do
     end
 
     it 'is true for node with left child and right child' do
-      root.insert n7
-      root.insert n29
+      n17.insert n7
+      n17.insert n29
       expect(root.balanced?).to be true
       expect(root.weight).to eq 0
     end
 
     it 'is false for node with left chain' do
-      root.insert n7
-      root.insert n2
-      expect(root.balanced?).to be false
-      expect(root.weight).to eq(-2)
+      n17.insert n7
+      n7.insert n2
+      expect(n17.balanced?).to be false
+      expect(n17.weight).to eq(-2)
       expect(n7.weight).to eq(-1)
     end
 
     it 'is false for node with left knee' do
-      root.insert n7
-      root.insert n11
-      expect(root.balanced?).to be false
-      expect(root.weight).to eq(-2)
+      n17.insert n7
+      n7.insert n11
+
+      expect(n17.balanced?).to be false
+      expect(n17.weight).to eq(-2)
       expect(n7.weight).to eq(1)
-      expect(root.left.weight).to eq(1)
+      expect(n17.left.weight).to eq(1)
     end
 
     it 'is false for node with right chain' do
-      root.insert n29
-      root.insert n43
-      expect(root.balanced?).to be false
-      expect(root.weight).to eq 2
+      n17.insert n29
+      n29.insert n43
+
+      expect(n17.balanced?).to be false
+      expect(n17.weight).to eq 2
       expect(n29.weight).to eq 1
     end
 
     it 'is false for node with right knee' do
-      root.insert n29
-      root.insert n19
-      expect(root.balanced?).to be false
-      expect(root.weight).to eq 2
+      n17.insert n29
+      n29.insert n19
+      expect(n17.balanced?).to be false
+      expect(n17.weight).to eq 2
       expect(n29.weight).to eq(-1)
-      expect(root.right.weight).to eq(-1)
+      expect(n17.right.weight).to eq(-1)
     end
 
     it 'is true for tree with left bell' do
@@ -774,10 +777,6 @@ RSpec.describe AvlNode do
     end
 
     it 'is true for right and left chain at root' do
-      expect(root.key).to be 17
-      expect(n17.left).to be nil
-      expect(n17.right).to be nil
-
       n17.insert n7
       expect(n17.left_height).to be 1
       n17.insert n19
@@ -788,11 +787,11 @@ RSpec.describe AvlNode do
       n17.insert n29
       expect(n17.balance_factor).to eq(0)
 
-      n17.insert n2
+      n5.insert n2
       expect(n5.left).to be n2
       expect(n17.left_height).to be 3
 
-      n17.insert n43
+      n29.insert n43
       expect(n17.balance_factor).to eq(0)
 
       expect(n17.balanced?).to be true
@@ -802,50 +801,140 @@ RSpec.describe AvlNode do
     end
   end
 
-# rubocop: disable Style/BlockComments
-=begin
   describe 'build avl trees from sorted lists' do
     describe 'trees as linked lists' do
-      let(:n2) { described_class.new 2 }
-      let(:n3) { described_class.new 3 }
-      let(:n5) { described_class.new 5 }
-      let(:n7) { described_class.new 7 }
-      let(:n11) { described_class.new 11 }
-      let(:n13) { described_class.new 13 }
-      let(:n17) { described_class.new 17 }
-      let(:n19) { described_class.new 19 }
-      let(:n23) { described_class.new 23 }
-      let(:n29) { described_class.new 29 }
+      context 'only right children' do
+        let(:n47) { described_class.new 47 }
+        let(:n53) { described_class.new 53 }
+        let(:n61) { described_class.new 61 }
+        let(:n67) { described_class.new 67 }
 
-      # Check to ensure the rotations are getting called
-      # correctly.
-      #
-      # Consider having insert return the current root.
-      #
-      # expect(n2).to receive(:rotate_left).with("correct argument")
-      describe 'only right children' do
-        xit 'makes a long right list' do
+        it 'makes a long right list' do
           n2.insert n3
           n2.insert n5
-          expect(n2).to receive(:rotate_right) # .with("correct argument")
-          # expect(n2.height).to eq 1
-          # expect(n3.height).to eq 0
-          # expect(n3.height).to eq 0
-          # expect(n2.pathological?).to be false
 
-          # n2.insert n11
-          # n2.insert n13
-          # n2.insert n17
-          # n2.insert n19
-          # n2.insert n23
-          # n2.insert n29
-          # expect(n2.height).to eq 9
-          # expect(n29.height).to eq 0
-          # expect(n2.pathological?).to be true
-          # expect(n29.pathological?).to be false
-          # expect(n23.pathological?).to be false
-          # expect(n19.pathological?).to be true
-          # expect(n2.degenerate?).to be true
+          expect(n2.height).to eq 0
+          expect(n3.height).to eq 1
+          expect(n5.height).to eq 0
+
+          # n3 is the new root
+          n3.insert n11
+          expect(n3.height).to eq 2
+          expect(n5.height).to eq 1
+          expect(n3.balance_factor).to be 1
+
+          # n3 is still root
+          # breadth first this looks like [3, 2, 11, nil, nil, 5, 13]
+          n3.insert n13
+          expect(n3.height).to be 2
+          expect(n3.balance_factor).to be 1
+
+          n3.insert n17
+          expect(n11.balance_factor).to be 0
+          expect(n11.right.key).to be 13
+          expect(n11.right.right.key).to be 17
+
+          # n11 is the new root
+          # breadth first we have [11, 3, 13, 2, 5, nil, 17]
+          n11.insert n19
+          expect(n11.balance_factor).to be 0
+          expect(n11.right.key).to be 17
+          expect(n11.right.right.key).to be 19
+          expect(n11.right.left.key).to be 13
+
+          # Inserting 23 does not induce a rotation
+          n11.insert n23
+          expect(n11.balance_factor).to be 1
+
+          # This should induce a rotation on n23
+          n11.insert n29
+          expect(n11.parent).to be nil
+          expect(n11.balance_factor).to be 1
+          expect(n23.right).to be n29
+          expect(n23.left).to be n19
+
+          # Always going right fills out the tree from the right, pretty cool
+          #
+          #               11
+          #           /        \
+          #         3          23
+          #       /  \        /   \
+          #      3    5     17     29
+          #                /  \      \
+          #               13  19     31
+          #
+          n11.insert n31
+          expect(n11.parent).to be nil
+          expect(n11.balance_factor).to be 1
+
+          #               11
+          #           /        \
+          #         3           23
+          #       /  \        /    \
+          #      3    5     17      31
+          #                /  \    /  \
+          #               13  19  29   37
+          n11.insert n37
+          expect(n11.parent).to be nil
+          expect(n11.balance_factor).to be 1
+
+          #               23
+          #           /        \
+          #         11          31
+          #       /  \        /    \
+          #      3    17     29      37
+          #    /  \  / \    /  \    /  \
+          #   2   5 13 19               43
+          n11.insert n43
+          expect(n23.parent).to be nil
+          expect(n23.balance_factor).to be 0
+          expect(n23.right.key).to be 31
+          expect(n23.left.key).to be 11
+          expect(n23.size).to be 12
+          expect(n11.balance_factor).to be 0
+          expect(n31.balance_factor).to be 1
+
+          #               23
+          #           /        \
+          #         11          31
+          #       /  \        /    \
+          #      3    17     29      43
+          #    /  \  / \    /  \    /  \
+          #   2   5 13 19          37   47
+          n23.insert n47
+          expect(n23.parent).to be nil
+          expect(n23.right.key).to be 31
+          expect(n23.left.key).to be 11
+          expect(n31.right.key).to be 43
+          expect(n31.left.key).to be 29
+
+          #               23
+          #           /        \
+          #         11          43
+          #       /  \        /    \
+          #      3    17     31      47
+          #    /  \  / \    /  \       \
+          #   2   5 13 19  29  31      53
+          n23.insert n53
+          expect(n23.bst?).to be true
+          expect(n23.parent).to be nil
+          expect(n23.balance_factor).to be 0
+          expect(n23.right).to be n43
+          expect(n43.left).to be n31
+
+          #               23
+          #           /        \
+          #         11          43
+          #       /  \        /    \
+          #      3    17     31      53
+          #    /  \  / \    /  \    /  \
+          #   2   5 13 19  29  31  47   61
+          n23.insert n61
+          expect(n23.bst?).to be true
+          expect(n23.parent).to be nil
+          expect(n23.balance_factor).to be 0
+          expect(n23.height).to be 3
+          expect(n23.size).to be 15
         end
       end
 
@@ -874,6 +963,4 @@ RSpec.describe AvlNode do
       end
     end
   end
-=end
-  # rubocop:enable Style/BlockComments
 end

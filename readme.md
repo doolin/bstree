@@ -144,6 +144,11 @@ implementation, adding and overriding as necessary.
 | Javascript    |            |
 | SQL           |            |
 
+The AVL implementation is almost surely "overtested" with respect to the
+number of tests. In production, many of these tests might be removed.
+For learning purposes, the tests are useful for following the behavior
+of the insertion and balancing as it proceeds.
+
 ## Iterative implementation
 
 Anything which can be done with recursion can be done with iteration.
