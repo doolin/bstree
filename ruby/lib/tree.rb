@@ -54,9 +54,11 @@ class Tree
   # TODO: insert tests, shared examples for tree
   # AvlTree needs to call super, then call rebalance.
   # The rebalancing cannot be done via the node insert.
+  #
+  # @return [Node] implicit, @root is left on the stack
   def insert(node)
-    @root.insert node
     @size += 1
+    @root.insert node
   end
 
   def invert
