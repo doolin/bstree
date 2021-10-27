@@ -1,0 +1,29 @@
+---
+key: 4
+uuid: ba37aaee-73d3-44ce-befe-3c32d7b68e99
+left:
+  key: 2
+  uuid: 2a5fff7a-7564-490c-a1e6-cb765be2e609
+  left:
+    key: 1
+    uuid: 2918a328-7717-43ba-9b4e-ba2b4f9c8c78
+    left:
+    right:
+  right:
+    key: 3
+    uuid: 2154c727-f0ce-488a-8713-61e14df4f95b
+    left:
+    right:
+right:
+  key: 6
+  uuid: 7c79f8ab-c546-46a1-b480-ee0c235d6371
+  left:
+    key: 5
+    uuid: 0a470329-8fd6-42b3-a0c9-9db9ab723b27
+    left:
+    right:
+  right:
+    key: 7
+    uuid: 131a3e9e-492b-43e9-8041-3e020874c5b7
+    left:
+    right:

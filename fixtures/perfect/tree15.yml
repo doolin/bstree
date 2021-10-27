@@ -1,0 +1,61 @@
+---
+key: 8
+uuid: 060a08c2-7b77-4292-98db-256675df2bf1
+left:
+  key: 4
+  uuid: 182ff467-8d9a-463a-bd72-f3393be9796c
+  left:
+    key: 2
+    uuid: 1e1f10af-50e5-4ab1-9fa4-31c8f0a27d6c
+    left:
+      key: 1
+      uuid: 54a7c135-40cd-41f4-bc18-f17520eada3c
+      left:
+      right:
+    right:
+      key: 3
+      uuid: 9cbeb1e5-d360-439f-befc-9539bb372b05
+      left:
+      right:
+  right:
+    key: 6
+    uuid: 12719d52-c60d-4bd9-ac39-36663b2a190d
+    left:
+      key: 5
+      uuid: 3d9292b0-389b-41fe-9338-fc0b86527cc3
+      left:
+      right:
+    right:
+      key: 7
+      uuid: 2e5a6174-bfa6-448e-97f7-217e2351b7db
+      left:
+      right:
+right:
+  key: 12
+  uuid: 40dd3098-d936-4ed9-85ba-43dc3eb64a94
+  left:
+    key: 10
+    uuid: a655396f-29a4-4d95-98b4-1e871daf9d53
+    left:
+      key: 9
+      uuid: 5283d499-3831-483c-881d-cdbd73e2a871
+      left:
+      right:
+    right:
+      key: 11
+      uuid: 8572c2ab-1fd8-459a-9ae9-de465a53e355
+      left:
+      right:
+  right:
+    key: 14
+    uuid: 13a7f4dc-9efb-41d1-a1ca-daff84c62d69
+    left:
+      key: 13
+      uuid: 9dc7790b-6e8c-49e9-81c1-4781697f59e9
+      left:
+      right:
+    right:
+      key: 15
+      uuid: 4c5275d8-9410-41f4-8de0-4658c67a8486
+      left:
+      right:
