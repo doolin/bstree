@@ -60,7 +60,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 The tooling for selectively updating seems a bit unintuitive, but here's one way to do it:
 
 - Find the outdated packages with `pipenv run pip list -o`
-- Update the desired package with `pipenv install --keep-outdated '<name==version>'`
+- [Update the desired package with](https://pipenv.kennethreitz.org/en/latest/basics/#example-pipenv-upgrade-workflow) `pipenv update <pkgname>`. This actually works! After years and years of bug reports, it finally works.
 
 It's probably a good idea to check the state of `Pipfile` and `Pipfile.lock` with `git diff` to ensure everything worked out as desired.
 
