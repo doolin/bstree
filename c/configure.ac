@@ -26,7 +26,7 @@ AC_CHECK_LIB([yaml], [main])
 AC_CHECK_LIB([cppunit], [main])
 
 # Checks for header files.
-AC_CHECK_HEADERS([string.h unistd.h])
+AC_CHECK_HEADERS([string.h unistd.h, yaml.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_HEADER_STDBOOL

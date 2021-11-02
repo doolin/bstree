@@ -33,7 +33,7 @@ jobs:
           elixir-version: 1.11.1 # Define the elixir version [required]
           otp-version: 23.0.4 # Define the OTP version [required]
 
-      - name: Chekout repo
+      - name: Checkout repo
         uses: actions/checkout@v2
 
       - name: Get deps cache
