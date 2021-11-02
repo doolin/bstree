@@ -198,7 +198,7 @@ tree_size(Tree * t) {
 }
 
 Tree *
-tree_from_yaml(char * filename) {
+tree_from_yaml(const char * filename) {
   Tree * tree = tree_new();
   tree->root = from_yaml_file(filename);
   return tree;

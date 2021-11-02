@@ -5,6 +5,14 @@ CPPFLAGS = -Wall -Wextra
 
 AM_CPPFLAGS = -I/usr/local/include -I../include
 
+UNAME := $(shell uname)
+
+# ifeq ($(UNAME), Linux)
+# ifeq "$(UNAME)" "Linux"
+# CFLAGS+= `pkg-config --cflags libyaml`
+# LDFLAGS+= `pkg-config --libs libyaml`
+# endif
+
 noinst_LIBRARIES = libbst.a
 libbst_a_SOURCES = node.c tree.c collector.c yaml.c
 # libbst_a_CPPFLAGS = -O0 -pg  -Wall -Wextra -fno-inline $(AM_CPPFLAGS) -DIL_STD -L/usr/local/lib -DNDEBUG -w
