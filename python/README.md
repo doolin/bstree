@@ -1,5 +1,7 @@
 # Simple binary search tree in python
 
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 Python isn't my native language, so implementing a binary search tree seems like an excellent way to get more familiar with Python syntax.
 
 The programming style is best understood as "Ruby in Python." That is, when the python implementation was first written, the author was programming Ruby professionally, and that shows in the implementation.

@@ -112,3 +112,20 @@ blocks:
           commands:
             - pipenv install --dev --deploy
             - pipenv run pytest
+  - name: python black
+    dependencies: ['Set up Python']
+    task:
+      env_vars:
+        - name: PIPENV_VENV_IN_PROJECT
+          value: 'true'
+      prologue:
+        commands:
+          - sudo pip3 install pipenv
+          - checkout
+          - cd python
+          - cache restore pipenv-$SEMAPHORE_GIT_BRANCH-$(checksum Pipfile.lock),pipenv-$SEMAPHORE_GIT_BRANCH,pipenv-master
+      jobs:
+        - name: Run black
+          commands:
+            - pipenv install --dev --deploy
+            - pipenv run black -v ./lib ./test
