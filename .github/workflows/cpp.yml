@@ -1,0 +1,43 @@
+name: C++ CI
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install libyaml-dev and libcppunit-dev
+        run: sudo apt-get install libyaml-dev libcppunit-dev
+
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Run aclocal
+        working-directory: ./c++
+        run: aclocal
+
+      - name: Run autoheader
+        working-directory: ./c++
+        run: autoheader
+
+      - name: Run automake
+        working-directory: ./c++
+        run: automake --add-missing
+
+      - name: Run autoconf
+        working-directory: ./c++
+        run: autoconf
+
+      - name: Run configure
+        working-directory: ./c++
+        run: ./configure
+
+      - name: Run make
+        working-directory: ./c++
+        run: make
+
+      - name: Run tests
+        working-directory: ./c++/test
+        run: ./runtests.sh
