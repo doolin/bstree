@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <yaml-cpp/yaml.h>
 #include <tree.h>
 
 void Tree::insert(Node * node) {
@@ -123,6 +124,9 @@ std::vector<int> Tree::list_keys() {
   return keys;
 }
 
+void Tree::from_yaml(std::string filename) {
+  YAML::Node config = YAML::LoadFile(filename);
+}
 
 #ifndef STACK_SIZE
 #define STACK_SIZE 100

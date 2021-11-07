@@ -18,6 +18,8 @@ public:
   std::vector<int> list_keys(void);
   std::vector<int> iterative_inorder_traverse(void);
 
+  void from_yaml(std::string filename);
+
   Node * delete_node(int key);
   Node * search(int);
   Node * successor(Node * n);

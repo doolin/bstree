@@ -9,7 +9,7 @@ jobs:
 
     steps:
       - name: Install libyaml-dev and libcppunit-dev
-        run: sudo apt-get install libyaml-dev libcppunit-dev
+        run: sudo apt-get install libcppunit-dev libyaml-cpp-dev
 
       - name: Checkout repo
         uses: actions/checkout@v2
