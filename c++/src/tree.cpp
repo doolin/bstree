@@ -126,6 +126,7 @@ std::vector<int> Tree::list_keys() {
 
 void Tree::from_yaml(std::string filename) {
   YAML::Node config = YAML::LoadFile(filename);
+  // std::cout << config << "\n";
 }
 
 #ifndef STACK_SIZE
