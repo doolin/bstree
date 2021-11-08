@@ -659,6 +659,12 @@ public:
     });
   }
 
+  void test_from_yaml(void) {
+    describe_test(INDENT0, "From test_from_yaml in TreeTest.");
+    Tree tree = Tree();
+    tree.from_yaml("../../fixtures/tree7.yml");
+  }
+
   void runTest() {
     test_instantiation();
     test_insert();
@@ -680,6 +686,7 @@ public:
     test_iterative_inorder_traverse();
     test_transplant();
     test_delete_node();
+    test_from_yaml();
     // test_unique_ptr();
   }
 };
