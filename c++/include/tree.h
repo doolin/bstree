@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <memory>
+#include <yaml-cpp/yaml.h>
 #include "./node.h"
 
 class Tree {
@@ -18,7 +19,10 @@ public:
   std::vector<int> list_keys(void);
   std::vector<int> iterative_inorder_traverse(void);
 
-  void from_yaml(std::string filename);
+  Tree * from_yaml(std::string filename);
+  // TODO: try to find a way to cast such that the yaml.h need
+  // not be included in this header file.
+  void yaml_preorder_traverse(YAML::Node config, std::function<void (YAML::Node)> callback);
 
   Node * delete_node(int key);
   Node * search(int);

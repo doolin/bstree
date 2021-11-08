@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <yaml-cpp/yaml.h>
 #include <tree.h>
 
 void Tree::insert(Node * node) {
@@ -124,9 +123,23 @@ std::vector<int> Tree::list_keys() {
   return keys;
 }
 
-void Tree::from_yaml(std::string filename) {
+void Tree::yaml_preorder_traverse(YAML::Node config, std::function<void (YAML::Node)> callback) {
+  callback(config);
+  if (!config["left"].IsNull()) { yaml_preorder_traverse(config["left"], callback);};
+  if (!config["right"].IsNull()) { yaml_preorder_traverse(config["right"], callback);};
+}
+
+// https://github.com/jbeder/yaml-cpp/wiki/Tutorial
+Tree * Tree::from_yaml(std::string filename) {
   YAML::Node config = YAML::LoadFile(filename);
-  // std::cout << config << "\n";
+  // Interval tree!
+
+  Tree * tree = new Tree();
+  yaml_preorder_traverse(config, [&] (YAML::Node node) {
+    tree->insert(new Node(config["key"].as<int>()));
+  });
+
+  return tree;
 }
 
 #ifndef STACK_SIZE

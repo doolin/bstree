@@ -661,8 +661,13 @@ public:
 
   void test_from_yaml(void) {
     describe_test(INDENT0, "From test_from_yaml in TreeTest.");
-    Tree tree = Tree();
-    tree.from_yaml("../../fixtures/tree7.yml");
+    Tree t = Tree();
+    Tree * tree = t.from_yaml("../../fixtures/tree7.yml");
+
+    Spec spec;
+    spec.it("Tree 7 from yaml size is 7", [tree]() {
+      return tree->size() == 7;
+    });
   }
 
   void runTest() {
