@@ -367,6 +367,13 @@ public:
     });
   }
 
+  void test_print_to_console() {
+    describe_test(INDENT0, "From test_print_to_console in NodeTest");
+
+    Node root(17);
+    root.print_to_console();
+  }
+
   void runTest() {
     test_instantiation();
     test_left_initialize();
@@ -382,6 +389,7 @@ public:
     test_collect();
     test_list_keys();
     test_search();
+    // test_print_to_console();
   }
 };
 

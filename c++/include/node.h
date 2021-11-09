@@ -17,11 +17,11 @@ class Node {
     void get_right(std::vector<int> & keys);
 
   public:
-    Node(int _key) : key(_key), left(nullptr), right(nullptr), parent(nullptr) {}
+    Node(int _key) : key(_key), uuid("fixme"), left(nullptr), right(nullptr), parent(nullptr) {}
 
-    // void post_order_traverse(std::function<void (const Node&)> callback);
-    void post_order_traverse(std::function<void (void)> callback);
+    // void pre_order_traverse(std::function<void (const Node&)> callback);
     void in_order_traverse(std::function<void (void)> callback);
+    void post_order_traverse(std::function<void (void)> callback);
 
     void insert(Node * node);
     void insert_left(Node * node);
@@ -41,8 +41,10 @@ class Node {
     bool is_bst(void);
     int size(void);
     int height(void);
+    void print_to_console(void);
 
     int key;
+    std::string uuid;
     Node * left;
     Node * right;
     Node * parent;

@@ -201,3 +201,13 @@ get_node(void) {
 
   return std::string("node");
 }
+
+void
+Node::print_to_console() {
+  std::cout << "key: " << this->key << "\n";
+  std::cout << "uuid: " << this->uuid << "\n";
+  std::cout << "left: " << this->left << "\n";
+  std::cout << "right: " << this->right << "\n";
+  std::cout << "parent: " << this->parent << "\n";
+
+}
