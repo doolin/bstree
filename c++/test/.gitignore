@@ -1,4 +1,5 @@
 node_test
+node_preorder_test
 tree_test
 initial
 *.o
