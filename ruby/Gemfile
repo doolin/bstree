@@ -10,9 +10,13 @@ gem 'rspec'
 # gem 'byebug'
 gem 'flay'
 # gem 'mry'
+gem 'pronto'
+gem 'pronto-flay'
+gem 'pronto-standardrb'
 gem 'reek'
 gem 'rubocop'
 gem 'rubocop-rspec'
+gem 'standard'
 
 gem 'sentry-ruby'
 gem 'simplecov', require: false, group: :test
