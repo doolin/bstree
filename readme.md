@@ -8,6 +8,13 @@ The goal is twofold:
 2. Investigate a range of engineering techniques for implementing
    binary trees.
 
+
+## Visualizing the implementations
+
+Here's a nice view of the code base:
+
+![Visualization of the codebase](./diagram.svg)
+
 ## Disclaimer
 
 In the unlikely chance you have stumbled into this repo, please note
