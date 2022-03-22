@@ -2,3 +2,4 @@
 .bundle*
 *.orig
 *.log
+diagram.svg # this updates automatically, very annoying.
