@@ -219,7 +219,7 @@ class Tree
   end
 
   def to_yaml_file(filename)
-    File.open(filename, 'w') { |file| file.write(to_yml) }
+    File.write(filename, to_yml)
   end
 
   def self.from_yaml_file(filename)
@@ -233,9 +233,7 @@ class Tree
   end
 
   def to_json_file(filename)
-    File.open(filename, 'w') do |file|
-      file.write root.to_json
-    end
+    File.write(filename, root.to_json)
   end
 
   def self.from_json_file(filename)
