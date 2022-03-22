@@ -22,3 +22,5 @@ gem 'sentry-ruby'
 gem 'simplecov', require: false, group: :test
 
 gem 'yard'
+
+gem 'rubocop-performance'
