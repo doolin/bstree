@@ -154,7 +154,6 @@ DEPENDENCIES
   awesome_print
   debug
   flay
-  pronto
   pronto-flay
   pronto-standardrb
   reek
