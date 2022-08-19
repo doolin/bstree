@@ -12,6 +12,7 @@ gem 'flay'
 # gem 'mry'
 # pronto hasn't been updated for over a year.
 # gem 'pronto'
+gem 'libyear-bundler'
 gem 'pronto-flay'
 gem 'pronto-standardrb'
 gem 'reek'
