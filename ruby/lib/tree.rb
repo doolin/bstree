@@ -16,22 +16,22 @@ class Tree
   # Specifying NODE_CLASS allows subclassing both Tree and Node.
   NODE_CLASS = Node
 
-  def preorder_walk(&block)
+  def preorder_walk(&)
     return unless root
 
-    root.pre_order_traverse(&block)
+    root.pre_order_traverse(&)
   end
 
-  def inorder_walk(&block)
+  def inorder_walk(&)
     return unless root
 
-    root.in_order_traverse(&block)
+    root.in_order_traverse(&)
   end
 
-  def postorder_walk(&block)
+  def postorder_walk(&)
     return unless root
 
-    root.post_order_traverse(&block)
+    root.post_order_traverse(&)
   end
 
   def initialize(node = nil)

@@ -126,9 +126,9 @@ module BinarySearchTree
     l < self ? left&.common_parent(l, r) : right&.common_parent(l, r)
   end
 
-  def dig(key, &block)
+  def dig(key, &)
     yield(self)
-    key < @key ? left&.dig(key, &block) : right&.dig(key, &block)
+    key < @key ? left&.dig(key, &) : right&.dig(key, &)
   end
 
   def search(key)
@@ -171,23 +171,23 @@ module BinarySearchTree
     size
   end
 
-  def in_order_traverse(&block)
-    left&.in_order_traverse(&block)
+  def in_order_traverse(&)
+    left&.in_order_traverse(&)
     result = yield(self)
-    right&.in_order_traverse(&block)
+    right&.in_order_traverse(&)
     result
   end
 
-  def pre_order_traverse(&block)
+  def pre_order_traverse(&)
     result = yield
-    left&.pre_order_traverse(&block)
-    right&.pre_order_traverse(&block)
+    left&.pre_order_traverse(&)
+    right&.pre_order_traverse(&)
     result
   end
 
-  def post_order_traverse(&block)
-    left&.post_order_traverse(&block)
-    right&.post_order_traverse(&block)
+  def post_order_traverse(&)
+    left&.post_order_traverse(&)
+    right&.post_order_traverse(&)
     yield(self)
   end
 

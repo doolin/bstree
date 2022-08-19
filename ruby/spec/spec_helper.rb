@@ -9,7 +9,7 @@ end
 require 'ap'
 require 'debug'
 
-Dir[File.join(File.dirname(__FILE__), '..', 'lib', '**.rb')].sort.each do |f|
+Dir[File.join(File.dirname(__FILE__), '..', 'lib', '**.rb')].each do |f|
   require f
 end
 
