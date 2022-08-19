@@ -230,7 +230,7 @@ class Node
 
   # @return [Node] the node containing the desired key.
   # rubocop:disable Metrics/CyclomaticComplexity
-  def find(key, &block)
+  def find(key, &)
     yield(self) if block_given?
 
     # We may not actually care about the returned node, but if we
@@ -240,7 +240,7 @@ class Node
     # KeyNotFoundError
     return self if key == @key
 
-    key < @key ? left&.find(key, &block) : right&.find(key, &block)
+    key < @key ? left&.find(key, &) : right&.find(key, &)
   end
   # rubocop:enable Metrics/CyclomaticComplexity
 
@@ -405,24 +405,24 @@ class Node
     size
   end
 
-  def in_order_traverse(&block)
-    left&.in_order_traverse(&block)
+  def in_order_traverse(&)
+    left&.in_order_traverse(&)
     result = yield(self)
-    right&.in_order_traverse(&block)
+    right&.in_order_traverse(&)
     result
   end
 
   # Can be used to free memory, and to make a copy of the tree.
-  def post_order_traverse(&block)
-    left&.post_order_traverse(&block)
-    right&.post_order_traverse(&block)
+  def post_order_traverse(&)
+    left&.post_order_traverse(&)
+    right&.post_order_traverse(&)
     yield(self)
   end
 
-  def pre_order_traverse(&block)
+  def pre_order_traverse(&)
     result = yield(self)
-    left&.pre_order_traverse(&block)
-    right&.pre_order_traverse(&block)
+    left&.pre_order_traverse(&)
+    right&.pre_order_traverse(&)
     result
   end
 

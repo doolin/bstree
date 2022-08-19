@@ -193,9 +193,9 @@ class AvlNode < Node
     size
   end
 
-  def post_order_traverse(&block)
-    left&.post_order_traverse(&block)
-    right&.post_order_traverse(&block)
+  def post_order_traverse(&)
+    left&.post_order_traverse(&)
+    right&.post_order_traverse(&)
     yield
   end
 end
