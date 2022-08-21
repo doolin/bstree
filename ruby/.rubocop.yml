@@ -38,6 +38,7 @@ Layout/LineLength:
 Style/MethodDefParentheses:
   EnforcedStyle: require_parentheses
 
+# These are individually ticketed.
 RSpec/MultipleExpectations:
   Enabled: false
 
