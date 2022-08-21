@@ -1,8 +1,8 @@
-# frozen-string-literal: true
+# frozen_string_literal: true
 
 RSpec.describe Node do
   describe '#path_to_root' do
-    let(:root) { Node.new 17 }
+    let(:root) { described_class.new 17 }
 
     it 'handle base case of root' do
       path = root.path_to_root(17, [])
@@ -10,30 +10,30 @@ RSpec.describe Node do
     end
 
     it 'handles left hand tree' do
-      root.insert Node.new 5
+      root.insert described_class.new 5
       key = 5
       path = root.path_to_root(key, [])
       expect(path).to eq [5, 17]
     end
 
     it 'handles left hand right hand tree' do
-      root.insert Node.new 5
+      root.insert described_class.new 5
       key = 13
-      root.insert Node.new key
+      root.insert described_class.new key
       path = root.path_to_root(key, [])
       expect(path).to eq [13, 5, 17]
     end
 
     it 'handles right hand tree' do
-      root.insert Node.new 23
+      root.insert described_class.new 23
       key = 23
       path = root.path_to_root(key, [])
       expect(path).to eq [23, 17]
     end
 
     it 'handles right hand left hand tree' do
-      root.insert Node.new 23
-      root.insert Node.new 19
+      root.insert described_class.new 23
+      root.insert described_class.new 19
       key = 19
       path = root.path_to_root(key, [])
       expect(path).to eq [19, 23, 17]
@@ -96,7 +96,7 @@ RSpec.describe Node do
   end
 
   describe '#path_to_node' do
-    let(:root) { Node.new 17 }
+    let(:root) { described_class.new 17 }
 
     it 'handle base case of root' do
       path = root.path_to_node(17, [])
@@ -104,30 +104,30 @@ RSpec.describe Node do
     end
 
     it 'handles left hand tree' do
-      root.insert Node.new 5
+      root.insert described_class.new 5
       key = 5
       path = root.path_to_node(key, [])
       expect(path).to eq [17, 5]
     end
 
     it 'handles left hand right hand tree' do
-      root.insert Node.new 5
+      root.insert described_class.new 5
       key = 13
-      root.insert Node.new key
+      root.insert described_class.new key
       path = root.path_to_node(key, [])
       expect(path).to eq [17, 5, 13]
     end
 
     it 'handles right hand tree' do
-      root.insert Node.new 23
+      root.insert described_class.new 23
       key = 23
       path = root.path_to_node(key, [])
       expect(path).to eq [17, 23]
     end
 
     it 'handles right hand left hand tree' do
-      root.insert Node.new 23
-      root.insert Node.new 19
+      root.insert described_class.new 23
+      root.insert described_class.new 19
       key = 19
       path = root.path_to_node(key, [])
       expect(path).to eq [17, 23, 19]

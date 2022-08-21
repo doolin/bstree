@@ -1,4 +1,4 @@
-# frozen-string-literal: true
+# frozen_string_literal: true
 
 # https://en.wikipedia.org/wiki/Lowest_common_ancestor
 # https://www.geeksforgeeks.org/lowest-common-ancestor-binary-tree-set-1/

@@ -16,8 +16,9 @@ RSpec.describe IterativeTree do
   it_traverses_with '#postorder_walk'
 
   describe '#find_leaf_node' do
+    subject(:tree) { described_class.new root }
+
     let(:root) { node.new 17 }
-    subject(:tree) { IterativeTree.new root }
 
     it 'finds self as leaf' do
       expect(tree.find_leaf_node(root)).to eq root
@@ -71,11 +72,11 @@ RSpec.describe IterativeTree do
   # TODO: wrap specs in context blocks as necessary to disambiguate
   # testing situations.
   describe '#find_unvisited_leaf_node' do
+    subject(:tree) { described_class.new root }
+
     let(:root) { node.new 17 }
     let(:node7) { node.new 7 }
     let(:node29) { node.new 29 }
-
-    subject(:tree) { IterativeTree.new root }
 
     it 'finds self as leaf' do
       expect(tree.find_unvisited_leaf_node(root)).to eq root

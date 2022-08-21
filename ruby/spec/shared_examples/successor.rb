@@ -9,7 +9,7 @@ RSpec.shared_examples '#successor' do
   let(:root) { described_class.new 17 }
 
   it 'successor of single node is nil' do
-    expect(root.successor(root)).to be nil
+    expect(root.successor(root)).to be_nil
   end
 
   it 'successor of node with right child is right child' do
@@ -17,7 +17,7 @@ RSpec.shared_examples '#successor' do
     n17 = node.new(17)
     root.insert(n17)
     expect(root.successor(root)).to eq n17
-    expect(root.successor(n17)).to be nil # n17 largest key
+    expect(root.successor(n17)).to be_nil # n17 largest key
   end
 
   it 'successor of node with only left child is nil' do
@@ -52,7 +52,7 @@ RSpec.shared_examples '#successor' do
     root.insert n23
     expect(root.successor(root)).to eq n23
     expect(root.successor(n23)).to eq n29
-    expect(root.successor(n29)).to be nil
+    expect(root.successor(n29)).to be_nil
   end
 
   it 'finds various successors in a tree with some pathological subtrees' do

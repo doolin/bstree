@@ -205,7 +205,7 @@ RSpec.describe AvlNode do
       #     n23
       it 'nil parent parent remains nil' do
         n13.rotate_left
-        expect(n19.parent).to be nil
+        expect(n19.parent).to be_nil
       end
     end
   end
@@ -343,7 +343,7 @@ RSpec.describe AvlNode do
       #  5
       it 'nil parent remains nil' do
         n17.rotate_right
-        expect(n7.parent).to be nil
+        expect(n7.parent).to be_nil
       end
     end
 
@@ -483,7 +483,7 @@ RSpec.describe AvlNode do
 
       it 'correctly reassigns parent nodes' do
         expect(n17.parent).to be n11
-        expect(n11.parent).to be nil
+        expect(n11.parent).to be_nil
       end
     end
 
@@ -535,7 +535,7 @@ RSpec.describe AvlNode do
       it 'nil parent remains nil' do
         n17.rotate_left_right
 
-        expect(n11.parent).to be nil
+        expect(n11.parent).to be_nil
         expect(n17.parent).to be n11
       end
     end
@@ -638,7 +638,7 @@ RSpec.describe AvlNode do
       end
 
       it 'reassigns parents' do
-        expect(n13.parent).to be nil
+        expect(n13.parent).to be_nil
         expect(n7.parent).to be n13
       end
     end
@@ -691,7 +691,7 @@ RSpec.describe AvlNode do
       it 'nil parent remains nil' do
         n17.rotate_right_left
 
-        expect(n23.parent).to be nil
+        expect(n23.parent).to be_nil
         expect(n17.parent).to be n23
       end
     end
@@ -848,7 +848,7 @@ RSpec.describe AvlNode do
 
           # This should induce a rotation on n23
           n11.insert n29
-          expect(n11.parent).to be nil
+          expect(n11.parent).to be_nil
           expect(n11.balance_factor).to be 1
           expect(n23.right).to be n29
           expect(n23.left).to be n19
@@ -864,7 +864,7 @@ RSpec.describe AvlNode do
           #               13  19     31
           #
           n11.insert n31
-          expect(n11.parent).to be nil
+          expect(n11.parent).to be_nil
           expect(n11.balance_factor).to be 1
 
           #               11
@@ -875,7 +875,7 @@ RSpec.describe AvlNode do
           #                /  \    /  \
           #               13  19  29   37
           n11.insert n37
-          expect(n11.parent).to be nil
+          expect(n11.parent).to be_nil
           expect(n11.balance_factor).to be 1
 
           #               23
@@ -886,7 +886,7 @@ RSpec.describe AvlNode do
           #    /  \  / \    /  \    /  \
           #   2   5 13 19               43
           n11.insert n43
-          expect(n23.parent).to be nil
+          expect(n23.parent).to be_nil
           expect(n23.balance_factor).to be 0
           expect(n23.right.key).to be 31
           expect(n23.left.key).to be 11
@@ -902,7 +902,7 @@ RSpec.describe AvlNode do
           #    /  \  / \    /  \    /  \
           #   2   5 13 19          37   47
           n23.insert n47
-          expect(n23.parent).to be nil
+          expect(n23.parent).to be_nil
           expect(n23.right.key).to be 31
           expect(n23.left.key).to be 11
           expect(n31.right.key).to be 43
@@ -917,7 +917,7 @@ RSpec.describe AvlNode do
           #   2   5 13 19  29  31      53
           n23.insert n53
           expect(n23.bst?).to be true
-          expect(n23.parent).to be nil
+          expect(n23.parent).to be_nil
           expect(n23.balance_factor).to be 0
           expect(n23.right).to be n43
           expect(n43.left).to be n31
@@ -931,7 +931,7 @@ RSpec.describe AvlNode do
           #   2   5 13 19  29  31  47   61
           n23.insert n61
           expect(n23.bst?).to be true
-          expect(n23.parent).to be nil
+          expect(n23.parent).to be_nil
           expect(n23.balance_factor).to be 0
           expect(n23.height).to be 3
           expect(n23.size).to be 15

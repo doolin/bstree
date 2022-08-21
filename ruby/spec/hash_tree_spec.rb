@@ -2,12 +2,12 @@
 
 RSpec.describe HashTree do
   it 'instantiates' do
-    expect(HashTree.new).not_to be nil
+    expect(described_class.new).not_to be_nil
   end
 
   describe 'insert' do
     it 'hashes inserted documents automatically' do
-      ht = HashTree.new
+      ht = described_class.new
       doc1 = ''
       doc2 = '1'
       ht.insert doc1
