@@ -32,15 +32,15 @@ RSpec.describe Foo do
     let(:expected) { [2, 3, 5, 7, 11, 13, 23, 29] }
 
     before :all do
-      @root = Foo.new(11)
+      @root = described_class.new(11)
 
-      @foo2 = Foo.new(2)
-      foo3 = Foo.new(3)
-      @foo5 = Foo.new(5)
-      @foo7 = Foo.new(7)
-      @foo13 = Foo.new(13)
-      foo23 = Foo.new(23)
-      @foo29 = Foo.new(29)
+      @foo2 = described_class.new(2)
+      foo3 = described_class.new(3)
+      @foo5 = described_class.new(5)
+      @foo7 = described_class.new(7)
+      @foo13 = described_class.new(13)
+      foo23 = described_class.new(23)
+      @foo29 = described_class.new(29)
 
       @root.insert(@foo13)
       @root.insert(@foo5)
@@ -57,48 +57,48 @@ RSpec.describe Foo do
       end
 
       it 'identifies single node as binary search tree' do
-        node = Foo.new(11)
+        node = described_class.new(11)
         expect(node.bst?).to be true
       end
 
       it 'identifies root and left node as binary search tree' do
-        node = Foo.new(11)
-        left = Foo.new(5)
+        node = described_class.new(11)
+        left = described_class.new(5)
         node.insert left
         expect(node.bst?).to be true
       end
 
       it 'identifies root and left node as binary search tree' do
-        node = Foo.new(11)
-        right = Foo.new(15)
+        node = described_class.new(11)
+        right = described_class.new(15)
         node.insert right
         expect(node.bst?).to be true
       end
 
       it 'identifies three node as binary search tree' do
-        node = Foo.new(11)
-        left = Foo.new(5)
-        right = Foo.new(15)
+        node = described_class.new(11)
+        left = described_class.new(5)
+        right = described_class.new(15)
         node.insert left
         node.insert right
         expect(node.bst?).to be true
       end
 
       it 'identifies three node as not a binary search tree' do
-        node = Foo.new 11
-        left = Foo.new 5
-        right = Foo.new 15
+        node = described_class.new 11
+        left = described_class.new 5
+        right = described_class.new 15
         node.left = right
         node.right = left
         expect(node.bst?).to be false
       end
 
       it 'finds bst violation with wrongly inserted nodes' do
-        root = Foo.new(17)
-        n20 = Foo.new(20)
+        root = described_class.new(17)
+        n20 = described_class.new(20)
         root.insert n20
-        n20.insert(Foo.new(1))
-        n20.insert(Foo.new(100))
+        n20.insert(described_class.new(1))
+        n20.insert(described_class.new(100))
         expect(n20.bst?).to be true
         expect(root.bst?).to be false
       end
@@ -124,23 +124,23 @@ RSpec.describe Foo do
 
     describe '.present?' do
       it 'finds the root node using the key' do
-        expect(@root.present?(11)).to eq true
+        expect(@root.present?(11)).to be true
       end
 
       it 'finds the root.left node using the key' do
-        expect(@root.present?(5)).to eq true
+        expect(@root.present?(5)).to be true
       end
 
       it 'finds the root.right node using the key' do
-        expect(@root.present?(13)).to eq true
+        expect(@root.present?(13)).to be true
       end
 
       it 'finds an arbitrary node using the key' do
-        expect(@root.present?(7)).to eq true
+        expect(@root.present?(7)).to be true
       end
 
       it 'does not find an arbitrary node when the key is not present' do
-        expect(@root.present?(88)).to eq nil
+        expect(@root.present?(88)).to be_nil
       end
     end
 
@@ -154,7 +154,7 @@ RSpec.describe Foo do
 
     describe '.delete' do
       it 'returns the root node when specified for deletion' do
-        root = Foo.new 9
+        root = described_class.new 9
         expect(root.delete(9)).to eq root
         expect(root.bst?).to be true
         expect(root.left.nil?).to be true
@@ -162,8 +162,8 @@ RSpec.describe Foo do
       end
 
       it 'deletes the right node specified by key' do
-        root = Foo.new 9
-        n14 = Foo.new 14
+        root = described_class.new 9
+        n14 = described_class.new 14
         root.insert n14
         expect(root.delete(14)).to eq n14
         expect(root.bst?).to be true
@@ -172,9 +172,9 @@ RSpec.describe Foo do
       end
 
       it 'deletes a right node reassiging that nodes child' do
-        root = Foo.new(9)
-        n14 = Foo.new(14)
-        n23 = Foo.new(23)
+        root = described_class.new(9)
+        n14 = described_class.new(14)
+        n23 = described_class.new(23)
         root.insert n14
         root.insert n23
         expect(root.delete(14)).to eq n14
@@ -186,11 +186,11 @@ RSpec.describe Foo do
       end
 
       it 'reassigns right subtree on deletion' do
-        root = Foo.new(11)
-        n17 = Foo.new(17)
-        n19 = Foo.new(19)
-        n13 = Foo.new(13)
-        n5 = Foo.new(5)
+        root = described_class.new(11)
+        n17 = described_class.new(17)
+        n19 = described_class.new(19)
+        n13 = described_class.new(13)
+        n5 = described_class.new(5)
         root.insert n17
         root.insert n19
         root.insert n13
@@ -204,15 +204,15 @@ RSpec.describe Foo do
       end
 
       it 'rebuilds subtree after deleting node' do
-        root = Foo.new(11)
-        n5 = Foo.new(5)
+        root = described_class.new(11)
+        n5 = described_class.new(5)
         root.insert n5
 
-        n17 = Foo.new(17)
-        n13 = Foo.new(13)
-        n41 = Foo.new(41)
-        n37 = Foo.new(37)
-        n31 = Foo.new(31)
+        n17 = described_class.new(17)
+        n13 = described_class.new(13)
+        n41 = described_class.new(41)
+        n37 = described_class.new(37)
+        n31 = described_class.new(31)
         root.insert n17
         root.insert n13
         root.insert n41
@@ -226,15 +226,15 @@ RSpec.describe Foo do
         expect(n31.left).to eq n13
         # delete a leaf node
         expect(root.delete(13)).to eq n13
-        expect(n31.left).to be nil
+        expect(n31.left).to be_nil
         expect(root.size).to eq 5
       end
 
       it 'promotes left node on deletion' do
-        root = Foo.new 11
-        n5 = Foo.new 5
-        n7 = Foo.new 7
-        n3 = Foo.new 3
+        root = described_class.new 11
+        n5 = described_class.new 5
+        n7 = described_class.new 7
+        n3 = described_class.new 3
         root.insert n5
         root.insert n7
         root.insert n3
@@ -248,19 +248,19 @@ RSpec.describe Foo do
       end
 
       it 'deletes the root node correctly' do
-        root = Foo.new 11
-        n5 = Foo.new 5
-        n7 = Foo.new 7
-        n3 = Foo.new 3
+        root = described_class.new 11
+        n5 = described_class.new 5
+        n7 = described_class.new 7
+        n3 = described_class.new 3
         root.insert n5
         root.insert n7
         root.insert n3
 
-        n17 = Foo.new 17
-        n13 = Foo.new 13
-        n41 = Foo.new 41
-        n37 = Foo.new 37
-        n31 = Foo.new 31
+        n17 = described_class.new 17
+        n13 = described_class.new 13
+        n41 = described_class.new 41
+        n37 = described_class.new 37
+        n31 = described_class.new 31
         root.insert n17
         root.insert n13
         root.insert n41
@@ -314,9 +314,9 @@ RSpec.describe Foo do
 
     describe '.to_hash' do
       it 'creates a hash of the tree' do
-        root = Foo.new 10
-        n1 = Foo.new 5
-        n2 = Foo.new 15
+        root = described_class.new 10
+        n1 = described_class.new 5
+        n2 = described_class.new 15
         root.insert n1
         root.insert n2
 
@@ -342,13 +342,13 @@ RSpec.describe Foo do
   end
 
   describe '.common_parent' do
-    let(:root) { Foo.new 11 }
-    let(:n5) { Foo.new 5 }
-    let(:n3) { Foo.new 3 }
-    let(:n7) { Foo.new 7 }
-    let(:n13) { Foo.new 13 }
-    let(:n17) { Foo.new 17 }
-    let(:n19) { Foo.new 19 }
+    let(:root) { described_class.new 11 }
+    let(:n5) { described_class.new 5 }
+    let(:n3) { described_class.new 3 }
+    let(:n7) { described_class.new 7 }
+    let(:n13) { described_class.new 13 }
+    let(:n17) { described_class.new 17 }
+    let(:n19) { described_class.new 19 }
 
     it 'finds the common parent to itself' do
       expect(root.common_parent(root, root)).to eq root
@@ -398,68 +398,68 @@ RSpec.describe Foo do
 
   describe 'height of tree' do
     it 'finds the height of single node tree' do
-      node = Foo.new(9)
+      node = described_class.new(9)
       expect(node.height).to eq 0
     end
 
     it 'finds the height of two node tree with right child' do
-      node = Foo.new(9)
-      node.insert Foo.new(14)
+      node = described_class.new(9)
+      node.insert described_class.new(14)
       expect(node.height).to eq 1
     end
 
     it 'finds the height of two node tree with left child' do
-      node = Foo.new(9)
-      node.insert Foo.new(4)
+      node = described_class.new(9)
+      node.insert described_class.new(4)
       expect(node.height).to eq 1
     end
 
     it 'finds the height of three node tree' do
-      node = Foo.new(9)
-      node.insert Foo.new(14)
-      node.insert Foo.new(4)
+      node = described_class.new(9)
+      node.insert described_class.new(14)
+      node.insert described_class.new(4)
       expect(node.height).to eq 1
     end
 
     it 'finds height for arbitrary tree' do
-      node = Foo.new(9)
-      node.insert Foo.new(14)
-      node.insert Foo.new(4)
-      node.insert Foo.new(23)
-      node.insert Foo.new(5)
-      node.insert Foo.new(99)
-      node.insert Foo.new(78)
+      node = described_class.new(9)
+      node.insert described_class.new(14)
+      node.insert described_class.new(4)
+      node.insert described_class.new(23)
+      node.insert described_class.new(5)
+      node.insert described_class.new(99)
+      node.insert described_class.new(78)
       expect(node.height).to eq 4
     end
   end
 
   describe 'destroy' do
     it 'destroys root node' do
-      root = Foo.new(11)
+      root = described_class.new(11)
       root.destroy
-      expect(root.left).to be nil
-      expect(root.right).to be nil
+      expect(root.left).to be_nil
+      expect(root.right).to be_nil
     end
 
     it 'destroys 3 node tree' do
-      root = Foo.new 11
-      n7 = Foo.new 7
-      n13 = Foo.new 13
+      root = described_class.new 11
+      n7 = described_class.new 7
+      n13 = described_class.new 13
       root.insert n7
       root.insert n13
       root.destroy
-      expect(root.left).to be nil
-      expect(root.right).to be nil
+      expect(root.left).to be_nil
+      expect(root.right).to be_nil
     end
 
     it 'destroys 7 node tree' do
-      root = Foo.new 11
-      n7 = Foo.new 7
-      n5 = Foo.new 5
-      n3 = Foo.new 3
-      n13 = Foo.new 13
-      n17 = Foo.new 17
-      n19 = Foo.new 19
+      root = described_class.new 11
+      n7 = described_class.new 7
+      n5 = described_class.new 5
+      n3 = described_class.new 3
+      n13 = described_class.new 13
+      n17 = described_class.new 17
+      n19 = described_class.new 19
       root.insert n7
       root.insert n13
       root.insert n17
@@ -468,8 +468,8 @@ RSpec.describe Foo do
       root.insert n5
       root.destroy
       [root, n5, n17, n7, n13, n19, n3].each do |n|
-        expect(n.left).to be nil
-        expect(n.right).to be nil
+        expect(n.left).to be_nil
+        expect(n.right).to be_nil
       end
     end
   end

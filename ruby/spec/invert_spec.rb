@@ -1,4 +1,4 @@
-# frozen-string-literal: true
+# frozen_string_literal: true
 
 RSpec.describe Node do
   describe '#invert' do
@@ -11,8 +11,8 @@ RSpec.describe Node do
       tree.root.invert
 
       aggregate_failures do
-        expect(tree.root.left).to be nil
-        expect(tree.root.right).to be nil
+        expect(tree.root.left).to be_nil
+        expect(tree.root.right).to be_nil
       end
     end
 
@@ -21,7 +21,7 @@ RSpec.describe Node do
       tree.root.invert
 
       aggregate_failures do
-        expect(tree.root.left).to be nil
+        expect(tree.root.left).to be_nil
         expect(tree.root.right.key).to be 7
       end
     end
@@ -32,7 +32,7 @@ RSpec.describe Node do
 
       aggregate_failures do
         expect(tree.root.left.key).to be 13
-        expect(tree.root.right).to be nil
+        expect(tree.root.right).to be_nil
       end
     end
 

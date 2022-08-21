@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 RSpec.shared_examples '#postorder_walk' do
-  let(:root) { Node.new 17 }
-  let(:nodes) { [] }
-  let(:tree) { described_class.new root }
-
   subject(:subject) do
     tree.postorder_walk { |node| nodes << node }
     nodes.map(&:key)
   end
+
+  let(:root) { Node.new 17 }
+  let(:nodes) { [] }
+  let(:tree) { described_class.new root }
 
   it 'walks an empty tree' do
     tree.delete 17

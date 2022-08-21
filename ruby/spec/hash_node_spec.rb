@@ -2,6 +2,6 @@
 
 RSpec.describe HashNode do
   it 'instantiates' do
-    expect(described_class).not_to be nil
+    expect(described_class).not_to be_nil
   end
 end

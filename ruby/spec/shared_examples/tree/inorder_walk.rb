@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 RSpec.shared_examples '#inorder_walk' do
-  let(:root) { Node.new 17 }
-  let(:nodes) { [] }
-  let(:tree) { described_class.new root }
-
   subject(:subject) do
     tree.inorder_walk { |node| nodes << node }
     nodes.map(&:key)
   end
+
+  let(:root) { Node.new 17 }
+  let(:nodes) { [] }
+  let(:tree) { described_class.new root }
 
   it 'collects node keys for single node' do
     expect(tree.size).to eq 1

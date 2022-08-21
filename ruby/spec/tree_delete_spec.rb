@@ -8,27 +8,27 @@ RSpec.describe Tree do
   describe 'transplant' do
     it 'transplants right child into root' do
       root = Node.new 17
-      tree = Tree.new root
+      tree = described_class.new root
       n23 = Node.new 23
 
       tree.transplant(root, n23)
       expect(tree.root).to eq n23
-      expect(n23.parent).to be nil
+      expect(n23.parent).to be_nil
     end
 
     it 'transplants left child into root' do
       root = Node.new 17
-      tree = Tree.new root
+      tree = described_class.new root
       n5 = Node.new 5
       tree.insert n5
       tree.transplant(root, n5)
       expect(tree.root).to eq n5
-      expect(n5.parent).to eq nil
+      expect(n5.parent).to be_nil
     end
 
     it 'transplants left child' do
       root = Node.new 17
-      tree = Tree.new root
+      tree = described_class.new root
       n5 = Node.new 5
       n7 = Node.new 7
       tree.insert n5
@@ -41,7 +41,7 @@ RSpec.describe Tree do
 
     it 'transplants right child' do
       root = Node.new 17
-      tree = Tree.new root
+      tree = described_class.new root
       n23 = Node.new 23
       n29 = Node.new 29
       tree.insert n23
@@ -57,7 +57,7 @@ RSpec.describe Tree do
     describe 'delete root node' do
       it 'deletes root with no children' do
         root = Node.new 17
-        tree = Tree.new root
+        tree = described_class.new root
         expect(tree.delete_by_key(17)).to eq root
         expect(tree.root.nil?).to be true
         expect(tree.size).to eq 0
@@ -67,7 +67,7 @@ RSpec.describe Tree do
 
       it 'deletes root with left child' do
         root = Node.new 17
-        tree = Tree.new root
+        tree = described_class.new root
         n5 = Node.new 5
         tree.insert n5
         expect(tree.delete_by_key(17)).to eq root
@@ -79,7 +79,7 @@ RSpec.describe Tree do
 
       it 'deletes root with right child' do
         root = Node.new 17
-        tree = Tree.new root
+        tree = described_class.new root
         n23 = Node.new 23
         tree.insert n23
         expect(tree.delete_by_key(17)).to eq root
@@ -91,7 +91,7 @@ RSpec.describe Tree do
 
       it 'deletes root with left and right children' do
         root = Node.new 17
-        tree = Tree.new root
+        tree = described_class.new root
         n23 = Node.new 23
         n5 = Node.new 5
         tree.insert n23
@@ -108,13 +108,13 @@ RSpec.describe Tree do
 
     it 'deletes left node with no children in two node tree' do
       root = Node.new 17
-      tree = Tree.new root
+      tree = described_class.new root
       n5 = Node.new 5
       tree.insert n5
       expect(tree.delete_by_key(5)).to eq n5
       expect(tree.root.nil?).to be false
-      expect(tree.root.left).to be nil
-      expect(tree.root.right).to be nil
+      expect(tree.root.left).to be_nil
+      expect(tree.root.right).to be_nil
       expect(tree.size).to eq 1
       expect(tree.height).to eq 0
       expect(tree.list_keys).to eq [17]
@@ -122,7 +122,7 @@ RSpec.describe Tree do
 
     it 'deletes left node with left child in three node tree' do
       root = Node.new 17
-      tree = Tree.new root
+      tree = described_class.new root
       n5 = Node.new 5
       tree.insert n5
       n3 = Node.new 3
@@ -130,7 +130,7 @@ RSpec.describe Tree do
       expect(tree.delete_by_key(5)).to eq n5
       expect(tree.root.nil?).to be false
       expect(tree.root.left).to be n3
-      expect(tree.root.right).to be nil
+      expect(tree.root.right).to be_nil
       expect(tree.size).to eq 2
       expect(tree.height).to eq 1
       expect(tree.list_keys).to eq [3, 17]
@@ -138,7 +138,7 @@ RSpec.describe Tree do
 
     it 'deletes left node with right child in three node tree' do
       root = Node.new 17
-      tree = Tree.new root
+      tree = described_class.new root
       n5 = Node.new 5
       tree.insert n5
       n7 = Node.new 7
@@ -146,7 +146,7 @@ RSpec.describe Tree do
       expect(tree.delete_by_key(5)).to eq n5
       expect(tree.root.nil?).to be false
       expect(tree.root.left).to be n7
-      expect(tree.root.right).to be nil
+      expect(tree.root.right).to be_nil
       expect(tree.size).to eq 2
       expect(tree.height).to eq 1
       expect(tree.list_keys).to eq [7, 17]
@@ -154,13 +154,13 @@ RSpec.describe Tree do
 
     it 'deletes right node with no children in two node tree' do
       root = Node.new 17
-      tree = Tree.new root
+      tree = described_class.new root
       n23 = Node.new 23
       tree.insert n23
       expect(tree.delete_by_key(23)).to eq n23
       expect(tree.root.nil?).to be false
-      expect(tree.root.left).to be nil
-      expect(tree.root.right).to be nil
+      expect(tree.root.left).to be_nil
+      expect(tree.root.right).to be_nil
       expect(tree.size).to eq 1
       expect(tree.height).to eq 0
       expect(tree.list_keys).to eq [17]
@@ -168,7 +168,7 @@ RSpec.describe Tree do
 
     it 'deletes right node with left child in three node tree' do
       root = Node.new 17
-      tree = Tree.new root
+      tree = described_class.new root
       n23 = Node.new 23
       tree.insert n23
       n19 = Node.new 19
@@ -176,7 +176,7 @@ RSpec.describe Tree do
       expect(tree.delete_by_key(23)).to eq n23
       expect(tree.root.nil?).to be false
       expect(tree.root.right).to be n19
-      expect(tree.root.left).to be nil
+      expect(tree.root.left).to be_nil
       expect(tree.size).to eq 2
       expect(tree.height).to eq 1
       expect(tree.list_keys).to eq [17, 19]
@@ -184,7 +184,7 @@ RSpec.describe Tree do
 
     it 'deletes right node with right child in three node tree' do
       root = Node.new 17
-      tree = Tree.new root
+      tree = described_class.new root
       n23 = Node.new 23
       tree.insert n23
       n29 = Node.new 29
@@ -192,7 +192,7 @@ RSpec.describe Tree do
       expect(tree.delete_by_key(23)).to eq n23
       expect(tree.root.nil?).to be false
       expect(tree.root.right).to be n29
-      expect(tree.root.left).to be nil
+      expect(tree.root.left).to be_nil
       expect(tree.size).to eq 2
       expect(tree.height).to eq 1
       expect(tree.list_keys).to eq [17, 29]
@@ -205,7 +205,7 @@ RSpec.describe Tree do
           n5 = Node.new 5
           n3 = Node.new 3
           n7 = Node.new 7
-          tree = Tree.new root
+          tree = described_class.new root
           tree.insert n5
           tree.insert n7
           tree.insert n3
@@ -216,7 +216,7 @@ RSpec.describe Tree do
           expect(n7.parent).to eq tree.root # .left
           expect(n7.left).to eq n3
           expect(n3.parent).to eq n7
-          expect(tree.root.right).to be nil
+          expect(tree.root.right).to be_nil
 
           expect(tree.size).to eq 3
           expect(tree.height).to eq 2
@@ -229,7 +229,7 @@ RSpec.describe Tree do
           n3 = Node.new 3
           n7 = Node.new 7
           n6 = Node.new 6
-          tree = Tree.new root
+          tree = described_class.new root
           tree.insert n5
           tree.insert n7
           tree.insert n6
@@ -238,7 +238,7 @@ RSpec.describe Tree do
           expect(tree.delete_by_key(5)).to eq n5
           expect(tree.root.nil?).to be false
           expect(tree.root.left).to be n6
-          expect(tree.root.right).to be nil
+          expect(tree.root.right).to be_nil
           expect(tree.size).to eq 4
           expect(tree.height).to eq 2
           expect(tree.list_keys).to eq [3, 6, 7, 17]
@@ -254,7 +254,7 @@ RSpec.describe Tree do
           n12 = Node.new 12
           n10 = Node.new 10
 
-          tree = Tree.new root
+          tree = described_class.new root
           tree.insert n5
           tree.insert n3
           tree.insert n11
@@ -266,7 +266,7 @@ RSpec.describe Tree do
           expect(tree.height).to eq 5
           expect(tree.delete_by_key(5)).to eq n5
           expect(tree.root.left).to be n7
-          expect(tree.root.right).to be nil
+          expect(tree.root.right).to be_nil
           expect(tree.size).to eq 7
           expect(tree.height).to eq 4
           expect(tree.list_keys).to eq [3, 7, 8, 10, 11, 12, 17]
@@ -285,14 +285,14 @@ RSpec.describe Tree do
           n23 = Node.new 23
           n19 = Node.new 19
           n29 = Node.new 29
-          tree = Tree.new root
+          tree = described_class.new root
           tree.insert n23
           tree.insert n19
           tree.insert n29
           expect(tree.delete_by_key(23)).to eq n23
           expect(tree.root.nil?).to be false
           expect(tree.root.right).to be n29
-          expect(tree.root.left).to be nil
+          expect(tree.root.left).to be_nil
           expect(tree.size).to eq 3
           expect(tree.height).to eq 2
           expect(tree.list_keys).to eq [17, 19, 29]
@@ -308,7 +308,7 @@ RSpec.describe Tree do
           n21 = Node.new 21
           n22 = Node.new 22
 
-          tree = Tree.new root
+          tree = described_class.new root
           tree.insert n23
           tree.insert n19
           tree.insert n29
@@ -322,7 +322,7 @@ RSpec.describe Tree do
           expect(node_pointers_nil?(n23)).to be true
           expect(tree.root.nil?).to be false
           expect(tree.root.right).to be n29
-          expect(tree.root.left).to be nil
+          expect(tree.root.left).to be_nil
           expect(tree.size).to eq 6
           expect(tree.height).to eq 4
           expect(tree.list_keys).to eq [17, 19, 20, 21, 22, 29]
@@ -346,7 +346,7 @@ RSpec.describe Tree do
           n21 = Node.new 21
           n22 = Node.new 22
 
-          tree = Tree.new root
+          tree = described_class.new root
           tree.insert n5
           tree.insert n3
           tree.insert n11
@@ -393,15 +393,15 @@ RSpec.describe Tree do
           # expect(tree.inorder_iterate).to eq expected
 
           expect(tree.delete_by_key(29)).to eq n29
-          expect(n23.right).to be nil
+          expect(n23.right).to be_nil
           expect(tree.size).to eq 11
           expected = [3, 8, 10, 11, 12, 17, 19, 20, 21, 22, 23]
           expect(tree.list_keys).to eq expected
           # expect(tree.inorder_iterate).to eq expected
           expect(tree.delete_by_key(3)).to eq n3
-          expect(n8.left).to be nil
-          expect(n3.left).to be nil
-          expect(n3.right).to be nil
+          expect(n8.left).to be_nil
+          expect(n3.left).to be_nil
+          expect(n3.right).to be_nil
           expect(node_pointers_nil?(n3)).to be true
           expect(tree.size).to eq 10
           expected = [8, 10, 11, 12, 17, 19, 20, 21, 22, 23]
@@ -417,12 +417,12 @@ RSpec.describe Tree do
           expect(tree.size).to eq 9
 
           expect(n19.right).to eq n22
-          expect(n19.left).to eq nil
+          expect(n19.left).to be_nil
           expect(n22.left).to eq n20
           expect(n20.parent).to eq n22
           expect(n22.parent).to eq n19
           expect(n22.left).to eq n20
-          expect(n22.right).to eq nil
+          expect(n22.right).to be_nil
           expected = [8, 10, 11, 12, 17, 19, 20, 22, 23]
           expect(tree.list_keys).to eq expected
           # expect(tree.inorder_iterate).to eq expected
@@ -431,7 +431,7 @@ RSpec.describe Tree do
           expect(tree.root.right).to be n23
           expect(tree.delete_by_key(17)).to eq root
           expect(tree.root).to eq n19
-          expect(n19.parent).to be nil
+          expect(n19.parent).to be_nil
           expect(n19.left).to eq n8
           expect(n8.parent).to eq n19
           expect(n19.right).to eq n23
@@ -441,8 +441,8 @@ RSpec.describe Tree do
           expect(tree.list_keys).to eq expected
           # expect(tree.inorder_iterate).to eq expected
 
-          expect(n12.left).to be nil
-          expect(n12.right).to be nil
+          expect(n12.left).to be_nil
+          expect(n12.right).to be_nil
           expect(n12.parent).to eq n11
           expect(tree.delete_by_key(12)).to eq n12
           expected = [8, 10, 11, 19, 20, 22, 23]
@@ -482,7 +482,7 @@ RSpec.describe Tree do
   describe '.delete' do
     it 'returns the root node when specified for deletion' do
       root = Node.new(9)
-      tree = Tree.new root
+      tree = described_class.new root
       expect(tree.delete(9)).to eq root
       expect(tree.root.nil?).to be true
       expect(tree.size).to eq 0
@@ -490,7 +490,7 @@ RSpec.describe Tree do
 
     it 'deletes the right node specified by key' do
       root = Node.new(9)
-      tree = Tree.new root
+      tree = described_class.new root
       n14 = Node.new(14)
       tree.insert n14
       expect(tree.delete(14)).to eq n14
@@ -502,7 +502,7 @@ RSpec.describe Tree do
 
     it 'deletes a right node reassiging that nodes child' do
       root = Node.new(9)
-      tree = Tree.new root
+      tree = described_class.new root
       n14 = Node.new(14)
       n23 = Node.new(23)
       tree.insert n14
@@ -518,7 +518,7 @@ RSpec.describe Tree do
 
     it 'reassigns right subtree on deletion' do
       root = Node.new(11)
-      tree = Tree.new root
+      tree = described_class.new root
       n17 = Node.new(17)
       n19 = Node.new(19)
       n13 = Node.new(13)
@@ -539,7 +539,7 @@ RSpec.describe Tree do
 
     it 'rebuilds subtree after deleting node' do
       root = Node.new(11)
-      tree = Tree.new root
+      tree = described_class.new root
       n5 = Node.new(5)
       tree.insert n5
 
@@ -562,13 +562,13 @@ RSpec.describe Tree do
       expect(tree.size).to eq 6
       # delete a leaf node
       expect(tree.delete(13)).to eq n13
-      expect(n31.left).to be nil
+      expect(n31.left).to be_nil
       expect(tree.size).to eq 5
     end
 
     it 'promotes left node on deletion' do
       root = Node.new(11)
-      tree = Tree.new root
+      tree = described_class.new root
       n5 = Node.new(5)
       n7 = Node.new(7)
       n3 = Node.new(3)
@@ -587,7 +587,7 @@ RSpec.describe Tree do
 
     it 'deletes the root node correctly' do
       root = Node.new(11)
-      tree = Tree.new root
+      tree = described_class.new root
       n5 = Node.new(5)
       n7 = Node.new(7)
       n3 = Node.new(3)

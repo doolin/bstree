@@ -13,14 +13,14 @@ RSpec.shared_examples '#predecessor' do
 
   context 'for single node' do
     it 'is nil' do
-      expect(root.predecessor(root)).to eq nil
+      expect(root.predecessor(root)).to be_nil
     end
   end
 
   context 'for 2 node trees' do
     it 'finds nil as predecessor to left child' do
       root.insert n7
-      expect(root.predecessor(n7)).to be nil
+      expect(root.predecessor(n7)).to be_nil
     end
 
     it 'finds root as predecessor to right child' do
@@ -42,7 +42,7 @@ RSpec.shared_examples '#predecessor' do
       end
 
       it 'finds nil as predecessor to left child' do
-        expect(root.predecessor(n7)).to be nil
+        expect(root.predecessor(n7)).to be_nil
       end
 
       it 'finds root as predecessor to right child' do
@@ -57,7 +57,7 @@ RSpec.shared_examples '#predecessor' do
         end
 
         it 'finds predecessor has no right child' do
-          expect(subject.right).to be nil
+          expect(subject.right).to be_nil
         end
       end
     end

@@ -3,7 +3,7 @@
 # Documented in examples.tex
 RSpec.describe Generator do
   it 'builds tree1' do
-    tree = Generator.tree1
+    tree = described_class.tree1
     expect(tree.size).to eq 1
     expect(tree.height).to eq 0
     expect(tree.bst?).to be true
@@ -16,7 +16,7 @@ RSpec.describe Generator do
   end
 
   it 'builds tree2' do
-    tree = Generator.tree2
+    tree = described_class.tree2
     expect(tree.size).to eq 2
     expect(tree.height).to eq 1
     expect(tree.bst?).to be true
@@ -29,7 +29,7 @@ RSpec.describe Generator do
   end
 
   it 'builds tree3' do
-    tree = Generator.tree3
+    tree = described_class.tree3
     expect(tree.size).to eq 3
     expect(tree.height).to eq 1
     expect(tree.bst?).to be true
@@ -42,7 +42,7 @@ RSpec.describe Generator do
   end
 
   it 'builds tree4' do
-    tree = Generator.tree4
+    tree = described_class.tree4
     expect(tree.size).to eq 4
     expect(tree.height).to eq 2
     expect(tree.bst?).to be true
@@ -55,7 +55,7 @@ RSpec.describe Generator do
   end
 
   it 'builds tree5' do
-    tree = Generator.tree5
+    tree = described_class.tree5
     expect(tree.size).to eq 5
     expect(tree.height).to eq 2
     expect(tree.bst?).to be true
@@ -68,7 +68,7 @@ RSpec.describe Generator do
   end
 
   it 'builds tree6' do
-    tree = Generator.tree6
+    tree = described_class.tree6
     expect(tree.size).to eq 6
     expect(tree.height).to eq 3
     expect(tree.bst?).to be true
@@ -81,7 +81,7 @@ RSpec.describe Generator do
   end
 
   it 'builds tree7' do
-    tree = Generator.tree7
+    tree = described_class.tree7
     expect(tree.size).to eq 7
     expect(tree.height).to eq 3
     expect(tree.bst?).to be true
@@ -94,7 +94,7 @@ RSpec.describe Generator do
   end
 
   it 'builds tree8' do
-    tree = Generator.tree8
+    tree = described_class.tree8
     expect(tree.size).to eq 8
     expect(tree.height).to eq 3
     expect(tree.bst?).to be true
@@ -107,7 +107,7 @@ RSpec.describe Generator do
   end
 
   it 'builds tree9' do
-    tree = Generator.tree9
+    tree = described_class.tree9
     expect(tree.size).to eq 9
     expect(tree.height).to eq 3
     expect(tree.bst?).to be true
@@ -120,7 +120,7 @@ RSpec.describe Generator do
   end
 
   it 'builds tree10' do
-    tree = Generator.tree10
+    tree = described_class.tree10
     expect(tree.size).to eq 10
     expect(tree.height).to eq 4
     expect(tree.bst?).to be true
@@ -134,7 +134,7 @@ RSpec.describe Generator do
 
   context 'trees of size 3' do
     it 'builds tree213' do
-      tree = Generator.tree213
+      tree = described_class.tree213
       expect(tree.size).to eq 3
       expect(tree.height).to eq 1
       expect(tree.bst?).to be true
@@ -145,7 +145,7 @@ RSpec.describe Generator do
     end
 
     it 'builds tree123' do
-      tree = Generator.tree123
+      tree = described_class.tree123
       expect(tree.size).to eq 3
       expect(tree.height).to eq 2
       expect(tree.bst?).to be true
@@ -156,7 +156,7 @@ RSpec.describe Generator do
     end
 
     it 'builds tree132' do
-      tree = Generator.tree132
+      tree = described_class.tree132
       expect(tree.size).to eq 3
       expect(tree.height).to eq 2
       expect(tree.bst?).to be true
@@ -167,7 +167,7 @@ RSpec.describe Generator do
     end
 
     it 'builds tree321' do
-      tree = Generator.tree321
+      tree = described_class.tree321
       expect(tree.size).to eq 3
       expect(tree.height).to eq 2
       expect(tree.bst?).to be true
@@ -178,7 +178,7 @@ RSpec.describe Generator do
     end
 
     it 'builds tree312' do
-      tree = Generator.tree312
+      tree = described_class.tree312
       expect(tree.size).to eq 3
       expect(tree.height).to eq 2
       expect(tree.bst?).to be true

@@ -1,7 +1,7 @@
-# frozen-string-literal: true
+# frozen_string_literal: true
 
 require 'raven'
 
 Sentry.configure do |config|
-  config.dsn = ENV['BST_SENTRY']
+  config.dsn = ENV.fetch('BST_SENTRY', nil)
 end

@@ -2,14 +2,14 @@
 
 RSpec.shared_examples '#preorder_walk' do
   describe '#preorder_iterate' do
-    let(:root) { Node.new 17 }
-    let(:nodes) { [] }
-    let(:tree) { described_class.new root }
-
     subject(:subject) do
       tree.preorder_walk { |node| nodes << node }
       nodes.map(&:key)
     end
+
+    let(:root) { Node.new 17 }
+    let(:nodes) { [] }
+    let(:tree) { described_class.new root }
 
     # let(:root) { Node.new 17 }
     # subject(:tree) { described_class.new root }
