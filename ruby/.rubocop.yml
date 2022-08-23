@@ -70,8 +70,15 @@ RSpec/FilePath:
 RSpec/LeakyConstantDeclaration:
   Enabled: false
 
+# Spent 30 minutes looking into enabling this cop.
+# It turns out that the case I want to test for isn't
+# really handled well. Doubles and spies do not seem
+# to bring the necessary state with them, which is what
+# is required where I am using them to test when rotations
+# fire for AvlNode insertion to maintain AVL property.
 RSpec/MessageSpies:
-  Enabled: false
+  Exclude:
+    - spec/avl_node_spec.rb
 
 RSpec/RepeatedExample:
   Enabled: false
