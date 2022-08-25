@@ -31,7 +31,7 @@ RSpec.describe Foo do
   describe 'algorithm methods' do
     let(:expected) { [2, 3, 5, 7, 11, 13, 23, 29] }
 
-    before :all do
+    before do
       @root = described_class.new(11)
 
       @foo2 = described_class.new(2)

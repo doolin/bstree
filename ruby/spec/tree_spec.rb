@@ -213,7 +213,7 @@ RSpec.describe Tree do
   end
 
   describe 'instance methods' do
-    before :all do
+    before do
       node = Node.new(8, 'uuid8')
       @tree = described_class.new node
       @tree.insert Node.new(14, 'uuid14')
