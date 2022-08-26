@@ -293,7 +293,13 @@ RSpec.describe Tree do
     context 'yaml' do
       describe '.to_yml' do
         it 'returns yaml representation of tree' do
-          allow_any_instance_of(Node).to receive(:uuid).and_return('uuid')
+          # AnyInstance is deprecated, but there doesn't seem to be much
+          # alternative to achieve the desired effect of the test. It would
+          # be possible to add a conditional to Node#uuid to check for testing
+          # environment, but that seems much uglier. Another way would be to
+          # read the yaml back into a new tree, then compare the new tree with
+          # original tree.
+          allow_any_instance_of(Node).to receive(:uuid).and_return('uuid') # rubocop:disable RSpec/AnyInstance
           tree = Generator.tree3
           expected = <<~TREE
             ---
@@ -317,7 +323,8 @@ RSpec.describe Tree do
 
       describe '.to_yaml_file' do
         it 'writes file identical to existing fixture' do
-          allow_any_instance_of(Node).to receive(:uuid).and_return('uuid')
+          # AnyInstance is deprecated, explanation above.
+          allow_any_instance_of(Node).to receive(:uuid).and_return('uuid') # rubocop:disable RSpec/AnyInstance
           tree = Generator.tree3
           require 'open3'
           filename = 'tree3.yml'

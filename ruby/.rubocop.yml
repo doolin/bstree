@@ -85,6 +85,3 @@ RSpec/RepeatedExample:
 
 RSpec/EmptyExampleGroup:
   Enabled: false
-
-RSpec/AnyInstance:
-  Enabled: false
