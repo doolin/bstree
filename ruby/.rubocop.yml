@@ -82,6 +82,5 @@ RSpec/MessageSpies:
 
 RSpec/RepeatedExample:
   Enabled: false
-
-RSpec/EmptyExampleGroup:
-  Enabled: false
+# RSpec/EmptyExampleGroup:
+#   Enabled: false

@@ -10,7 +10,7 @@ require 'shared_examples/predecessor'
 
 require_relative '../lib/iterative_node'
 
-RSpec.describe IterativeNode do
+RSpec.describe IterativeNode do # rubocop:disable RSpec/EmptyExampleGroup # false positive
   it_inserts_like 'insertion'
   it_finds_extremes '#maximum'
   it_finds_extremes '#minimum'
