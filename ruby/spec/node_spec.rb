@@ -742,7 +742,7 @@ RSpec.describe Node do
   end
 
   describe 'build_from_hash' do
-    it 'builds a tree from a root node nested hashes' do
+    it 'builds a tree from a root node with single hashe' do
       node = described_class.new(8)
       new_node = described_class.build_from_hash node.to_hash
       expect(new_node.uuid).to eq node.uuid

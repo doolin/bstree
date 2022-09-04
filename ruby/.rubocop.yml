@@ -61,8 +61,8 @@ RSpec/SubjectDeclaration:
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
 
-RSpec/RepeatedDescription:
-  Enabled: false
+# RSpec/RepeatedDescription:
+#   Enabled: false
 
 RSpec/FilePath:
   Enabled: false

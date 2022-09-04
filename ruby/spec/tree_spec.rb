@@ -160,6 +160,7 @@ RSpec.describe Tree do
     end
   end
 
+  # TODO: rewrite specs with context for full? true and false
   describe '#full?' do
     let(:root) { Node.new 100 }
     let(:tree) { described_class.new root }
@@ -201,7 +202,7 @@ RSpec.describe Tree do
       expect(tree).not_to be_full
     end
 
-    it 'returns nil for tree with 6 nodes' do
+    it 'returns nil for tree with 7 nodes' do
       tree.insert left
       tree.insert right
       tree.insert l2
