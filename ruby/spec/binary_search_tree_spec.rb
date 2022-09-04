@@ -68,7 +68,7 @@ RSpec.describe Foo do
         expect(node.bst?).to be true
       end
 
-      it 'identifies root and left node as binary search tree' do
+      it 'identifies root and right node as binary search tree' do
         node = described_class.new(11)
         right = described_class.new(15)
         node.insert right
