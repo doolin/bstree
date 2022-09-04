@@ -31,10 +31,6 @@ RSpec.describe Gcd do
       expect(described_class.compute(18, 48)).to eq 6
     end
 
-    example 'gcd(18, 48)' do
-      expect(described_class.compute(18, 48)).to eq 6
-    end
-
     example 'gcd(17*23, 5*17)' do
       expect(described_class.compute(17 * 23, 5 * 17)).to eq 17
     end
