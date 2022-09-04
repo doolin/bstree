@@ -631,10 +631,6 @@ RSpec.describe Node do
         root.insert described_class.new 11
         expect(described_class.balanced?(root)).to be 2
       end
-
-      it 'Tree4' do
-        expect(described_class.balanced?(root)).to be 1
-      end
     end
 
     context 'unbalanced when' do
