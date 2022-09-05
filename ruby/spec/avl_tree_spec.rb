@@ -7,7 +7,9 @@ RSpec.describe AvlTree do
     tree
   end
 
-  context 'builds trees of size' do
+  # This whole section of specs needs to be reworded.
+  # There should be a `describe` here somewhere.
+  context 'for building trees of size' do
     example '1' do
       tree = build_tree(1)
       expect(tree.preorder_keys).to eq [1]
@@ -80,7 +82,7 @@ RSpec.describe AvlTree do
     end
   end
 
-  context 'counting up' do
+  context 'for counting up' do
     example '6' do
       tree = build_tree(6)
       expected = [4, 2, 1, 3, 5, 6]

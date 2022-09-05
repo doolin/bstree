@@ -9,7 +9,7 @@ RSpec.describe SternBrocot do
   end
 
   describe '.rationalize' do
-    context 'integers >= 0' do
+    context 'when integers >= 0' do
       example '0 yields 0/1' do
         actual = described_class.rationalize 0
         expect(actual).to eq [0, 1]
@@ -31,7 +31,7 @@ RSpec.describe SternBrocot do
       end
     end
 
-    context 'rational numbers <= 1.0' do
+    context 'when rational numbers <= 1.0' do
       example '0.0 yields 0/1' do
         actual = described_class.rationalize 0.0
         expect(actual).to eq [0, 1]
@@ -68,7 +68,7 @@ RSpec.describe SternBrocot do
       end
     end
 
-    context 'rational numbers > 1.0' do
+    context 'when rational numbers > 1.0' do
       xexample '1.1 yields 11/10' do
         actual = described_class.rationalize 1.1
         expect(actual).to eq [11, 10]

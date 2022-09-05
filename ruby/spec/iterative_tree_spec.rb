@@ -126,7 +126,7 @@ RSpec.describe IterativeTree do
       expect(tree.find_unvisited_leaf_node(root)).to eq node19
     end
 
-    context 'full tree with 3 nodes' do
+    context 'for a full tree with 3 nodes' do
       it 'finds left leaf node on unvisited 3 node full tree' do
         tree.insert node7
         tree.insert node29

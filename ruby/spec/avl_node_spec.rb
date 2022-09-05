@@ -119,7 +119,7 @@ RSpec.describe AvlNode do
     #     17   23        11   17    43
     #            .
     #            n43
-    context 'add node to full subtree' do
+    context 'when node added to full subtree' do
       before do
         n13.insert n11
         n13.insert n19
@@ -160,7 +160,7 @@ RSpec.describe AvlNode do
       end
     end
 
-    context 'check root parent reassignment for subtree' do
+    context 'check root parent reassignment for subtree' do # rubocop:disable RSpec/ContextWording
       before do
         n13.insert n19
         n19.insert n23
@@ -251,7 +251,7 @@ RSpec.describe AvlNode do
     #      5    13               2      13   29
     #     .
     #    2
-    context 'add node to full subtree' do
+    context 'when node added to full subtree' do
       before do
         n17.insert n11
         n17.insert n29
@@ -295,7 +295,7 @@ RSpec.describe AvlNode do
     # When a subtree is out of balance, it needs to designate a new root
     # for itself. This is managed in the rotation functions by returning
     # the new root node for appropriate processing by the invoking function.
-    context 'check root parent reassignment for subtree' do
+    context 'check root parent reassignment for subtree' do # rubocop:disable RSpec/ContextWording
       # 3 node subtree suffices.
       before do
         n17.insert n7
@@ -487,7 +487,7 @@ RSpec.describe AvlNode do
       end
     end
 
-    context 'check root parent reassignment for subtree' do
+    context 'check root parent reassignment for subtree' do # rubocop:disable RSpec/ContextWording
       before do
         n17.insert n7
         n7.insert n11
@@ -643,7 +643,7 @@ RSpec.describe AvlNode do
       end
     end
 
-    context 'check root parent reassignment for subtree' do
+    context 'check root parent reassignment for subtree' do # rubocop:disable RSpec/ContextWording
       before do
         n17.insert n29
         n29.insert n23
@@ -803,7 +803,7 @@ RSpec.describe AvlNode do
 
   describe 'build avl trees from sorted lists' do
     describe 'trees as linked lists' do
-      context 'only right children' do
+      context 'when only right children' do
         let(:n47) { described_class.new 47 }
         let(:n53) { described_class.new 53 }
         let(:n61) { described_class.new 61 }

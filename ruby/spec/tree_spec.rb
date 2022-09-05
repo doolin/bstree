@@ -291,7 +291,7 @@ RSpec.describe Tree do
       end
     end
 
-    context 'yaml' do
+    context 'yaml' do # rubocop:disable RSpec/ContextWording
       describe '.to_yml' do
         it 'returns yaml representation of tree' do
           # AnyInstance is deprecated, but there doesn't seem to be much
@@ -347,7 +347,7 @@ RSpec.describe Tree do
           expect(saved.root.uuid).to eq tree.root.uuid
         end
 
-        context 'builds and verifies properties of yaml' do
+        context 'builds and verifies properties of yaml' do # rubocop:disable RSpec/ContextWording
           let(:yaml_dir) { '../fixtures' }
 
           it 'tree1' do
@@ -483,7 +483,7 @@ RSpec.describe Tree do
           end
         end
 
-        context 'full trees from yaml' do
+        context 'full trees from yaml' do # rubocop:disable RSpec/ContextWording
           let(:yaml_dir) { '../fixtures/full' }
 
           it 'tree1' do

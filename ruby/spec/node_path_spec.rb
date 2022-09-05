@@ -45,7 +45,7 @@ RSpec.describe Node do
       expect(path).to eq [23, 29, 19, 13, 11]
     end
 
-    context 'the size 3 trees' do
+    context 'for size 3 trees' do
       it 'finds paths for 213' do
         tree = Generator.tree213
         path = tree.root.path_to_root(1, [])
@@ -146,7 +146,7 @@ RSpec.describe Node do
       end.to raise_error(Node::KeyNotFoundError)
     end
 
-    context 'the size 3 trees' do
+    context 'for size 3 trees' do
       it 'finds paths for 213' do
         tree = Generator.tree213
         path = tree.root.path_to_node(1, [])

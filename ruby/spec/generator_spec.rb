@@ -132,7 +132,7 @@ RSpec.describe Generator do
     # expect(tree.pathological??).to be true
   end
 
-  context 'trees of size 3' do
+  context 'for trees of size 3' do
     it 'builds tree213' do
       tree = described_class.tree213
       expect(tree.size).to eq 3

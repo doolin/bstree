@@ -14,14 +14,14 @@ RSpec.describe Node do
   it_finds '#predecessor'
 
   describe '#depth' do
-    context '0' do
+    context 'when 0' do
       it 'is a single node' do
         node = described_class.new 17
         expect(node.depth).to be 0
       end
     end
 
-    context '1' do
+    context 'when 1' do
       it 'left child' do
         node = described_class.new 17
         n5 = described_class.new 5
@@ -37,7 +37,7 @@ RSpec.describe Node do
       end
     end
 
-    context '2' do
+    context 'when 2' do
       it 'left child' do
         node = described_class.new 17
         n5 = described_class.new 5
@@ -329,7 +329,7 @@ RSpec.describe Node do
       expect(tree.has_unvisited_children?).to be false
     end
 
-    context 'unvisited children' do
+    context 'with unvisited children' do
       example 'root has unvisited left child only' do
         tree.insert described_class.new 7
         expect(tree.has_unvisited_children?).to be true
@@ -340,7 +340,7 @@ RSpec.describe Node do
         expect(tree.has_unvisited_children?).to be true
       end
 
-      context 'full tree with both children unvisited' do
+      context 'for full tree with both children unvisited' do
         example 'found correctly' do
           tree.insert described_class.new 7
           tree.insert described_class.new 29
@@ -349,7 +349,7 @@ RSpec.describe Node do
       end
     end
 
-    context 'visited children' do
+    context 'with visited children' do
       example 'left node is visited, right node nil' do
         tree.insert described_class.new(7).visit
         expect(tree.has_unvisited_children?).to be false
@@ -361,7 +361,7 @@ RSpec.describe Node do
       end
     end
 
-    context 'full tree with one of the nodes visited' do
+    context 'for full tree with one of the nodes visited' do
       example 'found left node visited' do
         tree.insert described_class.new(7).visit
         tree.insert described_class.new 29
@@ -375,7 +375,7 @@ RSpec.describe Node do
       end
     end
 
-    context 'full tree with both left and right child visited' do
+    context 'for full tree with both left and right child visited' do
       example 'finds both children visited' do
         tree.insert described_class.new(29).visit
         tree.insert described_class.new(7).visit
@@ -611,7 +611,7 @@ RSpec.describe Node do
   describe '.balanced?' do
     let(:root) { described_class.new 17 }
 
-    context 'balanced when' do
+    context 'true when' do
       it 'single node' do
         expect(described_class.balanced?(root)).to be 1
       end
@@ -633,7 +633,7 @@ RSpec.describe Node do
       end
     end
 
-    context 'unbalanced when' do
+    context 'false when' do
       it 'two right nodes' do
         root.insert described_class.new 23
         root.insert described_class.new 29

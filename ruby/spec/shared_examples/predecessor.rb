@@ -35,7 +35,7 @@ RSpec.shared_examples '#predecessor' do
   end
 
   context 'for 3 node' do
-    context 'perfect trees' do
+    describe 'perfect trees' do
       before do
         root.insert n7
         root.insert n29
@@ -65,7 +65,7 @@ RSpec.shared_examples '#predecessor' do
     # This is probably not necessary, but I'm pushing the limits
     # of how to use describe, context and example/it to best
     # express the meaning of each spec.
-    context 'left trees' do
+    context 'when left trees' do
       let(:n7) { node.new(7) }
       let(:n2) { node.new(2) }
 
@@ -79,7 +79,7 @@ RSpec.shared_examples '#predecessor' do
       end
     end
 
-    context 'right trees' do
+    context 'when right trees' do
       let(:n29) { node.new(29) }
       let(:n43) { node.new(43) }
 
@@ -94,7 +94,7 @@ RSpec.shared_examples '#predecessor' do
     end
   end
 
-  context 'remaining junk tests' do
+  context 'remaining junk tests' do # rubocop:disable RSpec/ContextWording
     it 'finds predecessors correctly' do
       n2 = node.new 2
       n3 = node.new 3
