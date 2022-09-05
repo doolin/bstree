@@ -55,14 +55,8 @@ RSpec/ContextWording:
 RSpec/NestedGroups:
   Enabled: false
 
-RSpec/SubjectDeclaration:
-  Enabled: false
-
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
-
-# RSpec/RepeatedDescription:
-#   Enabled: false
 
 RSpec/FilePath:
   Enabled: false

@@ -50,7 +50,7 @@ RSpec.shared_examples '#predecessor' do
       end
 
       context 'when root has 2 childen' do
-        subject(:subject) { root.predecessor(root) }
+        subject { root.predecessor(root) }
 
         it 'finds left child as predecessor to root' do
           expect(subject).to eq n7
