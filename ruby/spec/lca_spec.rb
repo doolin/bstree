@@ -5,7 +5,7 @@
 
 RSpec.describe Node do
   describe '#least_common_ancestor' do
-    context 'tree213 finds' do
+    context 'on tree213 finds' do
       subject(:tree) { Generator.tree213.root }
 
       it '2 as LCA for 3, 1' do
@@ -32,7 +32,7 @@ RSpec.describe Node do
       end
     end
 
-    context 'tree10 finds' do
+    context 'on tree10 finds' do
       subject(:tree) { Generator.tree10.root }
 
       it '11 as LCA for 2, 23' do

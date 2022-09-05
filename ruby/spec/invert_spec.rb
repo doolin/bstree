@@ -46,7 +46,7 @@ RSpec.describe Node do
       end
     end
 
-    context 'inverting generated trees reverse sorts the keys' do
+    context 'for generated trees reverse sorts the keys' do
       %i[tree1 tree2 tree3 tree4 tree5 tree6 tree7 tree8 tree9 tree10].each do |t|
         example "for #{t}" do
           tree = Generator.send t

@@ -29,7 +29,7 @@ RSpec.describe Tree do
       expect(actual).to eq [17]
     end
 
-    context 'left' do
+    context 'when left' do
       example 'child' do
         tree.insert n7
         tree.invert
@@ -58,7 +58,7 @@ RSpec.describe Tree do
       end
     end
 
-    context 'right' do
+    context 'when right' do
       example 'child' do
         tree.insert n29
         tree.invert
