@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.shared_examples '#postorder_walk' do
-  subject(:subject) do
+  subject do
     tree.postorder_walk { |node| nodes << node }
     nodes.map(&:key)
   end

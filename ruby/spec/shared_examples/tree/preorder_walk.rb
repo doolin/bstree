@@ -2,7 +2,7 @@
 
 RSpec.shared_examples '#preorder_walk' do
   describe '#preorder_iterate' do
-    subject(:subject) do
+    subject do
       tree.preorder_walk { |node| nodes << node }
       nodes.map(&:key)
     end
