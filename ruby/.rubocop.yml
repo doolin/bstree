@@ -61,6 +61,11 @@ RSpec/MessageSpies:
   Exclude:
     - spec/avl_node_spec.rb
 
+# TODO: lower this to 4 at some future date.
+RSpec/NestedGroups:
+  Enabled: true
+  Max: 5
+
 #######################################
 # These are individually ticketed.
 RSpec/MultipleExpectations:
@@ -70,9 +75,6 @@ RSpec/ExampleLength:
   Enabled: false
 
 RSpec/InstanceVariable:
-  Enabled: false
-
-RSpec/NestedGroups:
   Enabled: false
 
 RSpec/MultipleMemoizedHelpers:
