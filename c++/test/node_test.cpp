@@ -346,6 +346,7 @@ public:
       root.insert(&node6);
       root.insert(&node7);
       root.insert(&node8);
+
       std::vector<int> a2;
       root.collect(a2);
       return (a1 == a2);
@@ -371,7 +372,21 @@ public:
     describe_test(INDENT0, "From test_print_to_console in NodeTest");
 
     Node root(17);
-    root.print_to_console();
+    root.print_nodes();
+  }
+
+  void test_pre_order_print_keys() {
+    describe_test(INDENT0, "From test_print_to_console in NodeTest");
+
+    Node root(17);
+    // root.pre_order_print_keys();
+    Node node43(43);
+    root.insert(&node43);
+    // root.pre_order_print_keys();
+    Node node8(8);
+    root.insert(&node8);
+    root.pre_order_print_keys();
+
   }
 
   void runTest() {
@@ -390,6 +405,7 @@ public:
     test_list_keys();
     test_search();
     // test_print_to_console();
+    test_pre_order_print_keys();
   }
 };
 

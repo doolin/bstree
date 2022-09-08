@@ -16,3 +16,9 @@ depcomp
 missing
 install-sh
 Makefile.in
+
+# From VS Code c++ mode
+confdefs.h
+conftest-ee9de8df.o.tmp
+conftest.c
+conftest.err

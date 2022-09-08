@@ -2,7 +2,9 @@
 #include <iostream>
 #include <cstdlib>
 #include <vector>
+#include <yaml-cpp/yaml.h>
 #include <node.h>
+
 
 void Node::insert(Node * node) {
   if (node->key < this->key) {
@@ -127,12 +129,6 @@ Node * Node::predecessor(Node * node) {
   return get_predecessor(node, this, node);
 }
 
-void Node::post_order_traverse(std::function<void (void)> callback) {
-  if (left != nullptr) { left->post_order_traverse(callback); }
-  if (right != nullptr) { right->post_order_traverse(callback); }
-  callback();
-}
-
 int Node::get_height(int height, int max) {
   int current = ++height;
   if (left != nullptr) { max = left->get_height(current, max); }
@@ -145,10 +141,22 @@ int Node::height(void) {
   return get_height(0, 0);
 }
 
+void Node::pre_order_traverse(std::function<void (Node *)> callback) {
+  callback(this);
+  if (left != nullptr) { left->pre_order_traverse(callback); }
+  if (right != nullptr) { right->pre_order_traverse(callback); }
+}
+
 void Node::in_order_traverse(std::function<void (void)> callback) {
   if (left != nullptr) { left->in_order_traverse(callback); }
   callback();
   if (right != nullptr) { right->in_order_traverse(callback); }
+}
+
+void Node::post_order_traverse(std::function<void (void)> callback) {
+  if (left != nullptr) { left->post_order_traverse(callback); }
+  if (right != nullptr) { right->post_order_traverse(callback); }
+  callback();
 }
 
 std::vector<int> Node::list_keys() {
@@ -180,6 +188,12 @@ void Node::collect(std::vector<int> & keys) {
   get_right(keys);
 }
 
+void Node::preorder_collect(std::vector<int> & keys) {
+  pre_order_traverse([&] (Node * node) {
+    keys.push_back(node->key);
+  });
+}
+
 int Node::size(void) {
   int size = 0;
   post_order_traverse([&]{ size++; });
@@ -203,7 +217,25 @@ get_node(void) {
 }
 
 void
-Node::print_to_console() {
+Node::print_nodes(void) {
+  in_order_traverse([&] {
+    std::cout << "key: " << this->key << "\n";
+    std::cout << "uuid: " << this->uuid << "\n";
+    std::cout << "left: " << this->left << "\n";
+    std::cout << "right: " << this->right << "\n";
+    std::cout << "parent: " << this->parent << "\n";
+  });
+}
+
+void
+Node::pre_order_print_keys(void) {
+  pre_order_traverse([&] (Node * node) {
+    std::cout << "key: " << node->key << "\n";
+  });
+}
+
+void
+Node::print_to_console(void) {
   std::cout << "key: " << this->key << "\n";
   std::cout << "uuid: " << this->uuid << "\n";
   std::cout << "left: " << this->left << "\n";

@@ -19,7 +19,7 @@ class Node {
   public:
     Node(int _key) : key(_key), uuid("fixme"), left(nullptr), right(nullptr), parent(nullptr) {}
 
-    // void pre_order_traverse(std::function<void (const Node&)> callback);
+    void pre_order_traverse(std::function<void (Node *)> callback);
     void in_order_traverse(std::function<void (void)> callback);
     void post_order_traverse(std::function<void (void)> callback);
 
@@ -38,10 +38,13 @@ class Node {
     bool is_unlinked(void);
     std::vector<int> list_keys(void);
     void collect(std::vector<int> & keys);
+    void preorder_collect(std::vector<int> & keys);
     bool is_bst(void);
     int size(void);
     int height(void);
     void print_to_console(void);
+    void pre_order_print_keys(void);
+    void print_nodes(void);
 
     int key;
     std::string uuid;
