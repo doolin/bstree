@@ -1,7 +1,7 @@
-AM_CXXFLAGS = -std=c++14 -Wall -Wextra  -Wno-unused-parameter
-AM_CPPFLAGS = -I../include -I. $(shell cppunit-config --cflags)
+AM_CXXFLAGS = -std=c++2a -Wall -Wextra  -Wno-unused-parameter
+AM_CPPFLAGS = -I../include # -I. $(shell cppunit-config --cflags)
 
-AM_LDFLAGS = $(shell cppunit-config --libs)
+# AM_LDFLAGS = $(shell cppunit-config --libs)
 LDADD = ../src/libtree.a -lyaml-cpp
 
 %.o: %.cpp
