@@ -1,3 +1,4 @@
+AM_CXXFLAGS = -std=c++2a -Wall -Wextra  -Wno-unused-parameter
 CC=gcc
 CXX=g++
 
