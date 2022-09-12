@@ -214,19 +214,25 @@ RSpec.describe Tree do
   end
 
   describe 'instance methods' do
-    before do
-      node = Node.new(8, 'uuid8')
-      @tree = described_class.new node
-      @tree.insert Node.new(14, 'uuid14')
-      @tree.insert Node.new(4, 'uuid4')
-      @min = Node.new 2, 'uuid2'
-      @tree.insert @min
-      @tree.insert Node.new(5, 'uuid5')
-      @tree.insert Node.new(11, 'uuid11')
-      @max = Node.new 21, 'uuid21'
-      @tree.insert @max
+    let(:node) { Node.new(8, 'uuid8') }
+    let(:tree) { described_class.new node }
+    let(:expected) { [8, 4, 14, 2, 5, 11, 21] }
+    let(:min) { Node.new 2, 'uuid2' }
+    let(:max) { Node.new 21, 'uuid21' }
 
-      @expected = [8, 4, 14, 2, 5, 11, 21]
+    before do
+      # node = Node.new(8, 'uuid8')
+      # @tree = described_class.new node
+      tree.insert Node.new(14, 'uuid14')
+      tree.insert Node.new(4, 'uuid4')
+      # @min = Node.new 2, 'uuid2'
+      tree.insert min
+      tree.insert Node.new(5, 'uuid5')
+      tree.insert Node.new(11, 'uuid11')
+      # @max = Node.new 21, 'uuid21'
+      tree.insert max
+
+      # @expected = [8, 4, 14, 2, 5, 11, 21]
     end
 
     describe '.to_hash' do
@@ -273,7 +279,7 @@ RSpec.describe Tree do
       it 'writes json to a file' do
         require 'open3'
         filename = 'tree_with_nodes.json'
-        @tree.to_json_file "/tmp/#{filename}"
+        tree.to_json_file "/tmp/#{filename}"
         diff = "diff /tmp/#{filename} spec/output/json/#{filename}"
         output, _status = Open3.capture2e(diff)
         expect(output.empty?).to be true
@@ -529,19 +535,19 @@ RSpec.describe Tree do
 
     describe '.maximum' do
       it 'finds the node with the largest key' do
-        expect(@tree.maximum).to eq @max
+        expect(tree.maximum).to eq max
       end
     end
 
     describe '.minimum' do
       it 'finds the node with the smallest key' do
-        expect(@tree.minimum).to eq @min
+        expect(tree.minimum).to eq min
       end
     end
 
     describe 'breadth first search' do
       it 'performs breadth-first search finds root node' do
-        expect(@tree.bfsearch).to eq @expected
+        expect(tree.bfsearch).to eq expected
       end
 
       describe 'CLRS 12.1-1 trees of heights 2, 3, 4, 5 and 6' do
