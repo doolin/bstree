@@ -66,15 +66,21 @@ RSpec/NestedGroups:
   Enabled: true
   Max: 5
 
+# TODO: find out what community best practice would be for these
+# kinds of situations with property style tests, where the data
+# structure is built explicitly.
+RSpec/MultipleMemoizedHelpers:
+  Enabled: true
+  Max: 10
+  Exclude:
+    - spec/avl_node_spec.rb
+
 #######################################
 # These are individually ticketed.
 RSpec/MultipleExpectations:
   Enabled: false
 
 RSpec/ExampleLength:
-  Enabled: false
-
-RSpec/MultipleMemoizedHelpers:
   Enabled: false
 
 RSpec/FilePath:
