@@ -24,7 +24,7 @@ class Foo
   end
 end
 
-RSpec.describe Foo do
+RSpec.describe Foo do # rubocop:disable RSpec/FilePath
   it_finds '#successor'
   it_finds '#predecessor'
 
