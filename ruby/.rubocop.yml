@@ -83,8 +83,5 @@ RSpec/MultipleExpectations:
 RSpec/ExampleLength:
   Enabled: false
 
-RSpec/FilePath:
-  Enabled: false
-
 RSpec/LeakyConstantDeclaration:
   Enabled: false
