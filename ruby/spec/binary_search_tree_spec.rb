@@ -475,8 +475,19 @@ RSpec.describe Foo do # rubocop:disable RSpec/FilePath
 
   describe 'method overriding' do
     # TODO: Find a lint-compliant way to spec the `include`
+    # I spent at least a couple of 30 minute sessions (maybe more)
+    # trying to figure out a good way to deal with this
+    # situation, and was not able to find a satisfactory
+    # solution. Probably, the advice would "well, just don't test
+    # test this" but that doesn't sit right, and I'm not sure why.
+    # The reading for this went into testing behavior versus
+    # implementation, with most of blogistan advising to not test
+    # implementation, only behavior. The examples given proved their
+    # thesis, but shifted the issue elsewhere. In other words,
+    # behavioral testing which assumes the implementation can be just
+    # as much an anti-pattern as implementation testing.
     # rubocop:disable Lint/ConstantDefinitionInBlock
-    class Bar
+    class Bar # rubocop:disable RSpec/LeakyConstantDeclaration
       require 'securerandom'
       include BinarySearchTree
       attr_reader :key, :uuid
