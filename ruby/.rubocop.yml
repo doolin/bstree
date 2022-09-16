@@ -75,10 +75,19 @@ RSpec/MultipleMemoizedHelpers:
   Exclude:
     - spec/avl_node_spec.rb
 
+# A couple of things to note here:
+# 1. Many of the example could be reduced in size. I noted in the
+#    readme (years ago) that the project was over-tested, and probably
+#    by a large amount. There is likely significant opportunity to
+#    the number and size of tests. This will take more time than I'm
+#    willing to spend at the time of writing.
+# 2. Some of the tests are property tests, and those are going to
+#    have as many lines as the object has properties. This cop should
+#    be turned off for those specs.
+RSpec/ExampleLength:
+  Enabled: false
+
 #######################################
 # These are individually ticketed.
 RSpec/MultipleExpectations:
-  Enabled: false
-
-RSpec/ExampleLength:
   Enabled: false
