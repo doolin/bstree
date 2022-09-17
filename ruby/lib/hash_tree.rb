@@ -2,6 +2,7 @@
 
 require 'digest'
 
+# First crack at a hash tree.
 class HashTree
   class Node
     attr_accessor :key, :left, :right, :parent

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Stern Brocot trees have the binary search property.
 class SternBrocot
   MAX = (2**((1.size * 8) - 2)) - 1
   TOL = 0.001

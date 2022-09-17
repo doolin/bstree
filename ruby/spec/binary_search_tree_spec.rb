@@ -5,7 +5,11 @@ require_relative './spec_helper'
 require 'shared_examples/successor'
 require 'shared_examples/predecessor'
 
-class Foo
+# Binary search tree module wrapper for testing.
+# There may be a better way to do this with anonymous
+# classes, but those have state issues in RSpec,
+# particularly when instantiated via `let` blocks.
+class BstTest
   require 'securerandom'
   include BinarySearchTree
   attr_reader :key, :uuid
@@ -24,7 +28,7 @@ class Foo
   end
 end
 
-RSpec.describe Foo do # rubocop:disable RSpec/FilePath
+RSpec.describe BstTest do # rubocop:disable RSpec/FilePath
   it_finds '#successor'
   it_finds '#predecessor'
 
