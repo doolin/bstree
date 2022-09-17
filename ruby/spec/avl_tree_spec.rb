@@ -46,7 +46,7 @@ RSpec.describe AvlTree do
       expect(tree.balanced?).to be true
     end
 
-    example '4' do
+    example '4' do # rubocop:disable RSpec/MultipleExpectations
       tree = build_tree(4)
       expect(tree.preorder_keys).to eq [2, 1, 3, 4]
 

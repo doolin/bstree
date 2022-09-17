@@ -776,7 +776,7 @@ RSpec.describe AvlNode do
       expect(root.weight).to eq(1)
     end
 
-    it 'is true for right and left chain at root' do
+    it 'is true for right and left chain at root' do # rubocop:disable RSpec/MultipleExpectations
       n17.insert n7
       expect(n17.left_height).to be 1
       n17.insert n19
@@ -809,7 +809,7 @@ RSpec.describe AvlNode do
         let(:n61) { described_class.new 61 }
         let(:n67) { described_class.new 67 }
 
-        it 'makes a long right list' do
+        it 'makes a long right list' do # rubocop:disable RSpec/MultipleExpectations
           n2.insert n3
           n2.insert n5
 
@@ -949,6 +949,7 @@ RSpec.describe AvlNode do
           n29.insert n5
           n29.insert n3
           n29.insert n2
+
           expect(n29.height).to eq 9
           expect(n2.height).to eq 0
           # expect(n29.pathological?).to be true
