@@ -53,6 +53,7 @@ RSpec.describe Tree do
     end
   end
 
+  # TODO: Rewrite these describe/context blocks for best practice strings.
   describe 'delete_by_key' do
     describe 'delete root node' do
       it 'deletes root with no children' do
@@ -234,6 +235,7 @@ RSpec.describe Tree do
           tree.insert n7
           tree.insert n6
           tree.insert n3
+
           expect(tree.list_keys).to eq [3, 5, 6, 7, 17]
           expect(tree.delete_by_key(5)).to eq n5
           expect(tree.root.nil?).to be false
@@ -244,7 +246,7 @@ RSpec.describe Tree do
           expect(tree.list_keys).to eq [3, 6, 7, 17]
         end
 
-        it 'deletes a node with many children in subtree successor' do
+        it 'deletes a node with many children in subtree successor' do # rubocop:disable RSpec/MultipleExpectations
           root = Node.new 17
           n5 = Node.new 5
           n3 = Node.new 3
@@ -262,6 +264,7 @@ RSpec.describe Tree do
           tree.insert n7
           tree.insert n8
           tree.insert n10
+
           expect(tree.list_keys).to eq [3, 5, 7, 8, 10, 11, 12, 17]
           expect(tree.height).to eq 5
           expect(tree.delete_by_key(5)).to eq n5
@@ -330,7 +333,8 @@ RSpec.describe Tree do
       end
 
       describe 'mongo delete' do
-        it 'deletes all the nodes from a mongo-sized tree' do
+        # TODO: Rewrite this spec using the Generator and property specs.
+        it 'deletes all the nodes from a mongo-sized tree' do # rubocop:disable RSpec/MultipleExpectations
           root = Node.new 17
           n5 = Node.new 5
           n3 = Node.new 3

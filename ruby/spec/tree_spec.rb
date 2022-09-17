@@ -583,8 +583,11 @@ RSpec.describe Tree do
           tree.insert Node.new(16)
           tree.insert Node.new(17)
           tree.insert Node.new(21)
-          expect(tree.height).to eq 4
-          expect(tree.bfsearch).to eq [5, 1, 10, 4, 16, 17, 21]
+
+          aggregate_failures do
+            expect(tree.height).to eq 4
+            expect(tree.bfsearch).to eq [5, 1, 10, 4, 16, 17, 21]
+          end
         end
 
         it 'builds tree of height 5' do
@@ -595,8 +598,11 @@ RSpec.describe Tree do
           tree.insert Node.new(16)
           tree.insert Node.new(17)
           tree.insert Node.new(21)
-          expect(tree.height).to eq 5
-          expect(tree.bfsearch).to eq [4, 1, 5, 10, 16, 17, 21]
+
+          aggregate_failures do
+            expect(tree.height).to eq 5
+            expect(tree.bfsearch).to eq [4, 1, 5, 10, 16, 17, 21]
+          end
         end
 
         it 'builds tree of height 6' do
@@ -607,8 +613,11 @@ RSpec.describe Tree do
           tree.insert Node.new(16)
           tree.insert Node.new(17)
           tree.insert Node.new(21)
-          expect(tree.height).to eq 6
-          expect(tree.bfsearch).to eq [1, 4, 5, 10, 16, 17, 21]
+
+          aggregate_failures do
+            expect(tree.height).to eq 6
+            expect(tree.bfsearch).to eq [1, 4, 5, 10, 16, 17, 21]
+          end
         end
       end
     end

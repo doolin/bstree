@@ -77,10 +77,24 @@ RSpec/MultipleMemoizedHelpers:
 # 2. Some of the tests are property tests, and those are going to
 #    have as many lines as the object has properties. This cop should
 #    be turned off for those specs.
+#
+# TODO: define a reasonable length for specs, then figure out how to
+#       rewrite into that length. This will be time consuming, and
+#       probably worth writing up the thinking processes while the
+#       work is being accomplished.
 RSpec/ExampleLength:
   Enabled: false
 
-#######################################
-# These are individually ticketed.
+# This is another tough one. Property-style testing just needs to be
+# exempted from the single expectation per spec. Many ot the other ones
+# which are long resulted in incrementally implementing various algorithms
+# on the data structure, and are surely overtested. However, it has often
+# been the case with this code that "overtesting" produced an edge case
+# which was not found with more cursory tests. So it's a balance.
+#
+# TODO: consider, as an exercise, how to greatly reduce the number of
+#       expectations in longer specs, writing up the justifications for
+#       each. This could be time consuming.
 RSpec/MultipleExpectations:
-  Enabled: false
+  Enabled: true
+  Max: 10
