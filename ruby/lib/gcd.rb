@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Classic recursive greatest common denomiator.
+# TODO: copy/move this class somewhere else.
 class Gcd
   # rubocop:disable Naming/MethodParameterName
   def self.compute(a, b)

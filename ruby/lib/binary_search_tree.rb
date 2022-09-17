@@ -1,5 +1,13 @@
 # frozen_string_literal: true
 
+# This module allows any class with a comparable key
+# to become a binary search tree node. The tree root
+# will need to be managed carefully. I'm not convinced
+# it's a good idea to use this, but it works.
+#
+# TODO: much of the code here is duplicated from Node.
+# See if there is a way to extract the duplicate code
+# and use this module directly in Node.
 # rubocop:disable Metrics/ModuleLength
 module BinarySearchTree
   attr_accessor :left, :right

@@ -2,6 +2,9 @@
 
 require 'node'
 
+# Iteration has its uses, usually when recursion induces
+# an unacceptable performance penalty. Here's an iterative
+# take on binary search tree.
 class IterativeNode < Node
   def insert(node)
     current = self

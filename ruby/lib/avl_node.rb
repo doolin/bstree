@@ -2,6 +2,8 @@
 
 require 'node'
 
+# AvlNode is a really good example of inheritance which
+# works well.
 class AvlNode < Node
   attr_writer :balance_factor
 

@@ -3,12 +3,17 @@
 require 'securerandom'
 require 'csv'
 
+# This is intended to allow writing a binary search tree
+# in flat format for csv output. Details remain to be worked out.
 class NodeCsvWriter
   def initialize(node)
     [node.key, node.left.uuid, node.right.uuid]
   end
 end
 
+# A classic, recursive implementation for binary search trees.
+# Specifically, the nodes in a binary search tree, with a Tree
+# container to manage typing and the tree root node.
 class Node
   class KeyNotFoundError < ::StandardError
   end

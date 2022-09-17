@@ -3,6 +3,8 @@
 require 'tree'
 require 'iterative_node'
 
+# Iterative implementation of Binary Search Tree
+# methods.
 class IterativeTree < Tree
   NODE_CLASS = IterativeNode
 

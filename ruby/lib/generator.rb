@@ -3,6 +3,8 @@
 require_relative './tree'
 require_relative './node'
 
+# Utility class for generator trees with known keys
+# and properties.
 class Generator
   class << self
     # The `build` method is used for creating various predefined trees
