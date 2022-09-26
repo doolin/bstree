@@ -12,25 +12,6 @@ using std::string;
 
 class TreeTest : public CppUnit::TestCase {
 
-/*
-Node root(25);
-Tree test_tree(&root);
-Node node2(43);
-Node node3(8);
-Node node4(10);
-Node node5(15);
-Node node6(33);
-Node node7(97);
-Node node8(4);
-test_tree.insert(&node2);
-test_tree.insert(&node3);
-test_tree.insert(&node4);
-test_tree.insert(&node5);
-test_tree.insert(&node6);
-test_tree.insert(&node7);
-test_tree.insert(&node8);
-*/
-
 public:
   TreeTest( std::string name ) : CppUnit::TestCase( name ) {}
 
