@@ -136,7 +136,7 @@ Tree * Tree::from_yaml(std::string filename) {
 
   Tree * tree = new Tree();
   yaml_preorder_traverse(config, [&] (YAML::Node node) {
-    tree->insert(new Node(config["key"].as<int>()));
+    tree->insert(new Node(node["key"].as<int>()));
   });
 
   return tree;

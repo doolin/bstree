@@ -1,6 +1,7 @@
 node_test
 node_preorder_test
 tree_test
+tree_properties_test
 initial
 *.o
 *.gch
