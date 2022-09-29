@@ -1,0 +1,33 @@
+on: [push, pull_request]
+name: CI
+jobs:
+  build:
+    name: "Build on Racket '${{ matrix.racket-version }}' (${{ matrix.racket-variant }})"
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental || false }}
+    strategy:
+      fail-fast: false
+      matrix:
+        racket-version: ['stable', 'current']
+        racket-variant: ['BC', 'CS']
+        include:
+          - racket-version: current
+            experimental: true
+    steps:
+      - uses: actions/checkout@v2
+      - uses: Bogdanp/setup-racket@v1.7
+        with:
+          architecture: x64
+          distribution: full
+          variant: ${{ matrix.racket-variant }}
+          version: ${{ matrix.racket-version }}
+      - name: Installing bst and its dependencies
+        working-directory: ./racket
+        run: raco pkg install --no-docs --auto --name bst
+      # - name: Compiling bst and building its docs
+      #   working-directory: ./racket
+      #   run: raco setup --check-pkg-deps --unused-pkg-deps bst
+      - name: Testing bst
+        working-directory: ./racket
+        # run: raco test -x -p bst
+        run: raco test testem-test.rkt
