@@ -25,6 +25,21 @@ RSpec.describe SternBrocot do
         expect(actual).to eq [2, 1]
       end
 
+      example '13 yields 13/1' do
+        actual = described_class.rationalize 13
+        expect(actual).to eq [13, 1]
+      end
+
+      xexample '99 yields 99/1' do
+        actual = described_class.rationalize 99
+        expect(actual).to eq [99, 1]
+      end
+
+      xexample '731 yields 731/1' do
+        actual = described_class.rationalize 731
+        expect(actual).to eq [731, 1]
+      end
+
       xexample '1246 yields 1246/1' do
         actual = described_class.rationalize 1246
         expect(actual).to eq [1246, 1]
@@ -52,18 +67,25 @@ RSpec.describe SternBrocot do
         expect(actual).to eq [1, 10]
       end
 
-      xexample '0.15 yields 15/100' do
+      example '0.15 yields 15/100' do
         actual = described_class.rationalize 0.15
-        expect(actual).to eq [15, 100]
+        # expect(actual).to eq [15, 100]
+        expect(actual).to eq [3, 20]
       end
 
-      xexample '0.3 yields 3/10' do
+      example '0.3 yields 3/10' do
         actual = described_class.rationalize 0.3
         expect(actual).to eq [3, 10]
       end
 
+      xexample '0.33 yields 33/100' do
+        actual = described_class.rationalize 0.33
+        expect(actual).to eq [33, 100]
+      end
+
       xexample '0.333 yields 333/1000' do
         actual = described_class.rationalize 0.333
+        # binding.pry
         expect(actual).to eq [333, 1000]
       end
     end
@@ -74,10 +96,10 @@ RSpec.describe SternBrocot do
         expect(actual).to eq [11, 10]
       end
 
-      example '3.1'
-      example '5.2'
-      example '9.9'
-      example '123.123'
+      # example '3.1'
+      # example '5.2'
+      # example '9.9'
+      # example '123.123'
     end
 
     #     context 'irrational numbers' do
