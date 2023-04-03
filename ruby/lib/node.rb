@@ -117,7 +117,7 @@ class Node
 
   # rubocop:disable Naming/MethodParameterName
   def self.max(l, r)
-    l > r ? l : r
+    [l, r].max
   end
   # rubocop:enable Naming/MethodParameterName
 

@@ -2,7 +2,8 @@
 
 RSpec.describe Node do
   describe '#invert' do
-    xit 'nil case unsupported on Node' do
+    it 'nil case unsupported on Node' do
+      skip 'TODO: either correct this spec or delete it'
       # this doesn't work with an instance method invert
     end
 

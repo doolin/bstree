@@ -939,7 +939,8 @@ RSpec.describe AvlNode do
       end
 
       describe 'only left children' do
-        xit 'makes a long left list' do
+        it 'makes a long left list' do
+          skip 'TODO: either correct this spec or delete it'
           n29.insert n23
           n29.insert n19
           n29.insert n17

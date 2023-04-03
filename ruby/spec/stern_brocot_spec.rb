@@ -30,17 +30,20 @@ RSpec.describe SternBrocot do
         expect(actual).to eq [13, 1]
       end
 
-      xexample '99 yields 99/1' do
+      example '99 yields 99/1' do
+        skip 'TODO: either correct this spec or delete it'
         actual = described_class.rationalize 99
         expect(actual).to eq [99, 1]
       end
 
-      xexample '731 yields 731/1' do
+      example '731 yields 731/1' do
+        skip 'TODO: either correct this spec or delete it'
         actual = described_class.rationalize 731
         expect(actual).to eq [731, 1]
       end
 
-      xexample '1246 yields 1246/1' do
+      example '1246 yields 1246/1' do
+        skip 'TODO: either correct this spec or delete it'
         actual = described_class.rationalize 1246
         expect(actual).to eq [1246, 1]
       end
@@ -78,12 +81,14 @@ RSpec.describe SternBrocot do
         expect(actual).to eq [3, 10]
       end
 
-      xexample '0.33 yields 33/100' do
+      example '0.33 yields 33/100' do
+        skip 'TODO: either correct this spec or delete it'
         actual = described_class.rationalize 0.33
         expect(actual).to eq [33, 100]
       end
 
-      xexample '0.333 yields 333/1000' do
+      example '0.333 yields 333/1000' do
+        skip 'TODO: either correct this spec or delete it'
         actual = described_class.rationalize 0.333
         # binding.pry
         expect(actual).to eq [333, 1000]
@@ -91,7 +96,8 @@ RSpec.describe SternBrocot do
     end
 
     context 'when rational numbers > 1.0' do
-      xexample '1.1 yields 11/10' do
+      example '1.1 yields 11/10' do
+        skip 'TODO: either correct this spec or delete it'
         actual = described_class.rationalize 1.1
         expect(actual).to eq [11, 10]
       end

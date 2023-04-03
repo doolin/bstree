@@ -4,6 +4,7 @@ require 'digest'
 
 # First crack at a hash tree.
 class HashTree
+  # A node in the tree.
   class Node
     attr_accessor :key, :left, :right, :parent
   end
