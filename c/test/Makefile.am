@@ -1,13 +1,13 @@
-AM_CXXFLAGS = -std=c++11 -Wall -Wextra  -Wno-unused-parameter
-AM_CPPFLAGS = -I../include # -I. $(shell cppunit-config --cflags)
+# Immediate execution of shell command to determine BREW_PREFIX
+BREW_PREFIX := $(shell if [ $$(uname -m) = "arm64" ]; then echo /opt/homebrew; else echo /usr/local; fi)
 
-# AM_LDFLAGS = $(shell cppunit-config --libs)
-# Not used with clang at the moment, save it in case
-# AM_LDFLAGS = -L/usr/local/Cellar/boost/1.62.0/lib/ # $(shell cppunit-config --libs)
-LDADD = ../src/libbst.a
+AM_CXXFLAGS = -std=c++11 -Wall -Wextra -Wno-unused-parameter
+AM_CPPFLAGS = -I../include -I$(BREW_PREFIX)/include
 
-%.o: %.cpp
-	g++ $(AM_CXXFLAGS) $(AM_CPPFLAGS) -D$*_STANDALONE -c $< $(AM_LDFLAGS)
+LDADD = ../src/libbst.a -L$(BREW_PREFIX)/lib -lcppunit -lyaml
+
+# Automake's implicit rules for compiling C++ source files will automatically use AM_CXXFLAGS and AM_CPPFLAGS,
+# so you typically do not need to redefine a rule for compiling .o files from .cpp sources.
 
 bin_PROGRAMS = node tree collector yaml
 
