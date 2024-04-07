@@ -170,46 +170,50 @@ RSpec.describe Tree do
     let(:l3) { Node.new 75 }
     let(:l4) { Node.new 15 }
 
-    it 'returns true for node with 0 children' do
-      expect(root.full?).to be true
+    context 'when tree is full' do
+      it 'returns true for node with 0 children' do
+        expect(root.full?).to be true
+      end
+
+      it 'returns true for node with 2 children' do
+        tree.insert left
+        tree.insert right
+        expect(tree.full?).to be true
+      end
+
+      it 'returns true for tree with 5 nodes' do
+        tree.insert left
+        tree.insert right
+        tree.insert l2
+        tree.insert l3
+        expect(tree.full?).to be true
+      end
     end
 
-    it 'returns true for node with 2 children' do
-      tree.insert left
-      tree.insert right
-      expect(tree.full?).to be true
-    end
+    context 'when tree is not full' do
+      it 'returns false for a node with only one child' do
+        tree.insert left
+        expect(tree.full?).to be false # nil
+      end
 
-    it 'returns false for a node with only one child' do
-      tree.insert left
-      expect(tree.full?).to be false # nil
-    end
+      it 'returns nil for tree with 6 nodes' do
+        tree.insert left
+        tree.insert right
+        tree.insert l2
+        tree.insert l3
+        tree.insert Node.new 145
+        expect(tree).not_to be_full
+      end
 
-    it 'returns true for tree with 5 nodes' do
-      tree.insert left
-      tree.insert right
-      tree.insert l2
-      tree.insert l3
-      expect(tree.full?).to be true
-    end
-
-    it 'returns nil for tree with 6 nodes' do
-      tree.insert left
-      tree.insert right
-      tree.insert l2
-      tree.insert l3
-      tree.insert Node.new 145
-      expect(tree).not_to be_full
-    end
-
-    it 'returns nil for tree with 7 nodes' do
-      tree.insert left
-      tree.insert right
-      tree.insert l2
-      tree.insert l3
-      tree.insert l4
-      tree.insert Node.new 145
-      expect(tree).not_to be_full
+      it 'returns nil for tree with 7 nodes' do
+        tree.insert left
+        tree.insert right
+        tree.insert l2
+        tree.insert l3
+        tree.insert l4
+        tree.insert Node.new 145
+        expect(tree).not_to be_full
+      end
     end
   end
 
