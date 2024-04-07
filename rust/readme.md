@@ -3,6 +3,10 @@
 Rust is a not, new upcoming language for systems programming which
 advertizes memory safety, enforced to a large extent at compile time.
 
+## Running tests
+
+- `cargo test`
+
 ### Links
 
 After spending the last many years in scripting languages, I found the
