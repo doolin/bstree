@@ -13,6 +13,43 @@ RSpec.describe Node do
   it_finds '#successor'
   it_finds '#predecessor'
 
+  describe '#diameter' do
+    it 'returns 1 for a single node' do
+      node = described_class.new 17
+      expect(node.diameter).to be 1
+    end
+
+    it 'returns 2 for a node with a single child' do
+      node = described_class.new 17
+      node.insert described_class.new 5
+      expect(node.diameter).to be 2
+    end
+
+    it 'returns 3 for a node with two children' do
+      node = described_class.new 17
+      node.insert described_class.new 5
+      node.insert described_class.new 23
+      expect(node.diameter).to be 3
+    end
+
+    it 'returns 4 for a node with two children and a grandchild' do
+      node = described_class.new 17
+      node.insert described_class.new 5
+      node.insert described_class.new 23
+      node.insert described_class.new 29
+      expect(node.diameter).to be 4
+    end
+
+    it 'returns 5 for a node with two children and two grandchildren' do
+      node = described_class.new 17
+      node.insert described_class.new 5
+      node.insert described_class.new 23
+      node.insert described_class.new 29
+      node.insert described_class.new 19
+      expect(node.diameter).to be 4
+    end
+  end
+
   describe '#depth' do
     context 'when 0' do
       it 'is a single node' do

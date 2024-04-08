@@ -6,6 +6,7 @@ RSpec.describe Generator do
     tree = described_class.tree1
     expect(tree.size).to eq 1
     expect(tree.height).to eq 0
+    expect(tree.diameter).to eq 1
     expect(tree.bst?).to be true
     expect(tree.full?).to be true
     expect(tree.balanced?).to be true
@@ -19,6 +20,7 @@ RSpec.describe Generator do
     tree = described_class.tree2
     expect(tree.size).to eq 2
     expect(tree.height).to eq 1
+    expect(tree.diameter).to eq 2
     expect(tree.bst?).to be true
     expect(tree.full?).to be false
     expect(tree.balanced?).to be true
@@ -32,6 +34,7 @@ RSpec.describe Generator do
     tree = described_class.tree3
     expect(tree.size).to eq 3
     expect(tree.height).to eq 1
+    expect(tree.diameter).to eq 3
     expect(tree.bst?).to be true
     expect(tree.full?).to be true
     expect(tree.balanced?).to be true
@@ -45,6 +48,7 @@ RSpec.describe Generator do
     tree = described_class.tree4
     expect(tree.size).to eq 4
     expect(tree.height).to eq 2
+    expect(tree.diameter).to eq 4
     expect(tree.bst?).to be true
     expect(tree.full?).to be false
     expect(tree.balanced?).to be true
@@ -58,6 +62,7 @@ RSpec.describe Generator do
     tree = described_class.tree5
     expect(tree.size).to eq 5
     expect(tree.height).to eq 2
+    expect(tree.diameter).to eq 5
     expect(tree.bst?).to be true
     expect(tree.full?).to be false
     expect(tree.balanced?).to be true
@@ -71,6 +76,7 @@ RSpec.describe Generator do
     tree = described_class.tree6
     expect(tree.size).to eq 6
     expect(tree.height).to eq 3
+    expect(tree.diameter).to eq 6
     expect(tree.bst?).to be true
     expect(tree.full?).to be false
     expect(tree.balanced?).to be false
@@ -84,6 +90,7 @@ RSpec.describe Generator do
     tree = described_class.tree7
     expect(tree.size).to eq 7
     expect(tree.height).to eq 3
+    expect(tree.diameter).to eq 7
     expect(tree.bst?).to be true
     expect(tree.full?).to be false
     expect(tree.balanced?).to be false
@@ -97,6 +104,7 @@ RSpec.describe Generator do
     tree = described_class.tree8
     expect(tree.size).to eq 8
     expect(tree.height).to eq 3
+    expect(tree.diameter).to eq 7
     expect(tree.bst?).to be true
     expect(tree.full?).to be false
     expect(tree.balanced?).to be false
@@ -110,6 +118,7 @@ RSpec.describe Generator do
     tree = described_class.tree9
     expect(tree.size).to eq 9
     expect(tree.height).to eq 3
+    expect(tree.diameter).to eq 7
     expect(tree.bst?).to be true
     expect(tree.full?).to be false
     expect(tree.balanced?).to be false
@@ -123,6 +132,7 @@ RSpec.describe Generator do
     tree = described_class.tree10
     expect(tree.size).to eq 10
     expect(tree.height).to eq 4
+    expect(tree.diameter).to eq 8
     expect(tree.bst?).to be true
     expect(tree.full?).to be false # nil
     expect(tree.balanced?).to be false
@@ -137,6 +147,7 @@ RSpec.describe Generator do
       tree = described_class.tree213
       expect(tree.size).to eq 3
       expect(tree.height).to eq 1
+      expect(tree.diameter).to eq 3
       expect(tree.bst?).to be true
       expect(tree.full?).to be true
       expect(tree.balanced?).to be true
@@ -148,6 +159,7 @@ RSpec.describe Generator do
       tree = described_class.tree123
       expect(tree.size).to eq 3
       expect(tree.height).to eq 2
+      expect(tree.diameter).to eq 3
       expect(tree.bst?).to be true
       expect(tree.full?).to be false
       expect(tree.balanced?).to be false
@@ -159,6 +171,7 @@ RSpec.describe Generator do
       tree = described_class.tree132
       expect(tree.size).to eq 3
       expect(tree.height).to eq 2
+      expect(tree.diameter).to eq 3
       expect(tree.bst?).to be true
       expect(tree.full?).to be false
       expect(tree.balanced?).to be false
@@ -170,6 +183,7 @@ RSpec.describe Generator do
       tree = described_class.tree321
       expect(tree.size).to eq 3
       expect(tree.height).to eq 2
+      expect(tree.diameter).to eq 3
       expect(tree.bst?).to be true
       expect(tree.full?).to be false
       expect(tree.balanced?).to be false
@@ -181,6 +195,7 @@ RSpec.describe Generator do
       tree = described_class.tree312
       expect(tree.size).to eq 3
       expect(tree.height).to eq 2
+      expect(tree.diameter).to eq 3
       expect(tree.bst?).to be true
       expect(tree.full?).to be false
       expect(tree.balanced?).to be false
