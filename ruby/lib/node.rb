@@ -164,6 +164,22 @@ class Node
     self.class.max(left&.height || -1, right&.height || -1) + 1
   end
 
+  # rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  def diameter
+    return 1 if left.nil? && right.nil?
+
+    left_height = left.nil? ? 0 : left.height + 1
+    right_height = right.nil? ? 0 : right.height + 1
+
+    left_diameter = left&.diameter || 0
+    right_diameter = right&.diameter || 0
+
+    self.class.max(left_height + right_height + 1,
+                   self.class.max(left_diameter,
+                                  right_diameter))
+  end
+  # rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+
   # {https://www.youtube.co/watch?v=76dhtgZt38A&list=PLUl4u3cNGP63EdVPNLG3ToM6LaEUuStEY&index=10
   # Depth from Eric Demaine, MIT Opencourseware}, is the number of edges from the node up
   # to the root. Depth measures from the root down. Note that the depth of tree is not defined,

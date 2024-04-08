@@ -368,6 +368,7 @@ RSpec.describe Tree do
             tree = described_class.from_yaml_file("#{yaml_dir}/tree1.yml")
             expect(tree.size).to eq 1
             expect(tree.height).to eq 0
+            expect(tree.diameter).to eq 1
             expect(tree.bst?).to be true
             expect(tree.full?).to be true
             expect(tree.balanced?).to be true
@@ -384,6 +385,7 @@ RSpec.describe Tree do
             # expect(tree.size).to eq 2
             expect(tree.root.size).to eq 2
             expect(tree.height).to eq 1
+            expect(tree.diameter).to eq 2
             expect(tree.bst?).to be true
             expect(tree.full?).to be false
             expect(tree.balanced?).to be true
@@ -397,6 +399,7 @@ RSpec.describe Tree do
             # expect(tree.size).to eq 3
             expect(tree.root.size).to eq 3
             expect(tree.height).to eq 1
+            expect(tree.diameter).to eq 3
             expect(tree.bst?).to be true
             expect(tree.full?).to be true
             expect(tree.balanced?).to be true
@@ -410,6 +413,7 @@ RSpec.describe Tree do
             # expect(tree.size).to eq 4
             expect(tree.root.size).to eq 4
             expect(tree.height).to eq 2
+            expect(tree.diameter).to eq 4
             expect(tree.bst?).to be true
             expect(tree.full?).to be false
             expect(tree.balanced?).to be true
@@ -423,6 +427,7 @@ RSpec.describe Tree do
             # expect(tree.size).to eq 5
             expect(tree.root.size).to eq 5
             expect(tree.height).to eq 2
+            expect(tree.diameter).to eq 5
             expect(tree.bst?).to be true
             expect(tree.full?).to be false
             expect(tree.balanced?).to be true
@@ -436,6 +441,7 @@ RSpec.describe Tree do
             # expect(tree.size).to eq 6
             expect(tree.root.size).to eq 6
             expect(tree.height).to eq 3
+            expect(tree.diameter).to eq 6
             expect(tree.bst?).to be true
             expect(tree.full?).to be false
             expect(tree.balanced?).to be false
@@ -449,6 +455,7 @@ RSpec.describe Tree do
             # expect(tree.size).to eq 7
             expect(tree.root.size).to eq 7
             expect(tree.height).to eq 3
+            expect(tree.diameter).to eq 7
             expect(tree.bst?).to be true
             expect(tree.full?).to be false
             expect(tree.balanced?).to be false
@@ -462,6 +469,7 @@ RSpec.describe Tree do
             # expect(tree.size).to eq 8
             expect(tree.root.size).to eq 8
             expect(tree.height).to eq 3
+            expect(tree.diameter).to eq 7
             expect(tree.bst?).to be true
             expect(tree.full?).to be false
             expect(tree.balanced?).to be false
@@ -475,6 +483,7 @@ RSpec.describe Tree do
             # expect(tree.size).to eq 9
             expect(tree.root.size).to eq 9
             expect(tree.height).to eq 3
+            expect(tree.diameter).to eq 7
             expect(tree.bst?).to be true
             expect(tree.full?).to be false
             expect(tree.balanced?).to be false
@@ -488,6 +497,7 @@ RSpec.describe Tree do
             # expect(tree.size).to eq 10
             expect(tree.root.size).to eq 10
             expect(tree.height).to eq 4
+            expect(tree.diameter).to eq 8
             expect(tree.bst?).to be true
             expect(tree.full?).to be false # nil
             expect(tree.balanced?).to be false

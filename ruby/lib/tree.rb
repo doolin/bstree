@@ -209,6 +209,10 @@ class Tree
     @root.minimum
   end
 
+  def diameter
+    root.diameter
+  end
+
   def to_hash
     root.to_hash
   end
