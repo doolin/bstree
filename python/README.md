@@ -33,10 +33,10 @@ This should result in `pipenv` being available and linked like so:
 
 ```sh
 $ which pipenv
-/usr/local/bin/pipenv
+/opt/homebrew/bin/pipenv
 05:19:45 doolin@inventium-2:~/src/bstree/python (git:BST-144*:83c0814)  ruby-2.7.2
 $ ls -la /usr/local/bin/pipenv
-lrwxr-xr-x 37 doolin  4 Jun 05:19 /usr/local/bin/pipenv -> ../Cellar/pipenv/2021.5.29/bin/pipenv
+lrwxr-xr-x@ - daviddoolin  9 Feb 20:04 /opt/homebrew/bin/pipenv -> ../Cellar/pipenv/2023.12.1/bin/pipenv
 05:19:57 doolin@inventium-2:~/src/bstree/python (git:BST-144*:83c0814)  ruby-2.7.2
 $
 ```
@@ -57,7 +57,19 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 
-## Updating packages
+## Updating
+
+### Python
+
+Use `pyenv`
+
+Check `pyenv --help` for commands.
+
+Install a version of python using (say) `pyenv install 3.12`
+
+This is going to go into `~/.pyenv/versions`
+
+### Packages
 
 The tooling for selectively updating seems a bit unintuitive, but here's one way to do it:
 
@@ -68,11 +80,15 @@ It's probably a good idea to check the state of `Pipfile` and `Pipfile.lock` wit
 
 ## Running tests
 
-- ` pipenv run pytest`
+- `pipenv run pytest`
 
 ## Code coverage
 
 - `pipenv run coverage html`
+
+## Linting
+
+- `pipenv run black .`
 
 ## To do
 
