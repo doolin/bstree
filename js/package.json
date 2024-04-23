@@ -5,19 +5,19 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha spec",
-    "lint": "npx eslint lib/*.js spec/*.js",
+    "lint": "npx eslint --config .eslintrc.json lib/*.js spec/*.js",
     "prettier": "npx prettier --check ."
   },
   "author": "dave doolin",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^8.0.0",
-    "eslint-config-google": "^0.14.0",
-    "eslint-config-prettier": "^8.3.0",
-    "prettier": "2.4.1"
+    "eslint": "*",
+    "eslint-config-google": "*",
+    "eslint-config-prettier": "*",
+    "prettier": "*"
   },
   "dependencies": {
-    "js-yaml": "^4.1.0",
-    "mocha": "^9.1.2"
+    "js-yaml": "*",
+    "mocha": "*"
   }
 }

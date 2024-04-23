@@ -1,12 +1,22 @@
 {
   "env": {
     "browser": true,
-    "commonjs": true,
-    "es2021": true
+    "node": true, // Explicitly specify the Node.js environment
+    "es2022": true // Update to the most recent ECMAScript version available in ESLint
   },
-  "extends": ["google", "prettier"],
+  "extends": [
+    "eslint:recommended", // Start with a set of recommended rules by ESLint
+    "google", // Keep Google's style guide
+    "plugin:prettier/recommended" // Use prettier as a plugin and enforce it as the recommended setup
+  ],
   "parserOptions": {
-    "ecmaVersion": 12
+    "ecmaVersion": "latest", // Automatically use the latest ecmaVersion supported by ESLint
+    "sourceType": "module" // Assuming your Node.js projects use ES Modules
   },
-  "rules": {}
+  "rules": {
+    // You can specify custom rules or override existing ones here
+    "no-unused-vars": "warn", // Warn on unused variables rather than erroring
+    "eqeqeq": ["error", "always"], // Enforce the use of === and !==
+    "no-console": "off" // If using console statements is acceptable in your environment
+  }
 }

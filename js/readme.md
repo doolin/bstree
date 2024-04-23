@@ -9,6 +9,10 @@ will be a very simple lib + spec.
 - install npm
 - `npm install mocha`
 
+## Updating
+
+- `npm outdated`
+
 ## Testing
 
 - `npm test`
