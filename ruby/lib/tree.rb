@@ -228,7 +228,7 @@ class Tree
 
   def self.from_yaml_file(filename)
     require 'yaml'
-    hashed = YAML.safe_load(File.read(filename))
+    hashed = YAML.safe_load_file(filename)
     from_hash(hashed)
   end
 

@@ -16,7 +16,7 @@ class SternBrocot
   #  In the remaining case, q = M; terminate the search algorithm.
   # rubocop:disable Metrics/MethodLength
   def self.rationalize(number) # rubocop:disable  Metrics/AbcSize
-    return [0, 1] if number.to_f == 0.0 # rubocop:disable Lint/FloatComparison
+    return [0, 1] if number.to_f == 0.0
 
     q = number
 
