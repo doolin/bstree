@@ -98,3 +98,10 @@ RSpec/ExampleLength:
 RSpec/MultipleExpectations:
   Enabled: true
   Max: 10
+
+RSpec/IndexedLet:
+  Enabled: false
+
+# TODO: not sure what this is, there is only one example.
+RSpec/SpecFilePathFormat:
+  Enabled: false

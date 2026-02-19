@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative './spec_helper'
+require_relative 'spec_helper'
 
 require 'shared_examples/successor'
 require 'shared_examples/predecessor'
@@ -28,7 +28,7 @@ class BstTest
   end
 end
 
-RSpec.describe BstTest do # rubocop:disable RSpec/FilePath
+RSpec.describe BstTest do
   it_finds '#successor'
   it_finds '#predecessor'
 
